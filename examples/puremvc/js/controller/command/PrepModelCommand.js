@@ -2,10 +2,10 @@
  * @author Mike Britton
  *
  * @class PrepModelCommand
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.controller.command.PrepModelCommand',
+		name: 'tobuymvc.controller.command.PrepModelCommand',
 		parent: puremvc.SimpleCommand
 	},
 
@@ -16,7 +16,7 @@ puremvc.define({
 		 * @override
 		 */
 		execute: function(note) {
-			this.facade.registerProxy( new todomvc.model.proxy.TodoProxy() );
+			this.facade.registerProxy( new tobuymvc.model.proxy.TodoProxy() );
 		}
 	}
 );

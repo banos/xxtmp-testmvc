@@ -36,14 +36,14 @@ window.app.init();
 'use strict';
 
 var State = require('ampersand-state');
-var Todos = require('./todos');
+var Todos = require('./tobuys');
 
 
 module.exports = State.extend({
 	initialize: function () {
-		// Listen to changes to the todos collection that will
+		// Listen to changes to the tobuys collection that will
 		// affect lengths we want to calculate.
-		this.listenTo(this.todos, 'change:completed add remove', this.handleTodosUpdate);
+		this.listenTo(this.tobuys, 'change:completed add remove', this.handleTodosUpdate);
 		// We also want to calculate these values once on init
 		this.handleTodosUpdate();
 		// Listen for changes to `mode` so we can update
@@ -51,7 +51,7 @@ module.exports = State.extend({
 		this.listenTo(this, 'change:mode', this.handleModeChange);
 	},
 	collections: {
-		todos: Todos
+		tobuys: Todos
 	},
 	// We used only session properties here because there's
 	// no API or persistance layer for these in this app.
@@ -99,10 +99,10 @@ module.exports = State.extend({
 	// so they're easy to listen to and bind to DOM
 	// where needed.
 	handleTodosUpdate: function () {
-		var total = this.todos.length;
+		var total = this.tobuys.length;
 		// use a method we defined on the collection itself
-		// to count how many todos are completed
-		var completed = this.todos.getCompletedCount();
+		// to count how many tobuys are completed
+		var completed = this.tobuys.getCompletedCount();
 		// We use `set` here in order to update multiple attributes at once
 		// It's possible to set directely using `this.completedCount = completed` ...
 		this.set({
@@ -113,11 +113,11 @@ module.exports = State.extend({
 		});
 	},
 	handleModeChange: function () {
-		this.todos.setMode(this.mode);
+		this.tobuys.setMode(this.mode);
 	}
 });
 
-},{"./todos":4,"ampersand-state":22}],3:[function(require,module,exports){
+},{"./tobuys":4,"ampersand-state":22}],3:[function(require,module,exports){
 'use strict';
 
 // We're using 'ampersand-state' here instead of 'ampersand-model'
@@ -159,8 +159,8 @@ module.exports = State.extend({
 var Collection = require('ampersand-collection');
 var SubCollection = require('ampersand-subcollection');
 var debounce = require('debounce');
-var Todo = require('./todo');
-var STORAGE_KEY = 'todos-ampersand';
+var Todo = require('./tobuy');
+var STORAGE_KEY = 'tobuys-ampersand';
 
 
 module.exports = Collection.extend({
@@ -170,7 +170,7 @@ module.exports = Collection.extend({
 		this.readFromLocalStorage();
 
 		// This is what we'll actually render
-		// it's a subcollection of the whole todo collection
+		// it's a subcollection of the whole tobuy collection
 		// that we'll add/remove filters to accordingly.
 		this.subset = new SubCollection(this);
 
@@ -187,14 +187,14 @@ module.exports = Collection.extend({
 		this.on('all', this.writeToLocalStorage, this);
 	},
 	getCompletedCount: function() {
-		return this.reduce(function(total, todo){
-			return todo.completed ? ++total : total;
+		return this.reduce(function(total, tobuy){
+			return tobuy.completed ? ++total : total;
 		}, 0);
 	},
 	// Helper for removing all completed items
 	clearCompleted: function () {
-		var toRemove = this.filter(function (todo) {
-			return todo.completed;
+		var toRemove = this.filter(function (tobuy) {
+			return tobuy.completed;
 		});
 		this.remove(toRemove);
 	},
@@ -231,7 +231,7 @@ module.exports = Collection.extend({
 	}
 });
 
-},{"./todo":3,"ampersand-collection":9,"ampersand-subcollection":28,"debounce":53}],5:[function(require,module,exports){
+},{"./tobuy":3,"ampersand-collection":9,"ampersand-subcollection":28,"debounce":53}],5:[function(require,module,exports){
 'use strict';
 /*global app */
 
@@ -262,13 +262,13 @@ buf.push("<li><div class=\"view\"><input type=\"checkbox\" data-hook=\"checkbox\
 /*global app */
 
 var View = require('ampersand-view');
-var TodoView = require('./todo');
+var TodoView = require('./tobuy');
 var ENTER_KEY = 13;
 
 
 module.exports = View.extend({
 	events: {
-		'keypress [data-hook~=todo-input]': 'handleMainInput',
+		'keypress [data-hook~=tobuy-input]': 'handleMainInput',
 		'click [data-hook~=mark-all]': 'handleMarkAllClick',
 		'click [data-hook~=clear-completed]': 'handleClearClick'
 	},
@@ -304,7 +304,7 @@ module.exports = View.extend({
 		// does pluralizing.
 		'model.itemsLeftHtml': {
 			type: 'innerHTML',
-			hook: 'todo-count'
+			hook: 'tobuy-count'
 		},
 		// Add 'selected' to right
 		// element
@@ -326,35 +326,35 @@ module.exports = View.extend({
 	},
 	// cache
 	initialize: function () {
-		this.mainInput = this.queryByHook('todo-input');
-		this.renderCollection(app.me.todos.subset, TodoView, this.queryByHook('todo-container'));
+		this.mainInput = this.queryByHook('tobuy-input');
+		this.renderCollection(app.me.tobuys.subset, TodoView, this.queryByHook('tobuy-container'));
 	},
 	// handles DOM event from main input
 	handleMainInput: function (e) {
 		var val = this.mainInput.value.trim();
 		if (e.which === ENTER_KEY && val) {
-			app.me.todos.add({title: val});
+			app.me.tobuys.add({title: val});
 			this.mainInput.value = '';
 		}
 	},
 	// Here we set all to state provided.
 	handleMarkAllClick: function () {
 		var targetState = !app.me.allCompleted;
-		app.me.todos.each(function (todo) {
-			todo.completed = targetState;
+		app.me.tobuys.each(function (tobuy) {
+			tobuy.completed = targetState;
 		});
 	},
 	// Handler for clear click
 	handleClearClick: function () {
-		app.me.todos.clearCompleted();
+		app.me.tobuys.clearCompleted();
 	}
 });
 
-},{"./todo":8,"ampersand-view":35}],8:[function(require,module,exports){
+},{"./tobuy":8,"ampersand-view":35}],8:[function(require,module,exports){
 'use strict';
 
 var View = require('ampersand-view');
-var todoTemplate = require('../templates/todo.jade');
+var tobuyTemplate = require('../templates/tobuy.jade');
 var ENTER_KEY = 13;
 var ESC_KEY = 27;
 
@@ -370,7 +370,7 @@ module.exports = View.extend({
 	// called 'jadeify' lets us require a ".jade" file as if
 	// it were a module and it will compile it to a function
 	// for us. This function returns HTML as per #2 above.
-	template: todoTemplate,
+	template: tobuyTemplate,
 	// Events work like backbone they're all delegated to
 	// root element.
 	events: {
@@ -454,7 +454,7 @@ module.exports = View.extend({
 	}
 });
 
-},{"../templates/todo.jade":6,"ampersand-view":35}],9:[function(require,module,exports){
+},{"../templates/tobuy.jade":6,"ampersand-view":35}],9:[function(require,module,exports){
 var BackboneEvents = require('backbone-events-standalone');
 var classExtend = require('ampersand-class-extend');
 var isArray = require('is-array');

@@ -40,8 +40,8 @@ jQuery(function ($) {
 
 	var App = {
 		init: function () {
-			this.todos = util.store('todos-jquery');
-			this.todoTemplate = Handlebars.compile($('#todo-template').html());
+			this.tobuys = util.store('tobuys-jquery');
+			this.tobuyTemplate = Handlebars.compile($('#tobuy-template').html());
 			this.footerTemplate = Handlebars.compile($('#footer-template').html());
 			this.bindEvents();
 
@@ -53,10 +53,10 @@ jQuery(function ($) {
 			}).init('/all');
 		},
 		bindEvents: function () {
-			$('#new-todo').on('keyup', this.create.bind(this));
+			$('#new-tobuy').on('keyup', this.create.bind(this));
 			$('#toggle-all').on('change', this.toggleAll.bind(this));
 			$('#footer').on('click', '#clear-completed', this.destroyCompleted.bind(this));
-			$('#todo-list')
+			$('#tobuy-list')
 				.on('change', '.toggle', this.toggle.bind(this))
 				.on('dblclick', 'label', this.editingMode.bind(this))
 				.on('keyup', '.edit', this.editKeyup.bind(this))
@@ -64,43 +64,43 @@ jQuery(function ($) {
 				.on('click', '.destroy', this.destroy.bind(this));
 		},
 		render: function () {
-			var todos = this.getFilteredTodos();
-			$('#todo-list').html(this.todoTemplate(todos));
-			$('#main').toggle(todos.length > 0);
+			var tobuys = this.getFilteredTodos();
+			$('#tobuy-list').html(this.tobuyTemplate(tobuys));
+			$('#main').toggle(tobuys.length > 0);
 			$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
 			this.renderFooter();
-			$('#new-todo').focus();
-			util.store('todos-jquery', this.todos);
+			$('#new-tobuy').focus();
+			util.store('tobuys-jquery', this.tobuys);
 		},
 		renderFooter: function () {
-			var todoCount = this.todos.length;
+			var tobuyCount = this.tobuys.length;
 			var activeTodoCount = this.getActiveTodos().length;
 			var template = this.footerTemplate({
 				activeTodoCount: activeTodoCount,
 				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
-				completedTodos: todoCount - activeTodoCount,
+				completedTodos: tobuyCount - activeTodoCount,
 				filter: this.filter
 			});
 
-			$('#footer').toggle(todoCount > 0).html(template);
+			$('#footer').toggle(tobuyCount > 0).html(template);
 		},
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-			this.todos.forEach(function (todo) {
-				todo.completed = isChecked;
+			this.tobuys.forEach(function (tobuy) {
+				tobuy.completed = isChecked;
 			});
 
 			this.render();
 		},
 		getActiveTodos: function () {
-			return this.todos.filter(function (todo) {
-				return !todo.completed;
+			return this.tobuys.filter(function (tobuy) {
+				return !tobuy.completed;
 			});
 		},
 		getCompletedTodos: function () {
-			return this.todos.filter(function (todo) {
-				return todo.completed;
+			return this.tobuys.filter(function (tobuy) {
+				return tobuy.completed;
 			});
 		},
 		getFilteredTodos: function () {
@@ -112,22 +112,22 @@ jQuery(function ($) {
 				return this.getCompletedTodos();
 			}
 
-			return this.todos;
+			return this.tobuys;
 		},
 		destroyCompleted: function () {
-			this.todos = this.getActiveTodos();
+			this.tobuys = this.getActiveTodos();
 			this.filter = 'all';
 			this.render();
 		},
 		// accepts an element from inside the `.item` div and
-		// returns the corresponding index in the `todos` array
+		// returns the corresponding index in the `tobuys` array
 		getIndexFromEl: function (el) {
 			var id = $(el).closest('li').data('id');
-			var todos = this.todos;
-			var i = todos.length;
+			var tobuys = this.tobuys;
+			var i = tobuys.length;
 
 			while (i--) {
-				if (todos[i].id === id) {
+				if (tobuys[i].id === id) {
 					return i;
 				}
 			}
@@ -140,7 +140,7 @@ jQuery(function ($) {
 				return;
 			}
 
-			this.todos.push({
+			this.tobuys.push({
 				id: util.uuid(),
 				title: val,
 				completed: false
@@ -152,7 +152,7 @@ jQuery(function ($) {
 		},
 		toggle: function (e) {
 			var i = this.getIndexFromEl(e.target);
-			this.todos[i].completed = !this.todos[i].completed;
+			this.tobuys[i].completed = !this.tobuys[i].completed;
 			this.render();
 		},
 		editingMode: function (e) {
@@ -182,13 +182,13 @@ jQuery(function ($) {
 			if ($el.data('abort')) {
 				$el.data('abort', false);
 			} else {
-				this.todos[this.getIndexFromEl(el)].title = val;
+				this.tobuys[this.getIndexFromEl(el)].title = val;
 			}
 
 			this.render();
 		},
 		destroy: function (e) {
-			this.todos.splice(this.getIndexFromEl(e.target), 1);
+			this.tobuys.splice(this.getIndexFromEl(e.target), 1);
 			this.render();
 		}
 	};

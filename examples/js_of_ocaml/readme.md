@@ -85,30 +85,30 @@ If you want to build the application on your own:
 
   Congratulations, you now have all the required packages! We can now build the application.
 
-2. Compile the `todomvc.ml` file to OCaml bytecode with the `ocamlbuild` command:
+2. Compile the `tobuymvc.ml` file to OCaml bytecode with the `ocamlbuild` command:
 
   ```sh
   > ocamlbuild -use-ocamlfind \
 	-tags "warn(-40)" \
 	-pkgs lwt.syntax,js_of_ocaml,js_of_ocaml.syntax,js_of_ocaml.tyxml,tyxml,js_of_ocaml.deriving,js_of_ocaml.deriving.syntax,deriving \
 	-syntax camlp4o \
-	todomvc.byte ;
+	tobuymvc.byte ;
   ```
 
   The command options are:
   - `-use-ocamlfind` and `-pkgs ...` to use the necessary `ocamlfind` packages.
   - `-tags "warn(-40)"` to avoid harmless warnings about constructor or label name used out of scope.
   - `-syntax camlp4o` for the syntax extension support.
-3. Build the Javascript file from the `todomvc.byte` file with the `js_of_ocaml` command:
+3. Build the Javascript file from the `tobuymvc.byte` file with the `js_of_ocaml` command:
 
   ```sh
-  > js_of_ocaml +weak.js --opt 3 -o js/todomvc.js todomvc.byte
+  > js_of_ocaml +weak.js --opt 3 -o js/tobuymvc.js tobuymvc.byte
   ```
 
   The command options are:
   - `+weak.js` to include the necessary `weak` package.
   - `--opt 3` to set optimization profile.
-  - `-o js/todomvc.js` to set output file name.
+  - `-o js/tobuymvc.js` to set output file name.
 
 Please note that for the second and third step, you can also use the `build.sh` script:
 

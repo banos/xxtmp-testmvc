@@ -1,8 +1,8 @@
 <view name="Stats">
 
-<%-- This footer should hidden by default and shown when there are todos. --%>
+<%-- This footer should hidden by default and shown when there are tobuys. --%>
 <footer class="footer" if="<%= data.total %>">
-	<span class="todo-count"><strong><%= data.active %></strong> <%= (data.active === 1) ? 'item' : 'items' %> left</span>
+	<span class="tobuy-count"><strong><%= data.active %></strong> <%= (data.active === 1) ? 'item' : 'items' %> left</span>
 
 	<ul class="filters">
 		<li>
@@ -19,5 +19,5 @@
 	<%-- Hidden if no completed items are left ↓ --%>
 	<button class="clear-completed"
 		if="<%= data.completed %>"
-		onclick="<%= todos.actions.clearOnClick %>">Clear completed</button>
+		onclick="<%= tobuys.actions.clearOnClick %>">Clear completed</button>
 </footer>

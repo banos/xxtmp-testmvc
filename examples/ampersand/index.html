@@ -3,22 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>Ampersand.js • TodoMVC</title>
-        <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-        <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+        <link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+        <link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
     </head>
     <body>
-        <section id="todoapp">
+        <section id="tobuyapp">
             <header id="header">
-                <h1>todos</h1>
-                <input id="new-todo" placeholder="What needs to be done?" data-hook="todo-input" autofocus>
+                <h1>tobuys</h1>
+                <input id="new-tobuy" placeholder="What needs to be done?" data-hook="tobuy-input" autofocus>
             </header>
             <section id="main">
                 <input id="toggle-all" type="checkbox" data-hook="mark-all">
                 <label for="toggle-all">Mark all as complete</label>
-                <ul id="todo-list" data-hook="todo-container"></ul>
+                <ul id="tobuy-list" data-hook="tobuy-container"></ul>
             </section>
             <footer id="footer">
-                <span id="todo-count" data-hook="todo-count"></span>
+                <span id="tobuy-count" data-hook="tobuy-count"></span>
                 <ul id="filters">
                     <li>
                         <a class="selected" href="#/" data-hook="all-mode">All</a>
@@ -34,11 +34,11 @@
             </footer>
         </section>
         <footer id="info">
-            <p>Double-click to edit a todo</p>
+            <p>Double-click to edit a tobuy</p>
             <p>Written by <a href="https://twitter.com/henrikjoreteg">Henrik Joreteg</a>, <a href="https://twitter.com/lukekarrys">Luke Karrys</a>, and <a href="https://twitter.com/philip_roberts">Philip Roberts</a></p>
-            <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+            <p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
         </footer>
-        <script src="node_modules/todomvc-common/base.js"></script>
-        <script src="todomvc.bundle.js"></script>
+        <script src="node_modules/tobuymvc-common/base.js"></script>
+        <script src="tobuymvc.bundle.js"></script>
     </body>
 </html>

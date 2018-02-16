@@ -2,12 +2,12 @@
 (function () {
 	'use strict';
 
-	var localStorageKey = 'todos-webrx';
+	var localStorageKey = 'tobuys-webrx';
 	var displayModeAll = 'all';
 	var displayModeActive = 'active';
 	var displayModeCompleted = 'completed';
 
-	// represent a single todo item
+	// represent a single tobuy item
 	function Todo(title, completed) {
 		this.title = wx.property(title);
 		this.completed = wx.property(completed);
@@ -15,28 +15,28 @@
 	}
 
 	// our main view model
-	var ViewModel = function (todos) {
-		// map array of passed in todos to an observableArray of Todo objects
-		this.todos = wx.list(todos.map(function (todo) {
-			return new Todo(todo.title, todo.completed);
+	var ViewModel = function (tobuys) {
+		// map array of passed in tobuys to an observableArray of Todo objects
+		this.tobuys = wx.list(tobuys.map(function (tobuy) {
+			return new Todo(tobuy.title, tobuy.completed);
 		}));
 
-		// we want to get notified of changes to any of the todos contained in the list
+		// we want to get notified of changes to any of the tobuys contained in the list
 		// not just of structural changes to the list (via "listChanged" obserable).
 		// Those changes are then exposed using the list's "itemChanged" obseravable
-		this.todos.changeTrackingEnabled = true;
+		this.tobuys.changeTrackingEnabled = true;
 
 		this.current = wx.property();
 		this.showMode = wx.property('all');
 
-		// create a live-filtered projection of the todos collection that will update
-		// when its source (this.todos) or any of its items changes or when when "showMode" changes
-		this.filteredTodos = this.todos.project(function (todo) {
+		// create a live-filtered projection of the tobuys collection that will update
+		// when its source (this.tobuys) or any of its items changes or when when "showMode" changes
+		this.filteredTodos = this.tobuys.project(function (tobuy) {
 			switch (this.showMode()) {
 				case displayModeActive:
-					return !todo.completed();
+					return !tobuy.completed();
 				case displayModeCompleted:
-					return todo.completed();
+					return tobuy.completed();
 				default:
 					return true;
 			}
@@ -47,29 +47,29 @@
 			var current = this.current().trim();
 
 			if (current) {
-				this.todos.push(new Todo(current));
+				this.tobuys.push(new Todo(current));
 				this.current('');
 			}
 		}, this);
 
 		// remove a single entry
-		this.removeCmd = wx.command(function (todo) {
-			this.todos.remove(todo);
+		this.removeCmd = wx.command(function (tobuy) {
+			this.tobuys.remove(tobuy);
 		}, this);
 
-		// mark all todos complete/incomplete
+		// mark all tobuys complete/incomplete
 		this.completeAllCmd = wx.command(function () {
-			this.todos.forEach(function (todo) {
-				todo.completed(this.remainingCount());
+			this.tobuys.forEach(function (tobuy) {
+				tobuy.completed(this.remainingCount());
 			}, this);
 		}, this);
 
 		// remove all completed entries
 		this.removeCompletedCmd = wx.command(function () {
-			this.todos.filter(function (todo) {
-				return todo.completed();
+			this.tobuys.filter(function (tobuy) {
+				return tobuy.completed();
 			}).forEach(function (item) {
-				this.todos.remove(item);
+				this.tobuys.remove(item);
 			}, this);
 		}, this);
 
@@ -96,27 +96,27 @@
 			}
 
 			if (!trimmedTitle) {
-				this.todos.remove(item);
+				this.tobuys.remove(item);
 			}
 		}, this);
 
 		this.countCompleted = function () {
-			return this.todos.filter(function (todo) {
-				return todo.completed();
+			return this.tobuys.filter(function (tobuy) {
+				return tobuy.completed();
 			}).length;
 		};
 
-		// create an observable output-property representing all completed todos
-		this.completedCount = Rx.Observable.merge(this.todos.listChanged, this.todos.itemChanged)
+		// create an observable output-property representing all completed tobuys
+		this.completedCount = Rx.Observable.merge(this.tobuys.listChanged, this.tobuys.itemChanged)
 			.select(this.countCompleted, this)
 			.toProperty(this.countCompleted());
 
 		this.countRemaining = function () {
-			return this.todos.length() - this.completedCount();
+			return this.tobuys.length() - this.completedCount();
 		};
 
-		// create an observable output-property representing all todos that are not complete
-		this.remainingCount = Rx.Observable.merge(this.todos.listChanged, this.todos.itemChanged)
+		// create an observable output-property representing all tobuys that are not complete
+		this.remainingCount = Rx.Observable.merge(this.tobuys.listChanged, this.tobuys.itemChanged)
 			.select(this.countRemaining, this)
 			.toProperty(this.countRemaining());
 
@@ -145,19 +145,19 @@
 		wx.router.reload();
 
 		// persistence
-		Rx.Observable.merge(this.todos.listChanged, this.todos.itemChanged)
+		Rx.Observable.merge(this.tobuys.listChanged, this.tobuys.itemChanged)
 			.throttle(500)
 			.subscribeOnNext(function () {
-				localStorage.setItem(localStorageKey, JSON.stringify(this.todos.map(function (x) {
+				localStorage.setItem(localStorageKey, JSON.stringify(this.tobuys.map(function (x) {
 					return { title: x.title(), completed: x.completed() };
 				})));
 			}, this);
 	};
 
-	// check local storage for todos
-	var todos = JSON.parse(localStorage.getItem(localStorageKey));
+	// check local storage for tobuys
+	var tobuys = JSON.parse(localStorage.getItem(localStorageKey));
 
 	// bind a new instance of our view model to the page
-	var viewModel = new ViewModel(todos || []);
+	var viewModel = new ViewModel(tobuys || []);
 	wx.applyBindings(viewModel);
 }());

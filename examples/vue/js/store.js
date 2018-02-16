@@ -4,14 +4,14 @@
 
 	'use strict';
 
-	var STORAGE_KEY = 'todos-vuejs';
+	var STORAGE_KEY = 'tobuys-vuejs';
 
-	exports.todoStorage = {
+	exports.tobuyStorage = {
 		fetch: function () {
 			return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 		},
-		save: function (todos) {
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+		save: function (tobuys) {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(tobuys));
 		}
 	};
 

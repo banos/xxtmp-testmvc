@@ -4,7 +4,7 @@
 <link rel="import" href="td-input.html">
 <link rel="import" href="td-item.html">
 
-<dom-module id="td-todos">
+<dom-module id="td-tobuys">
 	<template strip-whitespace>
 		<style>
 			:host {
@@ -12,9 +12,9 @@
 			}
 		</style>
 		<flatiron-director route="{{route}}" hidden></flatiron-director>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<input is="td-input" id="new-todo"
+				<input is="td-input" id="new-tobuy"
 							 placeholder="What needs to be done?" autofocus
 							 on-td-input-commit="addTodoAction"
 							 on-td-input-cancel="cancelAddTodoAction">
@@ -25,8 +25,8 @@
 					<input id="toggle-all" type="checkbox" checked="[[allCompleted]]"
 								 on-change="toggleAllCompletedAction">
 					<label for="toggle-all">Mark all as complete</label>
-					<ul id="todo-list" on-td-destroy-item="destroyItemAction">
-						<template id="todo-list-repeater" is="dom-repeat" items="{{items}}"
+					<ul id="tobuy-list" on-td-destroy-item="destroyItemAction">
+						<template id="tobuy-list-repeater" is="dom-repeat" items="{{items}}"
 											filter="{{matchesFilter(route)}}" observe="completed"
 											initial-count="10"
 											strip-whitespace>
@@ -36,7 +36,7 @@
 				</section>
 
 				<footer id="footer">
-					<span id="todo-count">
+					<span id="tobuy-count">
 						<strong>{{activeCount}}</strong>
 						<span>{{_computeItemsLeft(activeCount)}}</span><span> left</span>
 					</span>
@@ -68,7 +68,7 @@
 			'use strict';
 
 			Polymer({
-				is: 'td-todos',
+				is: 'td-tobuys',
 
 				properties: {
 					items: {
@@ -128,12 +128,12 @@
 				},
 
 				addTodoAction: function () {
-					this.model.newItem(this.$['new-todo'].value);
-					this.$['new-todo'].value = '';
+					this.model.newItem(this.$['new-tobuy'].value);
+					this.$['new-tobuy'].value = '';
 				},
 
 				cancelAddTodoAction: function () {
-					this.$['new-todo'].value = '';
+					this.$['new-tobuy'].value = '';
 				},
 
 				destroyItemAction: function(e, detail) {

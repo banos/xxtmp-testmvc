@@ -5,22 +5,22 @@ export default Ember.Service.extend({
 	data: null,
 	findAll() {
 		return this.get('data') ||
-			this.set('data', JSON.parse(window.localStorage.getItem('todos') || '[]'));
+			this.set('data', JSON.parse(window.localStorage.getItem('tobuys') || '[]'));
 	},
 
 	add(attrs) {
-		let todo = Object.assign({ id: this.incrementProperty('lastId') }, attrs);
-		this.get('data').pushObject(todo);
+		let tobuy = Object.assign({ id: this.incrementProperty('lastId') }, attrs);
+		this.get('data').pushObject(tobuy);
 		this.persist();
-		return todo;
+		return tobuy;
 	},
 
-	delete(todo) {
-		this.get('data').removeObject(todo);
+	delete(tobuy) {
+		this.get('data').removeObject(tobuy);
 		this.persist();
 	},
 
 	persist() {
-		window.localStorage.setItem('todos', JSON.stringify(this.get('data')));
+		window.localStorage.setItem('tobuys', JSON.stringify(this.get('data')));
 	}
 });

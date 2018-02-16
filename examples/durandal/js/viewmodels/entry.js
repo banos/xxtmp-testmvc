@@ -7,15 +7,15 @@ define([
 	var ViewModel = function () {
 		var self = this;
 
-		// store the new todo value being entered
+		// store the new tobuy value being entered
 		self.current = ko.observable();
 
-		// add a new todo, when enter key is pressed
+		// add a new tobuy, when enter key is pressed
 		self.add = function () {
 			var current = self.current().trim();
 
 			if (current) {
-				app.trigger('todoitem', current);
+				app.trigger('tobuyitem', current);
 				self.current('');
 			}
 		};

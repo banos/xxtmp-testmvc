@@ -8,7 +8,7 @@ define(function (require) {
 
 	var PageView = require('lavaca/mvc/PageView');
 	var TodosCollectionView = require('app/ui/views/TodosCollectionView');
-	require('rdust!templates/todos');
+	require('rdust!templates/tobuys');
 
 	/**
 	 * Todos view type
@@ -19,12 +19,12 @@ define(function (require) {
 		// Call the super class' constructor
 		PageView.apply(this, arguments);
 
-		// Map collection view to #todo-list
-		this.mapChildView('#todo-list', TodosCollectionView, this.model);
+		// Map collection view to #tobuy-list
+		this.mapChildView('#tobuy-list', TodosCollectionView, this.model);
 
 		// Map DOM and model events to event handler functions declared below
 		this.mapEvent({
-			'#new-todo': {
+			'#new-tobuy': {
 				keypress: addTodo.bind(this)
 			},
 			'input#toggle-all': {
@@ -48,14 +48,14 @@ define(function (require) {
 		 * @default 'example'
 		 * The name of the template used by the view
 		 */
-		template: 'templates/todos',
+		template: 'templates/tobuys',
 
 		/**
 		 * @field {String} className
 		 * @default 'example'
 		 * A class name added to the view container
 		 */
-		className: 'todos'
+		className: 'tobuys'
 	});
 
 	/* ---- Event Handlers ---- */

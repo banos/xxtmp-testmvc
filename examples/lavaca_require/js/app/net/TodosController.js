@@ -5,7 +5,7 @@ define(function (require) {
 
 	var Controller = require('lavaca/mvc/Controller');
 	var TodosView = require('app/ui/views/TodosView');
-	var todosCollection = require('app/models/TodosCollection');
+	var tobuysCollection = require('app/models/TodosCollection');
 
 	/**
 	 * @class app.net.TodosController
@@ -16,12 +16,12 @@ define(function (require) {
 		home: function (params) {
 			// Set the `filter` parameter on the collection based on the values
 			// defined with the routes in app.js
-			todosCollection.set('filter', params.filter);
+			tobuysCollection.set('filter', params.filter);
 
 			// Create an instance of TodosView with `collection` as its model and then
 			// set a history state which will update the URL
 			return this
-				.view(null, TodosView, todosCollection)
+				.view(null, TodosView, tobuysCollection)
 				.then(this.history({}, document.title, params.url));
 		}
 	});

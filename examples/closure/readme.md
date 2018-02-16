@@ -27,7 +27,7 @@ Get help from other Closure Tools users:
 * [Closure Tools on Twitter](http://twitter.com/closuretools)
 * [Closure Tools on Google +](https://plus.google.com/communities/113969319608324762672)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation
@@ -44,11 +44,11 @@ A third party build tool called [Plovr](http://plovr.com/) is used to make runni
 
 You'll also need to change the HTML file so that it references the served files instead of the compiled version (**make sure you comment out the compiled version otherwise it will not work**), to do this remove the compiled script reference and add the following -
 
-`<script src="http://localhost:9810/compile?id=todomvc&mode=RAW"></script>`
+`<script src="http://localhost:9810/compile?id=tobuymvc&mode=RAW"></script>`
 
 This will serve up the javascript files in RAW mode which is ideal for rapid development and debugging. To run the compiler, and therefore all the associated type checks etc., change RAW for ADVANCED -
 
-`<script src="http://localhost:9810/compile?id=todomvc&mode=ADVANCED"></script>`
+`<script src="http://localhost:9810/compile?id=tobuymvc&mode=ADVANCED"></script>`
 
 
 ## Linting

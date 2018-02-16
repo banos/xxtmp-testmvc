@@ -3,29 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>CanJS • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 		</section>
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="http://bitovi.com">Bitovi</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 		<script type="text/mustache" id="app-template">
-			<todo-app>
+			<tobuy-app>
 				<header id="header">
-					<h1>todos</h1>
-					<input id="new-todo" placeholder="What needs to be done?" autofocus="" can-enter="createTodo">
+					<h1>tobuys</h1>
+					<input id="new-tobuy" placeholder="What needs to be done?" autofocus="" can-enter="createTodo">
 				</header>
-				<section id="main" class="{{^if todos.length}}hidden{{/if}}">
-					<input id="toggle-all" type="checkbox" {{#if todos.allComplete}}checked="checked"{{/if}} can-click="toggleAll">
+				<section id="main" class="{{^if tobuys.length}}hidden{{/if}}">
+					<input id="toggle-all" type="checkbox" {{#if tobuys.allComplete}}checked="checked"{{/if}} can-click="toggleAll">
 					<label for="toggle-all">Mark all as complete</label>
-					<ul id="todo-list">
+					<ul id="tobuy-list">
 						{{#each displayList}}
-						<li class="todo{{#if complete}} completed{{/if}}{{#if editing}} editing{{/if}}">
+						<li class="tobuy{{#if complete}} completed{{/if}}{{#if editing}} editing{{/if}}">
 							<div class="view">
 								<input class="toggle" type="checkbox" can-value="complete">
 								<label can-dblclick="edit">{{text}}</label>
@@ -38,27 +38,27 @@
 					</ul>
 				</section>
 
-				<footer id="footer" class="{{^if todos.length}}hidden{{/if}}">
-					<span id="todo-count">
-						<strong>{{todos.remaining}}</strong> {{plural "item" todos.remaining}} left
+				<footer id="footer" class="{{^if tobuys.length}}hidden{{/if}}">
+					<span id="tobuy-count">
+						<strong>{{tobuys.remaining}}</strong> {{plural "item" tobuys.remaining}} left
 					</span>
 					<ul id="filters">
 						<li>{{{link "All" undefined}}}</li>
 						<li>{{{link "Active" "active"}}}</li>
 						<li>{{{link "Completed" "completed"}}}</li>
 					</ul>
-					<button id="clear-completed" class="{{^if todos.completed.length}}hidden{{/if}}" can-click="clearCompleted">
+					<button id="clear-completed" class="{{^if tobuys.completed.length}}hidden{{/if}}" can-click="clearCompleted">
 						Clear completed
 					</button>
 				</footer>
-			</todo-app>
+			</tobuy-app>
 		</script>
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 		<script src="node_modules/canjs/can.jquery.js"></script>
 		<script src="node_modules/canjs-localstorage/can.localstorage.js"></script>
-		<script src="js/models/todo.js"></script>
-		<script src="js/components/todo-app.js"></script>
+		<script src="js/models/tobuy.js"></script>
+		<script src="js/components/tobuy-app.js"></script>
 		<script src="js/app.js"></script>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 	/* global CLASS */
 	'use strict';
 	CLASS({
-		package: 'com.todomvc',
+		package: 'com.tobuymvc',
 		name: 'Todo',
 		properties: [
 			'id',

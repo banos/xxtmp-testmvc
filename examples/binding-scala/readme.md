@@ -1,4 +1,4 @@
-# [Binding.scala • TodoMVC](https://github.com/ThoughtWorksInc/todo)
+# [Binding.scala • TodoMVC](https://github.com/ThoughtWorksInc/tobuy)
 
 [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala) is a data-binding framework for [Scala](http://www.scala-lang.org/), running on both JVM and [Scala.js](http://www.scala-js.org/).
 
@@ -38,15 +38,15 @@ only one source file, 154 lines of code!
 ## Instructions to build this application
 
 1. Download and install [sbt](http://www.scala-sbt.org/)
-2. Clone this repository `git clone https://github.com/ThoughtWorksInc/todo.git`
+2. Clone this repository `git clone https://github.com/ThoughtWorksInc/tobuy.git`
 3. Execute the shell command `sbt indexHtml` at the base directory of this code base.
 4. Open the generated `index.html` in your browser. Enjoy it! 😋
 
 ## Links
 
 * [The Binding.scala Project Page](https://github.com/ThoughtWorksInc/Binding.scala)
-* [This “Binding.scala • TodoMVC” Project Page](https://github.com/ThoughtWorksInc/todo)
-* [This “Binding.scala • TodoMVC” DEMO](https://thoughtworksinc.github.io/todo)
+* [This “Binding.scala • TodoMVC” Project Page](https://github.com/ThoughtWorksInc/tobuy)
+* [This “Binding.scala • TodoMVC” DEMO](https://thoughtworksinc.github.io/tobuy)
 * [API documentation](https://oss.sonatype.org/service/local/repositories/releases/archive/com/thoughtworks/binding/unidoc_2.11/8.0.0/unidoc_2.11-8.0.0-javadoc.jar/!/com/thoughtworks/binding/package.html)
 * [Other live DEMOs](https://thoughtworksinc.github.io/Binding.scala/)
 * [Chat on Gitter](https://gitter.im/ThoughtWorksInc/Binding.scala)

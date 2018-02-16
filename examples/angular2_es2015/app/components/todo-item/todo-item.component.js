@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
-import template from './todo-item.template.html';
+import template from './tobuy-item.template.html';
 
 @Component({
-	selector: 'todo-item',
+	selector: 'tobuy-item',
 	template: template
 })
 export class TodoItemComponent {
-	@Input() todo;
+	@Input() tobuy;
 
 	@Output() itemModified = new EventEmitter();
 
@@ -20,10 +20,10 @@ export class TodoItemComponent {
 	}
 
 	stopEditing(editedTitle) {
-		this.todo.setTitle(editedTitle.value);
+		this.tobuy.setTitle(editedTitle.value);
 		this.editing = false;
 
-		if (this.todo.title.length === 0) {
+		if (this.tobuy.title.length === 0) {
 			this.remove();
 		} else {
 			this.update();
@@ -35,15 +35,15 @@ export class TodoItemComponent {
 	}
 
 	toggleCompletion() {
-		this.todo.completed = !this.todo.completed;
+		this.tobuy.completed = !this.tobuy.completed;
 		this.update();
 	}
 
 	remove() {
-		this.itemRemoved.next(this.todo.uid);
+		this.itemRemoved.next(this.tobuy.uid);
 	}
 
 	update() {
-		this.itemModified.next(this.todo.uid);
+		this.itemModified.next(this.tobuy.uid);
 	}
 }

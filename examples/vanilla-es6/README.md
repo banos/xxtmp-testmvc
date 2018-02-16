@@ -1,6 +1,6 @@
-# Vanilla ES6 (ES2015) • [TodoMVC](http://todomvc.com)
+# Vanilla ES6 (ES2015) • [TodoMVC](http://tobuymvc.com)
 
-> A port of the [Vanilla JS Example](http://todomvc.com/examples/vanillajs/), but translated into ES6, also known as ES2015.
+> A port of the [Vanilla JS Example](http://tobuymvc.com/examples/vanillajs/), but translated into ES6, also known as ES2015.
 
 ## Learning ES6
 
@@ -13,7 +13,7 @@
 
 To get started with this example, navigate into the example folder and install the NPM modules.
 ```bash
-cd todomvc/examples/vanilla-es6
+cd tobuymvc/examples/vanilla-es6
 npm install
 ```
 
@@ -29,7 +29,7 @@ npm run compile
 
 - [Twitter](http://twitter.com/lukeed05)
 
-*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/tastejs/tobuymvc/issues) if you discover anything worth sharing.*
 
 
 ## Implementation

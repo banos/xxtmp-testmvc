@@ -1,6 +1,6 @@
 enablePlugins(ScalaJSPlugin)
 
-name             := "todomvc"
+name             := "tobuymvc"
 organization     := "com.olvind"
 version          := "1"
 licenses         += ("Apache-2.0", url("http://opensource.org/licenses/Apache-2.0"))

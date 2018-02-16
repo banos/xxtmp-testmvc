@@ -51,7 +51,7 @@ var app = app || {};
 	var TodoApp = React.createClass({
 		mixins: [BackboneMixin],
 		getBackboneCollections: function () {
-			return [this.props.todos];
+			return [this.props.tobuys];
 		},
 
 		getInitialState: function () {
@@ -73,15 +73,15 @@ var app = app || {};
 			new Router();
 			Backbone.history.start();
 
-			this.props.todos.fetch();
+			this.props.tobuys.fetch();
 		},
 
 		componentDidUpdate: function () {
 			// If saving were expensive we'd listen for mutation events on Backbone and
 			// do this manually. however, since saving isn't expensive this is an
 			// elegant way to keep it reactively up-to-date.
-			this.props.todos.forEach(function (todo) {
-				todo.save();
+			this.props.tobuys.forEach(function (tobuy) {
+				tobuy.save();
 			});
 		},
 
@@ -92,10 +92,10 @@ var app = app || {};
 
 			var val = React.findDOMNode(this.refs.newField).value.trim();
 			if (val) {
-				this.props.todos.create({
+				this.props.tobuys.create({
 					title: val,
 					completed: false,
-					order: this.props.todos.nextOrder()
+					order: this.props.tobuys.nextOrder()
 				});
 				React.findDOMNode(this.refs.newField).value = '';
 			}
@@ -105,18 +105,18 @@ var app = app || {};
 
 		toggleAll: function (event) {
 			var checked = event.target.checked;
-			this.props.todos.forEach(function (todo) {
-				todo.set('completed', checked);
+			this.props.tobuys.forEach(function (tobuy) {
+				tobuy.set('completed', checked);
 			});
 		},
 
-		edit: function (todo, callback) {
-			// refer to todoItem.jsx `handleEdit` for the reason behind the callback
-			this.setState({editing: todo.get('id')}, callback);
+		edit: function (tobuy, callback) {
+			// refer to tobuyItem.jsx `handleEdit` for the reason behind the callback
+			this.setState({editing: tobuy.get('id')}, callback);
 		},
 
-		save: function (todo, text) {
-			todo.save({title: text});
+		save: function (tobuy, text) {
+			tobuy.save({title: text});
 			this.setState({editing: null});
 		},
 
@@ -125,47 +125,47 @@ var app = app || {};
 		},
 
 		clearCompleted: function () {
-			this.props.todos.completed().forEach(function (todo) {
-				todo.destroy();
+			this.props.tobuys.completed().forEach(function (tobuy) {
+				tobuy.destroy();
 			});
 		},
 
 		render: function () {
 			var footer;
 			var main;
-			var todos = this.props.todos;
+			var tobuys = this.props.tobuys;
 
-			var shownTodos = todos.filter(function (todo) {
+			var shownTodos = tobuys.filter(function (tobuy) {
 				switch (this.state.nowShowing) {
 				case app.ACTIVE_TODOS:
-					return !todo.get('completed');
+					return !tobuy.get('completed');
 				case app.COMPLETED_TODOS:
-					return todo.get('completed');
+					return tobuy.get('completed');
 				default:
 					return true;
 				}
 			}, this);
 
-			var todoItems = shownTodos.map(function (todo) {
+			var tobuyItems = shownTodos.map(function (tobuy) {
 				return (
 					<TodoItem
-						key={todo.get('id')}
-						todo={todo}
-						onToggle={todo.toggle.bind(todo)}
-						onDestroy={todo.destroy.bind(todo)}
-						onEdit={this.edit.bind(this, todo)}
-						editing={this.state.editing === todo.get('id')}
-						onSave={this.save.bind(this, todo)}
+						key={tobuy.get('id')}
+						tobuy={tobuy}
+						onToggle={tobuy.toggle.bind(tobuy)}
+						onDestroy={tobuy.destroy.bind(tobuy)}
+						onEdit={this.edit.bind(this, tobuy)}
+						editing={this.state.editing === tobuy.get('id')}
+						onSave={this.save.bind(this, tobuy)}
 						onCancel={this.cancel}
 					/>
 				);
 			}, this);
 
-			var activeTodoCount = todos.reduce(function (accum, todo) {
-				return todo.get('completed') ? accum : accum + 1;
+			var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+				return tobuy.get('completed') ? accum : accum + 1;
 			}, 0);
 
-			var completedCount = todos.length - activeTodoCount;
+			var completedCount = tobuys.length - activeTodoCount;
 
 			if (activeTodoCount || completedCount) {
 				footer =
@@ -177,7 +177,7 @@ var app = app || {};
 					/>;
 			}
 
-			if (todos.length) {
+			if (tobuys.length) {
 				main = (
 					<section className="main">
 						<input
@@ -186,8 +186,8 @@ var app = app || {};
 							onChange={this.toggleAll}
 							checked={activeTodoCount === 0}
 						/>
-						<ul className="todo-list">
-							{todoItems}
+						<ul className="tobuy-list">
+							{tobuyItems}
 						</ul>
 					</section>
 				);
@@ -196,10 +196,10 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>todos</h1>
+						<h1>tobuys</h1>
 						<input
 							ref="newField"
-							className="new-todo"
+							className="new-tobuy"
 							placeholder="What needs to be done?"
 							onKeyDown={this.handleNewTodoKeyDown}
 							autoFocus={true}
@@ -213,7 +213,7 @@ var app = app || {};
 	});
 
 	React.render(
-		<TodoApp todos={app.todos} />,
-		document.getElementsByClassName('todoapp')[0]
+		<TodoApp tobuys={app.tobuys} />,
+		document.getElementsByClassName('tobuyapp')[0]
 	);
 })();

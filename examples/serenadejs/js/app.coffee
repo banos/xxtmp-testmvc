@@ -22,7 +22,7 @@ class App extends Serenade.Model
 
 	@property 'allCompleted',
 		get: -> @activeCount is 0
-		set: (value) -> todo.completed = value for todo in @all
+		set: (value) -> tobuy.completed = value for tobuy in @all
 
 	@property 'newTitle'
 
@@ -45,27 +45,27 @@ class AppController
 		@app.all = @app.active
 
 class TodoController
-	constructor: (@todo) ->
+	constructor: (@tobuy) ->
 
 	removeTodo: ->
-		@todo.remove()
+		@tobuy.remove()
 
 	edit: ->
-		@todo.edit = true
+		@tobuy.edit = true
 		@field.select()
 
 	edited: ->
-		if @todo.title.trim()
-			@todo.title = @todo.title.trim()
-			@todo.edit = false if @todo.edit
+		if @tobuy.title.trim()
+			@tobuy.title = @tobuy.title.trim()
+			@tobuy.edit = false if @tobuy.edit
 		else
-			@todo.remove()
-		@todo.app.changed.trigger()
+			@tobuy.remove()
+		@tobuy.app.changed.trigger()
 
 	loadField: (@field) ->
 
-app = new App(JSON.parse(localStorage.getItem('todos-serenade')))
-app.changed.bind -> localStorage.setItem('todos-serenade', app)
+app = new App(JSON.parse(localStorage.getItem('tobuys-serenade')))
+app.changed.bind -> localStorage.setItem('tobuys-serenade', app)
 
 router = Router
 	'/': -> app.filter = 'all'
@@ -75,8 +75,8 @@ router = Router
 router.init()
 
 Serenade.view('app', document.getElementById('app').innerHTML)
-Serenade.view('todo', document.getElementById('todo').innerHTML)
+Serenade.view('tobuy', document.getElementById('tobuy').innerHTML)
 Serenade.controller('app', AppController)
-Serenade.controller('todo', TodoController)
+Serenade.controller('tobuy', TodoController)
 
 document.body.insertBefore(Serenade.render('app', app), document.body.children[0])

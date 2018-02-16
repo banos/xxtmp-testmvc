@@ -1,4 +1,4 @@
-System.register(['aurelia-router', './todos'], function (_export) {
+System.register(['aurelia-router', './tobuys'], function (_export) {
 	'use strict';
 
 	var Router, Todos, App;
@@ -10,8 +10,8 @@ System.register(['aurelia-router', './todos'], function (_export) {
 	return {
 		setters: [function (_aureliaRouter) {
 			Router = _aureliaRouter.Router;
-		}, function (_todos) {
-			Todos = _todos.Todos;
+		}, function (_tobuys) {
+			Todos = _tobuys.Todos;
 		}],
 		execute: function () {
 			App = (function () {
@@ -33,7 +33,7 @@ System.register(['aurelia-router', './todos'], function (_export) {
 					key: 'configureRoutes',
 					value: function configureRoutes(cfg) {
 						cfg.title = 'TodoMVC';
-						cfg.map([{ route: ['', ':filter'], moduleId: 'todos' }]);
+						cfg.map([{ route: ['', ':filter'], moduleId: 'tobuys' }]);
 					}
 				}]);
 

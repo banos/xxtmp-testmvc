@@ -1,12 +1,12 @@
 define([
-	'directives/todoFocus',
+	'directives/tobuyFocus',
 	'angular-mocks'
-], function (todoFocusDir) {
+], function (tobuyFocusDir) {
 	'use strict';
 
-	beforeEach(module(todoFocusDir));
+	beforeEach(module(tobuyFocusDir));
 
-	describe('todoFocus directive', function () {
+	describe('tobuyFocus directive', function () {
 		var scope, compile, browser;
 
 		beforeEach(inject(function ($rootScope, $compile, $browser) {
@@ -16,7 +16,7 @@ define([
 		}));
 
 		it('should focus on truthy expression', function () {
-			var el = angular.element('<input todo-focus="focus">');
+			var el = angular.element('<input tobuy-focus="focus">');
 			scope.focus = false;
 
 			compile(el)(scope);

@@ -1,11 +1,11 @@
 define([
-	'directives/todoEscape',
+	'directives/tobuyEscape',
 	'jquery',
 	'angular-mocks'
-], function (todoEscapeDir, jQuery) {
+], function (tobuyEscapeDir, jQuery) {
 	'use strict';
 
-	beforeEach(module(todoEscapeDir));
+	beforeEach(module(tobuyEscapeDir));
 
 	var triggerKeyDown = function (element, keyCode) {
 		var e = jQuery.Event("keydown");
@@ -13,7 +13,7 @@ define([
 		element.triggerHandler(e);
 	};
 
-	describe('todoEscape directive', function () {
+	describe('tobuyEscape directive', function () {
 		var scope, compile, browser;
 
 		beforeEach(inject(function ($rootScope, $compile, $browser) {
@@ -24,7 +24,7 @@ define([
 
 		it('should evaluate the expression binded to the directive', function () {
 			var someValue = false,
-				el = angular.element('<input todo-escape="doSomething()">');
+				el = angular.element('<input tobuy-escape="doSomething()">');
 
 			scope.doSomething = function () {
 				someValue = !someValue;

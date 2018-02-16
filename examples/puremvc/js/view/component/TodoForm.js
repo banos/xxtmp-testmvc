@@ -2,46 +2,46 @@
  * @author Mike Britton, Cliff Hall
  *
  * @class TodoForm
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.view.component.TodoForm',
+		name: 'tobuymvc.view.component.TodoForm',
 		constructor: function(event) {
 			// data
-			this.todos  = [];
+			this.tobuys  = [];
 			this.stats  = {};
 			this.filter = '';
 
 			// Fixed DOM elements managed by this view component
-			this.todoApp           = document.querySelector( '#todoapp' );
-			this.main               = this.todoApp.querySelector( '#main' );
-			this.toggleAllCheckbox  = this.todoApp.querySelector( '#toggle-all' );
-			this.newTodoField       = this.todoApp.querySelector( '#new-todo' );
-			this.todoList           = this.todoApp.querySelector( '#todo-list' );
-			this.footer             = this.todoApp.querySelector( '#footer' );
-			this.todoCount          = this.todoApp.querySelector( '#todo-count' );
-			this.clearButton        = this.todoApp.querySelector( '#clear-completed' );
-			this.filters            = this.todoApp.querySelector( '#filters' );
+			this.tobuyApp           = document.querySelector( '#tobuyapp' );
+			this.main               = this.tobuyApp.querySelector( '#main' );
+			this.toggleAllCheckbox  = this.tobuyApp.querySelector( '#toggle-all' );
+			this.newTodoField       = this.tobuyApp.querySelector( '#new-tobuy' );
+			this.tobuyList           = this.tobuyApp.querySelector( '#tobuy-list' );
+			this.footer             = this.tobuyApp.querySelector( '#footer' );
+			this.tobuyCount          = this.tobuyApp.querySelector( '#tobuy-count' );
+			this.clearButton        = this.tobuyApp.querySelector( '#clear-completed' );
+			this.filters            = this.tobuyApp.querySelector( '#filters' );
 			this.filterAll          = this.filters.querySelector( '#filterAll' );
 			this.filterActive       = this.filters.querySelector( '#filterActive' );
 			this.filterCompleted    = this.filters.querySelector( '#filterCompleted' );
 
 			// Event listeners for fixed UI elements
 			this.newTodoField.component = this;
-			todomvc.view.event.AppEvents.addEventListener( this.newTodoField, 'keypress', function( event ) {
+			tobuymvc.view.event.AppEvents.addEventListener( this.newTodoField, 'keypress', function( event ) {
 					if ( event.keyCode === this.component.ENTER_KEY && this.value ) {
 						this.component.dispatchAddTodo( event );
 					}
 			});
 
 			this.clearButton.component = this;
-			todomvc.view.event.AppEvents.addEventListener( this.clearButton, 'click', function( event ) {
+			tobuymvc.view.event.AppEvents.addEventListener( this.clearButton, 'click', function( event ) {
 					this.component.dispatchClearCompleted( event );
 			});
 
 
 			this.toggleAllCheckbox.component = this;
-			todomvc.view.event.AppEvents.addEventListener( this.toggleAllCheckbox, 'change', function( event ) {
+			tobuymvc.view.event.AppEvents.addEventListener( this.toggleAllCheckbox, 'change', function( event ) {
 					this.component.dispatchToggleCompleteAll( event.target.checked );
 			});
 		}
@@ -53,172 +53,172 @@ puremvc.define({
 			ESC_KEY: 27,
 
 			addEventListener: function ( type, listener, useCapture ){
-				todomvc.view.event.AppEvents.addEventListener ( this.todoApp, type, listener, useCapture );
+				tobuymvc.view.event.AppEvents.addEventListener ( this.tobuyApp, type, listener, useCapture );
 			},
 
 			createEvent: function( eventName ) {
-			   return todomvc.view.event.AppEvents.createEvent( eventName );
+			   return tobuymvc.view.event.AppEvents.createEvent( eventName );
 			},
 
 			dispatchEvent: function( event ) {
-			   todomvc.view.event.AppEvents.dispatchEvent( this.todoApp, event );
+			   tobuymvc.view.event.AppEvents.dispatchEvent( this.tobuyApp, event );
 			},
 
 			abandonEditTodo: function( event ) {
-				var todo, todoId, div, inputEditTodo;
+				var tobuy, tobuyId, div, inputEditTodo;
 				inputEditTodo = event.target;
-				todoId = inputEditTodo.getAttribute( 'data-todo-id' )
-				todo = this.getTodoById( todoId );
-				inputEditTodo.value = todo.title;
-				inputEditTodo.completed = todo.completed;
-				div = document.getElementById( 'li_' + todoId );
+				tobuyId = inputEditTodo.getAttribute( 'data-tobuy-id' )
+				tobuy = this.getTodoById( tobuyId );
+				inputEditTodo.value = tobuy.title;
+				inputEditTodo.completed = tobuy.completed;
+				div = document.getElementById( 'li_' + tobuyId );
 				div.className = 'view';
 				this.newTodoField.focus();
                         },
 
 			dispatchToggleComplete: function( event ) {
-			   var todo, toggleItemCompleteEvent;
-			   todo = this.getTodoById( event.target.getAttribute( 'data-todo-id' ) );
-			   todo.id = event.target.getAttribute( 'data-todo-id' );
-			   todo.completed = event.target.checked;
-			   toggleItemCompleteEvent = this.createEvent( todomvc.view.event.AppEvents.TOGGLE_COMPLETE );
-			   toggleItemCompleteEvent.todo = todo;
+			   var tobuy, toggleItemCompleteEvent;
+			   tobuy = this.getTodoById( event.target.getAttribute( 'data-tobuy-id' ) );
+			   tobuy.id = event.target.getAttribute( 'data-tobuy-id' );
+			   tobuy.completed = event.target.checked;
+			   toggleItemCompleteEvent = this.createEvent( tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE );
+			   toggleItemCompleteEvent.tobuy = tobuy;
 			   this.dispatchEvent( toggleItemCompleteEvent );
 			},
 
 			dispatchToggleCompleteAll: function( checked ) {
-				var toggleCompleteAllEvent = this.createEvent( todomvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL );
+				var toggleCompleteAllEvent = this.createEvent( tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL );
 				toggleCompleteAllEvent.doToggleComplete = checked;
 				this.dispatchEvent( toggleCompleteAllEvent );
 			},
 
 			dispatchClearCompleted: function() {
-				var clearCompleteEvent = this.createEvent( todomvc.view.event.AppEvents.CLEAR_COMPLETED );
+				var clearCompleteEvent = this.createEvent( tobuymvc.view.event.AppEvents.CLEAR_COMPLETED );
 				this.dispatchEvent( clearCompleteEvent );
 			},
 
 			dispatchDelete: function( id ) {
-				var deleteItemEvent = this.createEvent( todomvc.view.event.AppEvents.DELETE_ITEM );
-				deleteItemEvent.todoId = id;
+				var deleteItemEvent = this.createEvent( tobuymvc.view.event.AppEvents.DELETE_ITEM );
+				deleteItemEvent.tobuyId = id;
 				this.dispatchEvent( deleteItemEvent );
 			},
 
 			dispatchAddTodo: function( event ) {
-				var addItemEvent, todo = {};
-				todo.completed = false;
-				todo.title = this.newTodoField.value.trim();
-				if ( todo.title === '' ) return;
-				addItemEvent = this.createEvent( todomvc.view.event.AppEvents.ADD_ITEM );
-				addItemEvent.todo = todo;
+				var addItemEvent, tobuy = {};
+				tobuy.completed = false;
+				tobuy.title = this.newTodoField.value.trim();
+				if ( tobuy.title === '' ) return;
+				addItemEvent = this.createEvent( tobuymvc.view.event.AppEvents.ADD_ITEM );
+				addItemEvent.tobuy = tobuy;
 				this.dispatchEvent( addItemEvent );
 			},
 
 			dispatchUpdateTodo: function(event) {
-				var eventType, updateItemEvent, todo = {};
-				todo.id = event.target.id.slice(6);
-				todo.title = event.target.value.trim();
-				todo.completed = event.target.completed;
-				eventType = ( todo.title === "" ) ?
-					todomvc.view.event.AppEvents.DELETE_ITEM : todomvc.view.event.AppEvents.UPDATE_ITEM;
+				var eventType, updateItemEvent, tobuy = {};
+				tobuy.id = event.target.id.slice(6);
+				tobuy.title = event.target.value.trim();
+				tobuy.completed = event.target.completed;
+				eventType = ( tobuy.title === "" ) ?
+					tobuymvc.view.event.AppEvents.DELETE_ITEM : tobuymvc.view.event.AppEvents.UPDATE_ITEM;
 				updateItemEvent = this.createEvent( eventType );
-				updateItemEvent.todo = todo;
-				updateItemEvent.todoId = todo.id;
+				updateItemEvent.tobuy = tobuy;
+				updateItemEvent.tobuyId = tobuy.id;
 				this.dispatchEvent( updateItemEvent );
 			},
 
 			setFilteredTodoList: function( data ) {
-				var todo, checkbox, label, deleteLink, divDisplay,
-					inputEditTodo, li, i, todoId, div, inputEditTodo;
+				var tobuy, checkbox, label, deleteLink, divDisplay,
+					inputEditTodo, li, i, tobuyId, div, inputEditTodo;
 
 				// Update instance data
-				this.todos  = data.todos;
+				this.tobuys  = data.tobuys;
 				this.stats  = data.stats;
 				this.filter = data.filter;
 
-				// Hide main section if no todos
+				// Hide main section if no tobuys
 				this.main.style.display = this.stats.totalTodo ? 'block' : 'none';
 
 				// Create Todo list
-				this.todoList.innerHTML = '';
+				this.tobuyList.innerHTML = '';
 				this.newTodoField.value = '';
-				for ( i=0; i < this.todos.length; i++ ) {
+				for ( i=0; i < this.tobuys.length; i++ ) {
 
-					todo = this.todos[i];
+					tobuy = this.tobuys[i];
 
 					// Create checkbox
 					checkbox = document.createElement( 'input' );
 					checkbox.className = 'toggle';
-					checkbox.setAttribute( 'data-todo-id', todo.id );
+					checkbox.setAttribute( 'data-tobuy-id', tobuy.id );
 					checkbox.type = 'checkbox';
 					checkbox.component = this;
-					todomvc.view.event.AppEvents.addEventListener( checkbox, 'change', function( event ) {
+					tobuymvc.view.event.AppEvents.addEventListener( checkbox, 'change', function( event ) {
 						this.component.dispatchToggleComplete( event );
 					});
 
 					// Create div text
 					label = document.createElement( 'label' );
-					label.setAttribute( 'data-todo-id', todo.id );
-					label.appendChild( document.createTextNode( todo.title ) );
+					label.setAttribute( 'data-tobuy-id', tobuy.id );
+					label.appendChild( document.createTextNode( tobuy.title ) );
 
 					// Create delete button
 					deleteLink = document.createElement( 'button' );
 					deleteLink.className = 'destroy';
-					deleteLink.setAttribute( 'data-todo-id', todo.id );
+					deleteLink.setAttribute( 'data-tobuy-id', tobuy.id );
 					deleteLink.component = this;
-					todomvc.view.event.AppEvents.addEventListener( deleteLink, 'click', function( event ) {
-						this.component.dispatchDelete( event.target.getAttribute( 'data-todo-id' ) );
+					tobuymvc.view.event.AppEvents.addEventListener( deleteLink, 'click', function( event ) {
+						this.component.dispatchDelete( event.target.getAttribute( 'data-tobuy-id' ) );
 					});
 
 					// Create divDisplay
 					divDisplay = document.createElement( 'div' );
 					divDisplay.className = 'view';
-					divDisplay.setAttribute( 'data-todo-id', todo.id );
+					divDisplay.setAttribute( 'data-tobuy-id', tobuy.id );
 					divDisplay.appendChild( checkbox );
 					divDisplay.appendChild( label );
 					divDisplay.appendChild( deleteLink );
-					todomvc.view.event.AppEvents.addEventListener( divDisplay, 'dblclick', function() {
-						todoId = this.getAttribute( 'data-todo-id' );
-						div = document.getElementById( 'li_' + todoId );
-						inputEditTodo = document.getElementById( 'input_' + todoId );
-						inputEditTodo.setAttribute( 'data-todo-id', todoId );
+					tobuymvc.view.event.AppEvents.addEventListener( divDisplay, 'dblclick', function() {
+						tobuyId = this.getAttribute( 'data-tobuy-id' );
+						div = document.getElementById( 'li_' + tobuyId );
+						inputEditTodo = document.getElementById( 'input_' + tobuyId );
+						inputEditTodo.setAttribute( 'data-tobuy-id', tobuyId );
 						div.className = 'editing';
 						inputEditTodo.focus();
 
 					});
 
-					// Create todo input
+					// Create tobuy input
 					inputEditTodo = document.createElement( 'input' );
-					inputEditTodo.id = 'input_' + todo.id;
+					inputEditTodo.id = 'input_' + tobuy.id;
 					inputEditTodo.className = 'edit';
-					inputEditTodo.value = todo.title;
-					inputEditTodo.completed = todo.completed;
+					inputEditTodo.value = tobuy.title;
+					inputEditTodo.completed = tobuy.completed;
 					inputEditTodo.component = this;
-					todomvc.view.event.AppEvents.addEventListener( inputEditTodo, 'keypress', function( event ) {
+					tobuymvc.view.event.AppEvents.addEventListener( inputEditTodo, 'keypress', function( event ) {
 						if ( event.keyCode === this.component.ENTER_KEY ) {
 							this.component.dispatchUpdateTodo( event );
 						}
 					});
 
-					todomvc.view.event.AppEvents.addEventListener( inputEditTodo, 'keydown', function( event ) {
+					tobuymvc.view.event.AppEvents.addEventListener( inputEditTodo, 'keydown', function( event ) {
 						if ( event.keyCode === this.component.ESC_KEY ) {
 							this.component.abandonEditTodo( event );
 						}
 					});
 
-					todomvc.view.event.AppEvents.addEventListener( inputEditTodo, 'blur', function( event ) {
+					tobuymvc.view.event.AppEvents.addEventListener( inputEditTodo, 'blur', function( event ) {
 						this.component.dispatchUpdateTodo( event );
 					});
 
 					// Create Todo ListItem and add to list
 					li = document.createElement( 'li' );
-					li.id = 'li_' + todo.id;
+					li.id = 'li_' + tobuy.id;
 					li.appendChild( divDisplay );
 					li.appendChild( inputEditTodo );
-					if ( todo.completed ) {
+					if ( tobuy.completed ) {
 						li.className += 'completed';
 						checkbox.checked = true;
 					}
-					this.todoList.appendChild( li );
+					this.tobuyList.appendChild( li );
 				}
 
 				// Update UI
@@ -232,24 +232,24 @@ puremvc.define({
 
 			getTodoById: function( id ) {
 			   var i;
-				for ( i = 0; i < this.todos.length; i++ ) {
-					if ( this.todos[ i ].id === id ) {
-						return this.todos[i];
+				for ( i = 0; i < this.tobuys.length; i++ ) {
+					if ( this.tobuys[ i ].id === id ) {
+						return this.tobuys[i];
 					}
 				}
 			},
 
 			updateFilter: function() {
-				this.filterAll.className        = ( this.filter === todomvc.AppConstants.FILTER_ALL ) ? 'selected' : '';
-				this.filterActive.className     = ( this.filter === todomvc.AppConstants.FILTER_ACTIVE ) ? 'selected' : '';
-				this.filterCompleted.className  = ( this.filter === todomvc.AppConstants.FILTER_COMPLETED ) ? 'selected' : '';
+				this.filterAll.className        = ( this.filter === tobuymvc.AppConstants.FILTER_ALL ) ? 'selected' : '';
+				this.filterActive.className     = ( this.filter === tobuymvc.AppConstants.FILTER_ACTIVE ) ? 'selected' : '';
+				this.filterCompleted.className  = ( this.filter === tobuymvc.AppConstants.FILTER_COMPLETED ) ? 'selected' : '';
 
 			},
 
 			updateToggleAllCheckbox: function() {
-				var i, checked = ( this.todos.length > 0 );
-				for ( i = 0; i < this.todos.length; i++ ) {
-					if ( this.todos[ i ].completed === false ) {
+				var i, checked = ( this.tobuys.length > 0 );
+				for ( i = 0; i < this.tobuys.length; i++ ) {
+					if ( this.tobuys[ i ].completed === false ) {
 						checked = false;
 						break;
 					}
@@ -258,17 +258,17 @@ puremvc.define({
 			},
 
 			updateClearButton: function() {
-				this.clearButton.style.display = ( this.stats.todoCompleted === 0 ) ? 'none' : 'block';
+				this.clearButton.style.display = ( this.stats.tobuyCompleted === 0 ) ? 'none' : 'block';
 				this.clearButton.innerHTML = 'Clear completed';
 			},
 
 			updateTodoCount: function() {
 				var number = document.createElement( 'strong' ),
-					text   = ' ' + (this.stats.todoLeft === 1 ? 'item' : 'items' ) + ' left';
-				number.innerHTML = this.stats.todoLeft;
-				this.todoCount.innerHTML = null;
-				this.todoCount.appendChild( number );
-				this.todoCount.appendChild( document.createTextNode( text ) );
+					text   = ' ' + (this.stats.tobuyLeft === 1 ? 'item' : 'items' ) + ' left';
+				number.innerHTML = this.stats.tobuyLeft;
+				this.tobuyCount.innerHTML = null;
+				this.tobuyCount.appendChild( number );
+				this.tobuyCount.appendChild( document.createTextNode( text ) );
 			}
 	},
 

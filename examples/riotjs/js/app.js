@@ -1,7 +1,7 @@
-/*global riot, todoStorage */
+/*global riot, tobuyStorage */
 
 (function () {
 	'use strict';
 
-	riot.mount('todo', { data: todoStorage.fetch() });
+	riot.mount('tobuy', { data: tobuyStorage.fetch() });
 }());

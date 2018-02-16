@@ -6,7 +6,7 @@ interface ITodo {
 
 interface ITodoItemProps {
   key : string,
-  todo : ITodo;
+  tobuy : ITodo;
   editing? : boolean;
   onSave: (val: any) => void;
   onDestroy: () => void;
@@ -29,15 +29,15 @@ interface ITodoFooterProps {
 
 interface ITodoModel {
   key : any;
-  todos : Array<ITodo>;
+  tobuys : Array<ITodo>;
   onChanges : Array<any>;
   subscribe(onChange);
   inform();
   addTodo(title : string);
   toggleAll(checked);
-  toggle(todoToToggle);
-  destroy(todo);
-  save(todoToSave, text);
+  toggle(tobuyToToggle);
+  destroy(tobuy);
+  save(tobuyToSave, text);
   clearCompleted();
 }
 

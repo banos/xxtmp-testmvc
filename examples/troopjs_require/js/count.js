@@ -5,16 +5,16 @@ define([
 	'use strict';
 
 	/**
-	 * Component for the `.todo-count` span
+	 * Component for the `.tobuy-count` span
 	 */
 
 	return Component.extend({
 		/**
-		 * HUB `todos/change` handler (memorized).
+		 * HUB `tobuys/change` handler (memorized).
 		 * Called whenever the task list is updated
 		 * @param {Array} tasks Updated task array
 		 */
-		'hub/todos/change(true)': function (tasks) {
+		'hub/tobuys/change(true)': function (tasks) {
 			// Filter and count tasks that are not completed
 			var count = tasks
 				.filter(function (task) {

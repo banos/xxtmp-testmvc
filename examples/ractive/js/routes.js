@@ -1,25 +1,25 @@
-/*global window, Router, todoList */
-(function (window, Router, todoList) {
+/*global window, Router, tobuyList */
+(function (window, Router, tobuyList) {
 	'use strict';
 
 	// We're using https://github.com/flatiron/director for routing
 
 	var router = new Router({
 		'/active': function () {
-			todoList.set('currentFilter', 'active');
+			tobuyList.set('currentFilter', 'active');
 		},
 		'/completed': function () {
-			todoList.set('currentFilter', 'completed');
+			tobuyList.set('currentFilter', 'completed');
 		}
 	});
 
 	router.configure({
 		notfound: function () {
 			window.location.hash = '';
-			todoList.set('currentFilter', 'all');
+			tobuyList.set('currentFilter', 'all');
 		}
 	});
 
 	router.init();
 
-})(window, Router, todoList);
+})(window, Router, tobuyList);

@@ -1,4 +1,4 @@
-# DUEL • [TodoMVC](http://todomvc.com)
+# DUEL • [TodoMVC](http://tobuymvc.com)
 
 > DUEL is a dual-side templating engine using HTML for layout and 100% pure JavaScript as the binding language. The same views may be executed both directly in the browser (client-side template) and on the server (server-side template).
 
@@ -11,7 +11,7 @@
 - [Examples](https://bitbucket.org/mckamey/duel/wiki/Examples)
 - [Source](https://bitbucket.org/mckamey/duel/src)
 
-*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/tastejs/tobuymvc/issues) if you discover anything worth sharing.*
 
 
 ## Implementation

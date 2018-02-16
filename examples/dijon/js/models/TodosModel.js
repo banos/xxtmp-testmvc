@@ -16,12 +16,12 @@
 			},
 			getIndex: function( id ) {
 				var list = _list,
-					todo,
+					tobuy,
 					i;
 
 				for ( i in _list ) {
-					todo = _list[ i ];
-					if ( todo.id === id ) {
+					tobuy = _list[ i ];
+					if ( tobuy.id === id ) {
 						return i;
 					}
 				}
@@ -30,11 +30,11 @@
 			},
 			notifyOfListUpdate: function() {
 				var list = this.getList();
-				this.system.notify( 'TodosModel:todosListUpdated', list );
+				this.system.notify( 'TodosModel:tobuysListUpdated', list );
 			},
 			setList: function( list ) {
 				_list = list || [];
-				this.system.notify( 'TodosModel:todosListUpdated', list );
+				this.system.notify( 'TodosModel:tobuysListUpdated', list );
 			},
 			getList: function() {
 				return _list;
@@ -44,8 +44,8 @@
 				this.notifyOfListUpdate();
 			},
 			toggleDone: function( id ) {
-				var todo = this.getTodo( id );
-				todo.completed = !todo.completed;
+				var tobuy = this.getTodo( id );
+				tobuy.completed = !tobuy.completed;
 				this.notifyOfListUpdate();
 			},
 			setTitle: function( id, title ) {

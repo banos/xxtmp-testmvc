@@ -3,19 +3,19 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Knockout.js • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" data-bind="value: current, valueUpdate: 'afterkeydown', enterKey: add" placeholder="What needs to be done?" autofocus>
+				<h1>tobuys</h1>
+				<input id="new-tobuy" data-bind="value: current, valueUpdate: 'afterkeydown', enterKey: add" placeholder="What needs to be done?" autofocus>
 			</header>
-			<section id="main" data-bind="visible: todos().length">
+			<section id="main" data-bind="visible: tobuys().length">
 				<input id="toggle-all" data-bind="checked: allCompleted" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list" data-bind="foreach: todos">
+				<ul id="tobuy-list" data-bind="foreach: tobuys">
 					<li data-bind="css: { completed: completed, editing: editing }">
 						<div class="view">
 							<input class="toggle" data-bind="checked: completed" type="checkbox">
@@ -27,7 +27,7 @@
 				</ul>
 			</section>
 			<footer id="footer" data-bind="visible: completedCount() || remainingCount()">
-				<span id="todo-count">
+				<span id="tobuy-count">
 					<strong data-bind="text: remainingCount">0</strong>
 					<span data-bind="text: getLabel(remainingCount)"></span> left
 				</span>
@@ -35,11 +35,11 @@
 			</footer>
 		</section>
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
-			<p>Written by <a href="https://github.com/ashish01/knockoutjs-todos">Ashish Sharma</a>, <a href="http://knockmeout.net">Ryan Niemeyer</a> and <a href="https://twitter.com/loicknuchel">Loïc Knuchel</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Double-click to edit a tobuy</p>
+			<p>Written by <a href="https://github.com/ashish01/knockoutjs-tobuys">Ashish Sharma</a>, <a href="http://knockmeout.net">Ryan Niemeyer</a> and <a href="https://twitter.com/loicknuchel">Loïc Knuchel</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>
 	</body>
 </html>

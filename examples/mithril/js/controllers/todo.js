@@ -27,47 +27,47 @@ app.controller = function () {
 		this.title('');
 	};
 
-	this.isVisible = function (todo) {
+	this.isVisible = function (tobuy) {
 		switch (this.filter()) {
 			case 'active':
-				return !todo.completed();
+				return !tobuy.completed();
 			case 'completed':
-				return todo.completed();
+				return tobuy.completed();
 			default:
 				return true;
 		}
 	};
 
-	this.complete = function (todo) {
-		if (todo.completed()) {
-			todo.completed(false);
+	this.complete = function (tobuy) {
+		if (tobuy.completed()) {
+			tobuy.completed(false);
 		} else {
-			todo.completed(true);
+			tobuy.completed(true);
 		}
 		app.storage.put(this.list);
 	};
 
-	this.edit = function (todo) {
-		todo.previousTitle = todo.title();
-		todo.editing(true);
+	this.edit = function (tobuy) {
+		tobuy.previousTitle = tobuy.title();
+		tobuy.editing(true);
 	};
 
-	this.doneEditing = function (todo, index) {
-		if (!todo.editing()) {
+	this.doneEditing = function (tobuy, index) {
+		if (!tobuy.editing()) {
 			return;
 		}
 
-		todo.editing(false);
-		todo.title(todo.title().trim());
-		if (!todo.title()) {
+		tobuy.editing(false);
+		tobuy.title(tobuy.title().trim());
+		if (!tobuy.title()) {
 			this.list.splice(index, 1);
 		}
 		app.storage.put(this.list);
 	};
 
-	this.cancelEditing = function (todo) {
-		todo.title(todo.previousTitle);
-		todo.editing(false);
+	this.cancelEditing = function (tobuy) {
+		tobuy.title(tobuy.previousTitle);
+		tobuy.editing(false);
 	};
 
 	this.clearTitle = function () {

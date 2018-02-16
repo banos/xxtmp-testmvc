@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.{Px, Reusability}
@@ -14,13 +14,13 @@ object TodoItem {
     onStartEditing:  Callback,
     onUpdateTitle:   Title => Callback,
     onCancelEditing: Callback,
-    todo:            Todo,
+    tobuy:            Todo,
     isEditing:       Boolean
   )
 
   implicit val reusableProps: Reusability[Props] =
     Reusability.fn[Props]((p1, p2) =>
-      (p1.todo eq p2.todo) && (p1.isEditing == p2.isEditing)
+      (p1.tobuy eq p2.tobuy) && (p1.isEditing == p2.isEditing)
     )
 
   case class State(editText: UnfinishedTitle)
@@ -34,7 +34,7 @@ object TodoItem {
         $.state.flatMap(_.editText.validated.fold(P.onDelete)(P.onUpdateTitle))
 
       val resetText: Callback =
-        $.modState(_.copy(editText = P.todo.title.editable))
+        $.modState(_.copy(editText = P.tobuy.title.editable))
 
       val editFieldKeyDown: ReactKeyboardEvent => Option[Callback] =
         e => e.nativeEvent.keyCode match {
@@ -58,7 +58,7 @@ object TodoItem {
       val cb = cbs.value()
       <.li(
         ^.classSet(
-          "completed" -> P.todo.isCompleted,
+          "completed" -> P.tobuy.isCompleted,
           "editing"   -> P.isEditing
         ),
         <.div(
@@ -66,11 +66,11 @@ object TodoItem {
           <.input(
             ^.className := "toggle",
             ^.`type`    := "checkbox",
-            ^.checked   := P.todo.isCompleted,
+            ^.checked   := P.tobuy.isCompleted,
             ^.onChange --> P.onToggle
           ),
           <.label(
-            P.todo.title.value,
+            P.tobuy.title.value,
             ^.onDoubleClick --> P.onStartEditing
           ),
           <.button(
@@ -92,7 +92,7 @@ object TodoItem {
 
   private val component =
     ReactComponentB[Props]("TodoItem")
-      .initialState_P(p => State(p.todo.title.editable))
+      .initialState_P(p => State(p.tobuy.title.editable))
       .renderBackend[Backend]
       .componentDidUpdate {
         case ComponentDidUpdate(c, prevProps, _) ⇒
@@ -104,5 +104,5 @@ object TodoItem {
       .build
 
   def apply(P: Props): ReactElement =
-    component.withKey(P.todo.id.id.toString)(P)
+    component.withKey(P.tobuy.id.id.toString)(P)
 }

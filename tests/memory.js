@@ -16,7 +16,7 @@ var driver = drool.start(driverConfig);
 var list = frameworkPathLookup(argv.framework);
 
 function idApp() {
-	return driver.findElement(drool.webdriver.By.css('#todoapp'))
+	return driver.findElement(drool.webdriver.By.css('#tobuyapp'))
 	.then(function () { return true; })
 	.thenCatch(function () { return false; });
 }
@@ -24,20 +24,20 @@ function idApp() {
 function newTodoSelector() {
 	return idApp().then(function (isId) {
 		if (isId) {
-			return '#new-todo';
+			return '#new-tobuy';
 		}
 
-		return '.new-todo';
+		return '.new-tobuy';
 	});
 }
 
 function listSelector() {
 	return idApp().then(function (isId) {
 		if (isId) {
-			return '#todo-list li';
+			return '#tobuy-list li';
 		}
 
-		return '.todo-list li';
+		return '.tobuy-list li';
 	});
 }
 

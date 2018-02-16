@@ -2346,10 +2346,10 @@ var SkipGrammar = {
  * limitations under the License.
  */
 
-// todo: add enabled/disabled support
-// todo: bind
-// todo: generateTopic()
-// todo: cleanup empty topics after subscriptions removed
+// tobuy: add enabled/disabled support
+// tobuy: bind
+// tobuy: generateTopic()
+// tobuy: cleanup empty topics after subscriptions removed
 
 /** Publish and Subscribe Event Notification Service. **/
 // ??? Whould 'Observable' be a better name?
@@ -7437,7 +7437,7 @@ v                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // we can import the prop
       defaultValue: '',
       help: 'Internal documentation associated with this entity.',
       documentation: function() { /*
-          Internal documentation or implementation-specific 'todo' notes.
+          Internal documentation or implementation-specific 'tobuy' notes.
         */}
     },
     {
@@ -7601,7 +7601,7 @@ var Property = {
       name: 'type',
       type: 'String',
       required: true,
-      // todo: curry arguments
+      // tobuy: curry arguments
       view: {
         factory_: 'foam.ui.ChoiceView',
         choices: [
@@ -7715,7 +7715,7 @@ var Property = {
       label: 'Sub-Type',
       type: 'String',
       displayWidth: 30,
-      // todo: keyView of Models
+      // tobuy: keyView of Models
       help: 'The type of the property.',
       documentation: function() { /*
         In array types, the $$DOC{ref:'.subType'} indicates the type that the array contains.
@@ -9467,7 +9467,7 @@ CLASS({
    displayWidth: 30,
    displayHeight: 1,
    defaultValue: '',
-   // todo: test this
+   // tobuy: test this
    preSet: function (newValue) {
    return newValue.toUpperCase();
    },
@@ -18523,8 +18523,8 @@ var __DATA;
     }
   };
 })();
-CLASS({"package": "com.todomvc","name": "Controller","traits": ["foam.ui.CSSLoaderTrait"],"requires": ["foam.ui.TextFieldView","foam.ui.DAOListView","foam.dao.EasyDAO","foam.memento.WindowHashValue","com.todomvc.Todo","com.todomvc.TodoDAO","com.todomvc.TodoFilterView"],"properties": [{"name": "input","view": {"factory_": "foam.ui.TextFieldView","placeholder": "What needs to be done?"},"setter": function (text) {
-					// This is a fake property that adds the todo when its value gets saved.
+CLASS({"package": "com.tobuymvc","name": "Controller","traits": ["foam.ui.CSSLoaderTrait"],"requires": ["foam.ui.TextFieldView","foam.ui.DAOListView","foam.dao.EasyDAO","foam.memento.WindowHashValue","com.tobuymvc.Todo","com.tobuymvc.TodoDAO","com.tobuymvc.TodoFilterView"],"properties": [{"name": "input","view": {"factory_": "foam.ui.TextFieldView","placeholder": "What needs to be done?"},"setter": function (text) {
+					// This is a fake property that adds the tobuy when its value gets saved.
 					if (text) {
 						this.dao.put(this.Todo.create({text: text}));
 						this.propertyChange('input', text, '');
@@ -18533,10 +18533,10 @@ CLASS({"package": "com.todomvc","name": "Controller","traits": ["foam.ui.CSSLoad
 				if (n === this.activeCount > 0) {
 					this.dao.update(SET(this.Todo.COMPLETED, n));
 				}
-			}},{"name": "query","view": "com.todomvc.TodoFilterView","defaultValue": {model_:"TrueExpr"},"postSet": function (_, q) { this.filteredDAO = this.dao.where(q); }},{"name": "memento","factory": function () { return this.WindowHashValue.create(); }}],"actions": [{"name": "clear","label": "Clear completed","isEnabled": function () { return this.completedCount; },"action": function () { this.dao.where(this.Todo.COMPLETED).removeAll(); }}],"methods": [{"name": "init","code": function () {
+			}},{"name": "query","view": "com.tobuymvc.TodoFilterView","defaultValue": {model_:"TrueExpr"},"postSet": function (_, q) { this.filteredDAO = this.dao.where(q); }},{"name": "memento","factory": function () { return this.WindowHashValue.create(); }}],"actions": [{"name": "clear","label": "Clear completed","isEnabled": function () { return this.completedCount; },"action": function () { this.dao.where(this.Todo.COMPLETED).removeAll(); }}],"methods": [{"name": "init","code": function () {
 				this.SUPER();
 				this.filteredDAO = this.dao = this.TodoDAO.create({
-					delegate: this.EasyDAO.create({model: this.Todo, seqNo: true, daoType: 'LOCAL', name: 'todos-foam'}) });
+					delegate: this.EasyDAO.create({model: this.Todo, seqNo: true, daoType: 'LOCAL', name: 'tobuys-foam'}) });
 				this.dao.listen(this.onDAOUpdate);
 				this.onDAOUpdate();
 			}}],"listeners": [{"name": "onDAOUpdate","code": function () {
@@ -18544,7 +18544,7 @@ CLASS({"package": "com.todomvc","name": "Controller","traits": ["foam.ui.CSSLoad
 						this.completedCount = q.groups[true];
 						this.activeCount = q.groups[false];
 					}.bind(this));
-				},"isFramed": true}],"templates": [{"name": "CSS","template": "\u000a\u0009\u0009\u0009\u0009#filters .selected { font-weight: bold; }\u000a\u0009\u0009\u0009\u0009#filters li { margin: 4px; }\u000a\u0009\u0009\u0009\u0009.actionButton-clear:disabled { display: none; }\u000a\u0009\u0009\u0009"},{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009<section id=\"todoapp\">\u000a\u0009\u0009\u0009\u0009<header id=\"header\"><h1>todos</h1>$$input{id: 'new-todo'}</header>\u000a\u0009\u0009\u0009\u0009<section id=\"main\">\u000a\u0009\u0009\u0009\u0009\u0009$$toggle{id: 'toggle-all', showLabel: false}\u000a\u0009\u0009\u0009\u0009\u0009$$filteredDAO{tagName: 'ul', id: 'todo-list'}\u000a\u0009\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009\u0009<footer id=\"footer\">\u000a\u0009\u0009\u0009\u0009\u0009<span id=\"todo-count\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009<strong>$$activeCount{mode: 'read-only'}</strong> item<%# this.data.activeCount == 1 ? '' : 's' %> left\u000a\u0009\u0009\u0009\u0009\u0009</span>\u000a\u0009\u0009\u0009\u0009\u0009$$query{id: 'filters'}\u000a\u0009\u0009\u0009\u0009\u0009$$clear{id: 'clear-completed'}\u000a\u0009\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009<footer id=\"info\">\u000a\u0009\u0009\u0009\u0009<p>Double-click to edit a todo</p>\u000a\u0009\u0009\u0009\u0009<p>Created by <a href=\"mailto:kgr@chromium.org\">Kevin Greer</a></p>\u000a\u0009\u0009\u0009\u0009<p>Part of <a href=\"http://todomvc.com\">TodoMVC</a></p>\u000a\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009var f = function () { return this.completedCount + this.activeCount == 0; }.bind(this.data);\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'main');\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'footer');\u000a\u0009\u0009\u0009\u0009Events.relate(this.data.memento, this.queryView.text$,\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (memento) {\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var s = memento && memento.substring(1);\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var t = s ? s.capitalize() : 'All';\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009return t;\u000a\u0009\u0009\u0009\u0009\u0009\u0009},\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (label) { return '/' + label.toLowerCase(); });\u000a\u0009\u0009\u0009\u0009this.addInitializer(function () {\u000a\u0009\u0009\u0009\u0009\u0009X.$('new-todo').focus();\u000a\u0009\u0009\u0009\u0009});\u000a\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
+				},"isFramed": true}],"templates": [{"name": "CSS","template": "\u000a\u0009\u0009\u0009\u0009#filters .selected { font-weight: bold; }\u000a\u0009\u0009\u0009\u0009#filters li { margin: 4px; }\u000a\u0009\u0009\u0009\u0009.actionButton-clear:disabled { display: none; }\u000a\u0009\u0009\u0009"},{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009<section id=\"tobuyapp\">\u000a\u0009\u0009\u0009\u0009<header id=\"header\"><h1>tobuys</h1>$$input{id: 'new-tobuy'}</header>\u000a\u0009\u0009\u0009\u0009<section id=\"main\">\u000a\u0009\u0009\u0009\u0009\u0009$$toggle{id: 'toggle-all', showLabel: false}\u000a\u0009\u0009\u0009\u0009\u0009$$filteredDAO{tagName: 'ul', id: 'tobuy-list'}\u000a\u0009\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009\u0009<footer id=\"footer\">\u000a\u0009\u0009\u0009\u0009\u0009<span id=\"tobuy-count\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009<strong>$$activeCount{mode: 'read-only'}</strong> item<%# this.data.activeCount == 1 ? '' : 's' %> left\u000a\u0009\u0009\u0009\u0009\u0009</span>\u000a\u0009\u0009\u0009\u0009\u0009$$query{id: 'filters'}\u000a\u0009\u0009\u0009\u0009\u0009$$clear{id: 'clear-completed'}\u000a\u0009\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009<footer id=\"info\">\u000a\u0009\u0009\u0009\u0009<p>Double-click to edit a tobuy</p>\u000a\u0009\u0009\u0009\u0009<p>Created by <a href=\"mailto:kgr@chromium.org\">Kevin Greer</a></p>\u000a\u0009\u0009\u0009\u0009<p>Part of <a href=\"http://tobuymvc.com\">TodoMVC</a></p>\u000a\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009var f = function () { return this.completedCount + this.activeCount == 0; }.bind(this.data);\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'main');\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'footer');\u000a\u0009\u0009\u0009\u0009Events.relate(this.data.memento, this.queryView.text$,\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (memento) {\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var s = memento && memento.substring(1);\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var t = s ? s.capitalize() : 'All';\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009return t;\u000a\u0009\u0009\u0009\u0009\u0009\u0009},\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (label) { return '/' + label.toLowerCase(); });\u000a\u0009\u0009\u0009\u0009this.addInitializer(function () {\u000a\u0009\u0009\u0009\u0009\u0009X.$('new-tobuy').focus();\u000a\u0009\u0009\u0009\u0009});\u000a\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
 CLASS({"package": "foam.ui","name": "TextFieldView","label": "Text Field","extendsModel": "foam.ui.SimpleView","requires": ["foam.ui.AutocompleteView"],"properties": [{model_:"StringProperty","name": "name","defaultValue": "field"},{model_:"IntProperty","name": "displayWidth","defaultValue": 30},{model_:"IntProperty","name": "displayHeight","defaultValue": 1},{model_:"StringProperty","name": "type","defaultValue": "text"},{model_:"StringProperty","name": "placeholder","defaultValue": ""},{model_:"BooleanProperty","name": "onKeyMode","getter": function () {
         return this.updateMode === this.EACH_KEYSTROKE;
       },"setter": function (nu) {
@@ -20249,8 +20249,8 @@ CLASS({"package": "foam.memento","name": "WindowHashValue","imports": ["window"]
     }},{"name": "removeListener","code": function (listener) {
       this.window.removeEventListener('hashchange', listener, false);
     }},{"name": "toString","code": function () { return "WindowHashValue(" + this.get() + ")"; }}]})
-CLASS({"package": "com.todomvc","name": "Todo","properties": [{"name": "id"},{model_:"BooleanProperty","name": "completed"},{"name": "text","preSet": function (_, text) { return text.trim(); }}],"templates": [{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009\u0009<li id=\"%%id\">\u000a\u0009\u0009\u0009\u0009\u0009<div class=\"view\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$completed{className: 'toggle'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$text{mode: 'read-only', tagName: 'label'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009<button class=\"destroy\" id=\"<%= this.on('click', function () { this.parent.dao.remove(this.data); }) %>\"></button>\u000a\u0009\u0009\u0009\u0009\u0009</div>\u000a\u0009\u0009\u0009\u0009\u0009$$text{className: 'edit'}\u000a\u0009\u0009\u0009\u0009</li>\u000a\u0009\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009\u0009var toEdit    = function () { DOM.setClass(this.$, 'editing'); this.textView.focus(); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009var toDisplay = function () { DOM.setClass(this.$, 'editing', false); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009this.on('dblclick', toEdit, this.id);\u000a\u0009\u0009\u0009\u0009\u0009this.on('blur', toDisplay, this.textView.id);\u000a\u0009\u0009\u0009\u0009\u0009this.textView.subscribe(this.textView.ESCAPE, toDisplay);\u000a\u0009\u0009\u0009\u0009\u0009this.setClass('completed', function () { return this.data.completed; }.bind(this), this.id);\u000a\u0009\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
-CLASS({"package": "com.todomvc","name": "TodoDAO","extendsModel": "foam.dao.ProxyDAO","methods": [{"name": "put","code": function put(issue, s) {
+CLASS({"package": "com.tobuymvc","name": "Todo","properties": [{"name": "id"},{model_:"BooleanProperty","name": "completed"},{"name": "text","preSet": function (_, text) { return text.trim(); }}],"templates": [{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009\u0009<li id=\"%%id\">\u000a\u0009\u0009\u0009\u0009\u0009<div class=\"view\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$completed{className: 'toggle'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$text{mode: 'read-only', tagName: 'label'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009<button class=\"destroy\" id=\"<%= this.on('click', function () { this.parent.dao.remove(this.data); }) %>\"></button>\u000a\u0009\u0009\u0009\u0009\u0009</div>\u000a\u0009\u0009\u0009\u0009\u0009$$text{className: 'edit'}\u000a\u0009\u0009\u0009\u0009</li>\u000a\u0009\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009\u0009var toEdit    = function () { DOM.setClass(this.$, 'editing'); this.textView.focus(); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009var toDisplay = function () { DOM.setClass(this.$, 'editing', false); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009this.on('dblclick', toEdit, this.id);\u000a\u0009\u0009\u0009\u0009\u0009this.on('blur', toDisplay, this.textView.id);\u000a\u0009\u0009\u0009\u0009\u0009this.textView.subscribe(this.textView.ESCAPE, toDisplay);\u000a\u0009\u0009\u0009\u0009\u0009this.setClass('completed', function () { return this.data.completed; }.bind(this), this.id);\u000a\u0009\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
+CLASS({"package": "com.tobuymvc","name": "TodoDAO","extendsModel": "foam.dao.ProxyDAO","methods": [{"name": "put","code": function put(issue, s) {
 				// If the user tried to put an empty text, remove the entry instead.
 				if (!issue.text) {
 					this.remove(issue.id, { remove: s && s.put });
@@ -20258,7 +20258,7 @@ CLASS({"package": "com.todomvc","name": "TodoDAO","extendsModel": "foam.dao.Prox
 					this.SUPER(issue, s);
 				}
 			}}]})
-CLASS({"package": "com.todomvc","name": "TodoFilterView","extendsModel": "foam.ui.ChoiceListView","requires": ["com.todomvc.Todo"],"properties": [{"name": "choices","factory": function () {
+CLASS({"package": "com.tobuymvc","name": "TodoFilterView","extendsModel": "foam.ui.ChoiceListView","requires": ["com.tobuymvc.Todo"],"properties": [{"name": "choices","factory": function () {
 					return [[TRUE, 'All'], [NOT(this.Todo.COMPLETED), 'Active'], [this.Todo.COMPLETED, 'Completed']];
 				}}],"methods": [{"name": "choiceToHTML","code": function choiceToHTML(id, choice) {
 				var self = this;

@@ -5,25 +5,25 @@ describe('controller', function () {
 
 	var subject, model, view;
 
-	var setUpModel = function (todos) {
+	var setUpModel = function (tobuys) {
 		model.read.and.callFake(function (query, callback) {
 			callback = callback || query;
-			callback(todos);
+			callback(tobuys);
 		});
 
 		model.getCount.and.callFake(function (callback) {
 
-			var todoCounts = {
-				active: todos.filter(function (todo) {
-					return !todo.completed;
+			var tobuyCounts = {
+				active: tobuys.filter(function (tobuy) {
+					return !tobuy.completed;
 				}).length,
-				completed: todos.filter(function (todo) {
-					return !!todo.completed;
+				completed: tobuys.filter(function (tobuy) {
+					return !!tobuy.completed;
 				}).length,
-				total: todos.length
+				total: tobuys.length
 			};
 
-			callback(todoCounts);
+			callback(tobuyCounts);
 		});
 
 		model.remove.and.callFake(function (id, callback) {
@@ -69,46 +69,46 @@ describe('controller', function () {
 	describe('routing', function () {
 
 		it('should show all entries without a route', function () {
-			var todo = {title: 'my todo'};
-			setUpModel([todo]);
+			var tobuy = {title: 'my tobuy'};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
-			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+			expect(view.render).toHaveBeenCalledWith('showEntries', [tobuy]);
 		});
 
 		it('should show all entries without "all" route', function () {
-			var todo = {title: 'my todo'};
-			setUpModel([todo]);
+			var tobuy = {title: 'my tobuy'};
+			setUpModel([tobuy]);
 
 			subject.setView('#/');
 
-			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+			expect(view.render).toHaveBeenCalledWith('showEntries', [tobuy]);
 		});
 
 		it('should show active entries', function () {
-			var todo = {title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('#/active');
 
 			expect(model.read).toHaveBeenCalledWith({completed: false}, jasmine.any(Function));
-			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+			expect(view.render).toHaveBeenCalledWith('showEntries', [tobuy]);
 		});
 
 		it('should show completed entries', function () {
-			var todo = {title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('#/completed');
 
 			expect(model.read).toHaveBeenCalledWith({completed: true}, jasmine.any(Function));
-			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+			expect(view.render).toHaveBeenCalledWith('showEntries', [tobuy]);
 		});
 	});
 
-	it('should show the content block when todos exists', function () {
-		setUpModel([{title: 'my todo', completed: true}]);
+	it('should show the content block when tobuys exists', function () {
+		setUpModel([{title: 'my tobuy', completed: true}]);
 
 		subject.setView('');
 
@@ -117,7 +117,7 @@ describe('controller', function () {
 		});
 	});
 
-	it('should hide the content block when no todos exists', function () {
+	it('should hide the content block when no tobuys exists', function () {
 		setUpModel([]);
 
 		subject.setView('');
@@ -127,8 +127,8 @@ describe('controller', function () {
 		});
 	});
 
-	it('should check the toggle all button, if all todos are completed', function () {
-		setUpModel([{title: 'my todo', completed: true}]);
+	it('should check the toggle all button, if all tobuys are completed', function () {
+		setUpModel([{title: 'my tobuy', completed: true}]);
 
 		subject.setView('');
 
@@ -138,8 +138,8 @@ describe('controller', function () {
 	});
 
 	it('should set the "clear completed" button', function () {
-		var todo = {id: 42, title: 'my todo', completed: true};
-		setUpModel([todo]);
+		var tobuy = {id: 42, title: 'my tobuy', completed: true};
+		setUpModel([tobuy]);
 
 		subject.setView('');
 
@@ -166,18 +166,18 @@ describe('controller', function () {
 	});
 
 	describe('toggle all', function () {
-		it('should toggle all todos to completed', function () {
-			var todos = [{
+		it('should toggle all tobuys to completed', function () {
+			var tobuys = [{
 				id: 42,
-				title: 'my todo',
+				title: 'my tobuy',
 				completed: false
 			}, {
 				id: 21,
-				title: 'another todo',
+				title: 'another tobuy',
 				completed: false
 			}];
 
-			setUpModel(todos);
+			setUpModel(tobuys);
 			subject.setView('');
 
 			view.trigger('toggleAll', {completed: true});
@@ -187,13 +187,13 @@ describe('controller', function () {
 		});
 
 		it('should update the view', function () {
-			var todos = [{
+			var tobuys = [{
 				id: 42,
-				title: 'my todo',
+				title: 'my tobuy',
 				completed: true
 			}];
 
-			setUpModel(todos);
+			setUpModel(tobuys);
 			subject.setView('');
 
 			view.trigger('toggleAll', {completed: false});
@@ -202,18 +202,18 @@ describe('controller', function () {
 		});
 	});
 
-	describe('new todo', function () {
-		it('should add a new todo to the model', function () {
+	describe('new tobuy', function () {
+		it('should add a new tobuy to the model', function () {
 			setUpModel([]);
 
 			subject.setView('');
 
-			view.trigger('newTodo', 'a new todo');
+			view.trigger('newTodo', 'a new tobuy');
 
-			expect(model.create).toHaveBeenCalledWith('a new todo', jasmine.any(Function));
+			expect(model.create).toHaveBeenCalledWith('a new tobuy', jasmine.any(Function));
 		});
 
-		it('should add a new todo to the view', function () {
+		it('should add a new tobuy to the view', function () {
 			setUpModel([]);
 
 			subject.setView('');
@@ -222,27 +222,27 @@ describe('controller', function () {
 			model.read.calls.reset();
 			model.read.and.callFake(function (callback) {
 				callback([{
-					title: 'a new todo',
+					title: 'a new tobuy',
 					completed: false
 				}]);
 			});
 
-			view.trigger('newTodo', 'a new todo');
+			view.trigger('newTodo', 'a new tobuy');
 
 			expect(model.read).toHaveBeenCalled();
 
 			expect(view.render).toHaveBeenCalledWith('showEntries', [{
-				title: 'a new todo',
+				title: 'a new tobuy',
 				completed: false
 			}]);
 		});
 
-		it('should clear the input field when a new todo is added', function () {
+		it('should clear the input field when a new tobuy is added', function () {
 			setUpModel([]);
 
 			subject.setView('');
 
-			view.trigger('newTodo', 'a new todo');
+			view.trigger('newTodo', 'a new tobuy');
 
 			expect(view.render).toHaveBeenCalledWith('clearNewTodo');
 		});
@@ -250,8 +250,8 @@ describe('controller', function () {
 
 	describe('element removal', function () {
 		it('should remove an entry from the model', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 			view.trigger('itemRemove', {id: 42});
@@ -260,8 +260,8 @@ describe('controller', function () {
 		});
 
 		it('should remove an entry from the view', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 			view.trigger('itemRemove', {id: 42});
@@ -270,8 +270,8 @@ describe('controller', function () {
 		});
 
 		it('should update the element count', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 			view.trigger('itemRemove', {id: 42});
@@ -282,8 +282,8 @@ describe('controller', function () {
 
 	describe('remove completed', function () {
 		it('should remove a completed entry from the model', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 			view.trigger('removeCompleted');
@@ -293,8 +293,8 @@ describe('controller', function () {
 		});
 
 		it('should remove a completed entry from the view', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 			view.trigger('removeCompleted');
@@ -305,8 +305,8 @@ describe('controller', function () {
 
 	describe('element complete toggle', function () {
 		it('should update the model', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 			subject.setView('');
 
 			view.trigger('itemToggle', {id: 21, completed: true});
@@ -315,8 +315,8 @@ describe('controller', function () {
 		});
 
 		it('should update the view', function () {
-			var todo = {id: 42, title: 'my todo', completed: true};
-			setUpModel([todo]);
+			var tobuy = {id: 42, title: 'my tobuy', completed: true};
+			setUpModel([tobuy]);
 			subject.setView('');
 
 			view.trigger('itemToggle', {id: 42, completed: false});
@@ -327,19 +327,19 @@ describe('controller', function () {
 
 	describe('edit item', function () {
 		it('should switch to edit mode', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
 			view.trigger('itemEdit', {id: 21});
 
-			expect(view.render).toHaveBeenCalledWith('editItem', {id: 21, title: 'my todo'});
+			expect(view.render).toHaveBeenCalledWith('editItem', {id: 21, title: 'my tobuy'});
 		});
 
 		it('should leave edit mode on done', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
@@ -349,8 +349,8 @@ describe('controller', function () {
 		});
 
 		it('should persist the changes on done', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
@@ -360,8 +360,8 @@ describe('controller', function () {
 		});
 
 		it('should remove the element from the model when persisting an empty title', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
@@ -371,8 +371,8 @@ describe('controller', function () {
 		});
 
 		it('should remove the element from the view when persisting an empty title', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
@@ -382,19 +382,19 @@ describe('controller', function () {
 		});
 
 		it('should leave edit mode on cancel', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 
 			view.trigger('itemEditCancel', {id: 21});
 
-			expect(view.render).toHaveBeenCalledWith('editItemDone', {id: 21, title: 'my todo'});
+			expect(view.render).toHaveBeenCalledWith('editItemDone', {id: 21, title: 'my tobuy'});
 		});
 
 		it('should not persist the changes on cancel', function () {
-			var todo = {id: 21, title: 'my todo', completed: false};
-			setUpModel([todo]);
+			var tobuy = {id: 21, title: 'my tobuy', completed: false};
+			setUpModel([tobuy]);
 
 			subject.setView('');
 

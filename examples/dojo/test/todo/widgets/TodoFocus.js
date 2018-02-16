@@ -3,13 +3,13 @@ define([
 	'intern/chai!expect',
 	'dojo/_base/declare',
 	'dijit/_TemplatedMixin',
-	'todo/widgets/TodoFocus',
+	'tobuy/widgets/TodoFocus',
 	'../../handleCleaner',
 	'dojo/text!./templates/TodoFocus.html'
 ], function (bdd, expect, declare, _TemplatedMixin, TodoFocus, handleCleaner, template) {
 	'use strict';
 
-	bdd.describe('Test todo/widgets/TodoFocus', function () {
+	bdd.describe('Test tobuy/widgets/TodoFocus', function () {
 		var handles = [];
 		bdd.afterEach(handleCleaner(handles));
 

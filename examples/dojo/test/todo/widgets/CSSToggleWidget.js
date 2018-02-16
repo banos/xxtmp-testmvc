@@ -6,7 +6,7 @@ define([
 	'dijit/_WidgetBase',
 	'dijit/_TemplatedMixin',
 	'dijit/_WidgetsInTemplateMixin',
-	'todo/widgets/CSSToggleWidget',
+	'tobuy/widgets/CSSToggleWidget',
 	'../../handleCleaner',
 	'dojo/text!./templates/CSSToggleWidget.html',
 	'dojox/mvc/at'
@@ -17,7 +17,7 @@ define([
 
 	// For supporting Intern's true/false check
 	/*jshint -W030*/
-	bdd.describe('Test todo/widgets/CSSToggleWidget', function () {
+	bdd.describe('Test tobuy/widgets/CSSToggleWidget', function () {
 		var handles = [];
 		bdd.afterEach(handleCleaner(handles));
 

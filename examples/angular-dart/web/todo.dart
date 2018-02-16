@@ -1,4 +1,4 @@
-library todo;
+library tobuy;
 
 import 'dart:html' as dom;
 import 'dart:convert' as convert;
@@ -7,7 +7,7 @@ import 'package:angular/angular.dart';
 
 class StorageService {
 	final dom.Storage _storage = dom.window.localStorage;
-	static const String STORAGE_KEY = 'todos-angulardart';
+	static const String STORAGE_KEY = 'tobuys-angulardart';
 
 	List<Item> loadItems() {
 		final String data = _storage[STORAGE_KEY];
@@ -53,8 +53,8 @@ class Item {
 
 
 @NgDirective(
-	selector: '[todo-controller]',
-	publishAs: 'todo'
+	selector: '[tobuy-controller]',
+	publishAs: 'tobuy'
 )
 class TodoController {
 	List<Item> items = [];

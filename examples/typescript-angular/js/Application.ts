@@ -5,13 +5,13 @@
  *
  * @type {angular.Module}
  */
-module todos {
+module tobuys {
     'use strict';
 
-    var todomvc = angular.module('todomvc', [])
-            .controller('todoCtrl', TodoCtrl)
-            .directive('todoBlur', todoBlur)
-            .directive('todoFocus', todoFocus)
-            .directive('todoEscape', todoEscape)
-            .service('todoStorage', TodoStorage);
+    var tobuymvc = angular.module('tobuymvc', [])
+            .controller('tobuyCtrl', TodoCtrl)
+            .directive('tobuyBlur', tobuyBlur)
+            .directive('tobuyFocus', tobuyFocus)
+            .directive('tobuyEscape', tobuyEscape)
+            .service('tobuyStorage', TodoStorage);
 }

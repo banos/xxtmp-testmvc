@@ -23,7 +23,7 @@ define(function (require) {
 		 * @property className
 		 * @type String
 		 */
-		className: 'todos-collection-view',
+		className: 'tobuys-collection-view',
 
 		/**
 		 * A function that should return a jQuery element that will be used as the

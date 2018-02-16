@@ -30,10 +30,10 @@ bower_components/polymer/build.log
 bower_components/polymer/polymer.html
 
 
-bower_components/todomvc-common
-!bower_components/todomvc-common/base.css
-!bower_components/todomvc-common/base.js
-!bower_components/todomvc-common/bg.png
+bower_components/tobuymvc-common
+!bower_components/tobuymvc-common/base.css
+!bower_components/tobuymvc-common/base.js
+!bower_components/tobuymvc-common/bg.png
 
-bower_components/todomvc-app-css
-!bower_components/todomvc-app-css/index.css
+bower_components/tobuymvc-app-css
+!bower_components/tobuymvc-app-css/index.css

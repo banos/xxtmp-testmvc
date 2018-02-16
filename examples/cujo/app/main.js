@@ -1,7 +1,7 @@
 /*global define */
 define({
 	// The root node where all the views will be inserted
-	root: { $ref: 'dom!todoapp' },
+	root: { $ref: 'dom!tobuyapp' },
 
 	// Render and insert the create view
 	createView: {
@@ -12,13 +12,13 @@ define({
 		insert: { first: 'root' }
 	},
 
-	// Hook up the form to auto-reset whenever a new todo is added
+	// Hook up the form to auto-reset whenever a new tobuy is added
 	createForm: {
 		element: { $ref: 'dom.first!form', at: 'createView' },
-		connect: { 'todos.onAdd': 'reset' }
+		connect: { 'tobuys.onAdd': 'reset' }
 	},
 
-	// Render and insert the list of todos, linking it to the
+	// Render and insert the list of tobuys, linking it to the
 	// data and mapping data fields to the DOM
 	listView: {
 		render: {
@@ -28,7 +28,7 @@ define({
 		},
 		insert: { after: 'createView' },
 		bind: {
-			to: { $ref: 'todos' },
+			to: { $ref: 'tobuys' },
 			comparator: 'dateCreated',
 			bindings: {
 				text: 'label, .edit',
@@ -40,7 +40,7 @@ define({
 		}
 	},
 
-	// Render and insert the "controls" view--this has the todo count,
+	// Render and insert the "controls" view--this has the tobuy count,
 	// filters, and clear completed button.
 	controlsView: {
 		render: {
@@ -62,20 +62,20 @@ define({
 	},
 
 	// Create a localStorage adapter that will use the storage
-	// key 'todos-cujo' for storing todos.  This is also linked,
+	// key 'tobuys-cujo' for storing tobuys.  This is also linked,
 	// creating a two-way linkage between the listView and the
 	// data storage.
-	todoStore: {
+	tobuyStore: {
 		create: {
 			module: 'cola/adapter/LocalStorage',
-			args: 'todos-cujo'
+			args: 'tobuys-cujo'
 		},
 		bind: {
-			to: { $ref: 'todos' }
+			to: { $ref: 'tobuys' }
 		}
 	},
 
-	todos: {
+	tobuys: {
 		create: {
 			module: 'cola/Collection',
 			args: {
@@ -95,20 +95,20 @@ define({
 	// Typically, cujo-based apps will have several (or many) smaller
 	// view controllers. Since this is a relatively simple application,
 	// a single controller fits well.
-	todoController: {
+	tobuyController: {
 		create: 'app/controller',
 		properties: {
-			todos: { $ref: 'todos' },
+			tobuys: { $ref: 'tobuys' },
 
-			createTodo: { compose: 'form.getValues | todos.add' },
-			removeTodo: { compose: 'todos.remove' },
-			updateTodo: { compose: 'todos.update' },
+			createTodo: { compose: 'form.getValues | tobuys.add' },
+			removeTodo: { compose: 'tobuys.remove' },
+			updateTodo: { compose: 'tobuys.update' },
 
 			querySelector: { $ref: 'dom.first!' },
 
 			masterCheckbox: { $ref: 'dom.first!#toggle-all', at: 'listView' },
 			countNode: { $ref: 'dom.first!.count', at: 'controlsView' },
-			remainingNodes: { $ref: 'dom.all!#todo-count strong', at: 'controlsView' }
+			remainingNodes: { $ref: 'dom.all!#tobuy-count strong', at: 'controlsView' }
 		},
 		on: {
 			createView: {
@@ -118,9 +118,9 @@ define({
 				'click:.destroy': 'removeTodo',
 				'change:.toggle': 'updateTodo',
 				'click:#toggle-all': 'toggleAll',
-				'dblclick:label': 'todos.edit',
-				'change,focusout:.edit': 'todos.submit',
-				'submit:form': 'todos.submit'
+				'dblclick:label': 'tobuys.edit',
+				'change,focusout:.edit': 'tobuys.submit',
+				'submit:form': 'tobuys.submit'
 			},
 			controlsView: {
 				'click:#clear-completed': 'removeCompleted'
@@ -130,9 +130,9 @@ define({
 			updateTotalCount: 'setTodosTotalState',
 			updateRemainingCount: 'setTodosRemainingState',
 			updateCompletedCount: 'setTodosCompletedState',
-			'todos.onChange': 'updateCount',
-			'todos.onEdit': 'todos.findNode | toggleEditingState.add | beginEditTodo',
-			'todos.onSubmit': 'todos.findNode | toggleEditingState.remove | todos.findItem | endEditTodo'
+			'tobuys.onChange': 'updateCount',
+			'tobuys.onEdit': 'tobuys.findNode | toggleEditingState.add | beginEditTodo',
+			'tobuys.onSubmit': 'tobuys.findNode | toggleEditingState.remove | tobuys.findItem | endEditTodo'
 		}
 	},
 
@@ -152,7 +152,7 @@ define({
 	setTodosTotalState: {
 		create: {
 			module: 'wire/dom/transform/cardinality',
-			args: { node: { $ref: 'root' }, prefix: 'todos' }
+			args: { node: { $ref: 'root' }, prefix: 'tobuys' }
 		}
 	},
 

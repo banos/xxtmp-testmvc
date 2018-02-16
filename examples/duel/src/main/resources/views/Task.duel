@@ -4,11 +4,11 @@
 <li class="<%= data.completed ? 'completed' : '' %>">
 	<div class="view">
 		<input class="toggle" type="checkbox" checked="<%= data.completed %>"
-			onchange="<%= todos.actions.completedOnChange(data.id) %>">
-		<label ondblclick="<%= todos.actions.editOnDblclick %>"><%= data.title %></label>
-		<button class="destroy" onclick="<%= todos.actions.removeOnClick(data.id) %>"></button>
+			onchange="<%= tobuys.actions.completedOnChange(data.id) %>">
+		<label ondblclick="<%= tobuys.actions.editOnDblclick %>"><%= data.title %></label>
+		<button class="destroy" onclick="<%= tobuys.actions.removeOnClick(data.id) %>"></button>
 	</div>
 	<input class="edit" type="text" value="<%= data.title %>"
-		onblur="<%= todos.actions.editOnBlur(data.id) %>"
-		onkeydown="<%= todos.actions.editOnKeydown(data.id) %>">
+		onblur="<%= tobuys.actions.editOnBlur(data.id) %>"
+		onkeydown="<%= tobuys.actions.editOnKeydown(data.id) %>">
 </li>

@@ -1,4 +1,4 @@
-System.register(['aurelia-binding', './todo-item', 'underscore'], function (_export) {
+System.register(['aurelia-binding', './tobuy-item', 'underscore'], function (_export) {
 	'use strict';
 
 	var ObserverLocator, TodoItem, _, STORAGE_NAME, ENTER_KEY, Todos;
@@ -10,13 +10,13 @@ System.register(['aurelia-binding', './todo-item', 'underscore'], function (_exp
 	return {
 		setters: [function (_aureliaBinding) {
 			ObserverLocator = _aureliaBinding.ObserverLocator;
-		}, function (_todoItem) {
-			TodoItem = _todoItem.TodoItem;
+		}, function (_tobuyItem) {
+			TodoItem = _tobuyItem.TodoItem;
 		}, function (_underscore) {
 			_ = _underscore['default'];
 		}],
 		execute: function () {
-			STORAGE_NAME = 'todomvc-aurelia';
+			STORAGE_NAME = 'tobuymvc-aurelia';
 			ENTER_KEY = 13;
 
 			Todos = (function () {
@@ -79,22 +79,22 @@ System.register(['aurelia-binding', './todo-item', 'underscore'], function (_exp
 					}
 				}, {
 					key: 'observeItem',
-					value: function observeItem(todoItem) {
+					value: function observeItem(tobuyItem) {
 						var _this = this;
 
-						this.observerLocator.getObserver(todoItem, 'title').subscribe(function (o, n) {
-							return _this.onTitleChanged(todoItem);
+						this.observerLocator.getObserver(tobuyItem, 'title').subscribe(function (o, n) {
+							return _this.onTitleChanged(tobuyItem);
 						});
 
-						this.observerLocator.getObserver(todoItem, 'isCompleted').subscribe(function () {
+						this.observerLocator.getObserver(tobuyItem, 'isCompleted').subscribe(function () {
 							return _this.onIsCompletedChanged();
 						});
 					}
 				}, {
 					key: 'onTitleChanged',
-					value: function onTitleChanged(todoItem) {
-						if (todoItem.title === '') {
-							this.deleteTodo(todoItem);
+					value: function onTitleChanged(tobuyItem) {
+						if (tobuyItem.title === '') {
+							this.deleteTodo(tobuyItem);
 							this.updateAreAllCheckedState();
 						}
 
@@ -110,8 +110,8 @@ System.register(['aurelia-binding', './todo-item', 'underscore'], function (_exp
 					}
 				}, {
 					key: 'deleteTodo',
-					value: function deleteTodo(todoItem) {
-						this.items = _(this.items).without(todoItem);
+					value: function deleteTodo(tobuyItem) {
+						this.items = _(this.items).without(tobuyItem);
 						this.updateAreAllCheckedState();
 						this.updateFilteredItems(this.filter);
 						this.save();
@@ -178,12 +178,12 @@ System.register(['aurelia-binding', './todo-item', 'underscore'], function (_exp
 
 						var simpleItems = JSON.parse(storageContent);
 						this.items = _.map(simpleItems, function (item) {
-							var todoItem = new TodoItem(item.title);
-							todoItem.isCompleted = item.completed;
+							var tobuyItem = new TodoItem(item.title);
+							tobuyItem.isCompleted = item.completed;
 
-							_this3.observeItem(todoItem);
+							_this3.observeItem(tobuyItem);
 
-							return todoItem;
+							return tobuyItem;
 						});
 						this.updateAreAllCheckedState();
 					}

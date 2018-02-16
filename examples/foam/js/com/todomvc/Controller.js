@@ -6,16 +6,16 @@
 	/* global CLASS, TRUE, SET, GROUP_BY, COUNT */
 
 	CLASS({
-		package: 'com.todomvc',
+		package: 'com.tobuymvc',
 		name: 'Controller',
 		traits: ['foam.ui.CSSLoaderTrait'],
 		requires: ['foam.ui.TextFieldView', 'foam.ui.DAOListView', 'foam.dao.EasyDAO', 'foam.memento.WindowHashValue',
-				'com.todomvc.Todo', 'com.todomvc.TodoDAO', 'com.todomvc.TodoFilterView'],
+				'com.tobuymvc.Todo', 'com.tobuymvc.TodoDAO', 'com.tobuymvc.TodoFilterView'],
 		properties: [
 			{
 				name: 'input',
 				setter: function (text) {
-					// This is a fake property that adds the todo when its value gets saved.
+					// This is a fake property that adds the tobuy when its value gets saved.
 					if (text) {
 						this.dao.put(this.Todo.create({text: text}));
 						this.propertyChange('input', text, '');
@@ -36,7 +36,7 @@
 				name: 'query',
 				postSet: function (_, q) { this.filteredDAO = this.dao.where(q); },
 				defaultValue: TRUE,
-				view: 'com.todomvc.TodoFilterView'
+				view: 'com.tobuymvc.TodoFilterView'
 			},
 			{
 				name: 'memento',
@@ -67,7 +67,7 @@
 			init: function () {
 				this.SUPER();
 				this.filteredDAO = this.dao = this.TodoDAO.create({
-					delegate: this.EasyDAO.create({model: this.Todo, seqNo: true, daoType: 'LOCAL', name: 'todos-foam'}) });
+					delegate: this.EasyDAO.create({model: this.Todo, seqNo: true, daoType: 'LOCAL', name: 'tobuys-foam'}) });
 				this.dao.listen(this.onDAOUpdate);
 				this.onDAOUpdate();
 			}
@@ -79,14 +79,14 @@
 				.actionButton-clear:disabled { display: none; }
 			*/},
 			function toDetailHTML() {/*
-			<section id="todoapp">
-				<header id="header"><h1>todos</h1>$$input{id: 'new-todo'}</header>
+			<section id="tobuyapp">
+				<header id="header"><h1>tobuys</h1>$$input{id: 'new-tobuy'}</header>
 				<section id="main">
 					$$toggle{id: 'toggle-all', showLabel: false}
-					$$filteredDAO{tagName: 'ul', id: 'todo-list'}
+					$$filteredDAO{tagName: 'ul', id: 'tobuy-list'}
 				</section>
 				<footer id="footer">
-					<span id="todo-count">
+					<span id="tobuy-count">
 						<strong>$$activeCount{mode: 'read-only'}</strong> item<%# this.data.activeCount == 1 ? '' : 's' %> left
 					</span>
 					$$query{id: 'filters'}
@@ -94,9 +94,9 @@
 				</footer>
 			</section>
 			<footer id="info">
-				<p>Double-click to edit a todo</p>
+				<p>Double-click to edit a tobuy</p>
 				<p>Created by <a href="mailto:kgr@chromium.org">Kevin Greer</a></p>
-				<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+				<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 			</footer>
 			<%
 				var f = function () { return this.completedCount + this.activeCount == 0; }.bind(this.data);
@@ -110,7 +110,7 @@
 						},
 						function (label) { return '/' + label.toLowerCase(); });
 				this.addInitializer(function () {
-					X.$('new-todo').focus();
+					X.$('new-tobuy').focus();
 				});
 			%>
 			*/}

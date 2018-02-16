@@ -6,7 +6,7 @@ app.ENTER_KEY = 13;
 app.ESC_KEY = 27;
 
 m.route.mode = 'hash';
-m.route(document.getElementById('todoapp'), '/', {
+m.route(document.getElementById('tobuyapp'), '/', {
 	'/': app,
 	'/:filter': app
 });

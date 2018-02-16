@@ -1,7 +1,7 @@
 {
 	"targetDir": "www/",
-	"sourceDir": "target/todomvc/",
-	"serverPrefix" : "com.todomvc.duel.views",
+	"sourceDir": "target/tobuymvc/",
+	"serverPrefix" : "com.tobuymvc.duel.views",
 	"cdnMap": "cdn",
 	"cdnLinksMap": "cdnLinks",
 	"cdnHost": "./",

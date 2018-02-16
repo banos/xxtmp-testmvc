@@ -6,19 +6,19 @@
 		var ctrl, scope, store;
 
 		// Load the module containing the app, only 'ng' is loaded by default.
-		beforeEach(module('todomvc'));
+		beforeEach(module('tobuymvc'));
 
 		beforeEach(inject(function ($controller, $rootScope, localStorage) {
 			scope = $rootScope.$new();
 
 			store = localStorage;
 
-			localStorage.todos = [];
+			localStorage.tobuys = [];
 			localStorage._getFromLocalStorage = function () {
 				return [];
 			};
-			localStorage._saveToLocalStorage = function (todos) {
-				localStorage.todos = todos;
+			localStorage._saveToLocalStorage = function (tobuys) {
+				localStorage.tobuys = tobuys;
 			};
 
 			ctrl = $controller('TodoCtrl', {
@@ -32,7 +32,7 @@
 		});
 
 		it('should not have any Todos on start', function () {
-			expect(scope.todos.length).toBe(0);
+			expect(scope.tobuys.length).toBe(0);
 		});
 
 		it('should have all Todos completed', function () {
@@ -94,14 +94,14 @@
 				scope.newTodo = '';
 				scope.addTodo();
 				scope.$digest();
-				expect(scope.todos.length).toBe(0);
+				expect(scope.tobuys.length).toBe(0);
 			});
 
 			it('should not add items consisting only of whitespaces', function () {
 				scope.newTodo = '   ';
 				scope.addTodo();
 				scope.$digest();
-				expect(scope.todos.length).toBe(0);
+				expect(scope.tobuys.length).toBe(0);
 			});
 
 
@@ -109,8 +109,8 @@
 				scope.newTodo = '  buy some unicorns  ';
 				scope.addTodo();
 				scope.$digest();
-				expect(scope.todos.length).toBe(1);
-				expect(scope.todos[0].title).toBe('buy some unicorns');
+				expect(scope.tobuys.length).toBe(1);
+				expect(scope.tobuys[0].title).toBe('buy some unicorns');
 			});
 		});
 
@@ -132,35 +132,35 @@
 			}));
 
 			it('should count Todos correctly', function () {
-				expect(scope.todos.length).toBe(5);
+				expect(scope.tobuys.length).toBe(5);
 				expect(scope.remainingCount).toBe(3);
 				expect(scope.completedCount).toBe(2);
 				expect(scope.allChecked).toBeFalsy();
 			});
 
 			it('should save Todos to local storage', function () {
-				expect(scope.todos.length).toBe(5);
+				expect(scope.tobuys.length).toBe(5);
 			});
 
 			it('should remove Todos w/o title on saving', function () {
-				var todo = store.todos[2];
-				scope.editTodo(todo);
-				todo.title = '';
-				scope.saveEdits(todo);
-				expect(scope.todos.length).toBe(4);
+				var tobuy = store.tobuys[2];
+				scope.editTodo(tobuy);
+				tobuy.title = '';
+				scope.saveEdits(tobuy);
+				expect(scope.tobuys.length).toBe(4);
 			});
 
 			it('should trim Todos on saving', function () {
-				var todo = store.todos[0];
-				scope.editTodo(todo);
-				todo.title = ' buy moar unicorns  ';
-				scope.saveEdits(todo);
-				expect(scope.todos[0].title).toBe('buy moar unicorns');
+				var tobuy = store.tobuys[0];
+				scope.editTodo(tobuy);
+				tobuy.title = ' buy moar unicorns  ';
+				scope.saveEdits(tobuy);
+				expect(scope.tobuys[0].title).toBe('buy moar unicorns');
 			});
 
 			it('clearCompletedTodos() should clear completed Todos', function () {
 				scope.clearCompletedTodos();
-				expect(scope.todos.length).toBe(3);
+				expect(scope.tobuys.length).toBe(3);
 			});
 
 			it('markAll() should mark all Todos completed', function () {
@@ -170,12 +170,12 @@
 			});
 
 			it('revertTodo() get a Todo to its previous state', function () {
-				var todo = store.todos[0];
-				scope.editTodo(todo);
-				todo.title = 'Unicorn sparkly skypuffles.';
-				scope.revertEdits(todo);
+				var tobuy = store.tobuys[0];
+				scope.editTodo(tobuy);
+				tobuy.title = 'Unicorn sparkly skypuffles.';
+				scope.revertEdits(tobuy);
 				scope.$digest();
-				expect(scope.todos[0].title).toBe('Uncompleted Item 0');
+				expect(scope.tobuys[0].title).toBe('Uncompleted Item 0');
 			});
 		});
 	});

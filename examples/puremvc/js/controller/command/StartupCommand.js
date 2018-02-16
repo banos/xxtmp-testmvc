@@ -2,10 +2,10 @@
  * @author Mike Britton
  *
  * @class StartupCommand
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.controller.command.StartupCommand',
+		name: 'tobuymvc.controller.command.StartupCommand',
 		parent: puremvc.MacroCommand
 	},
 
@@ -16,9 +16,9 @@ puremvc.define({
 		 * @override
 		 */
 		initializeMacroCommand: function () {
-			this.addSubCommand( todomvc.controller.command.PrepControllerCommand );
-			this.addSubCommand( todomvc.controller.command.PrepModelCommand );
-			this.addSubCommand( todomvc.controller.command.PrepViewCommand );
+			this.addSubCommand( tobuymvc.controller.command.PrepControllerCommand );
+			this.addSubCommand( tobuymvc.controller.command.PrepModelCommand );
+			this.addSubCommand( tobuymvc.controller.command.PrepViewCommand );
 		}
 	}
 );

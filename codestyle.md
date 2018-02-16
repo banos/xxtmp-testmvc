@@ -75,22 +75,22 @@ Example:
 
 ```js
 // Ok.
-var removeTodo = function (todoItem) {
-	var todoModel = todoItem.getModel(); // Grab the model from the todoItem.
-	todoItem.find('.destroy').click(); // Trigger a click to remove the element from the <ul>.
-	todoModel.remove(); // Removes the todo model from localStorage.
+var removeTodo = function (tobuyItem) {
+	var tobuyModel = tobuyItem.getModel(); // Grab the model from the tobuyItem.
+	tobuyItem.find('.destroy').click(); // Trigger a click to remove the element from the <ul>.
+	tobuyModel.remove(); // Removes the tobuy model from localStorage.
 };
 
 // Better.
-var removeTodo = function (todoItem) {
-	// Grab the model from the todoItem.
-	var todoModel = todoItem.getModel();
+var removeTodo = function (tobuyItem) {
+	// Grab the model from the tobuyItem.
+	var tobuyModel = tobuyItem.getModel();
 
 	// Trigger a click to remove the element from the <ul>.
-	todoItem.find('.destroy').click();
+	tobuyItem.find('.destroy').click();
 
-	// Removes the todo model from localStorage.
-	todoModel.remove();
+	// Removes the tobuy model from localStorage.
+	tobuyModel.remove();
 };
 ```
 

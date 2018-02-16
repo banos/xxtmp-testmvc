@@ -1,7 +1,7 @@
-package com.todo.client.events;
+package com.tobuy.client.events;
 
 import com.google.gwt.event.shared.EventHandler;
-import com.todo.client.ToDoItem;
+import com.tobuy.client.ToDoItem;
 
 public class ToDoRemovedEvent extends ToDoEvent<ToDoRemovedEvent.Handler> {
 

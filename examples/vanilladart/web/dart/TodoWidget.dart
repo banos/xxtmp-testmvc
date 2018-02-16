@@ -1,70 +1,70 @@
-part of todomvc;
+part of tobuymvc;
 
 class TodoWidget {
   static const HtmlEscape htmlEscape = const HtmlEscape();
 
-  TodoApp todoApp;
-  Todo todo;
+  TodoApp tobuyApp;
+  Todo tobuy;
   Element element;
   InputElement toggleElement;
 
-  TodoWidget(this.todoApp, this.todo);
+  TodoWidget(this.tobuyApp, this.tobuy);
 
   Element createElement() {
     element = new Element.html('''
-			<li ${todo.completed ? 'class="completed"' : ''}>
+			<li ${tobuy.completed ? 'class="completed"' : ''}>
 			<div class='view'>
-			<input class='toggle' type='checkbox' ${todo.completed ? 'checked' : ''}>
-			<label class='todo-content'>${htmlEscape.convert(todo.title)}</label>
+			<input class='toggle' type='checkbox' ${tobuy.completed ? 'checked' : ''}>
+			<label class='tobuy-content'>${htmlEscape.convert(tobuy.title)}</label>
 			<button class='destroy'></button>
 			</div>
-			<input class='edit' value='${htmlEscape.convert(todo.title)}'>
+			<input class='edit' value='${htmlEscape.convert(tobuy.title)}'>
 			</li>
 		''');
 
-    Element contentElement = element.querySelector('.todo-content');
+    Element contentElement = element.querySelector('.tobuy-content');
     InputElement editElement = element.querySelector('.edit');
 
     toggleElement = element.querySelector('.toggle');
 
     toggleElement.onClick.listen((_) {
       toggle();
-      todoApp.updateCounts();
-      todoApp.save();
+      tobuyApp.updateCounts();
+      tobuyApp.save();
     });
 
     contentElement.onDoubleClick.listen((_) {
       element.classes.add('editing');
-      editElement.selectionStart = todo.title.length;
+      editElement.selectionStart = tobuy.title.length;
       editElement.focus();
     });
 
     void removeTodo() {
       element.remove();
-      todoApp.removeTodo(this);
-      todoApp.updateFooterDisplay();
+      tobuyApp.removeTodo(this);
+      tobuyApp.updateFooterDisplay();
     }
 
     element.querySelector('.destroy').onClick.listen((_) {
       removeTodo();
-      todoApp.save();
+      tobuyApp.save();
     });
 
     void doneEditing() {
       editElement.value = editElement.value.trim();
-      todo.title = editElement.value;
-      if (todo.title.isNotEmpty) {
-        contentElement.text = todo.title;
+      tobuy.title = editElement.value;
+      if (tobuy.title.isNotEmpty) {
+        contentElement.text = tobuy.title;
         element.classes.remove('editing');
       } else {
         removeTodo();
       }
-      todoApp.save();
+      tobuyApp.save();
     }
 
     void undoEditing() {
       element.classes.remove('editing');
-      editElement.value = todo.title;
+      editElement.value = tobuy.title;
     }
 
     editElement
@@ -88,9 +88,9 @@ class TodoWidget {
   }
 
   void toggle() {
-    todo.completed = !todo.completed;
-    toggleElement.checked = todo.completed;
-    if (todo.completed) {
+    tobuy.completed = !tobuy.completed;
+    toggleElement.checked = tobuy.completed;
+    if (tobuy.completed) {
       element.classes.add('completed');
     } else {
       element.classes.remove('completed');

@@ -2,10 +2,10 @@
  * @author Mike Britton
  *
  * @class TodoFormMediator
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.view.mediator.TodoFormMediator',
+		name: 'tobuymvc.view.mediator.TodoFormMediator',
 		parent: puremvc.Mediator
 	},
 
@@ -13,42 +13,42 @@ puremvc.define({
 	{
 		// Notifications this mediator is interested in
 		listNotificationInterests: function() {
-			return [ todomvc.AppConstants.TODOS_FILTERED ];
+			return [ tobuymvc.AppConstants.TODOS_FILTERED ];
 		},
 
 		// Code to be executed when the Mediator instance is registered with the View
 		onRegister: function() {
-			this.setViewComponent( new todomvc.view.component.TodoForm );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.TOGGLE_COMPLETE, this );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL, this );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.UPDATE_ITEM, this );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.DELETE_ITEM, this );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.ADD_ITEM, this );
-			this.viewComponent.addEventListener( todomvc.view.event.AppEvents.CLEAR_COMPLETED, this );
+			this.setViewComponent( new tobuymvc.view.component.TodoForm );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE, this );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL, this );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.UPDATE_ITEM, this );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.DELETE_ITEM, this );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.ADD_ITEM, this );
+			this.viewComponent.addEventListener( tobuymvc.view.event.AppEvents.CLEAR_COMPLETED, this );
 		},
 
 		// Handle events from the view component
 		handleEvent: function ( event ) {
 			switch( event.type ) {
-				case todomvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL:
-					this.sendNotification( todomvc.AppConstants.TOGGLE_TODO_STATUS, event.doToggleComplete );
+				case tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE_ALL:
+					this.sendNotification( tobuymvc.AppConstants.TOGGLE_TODO_STATUS, event.doToggleComplete );
 					break;
 
-				case todomvc.view.event.AppEvents.DELETE_ITEM:
-					this.sendNotification( todomvc.AppConstants.DELETE_TODO, event.todoId );
+				case tobuymvc.view.event.AppEvents.DELETE_ITEM:
+					this.sendNotification( tobuymvc.AppConstants.DELETE_TODO, event.tobuyId );
 					break;
 
-				case todomvc.view.event.AppEvents.ADD_ITEM:
-					this.sendNotification( todomvc.AppConstants.ADD_TODO, event.todo );
+				case tobuymvc.view.event.AppEvents.ADD_ITEM:
+					this.sendNotification( tobuymvc.AppConstants.ADD_TODO, event.tobuy );
 					break;
 
-				case todomvc.view.event.AppEvents.CLEAR_COMPLETED:
-					this.sendNotification( todomvc.AppConstants.REMOVE_TODOS_COMPLETED );
+				case tobuymvc.view.event.AppEvents.CLEAR_COMPLETED:
+					this.sendNotification( tobuymvc.AppConstants.REMOVE_TODOS_COMPLETED );
 					break;
 
-				case todomvc.view.event.AppEvents.TOGGLE_COMPLETE:
-				case todomvc.view.event.AppEvents.UPDATE_ITEM:
-					this.sendNotification( todomvc.AppConstants.UPDATE_TODO, event.todo );
+				case tobuymvc.view.event.AppEvents.TOGGLE_COMPLETE:
+				case tobuymvc.view.event.AppEvents.UPDATE_ITEM:
+					this.sendNotification( tobuymvc.AppConstants.UPDATE_TODO, event.tobuy );
 					break;
 			 }
 
@@ -57,7 +57,7 @@ puremvc.define({
 		// Handle notifications from other PureMVC actors
 		handleNotification: function( note ) {
 			switch ( note.getName() ) {
-				case todomvc.AppConstants.TODOS_FILTERED:
+				case tobuymvc.AppConstants.TODOS_FILTERED:
 					this.viewComponent.setFilteredTodoList( note.getBody() );
 					break;
 			}

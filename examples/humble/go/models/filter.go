@@ -1,6 +1,6 @@
 package models
 
-// Predicate is a function which takes a todo and returns a bool. It can be
+// Predicate is a function which takes a tobuy and returns a bool. It can be
 // used in filters.
 type Predicate func(*Todo) bool
 
@@ -15,54 +15,54 @@ var Predicates = struct {
 	Remaining: (*Todo).Remaining,
 }
 
-// All returns all the todos. It applies a filter using the All predicate.
+// All returns all the tobuys. It applies a filter using the All predicate.
 func (list TodoList) All() []*Todo {
 	return list.Filter(Predicates.All)
 }
 
-// Completed returns only those todos which are completed. It applies a filter
+// Completed returns only those tobuys which are completed. It applies a filter
 // using the Completed predicate.
 func (list TodoList) Completed() []*Todo {
 	return list.Filter(Predicates.Completed)
 }
 
-// Remaining returns only those todos which are remaining (or active). It
+// Remaining returns only those tobuys which are remaining (or active). It
 // applies a filter using the Remaining predicate.
 func (list TodoList) Remaining() []*Todo {
 	return list.Filter(Predicates.Remaining)
 }
 
-// Filter returns a slice todos for which the predicate is true. The returned
-// slice is a subset of all todos.
+// Filter returns a slice tobuys for which the predicate is true. The returned
+// slice is a subset of all tobuys.
 func (list TodoList) Filter(f Predicate) []*Todo {
 	results := []*Todo{}
-	for _, todo := range list.todos {
-		if f(todo) {
-			results = append(results, todo)
+	for _, tobuy := range list.tobuys {
+		if f(tobuy) {
+			results = append(results, tobuy)
 		}
 	}
 	return results
 }
 
-// Invert inverts a predicate, i.e. a function which accepts a todo as an
+// Invert inverts a predicate, i.e. a function which accepts a tobuy as an
 // argument and returns a bool. It returns the inverted predicate. Where f would
 // return true, the inverted predicate would return false and vice versa.
 func invert(f Predicate) Predicate {
-	return func(todo *Todo) bool {
-		return !f(todo)
+	return func(tobuy *Todo) bool {
+		return !f(tobuy)
 	}
 }
 
-// todoById returns a predicate which is true iff todo.id equals the given
+// tobuyById returns a predicate which is true iff tobuy.id equals the given
 // id.
-func todoById(id string) Predicate {
+func tobuyById(id string) Predicate {
 	return func(t *Todo) bool {
 		return t.id == id
 	}
 }
 
-// todoNotById returns a predicate which is true iff todo.id does not equal
+// tobuyNotById returns a predicate which is true iff tobuy.id does not equal
 // the given id.
-func todoNotById(id string) Predicate {
-	return invert(todoById(id))
+func tobuyNotById(id string) Predicate {
+	return invert(tobuyById(id))
 }

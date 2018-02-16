@@ -18,12 +18,12 @@ node_modules/react/dist/*
 node_modules/classnames/*
 !node_modules/classnames/index.js
 
-node_modules/todomvc-app-css/*
-!node_modules/todomvc-app-css/index.css
+node_modules/tobuymvc-app-css/*
+!node_modules/tobuymvc-app-css/index.css
 
-node_modules/todomvc-common/*
-!node_modules/todomvc-common/base.css
-!node_modules/todomvc-common/base.js
+node_modules/tobuymvc-common/*
+!node_modules/tobuymvc-common/base.css
+!node_modules/tobuymvc-common/base.js
 
 node_modules/underscore/*
 !node_modules/underscore/underscore.js

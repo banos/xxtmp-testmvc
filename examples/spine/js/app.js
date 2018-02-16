@@ -13,18 +13,18 @@
     ENTER_KEY = 13;
 
     TodoApp.prototype.elements = {
-      '#new-todo': 'newTodoInput',
+      '#new-tobuy': 'newTodoInput',
       '#toggle-all': 'toggleAllElem',
       '#main': 'main',
-      '#todo-list': 'todos',
+      '#tobuy-list': 'tobuys',
       '#footer': 'footer',
-      '#todo-count': 'count',
+      '#tobuy-count': 'count',
       '#filters a': 'filters',
       '#clear-completed': 'clearCompleted'
     };
 
     TodoApp.prototype.events = {
-      'keyup #new-todo': 'new',
+      'keyup #new-tobuy': 'new',
       'click #toggle-all': 'toggleAll',
       'click #clear-completed': 'clearCompletedItem'
     };
@@ -75,22 +75,22 @@
       }
     };
 
-    TodoApp.prototype.addNew = function(todo) {
+    TodoApp.prototype.addNew = function(tobuy) {
       var view;
       view = new Todos({
-        todo: todo
+        tobuy: tobuy
       });
-      return this.todos.append(view.render().el);
+      return this.tobuys.append(view.render().el);
     };
 
     TodoApp.prototype.addAll = function() {
-      var i, len, ref, results, todo;
-      this.todos.empty();
+      var i, len, ref, results, tobuy;
+      this.tobuys.empty();
       ref = this.getByFilter();
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
-        todo = ref[i];
-        results.push(this.addNew(todo));
+        tobuy = ref[i];
+        results.push(this.addNew(tobuy));
       }
       return results;
     };
@@ -98,14 +98,14 @@
     TodoApp.prototype.toggleAll = function(e) {
       var checked;
       checked = e.target.checked;
-      return Todo.each(function(todo) {
+      return Todo.each(function(tobuy) {
 
         /*
         			TODO: Model updateAttribute sometimes won't stick:
         				https://github.com/maccman/spine/issues/219
          */
-        todo.updateAttribute('completed', checked);
-        return todo.trigger('update', todo);
+        tobuy.updateAttribute('completed', checked);
+        return tobuy.trigger('update', tobuy);
       });
     };
 
@@ -143,7 +143,7 @@
 
   $(function() {
     new TodoApp({
-      el: $('#todoapp')
+      el: $('#tobuyapp')
     });
     return Spine.Route.setup();
   });

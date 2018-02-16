@@ -63,24 +63,24 @@
 		init: function () {
 			this
 				// load the data from the Local Storage
-				.reset(JSON.parse(localStorage.getItem('todos-jsblocks')) || [])
+				.reset(JSON.parse(localStorage.getItem('tobuys-jsblocks')) || [])
 				// save to Local Storage on each item add or remove
 				.on('add remove', this.save)
 				.updateRemaining();
 		},
 
-		// set all todos as completed
+		// set all tobuys as completed
 		toggleAll: function () {
 			var complete = this.remaining() === 0 ? false : true;
-			this.each(function (todo) {
-				todo.completed(complete);
+			this.each(function (tobuy) {
+				tobuy.completed(complete);
 			});
 		},
 
-		// remove all completed todos
+		// remove all completed tobuys
 		clearCompleted: function () {
-			this.removeAll(function (todo) {
-				return todo.completed();
+			this.removeAll(function (tobuy) {
+				return tobuy.completed();
 			});
 		},
 
@@ -92,15 +92,15 @@
 				result.push(model.dataItem());
 			});
 
-			localStorage.setItem('todos-jsblocks', JSON.stringify(result));
+			localStorage.setItem('tobuys-jsblocks', JSON.stringify(result));
 
 			this.updateRemaining();
 		},
 
 		// updates the observable
 		updateRemaining: function () {
-			this.remaining(this.reduce(function (memo, todo) {
-				return todo.completed() ? memo : memo + 1;
+			this.remaining(this.reduce(function (memo, tobuy) {
+				return tobuy.completed() ? memo : memo + 1;
 			}, 0));
 		}
 	});
@@ -116,9 +116,9 @@
 
 		newTodo: new Todo(),
 
-		// holds all todos for the current view
-		// todos are filtered if "Active" or "Completed" is clicked
-		todos: new Todos().extend('filter', function (value) {
+		// holds all tobuys for the current view
+		// tobuys are filtered if "Active" or "Completed" is clicked
+		tobuys: new Todos().extend('filter', function (value) {
 			var mode = this.filter();
 			var completed = value.completed();
 			var include = true;
@@ -143,7 +143,7 @@
 
 		addTodo: function (e) {
 			if (e.which === ENTER_KEY && this.newTodo.title()) {
-				this.todos.push(this.newTodo);
+				this.tobuys.push(this.newTodo);
 				// return all Todo values to their defaults
 				this.newTodo.reset();
 			}

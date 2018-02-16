@@ -14,7 +14,7 @@
 
 
 	include.exports = Class.Collection(Todo, {
-		Store: Class.LocalStore('todos-atmajs'),
+		Store: Class.LocalStore('tobuys-atmajs'),
 		create: function (title) {
 			// `push` initilizes the `Task` instance. It does the same
 			// as if we would do this via `new Task({title: title})`
@@ -38,7 +38,7 @@
 		},
 		status: {
 			count: 0,
-			todoCount: 0,
+			tobuyCount: 0,
 			completedCount: 0
 		},
 		Override: {
@@ -61,14 +61,14 @@
 			}
 		},
 		calcStatus: function () {
-			var todos = 0;
+			var tobuys = 0;
 			var completed = 0;
-			this.forEach(function (todo) {
-				todo.completed && ++completed || ++todos;
+			this.forEach(function (tobuy) {
+				tobuy.completed && ++completed || ++tobuys;
 			});
 
 			this.status.count = this.length;
-			this.status.todoCount = todos;
+			this.status.tobuyCount = tobuys;
 			this.status.completedCount = completed;
 			return this;
 		}

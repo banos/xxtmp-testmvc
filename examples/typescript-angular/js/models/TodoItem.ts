@@ -1,6 +1,6 @@
 /// <reference path='../_all.ts' />
 
-module todos {
+module tobuys {
     'use strict';
 
     export class TodoItem {

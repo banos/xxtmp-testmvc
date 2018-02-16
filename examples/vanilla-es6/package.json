@@ -5,8 +5,8 @@
     "prepublish": "npm run compile"
   },
   "dependencies": {
-    "todomvc-app-css": "^2.0.1",
-    "todomvc-common": "^1.0.2"
+    "tobuymvc-app-css": "^2.0.1",
+    "tobuymvc-common": "^1.0.2"
   },
   "devDependencies": {
     "google-closure-compiler": "^20160315.2.0"

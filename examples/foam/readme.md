@@ -18,7 +18,7 @@ FOAM is beta and under heavy development. The [tutorial](https://foam-framework.
 The main pieces here are the `Todo` model and the controller. Both have a template - for an individual row, and for the whole page, respectively.
 
 `Controller` is the central point of coordination for the app. It has several different reactive pieces.
-- It has a property, `input`, which is bound to the new todo input box. When the user presses enter, the value from the DOM element is written to `input`, and its `postSet` will fire, adding the new `Todo` to the database.
+- It has a property, `input`, which is bound to the new tobuy input box. When the user presses enter, the value from the DOM element is written to `input`, and its `postSet` will fire, adding the new `Todo` to the database.
 - `dao` ("Data Access Object") is the unfiltered database of all `Todo`s.
 - `filteredDAO` is a filtered view onto that database. The filter is controlled by `query`.
 - The `view` property for `query` determines the appearance and behavior of the All-Active-Completed buttons.

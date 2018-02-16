@@ -11,7 +11,7 @@ define([
 		filter: undefined,
 
 		activate: function () {
-			return router.activate('todoapp');
+			return router.activate('tobuyapp');
 		}
 	};
 });

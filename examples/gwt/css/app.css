@@ -16,38 +16,38 @@
 }
 
 /* The GWT TodoMVC uses a CellList - a framework widget for rendering a list of cells - to
-   render the list of todo items. Unfortunately the CellList uses a div as its root container
+   render the list of tobuy items. Unfortunately the CellList uses a div as its root container
    and wraps each cell in a separate div. There are no extension points that allow you to change this.
    As a result, this application deviates from the TodoMVC standard of ul / li for the to do list. The
    styles applied to the li elements are duplicated here, matching a listItem class instead. */
 
-#todo-list .listItem {
+#tobuy-list .listItem {
 	position: relative;
 	font-size: 24px;
 	border-bottom: 1px solid #ededed;
 }
 
-#todo-list div :last-child .listItem {
+#tobuy-list div :last-child .listItem {
 	border-bottom: none;
 }
 
-#todo-list .listItem.editing {
+#tobuy-list .listItem.editing {
 	border-bottom: none;
 	padding: 0;
 }
 
-#todo-list .listItem.editing .edit {
+#tobuy-list .listItem.editing .edit {
 	display: block;
 	width: 506px;
 	padding: 13px 17px 12px 17px;
 	margin: 0 0 0 43px;
 }
 
-#todo-list .listItem.editing .view {
+#tobuy-list .listItem.editing .view {
 	display: none;
 }
 
-#todo-list .listItem .toggle {
+#tobuy-list .listItem .toggle {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -61,15 +61,15 @@
 	appearance: none;
 }
 
-#todo-list .listItem .toggle:after {
+#tobuy-list .listItem .toggle:after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
 }
 
-#todo-list .listItem .toggle:checked:after {
+#tobuy-list .listItem .toggle:checked:after {
 	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
 }
 
-#todo-list .listItem label {
+#tobuy-list .listItem label {
 	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
@@ -79,12 +79,12 @@
 	transition: color 0.4s;
 }
 
-#todo-list .listItem.completed label {
+#tobuy-list .listItem.completed label {
 	color: #d9d9d9;
 	text-decoration: line-through;
 }
 
-#todo-list .listItem .destroy {
+#tobuy-list .listItem .destroy {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -99,32 +99,32 @@
 	transition: color 0.2s ease-out;
 }
 
-#todo-list .listItem .destroy:hover {
+#tobuy-list .listItem .destroy:hover {
 	color: #af5b5e;
 }
 
-#todo-list .listItem .destroy:after {
+#tobuy-list .listItem .destroy:after {
 	content: '×';
 }
 
-#todo-list .listItem:hover .destroy {
+#tobuy-list .listItem:hover .destroy {
 	display: block;
 }
 
-#todo-list .listItem .edit {
+#tobuy-list .listItem .edit {
 	display: none;
 }
 
-#todo-list div :last-child .listItem.editing {
+#tobuy-list div :last-child .listItem.editing {
 	margin-bottom: -1px;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	.todo-list .listItem .toggle {
+	.tobuy-list .listItem .toggle {
 		background: none;
 	}
 
-	#todo-list .listItem .toggle {
+	#tobuy-list .listItem .toggle {
 		height: 40px;
 	}
 }

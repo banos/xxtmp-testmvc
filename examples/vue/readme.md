@@ -22,7 +22,7 @@ Get help from other Vue.js users:
 * [Vue.js on Gitter](https://gitter.im/vuejs/vue)
 * [Vue.js Forum](http://forum.vuejs.org)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 ## Credit
 

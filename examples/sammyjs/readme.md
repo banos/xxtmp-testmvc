@@ -26,7 +26,7 @@ Get help from other Sammy.js users:
 * [Mailing list on Google Groups](http://groups.google.com/group/sammyjs)
 * [Sammy.js on Twitter](http://twitter.com/sammy_js)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Credit

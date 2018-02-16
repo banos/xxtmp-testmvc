@@ -1,5 +1,5 @@
 mediator = require 'mediator'
-Todos = require 'models/todos'
+Todos = require 'models/tobuys'
 
 # The application object
 module.exports = class Application extends Chaplin.Application
@@ -11,11 +11,11 @@ module.exports = class Application extends Chaplin.Application
   # -------------------------------------
   initMediator: ->
     # Add additional application-specific properties and methods
-    mediator.todos = new Todos()
+    mediator.tobuys = new Todos()
     # Seal the mediator
     super
 
   start: ->
-    # If todos are fetched from server, we will need to wait for them.
-    mediator.todos.fetch()
+    # If tobuys are fetched from server, we will need to wait for them.
+    mediator.tobuys.fetch()
     super

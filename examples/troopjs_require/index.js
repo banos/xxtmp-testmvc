@@ -2,7 +2,7 @@ require({
 	baseUrl: 'node_modules',
 
 	packages: [{
-		name: 'todos-troopjs',
+		name: 'tobuys-troopjs',
 		location: '../js'
 	}],
 

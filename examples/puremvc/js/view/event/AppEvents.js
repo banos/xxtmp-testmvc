@@ -2,9 +2,9 @@
  * @author Cliff Hall
  *
  * @class AppEvents
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
-puremvc.define({ name: 'todomvc.view.event.AppEvents' }, {},
+puremvc.define({ name: 'tobuymvc.view.event.AppEvents' }, {},
 	// STATIC MEMBERS
 	{
 		// Event name constants

@@ -22,7 +22,7 @@
 - [Google Groups](https://groups.google.com/forum/#!forum/jsblocks)
 - [Google+](https://plus.google.com/communities/100030562502977783693)
 
-*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/tastejs/tobuymvc/issues) if you discover anything worth sharing.*
 
 ## Credit
 

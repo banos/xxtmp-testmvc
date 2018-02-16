@@ -1,4 +1,4 @@
-<span id="todo-count">
+<span id="tobuy-count">
 	<strong><%= itemsLeft %></strong> <%= itemsLeft == 0 || itemsLeft > 1 ? 'items' : 'item' %> left
 </span>
 <ul id="filters">

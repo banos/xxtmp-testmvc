@@ -1,8 +1,8 @@
-(ns todomvc.components.todos-list
-  (:require [todomvc.components.todo-item :as todo-item]))
+(ns tobuymvc.components.tobuys-list
+  (:require [tobuymvc.components.tobuy-item :as tobuy-item]))
 
-(defn component [todos]
-  [:ul#todo-list
-   (for [todo todos]
-     ^{:key (:id todo)}
-     [todo-item/component todo])])
+(defn component [tobuys]
+  [:ul#tobuy-list
+   (for [tobuy tobuys]
+     ^{:key (:id tobuy)}
+     [tobuy-item/component tobuy])])

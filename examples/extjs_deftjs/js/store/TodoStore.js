@@ -11,15 +11,15 @@ Ext.define('TodoDeftJS.store.TodoStore', {
 
 	proxy: {
 		type: 'localstorage',
-		id: 'todos-deftjs'
+		id: 'tobuys-deftjs'
 	},
 
 	completedCount: function () {
 		var numberComplete;
 		numberComplete = 0;
 
-		this.each(function (todo) {
-			if (todo.get('completed')) {
+		this.each(function (tobuy) {
+			if (tobuy.get('completed')) {
 				return numberComplete++;
 			}
 		});
@@ -31,8 +31,8 @@ Ext.define('TodoDeftJS.store.TodoStore', {
 		var numberInomplete;
 		numberInomplete = 0;
 
-		this.each(function (todo) {
-			if (!todo.get('completed')) {
+		this.each(function (tobuy) {
+			if (!tobuy.get('completed')) {
 				return numberInomplete++;
 			}
 		});
@@ -44,9 +44,9 @@ Ext.define('TodoDeftJS.store.TodoStore', {
 		var editingTodo;
 		editingTodo = null;
 
-		this.each(function (todo) {
-			if (todo.get('editing')) {
-				editingTodo = todo;
+		this.each(function (tobuy) {
+			if (tobuy.get('editing')) {
+				editingTodo = tobuy;
 				return false;
 			}
 		});
@@ -55,8 +55,8 @@ Ext.define('TodoDeftJS.store.TodoStore', {
 	},
 
 	toggleAllCompleted: function (isCompleted) {
-		this.each(function (todo) {
-			return todo.set('completed', isCompleted);
+		this.each(function (tobuy) {
+			return tobuy.set('completed', isCompleted);
 		});
 	},
 
@@ -64,9 +64,9 @@ Ext.define('TodoDeftJS.store.TodoStore', {
 		var removedTodos;
 		removedTodos = [];
 
-		this.each(function (todo) {
-			if (todo.get('completed')) {
-				return removedTodos.push(todo);
+		this.each(function (tobuy) {
+			if (tobuy.get('completed')) {
+				return removedTodos.push(tobuy);
 			}
 		});
 

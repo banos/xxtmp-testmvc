@@ -1,12 +1,12 @@
 /**
- *	Extend INPUT tag to edit a todo's title
+ *	Extend INPUT tag to edit a tobuy's title
  *		- format string
  *		- complete edit on ENTER
  *		- complete edit on BLUR
  *
  *	Used as
  *		- the main application's input
- *		- single todo item editor
+ *		- single tobuy item editor
  *
  *	Public Signals
  *		- cancel: input interrupted

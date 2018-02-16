@@ -1,4 +1,4 @@
-goog.provide('todomvc.model.ToDoItemStore');
+goog.provide('tobuymvc.model.ToDoItemStore');
 
 goog.require('goog.array');
 goog.require('goog.events.Event');
@@ -8,14 +8,14 @@ goog.require('goog.storage.mechanism.mechanismfactory');
 goog.require('goog.string');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Control');
-goog.require('todomvc.model.ToDoItem');
+goog.require('tobuymvc.model.ToDoItem');
 
 
 /**
  * @constructor
  * @extends {goog.events.EventTarget}
  */
-todomvc.model.ToDoItemStore = function() {
+tobuymvc.model.ToDoItemStore = function() {
     goog.events.EventTarget.call(this);
 
     var mechanism = goog.storage.mechanism.mechanismfactory
@@ -27,7 +27,7 @@ todomvc.model.ToDoItemStore = function() {
     this.storage_ = mechanism ? new goog.storage.Storage(mechanism) : null;
 
     /**
-     * @type {!Array.<todomvc.model.ToDoItem>}
+     * @type {!Array.<tobuymvc.model.ToDoItem>}
      * @private
      */
     this.items_ = [];
@@ -39,12 +39,12 @@ todomvc.model.ToDoItemStore = function() {
      */
     this.maxId_ = 0;
 };
-goog.inherits(todomvc.model.ToDoItemStore, goog.events.EventTarget);
+goog.inherits(tobuymvc.model.ToDoItemStore, goog.events.EventTarget);
 
 /**
  * Load item list from storage
  */
-todomvc.model.ToDoItemStore.prototype.load = function() {
+tobuymvc.model.ToDoItemStore.prototype.load = function() {
     if (!this.storage_) {
         this.notify_(false);
         return; // no storage = no loading!
@@ -54,13 +54,13 @@ todomvc.model.ToDoItemStore.prototype.load = function() {
      * @type {Array.<*>}
      */
     var serializedItems = /** @type {Array.<*>} */
-        (this.storage_.get('todos-closure'));
+        (this.storage_.get('tobuys-closure'));
     if (!serializedItems) {
         this.notify_(false);
         return; // nothing in storage
     }
     goog.array.forEach(serializedItems, function(serializedItem) {
-        var item = new todomvc.model.ToDoItem(serializedItem['title'],
+        var item = new tobuymvc.model.ToDoItem(serializedItem['title'],
                 serializedItem['completed'], serializedItem['id']);
         if (item.getId() > this.maxId_) {
             this.maxId_ = item.getId();
@@ -71,9 +71,9 @@ todomvc.model.ToDoItemStore.prototype.load = function() {
 };
 
 /**
- * @param {!todomvc.model.ToDoItem} updatedItem A prototype model to update.
+ * @param {!tobuymvc.model.ToDoItem} updatedItem A prototype model to update.
  */
-todomvc.model.ToDoItemStore.prototype.addOrUpdate = function(updatedItem) {
+tobuymvc.model.ToDoItemStore.prototype.addOrUpdate = function(updatedItem) {
     var idx = goog.array.findIndex(this.items_, function(item) {
         return updatedItem.getId() === item.getId();
     });
@@ -89,9 +89,9 @@ todomvc.model.ToDoItemStore.prototype.addOrUpdate = function(updatedItem) {
 };
 
 /**
- * @param {!todomvc.model.ToDoItem} itemToRemove A prototype model to remove.
+ * @param {!tobuymvc.model.ToDoItem} itemToRemove A prototype model to remove.
  */
-todomvc.model.ToDoItemStore.prototype.remove = function(itemToRemove) {
+tobuymvc.model.ToDoItemStore.prototype.remove = function(itemToRemove) {
     goog.array.removeIf(this.items_, function(item) {
         return itemToRemove.getId() === item.getId();
     });
@@ -102,25 +102,25 @@ todomvc.model.ToDoItemStore.prototype.remove = function(itemToRemove) {
  * @param {boolean=} opt_save whether to save to storage, defaults to true.
  * @private
  */
-todomvc.model.ToDoItemStore.prototype.notify_ = function(opt_save) {
+tobuymvc.model.ToDoItemStore.prototype.notify_ = function(opt_save) {
     // TODO delay until all changes have been made
     if (!goog.isDef(opt_save) || opt_save) {
         this.save_();
     }
-    this.dispatchEvent(new todomvc.model.ToDoItemStore.ChangeEvent(this));
+    this.dispatchEvent(new tobuymvc.model.ToDoItemStore.ChangeEvent(this));
 };
 
 /**
- * @return {Array.<todomvc.model.ToDoItem>} All of the stored items.
+ * @return {Array.<tobuymvc.model.ToDoItem>} All of the stored items.
  */
-todomvc.model.ToDoItemStore.prototype.getAll = function() {
+tobuymvc.model.ToDoItemStore.prototype.getAll = function() {
     return this.items_;
 };
 
 /**
  * @private
  */
-todomvc.model.ToDoItemStore.prototype.save_ = function() {
+tobuymvc.model.ToDoItemStore.prototype.save_ = function() {
     if (!this.storage_) {
         return; // no storage = no saving!
     }
@@ -135,21 +135,21 @@ todomvc.model.ToDoItemStore.prototype.save_ = function() {
             'id' : item.getId()
         });
     });
-    this.storage_.set('todos-closure', serializedItems);
+    this.storage_.set('tobuys-closure', serializedItems);
 };
 
 /**
  * @const
  */
-todomvc.model.ToDoItemStore.ChangeEventType = 'change';
+tobuymvc.model.ToDoItemStore.ChangeEventType = 'change';
 
 /**
  * @constructor
  * @extends {goog.events.Event}
- * @param {todomvc.model.ToDoItemStore} target The item store.
+ * @param {tobuymvc.model.ToDoItemStore} target The item store.
  */
-todomvc.model.ToDoItemStore.ChangeEvent = function(target) {
+tobuymvc.model.ToDoItemStore.ChangeEvent = function(target) {
     goog.events.Event.call(this,
-        todomvc.model.ToDoItemStore.ChangeEventType, target);
+        tobuymvc.model.ToDoItemStore.ChangeEventType, target);
 };
-goog.inherits(todomvc.model.ToDoItemStore.ChangeEvent, goog.events.Event);
+goog.inherits(tobuymvc.model.ToDoItemStore.ChangeEvent, goog.events.Event);

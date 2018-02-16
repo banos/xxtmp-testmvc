@@ -8,7 +8,7 @@ Aria.classDefinition({
 	$dependencies: ['aria.storage.LocalStorage'],
 
 	$statics: {
-		STORAGE_NAME: 'todos-ariatemplates'
+		STORAGE_NAME: 'tobuys-ariatemplates'
 	},
 
 	$constructor: function (storagename) {
@@ -18,7 +18,7 @@ Aria.classDefinition({
 		this.__storagename = storagename || this.STORAGE_NAME;
 		tasklist = this._storage.getItem(this.__storagename);
 		this.setData({
-			todolist: (tasklist ? tasklist : [])
+			tobuylist: (tasklist ? tasklist : [])
 		});
 	},
 
@@ -26,15 +26,15 @@ Aria.classDefinition({
 		$publicInterfaceName: 'js.ITodoCtrl',
 
 		saveTasks: function () {
-			this._storage.setItem(this.__storagename, this._data.todolist);
+			this._storage.setItem(this.__storagename, this._data.tobuylist);
 		},
 
 		addTask: function (description) {
-			this.json.add(this._data.todolist, {title: description, completed: false});
+			this.json.add(this._data.tobuylist, {title: description, completed: false});
 		},
 
 		deleteTask: function (idx) {
-			this.json.removeAt(this._data.todolist, idx);
+			this.json.removeAt(this._data.tobuylist, idx);
 		}
 	}
 });

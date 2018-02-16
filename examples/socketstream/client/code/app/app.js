@@ -28,8 +28,8 @@ jQuery(function ($) {
 
 	var App = {
 		init: function () {
-			ss.rpc('todos.getAll', function (todos) {
-				this.todos = todos;
+			ss.rpc('tobuys.getAll', function (tobuys) {
+				this.tobuys = tobuys;
 				this.cacheElements();
 				this.bindEvents();
 
@@ -42,18 +42,18 @@ jQuery(function ($) {
 			}.bind(this));
 		},
 		cacheElements: function () {
-			this.$todoApp = $('#todoapp');
-			this.$header = this.$todoApp.find('#header');
-			this.$main = this.$todoApp.find('#main');
-			this.$footer = this.$todoApp.find('#footer');
-			this.$newTodo = this.$header.find('#new-todo');
+			this.$tobuyApp = $('#tobuyapp');
+			this.$header = this.$tobuyApp.find('#header');
+			this.$main = this.$tobuyApp.find('#main');
+			this.$footer = this.$tobuyApp.find('#footer');
+			this.$newTodo = this.$header.find('#new-tobuy');
 			this.$toggleAll = this.$main.find('#toggle-all');
-			this.$todoList = this.$main.find('#todo-list');
-			this.$count = this.$footer.find('#todo-count');
+			this.$tobuyList = this.$main.find('#tobuy-list');
+			this.$count = this.$footer.find('#tobuy-count');
 			this.$clearBtn = this.$footer.find('#clear-completed');
 		},
 		bindEvents: function () {
-			var list = this.$todoList;
+			var list = this.$tobuyList;
 			this.$newTodo.on('keyup', this.create.bind(this));
 			this.$toggleAll.on('change', this.toggleAll.bind(this));
 			this.$footer.on('click', '#clear-completed', this.destroyCompleted.bind(this));
@@ -63,58 +63,58 @@ jQuery(function ($) {
 			list.on('focusout', '.edit', this.update.bind(this));
 			list.on('click', '.destroy', this.destroy.bind(this));
 
-			ss.event.on('updateTodos', function (todos) {
-				this.todos = todos;
+			ss.event.on('updateTodos', function (tobuys) {
+				this.tobuys = tobuys;
 				this.render(true);
 			}.bind(this));
 		},
 		render: function (preventRpc) {
-			var todos = this.getFilteredTodos();
+			var tobuys = this.getFilteredTodos();
 
-			this.$todoList.html(todos.map(function (el) {
-				return ss.tmpl.todo.render(el);
+			this.$tobuyList.html(tobuys.map(function (el) {
+				return ss.tmpl.tobuy.render(el);
 			}).join(''));
 
-			this.$main.toggle(todos.length > 0);
+			this.$main.toggle(tobuys.length > 0);
 			this.$toggleAll.prop('checked', this.getActiveTodos().length === 0);
 			this.renderFooter();
 			this.$newTodo.focus();
 
 			if (!preventRpc) {
-				ss.rpc('todos.update', this.todos);
+				ss.rpc('tobuys.update', this.tobuys);
 			}
 		},
 		renderFooter: function () {
-			var todoCount = this.todos.length;
+			var tobuyCount = this.tobuys.length;
 			var activeTodoCount = this.getActiveTodos().length;
 			var footer = {
 				activeTodoCount: activeTodoCount,
 				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
-				completedTodos: todoCount - activeTodoCount,
+				completedTodos: tobuyCount - activeTodoCount,
 				filterAll: this.filter === 'all',
 				filterActive: this.filter === 'active',
 				filterCompleted: this.filter === 'completed'
 			};
 
-			this.$footer.toggle(todoCount > 0).html(ss.tmpl.footer.render(footer));
+			this.$footer.toggle(tobuyCount > 0).html(ss.tmpl.footer.render(footer));
 		},
 		toggleAll: function (e) {
 			var isChecked = $(e.target).prop('checked');
 
-			this.todos.forEach(function (todo) {
-				todo.completed = isChecked;
+			this.tobuys.forEach(function (tobuy) {
+				tobuy.completed = isChecked;
 			});
 
 			this.render();
 		},
 		getActiveTodos: function () {
-			return this.todos.filter(function (todo) {
-				return !todo.completed;
+			return this.tobuys.filter(function (tobuy) {
+				return !tobuy.completed;
 			});
 		},
 		getCompletedTodos: function () {
-			return this.todos.filter(function (todo) {
-				return todo.completed;
+			return this.tobuys.filter(function (tobuy) {
+				return tobuy.completed;
 			});
 		},
 		getFilteredTodos: function () {
@@ -126,22 +126,22 @@ jQuery(function ($) {
 				return this.getCompletedTodos();
 			}
 
-			return this.todos;
+			return this.tobuys;
 		},
 		destroyCompleted: function () {
-			this.todos = this.getActiveTodos();
+			this.tobuys = this.getActiveTodos();
 			this.filter = 'all';
 			this.render();
 		},
 		// accepts an element from inside the `.item` div and
-		// returns the corresponding index in the `todos` array
+		// returns the corresponding index in the `tobuys` array
 		indexFromEl: function (el) {
 			var id = $(el).closest('li').data('id');
-			var todos = this.todos;
-			var i = todos.length;
+			var tobuys = this.tobuys;
+			var i = tobuys.length;
 
 			while (i--) {
-				if (todos[i].id === id) {
+				if (tobuys[i].id === id) {
 					return i;
 				}
 			}
@@ -154,7 +154,7 @@ jQuery(function ($) {
 				return;
 			}
 
-			this.todos.push({
+			this.tobuys.push({
 				id: util.uuid(),
 				title: val,
 				completed: false
@@ -166,7 +166,7 @@ jQuery(function ($) {
 		},
 		toggle: function (e) {
 			var i = this.indexFromEl(e.target);
-			this.todos[i].completed = !this.todos[i].completed;
+			this.tobuys[i].completed = !this.tobuys[i].completed;
 			this.render();
 		},
 		edit: function (e) {
@@ -196,15 +196,15 @@ jQuery(function ($) {
 			var i = this.indexFromEl(el);
 
 			if (val) {
-				this.todos[i].title = val;
+				this.tobuys[i].title = val;
 			} else {
-				this.todos.splice(i, 1);
+				this.tobuys.splice(i, 1);
 			}
 
 			this.render();
 		},
 		destroy: function (e) {
-			this.todos.splice(this.indexFromEl(e.target), 1);
+			this.tobuys.splice(this.indexFromEl(e.target), 1);
 			this.render();
 		}
 	};

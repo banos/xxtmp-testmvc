@@ -3,32 +3,32 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Dijon • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>tobuys</h1>
+				<input id="new-tobuy" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section id="main">
 				<input id="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list"></ul>
+				<ul id="tobuy-list"></ul>
 			</section>
 			<footer id="footer">
-				<span id="todo-count"><strong>0</strong> item left</span>
+				<span id="tobuy-count"><strong>0</strong> item left</span>
 				<button id="clear-completed">Clear completed</button>
 			</footer>
 		</section>
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Based on app by <a href="http://github.com/sindresorhus">Sindre Sorhus</a></p>
 			<p>Created by <a href="http://www.creynders.be">Camille Reynders</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
-		<script type="text/x-handlebars-template" id="todo-template">
+		<script type="text/x-handlebars-template" id="tobuy-template">
 		{{#this}}
 		<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
 			<div class="view">
@@ -40,7 +40,7 @@
 		</li>
 		{{/this}}
 		</script>
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 		<script src="node_modules/handlebars/dist/handlebars.js"></script>
 		<script src="js/lib/dijon-0.5.3.js"></script>

@@ -1,7 +1,7 @@
 import 'package:di/di.dart';
 import 'package:angular/angular.dart';
 
-import 'todo.dart';
+import 'tobuy.dart';
 import 'directives.dart';
 
 main() {

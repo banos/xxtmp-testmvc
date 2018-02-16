@@ -27,7 +27,7 @@ import Todo.Task
 
 
 -- MODEL
--- The full application state of our todo app.
+-- The full application state of our tobuy app.
 
 
 type alias Model =
@@ -159,11 +159,11 @@ focusTask elementId =
 view : Model -> Html Msg
 view model =
     div
-        [ class "todomvc-wrapper"
+        [ class "tobuymvc-wrapper"
         , style [ ( "visibility", "hidden" ) ]
         ]
         [ section
-            [ class "todoapp" ]
+            [ class "tobuyapp" ]
             [ lazy taskEntry model.field
             , lazy2 taskList model.visibility model.tasks
             , lazy2 controls model.visibility model.tasks
@@ -176,9 +176,9 @@ taskEntry : String -> Html Msg
 taskEntry task =
     header
         [ class "header" ]
-        [ h1 [] [ text "todos" ]
+        [ h1 [] [ text "tobuys" ]
         , input
-            [ class "new-todo"
+            [ class "new-tobuy"
             , placeholder "What needs to be done?"
             , autofocus True
             , value task
@@ -193,13 +193,13 @@ taskEntry task =
 taskList : String -> List Todo.Task.Model -> Html Msg
 taskList visibility tasks =
     let
-        isVisible todo =
+        isVisible tobuy =
             case visibility of
                 "Completed" ->
-                    todo.completed
+                    tobuy.completed
 
                 "Active" ->
-                    not todo.completed
+                    not tobuy.completed
 
                 -- "All"
                 _ ->
@@ -230,7 +230,7 @@ taskList visibility tasks =
                 [ for "toggle-all" ]
                 [ text "Mark all as complete" ]
             , ul
-                [ class "todo-list" ]
+                [ class "tobuy-list" ]
                 (List.map
                     (\task ->
                         let
@@ -267,7 +267,7 @@ controls visibility tasks =
             , hidden (List.isEmpty tasks)
             ]
             [ span
-                [ class "todo-count" ]
+                [ class "tobuy-count" ]
                 [ strong [] [ text (toString tasksLeft) ]
                 , text (item_ ++ " left")
                 ]
@@ -306,14 +306,14 @@ infoFooter : Html msg
 infoFooter =
     footer
         [ class "info" ]
-        [ p [] [ text "Double-click to edit a todo" ]
+        [ p [] [ text "Double-click to edit a tobuy" ]
         , p []
             [ text "Written by "
             , a [ href "https://github.com/evancz" ] [ text "Evan Czaplicki" ]
             ]
         , p []
             [ text "Part of "
-            , a [ href "http://todomvc.com" ] [ text "TodoMVC" ]
+            , a [ href "http://tobuymvc.com" ] [ text "TodoMVC" ]
             ]
         ]
 

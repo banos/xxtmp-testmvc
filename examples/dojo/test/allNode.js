@@ -1,3 +1,3 @@
 define([
-	'./todo/computed'
+	'./tobuy/computed'
 ], 1);

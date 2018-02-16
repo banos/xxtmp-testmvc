@@ -8,36 +8,36 @@ define([
 	'use strict';
 
 	// our main view model
-	var ViewModel = function (todos) {
+	var ViewModel = function (tobuys) {
 		var self = this;
 
-		// map array of passed in todos to an observableArray of Todo objects
-		self.todos = ko.observableArray(ko.utils.arrayMap(todos, function (todo) {
-			return new Todo(todo.title, todo.completed);
+		// map array of passed in tobuys to an observableArray of Todo objects
+		self.tobuys = ko.observableArray(ko.utils.arrayMap(tobuys, function (tobuy) {
+			return new Todo(tobuy.title, tobuy.completed);
 		}));
 
-		// store the new todo value being entered
+		// store the new tobuy value being entered
 		self.current = ko.observable();
 
-		// add a new todo, when enter key is pressed
+		// add a new tobuy, when enter key is pressed
 		self.add = function () {
 			var current = self.current().trim();
 
 			if (current) {
-				self.todos.push(new Todo(current));
+				self.tobuys.push(new Todo(current));
 				self.current('');
 			}
 		};
 
-		// remove a single todo
-		self.remove = function (todo) {
-			self.todos.remove(todo);
+		// remove a single tobuy
+		self.remove = function (tobuy) {
+			self.tobuys.remove(tobuy);
 		};
 
-		// remove all completed todos
+		// remove all completed tobuys
 		self.removeCompleted = function () {
-			self.todos.remove(function (todo) {
-				return todo.completed();
+			self.tobuys.remove(function (tobuy) {
+				return tobuy.completed();
 			});
 		};
 
@@ -72,29 +72,29 @@ define([
 			item.title(item.previousTitle);
 		};
 
-		// count of all completed todos
+		// count of all completed tobuys
 		self.completedCount = ko.computed(function () {
-			return ko.utils.arrayFilter(self.todos(), function (todo) {
-				return todo.completed();
+			return ko.utils.arrayFilter(self.tobuys(), function (tobuy) {
+				return tobuy.completed();
 			}).length;
 		});
 
-		// count of todos that are not complete
+		// count of tobuys that are not complete
 		self.remainingCount = ko.computed(function () {
-			return self.todos().length - self.completedCount();
+			return self.tobuys().length - self.completedCount();
 		});
 
 		// writeable computed observable to handle marking all complete/incomplete
 		self.allCompleted = ko.computed({
-			//always return true/false based on the done flag of all todos
+			//always return true/false based on the done flag of all tobuys
 			read: function () {
 				return !self.remainingCount();
 			},
-			// set all todos to the written value (true/false)
+			// set all tobuys to the written value (true/false)
 			write: function (newValue) {
-				ko.utils.arrayForEach(self.todos(), function (todo) {
+				ko.utils.arrayForEach(self.tobuys(), function (tobuy) {
 					// set even if value is the same, as subscribers are not notified in that case
-					todo.completed(newValue);
+					tobuy.completed(newValue);
 				});
 			}
 		});
@@ -104,11 +104,11 @@ define([
 			return ko.utils.unwrapObservable(count) === 1 ? 'item' : 'items';
 		};
 
-		// internal computed observable that fires whenever anything changes in our todos
+		// internal computed observable that fires whenever anything changes in our tobuys
 		ko.computed(function () {
 			// store a clean copy to local storage, which also creates a dependency
 			// on the observableArray and all observables in each item
-			window.localStorage.setItem(g.localStorageItem, ko.toJSON(self.todos));
+			window.localStorage.setItem(g.localStorageItem, ko.toJSON(self.tobuys));
 		}).extend({
 			rateLimit: { timeout: 500, method: 'notifyWhenChangesStop' }
 		}); // save at most twice per second

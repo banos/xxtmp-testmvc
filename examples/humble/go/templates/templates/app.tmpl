@@ -1,12 +1,12 @@
 <header class="header">
-	<h1>todos</h1>
-	<input class="new-todo" placeholder="What needs to be done?" autofocus>
+	<h1>tobuys</h1>
+	<input class="new-tobuy" placeholder="What needs to be done?" autofocus>
 </header>
 {{ if gt (len .Todos.All) 0 }}
 <section class="main">
 	<input class="toggle-all" type="checkbox" {{ if eq (len .Todos.All) (len .Todos.Completed) }}checked{{ end }}>
 	<label for="toggle-all">Mark all as complete</label>
-	<ul class="todo-list">
+	<ul class="tobuy-list">
 	</ul>
 </section>
 {{ end }}

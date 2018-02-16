@@ -22,14 +22,14 @@
 				location: './node_modules/dojox'
 			},
 			{
-				name: 'todo',
-				location: './js/todo'
+				name: 'tobuy',
+				location: './js/tobuy'
 			}
 		],
 		map: {
 			// TodoMVC application does not use template from file system
 			'dijit/_TemplatedMixin': {
-				'dojo/cache': 'todo/empty'
+				'dojo/cache': 'tobuy/empty'
 			}
 		},
 		parseOnLoad: false

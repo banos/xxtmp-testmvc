@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Elm • TodoMVC</title>
-	<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-	<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+	<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+	<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	<style>
 		body {
 			width: auto;
 		}
-		.todomvc-wrapper {
+		.tobuymvc-wrapper {
 			visibility: visible !important;
 		}
 	</style>
@@ -19,16 +19,16 @@
 <script src="build/elm.js"></script>
 <script>
 	(function () {
-		var result = localStorage.getItem('elm-todo-model');
+		var result = localStorage.getItem('elm-tobuy-model');
 		var savedModel = result ? JSON.parse(result) : null;
 
-		var todomvc = Elm.Todo.fullscreen(savedModel);
+		var tobuymvc = Elm.Todo.fullscreen(savedModel);
 
-		todomvc.ports.save.subscribe(function (model) {
-			localStorage.setItem('elm-todo-model', JSON.stringify(model));
+		tobuymvc.ports.save.subscribe(function (model) {
+			localStorage.setItem('elm-tobuy-model', JSON.stringify(model));
 		});
 	}());
 </script>
-<script async src="node_modules/todomvc-common/base.js"></script>
+<script async src="node_modules/tobuymvc-common/base.js"></script>
 </body>
 </html>

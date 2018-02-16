@@ -9,7 +9,7 @@ var TodoMVC = TodoMVC || {};
 
 	TodoMVC.RootLayout = Mn.View.extend({
 
-		el: '#todoapp',
+		el: '#tobuyapp',
 
 		regions: {
 			header: '#header',
@@ -27,7 +27,7 @@ var TodoMVC = TodoMVC || {};
 		// UI bindings create cached attributes that
 		// point to jQuery selected objects
 		ui: {
-			input: '#new-todo'
+			input: '#new-tobuy'
 		},
 
 		events: {
@@ -47,11 +47,11 @@ var TodoMVC = TodoMVC || {};
 
 		onInputKeypress: function (e) {
 			var ENTER_KEY = 13;
-			var todoText = this.ui.input.val().trim();
+			var tobuyText = this.ui.input.val().trim();
 
-			if (e.which === ENTER_KEY && todoText) {
+			if (e.which === ENTER_KEY && tobuyText) {
 				this.collection.create({
-					title: todoText
+					title: tobuyText
 				});
 				this.ui.input.val('');
 			}
@@ -70,7 +70,7 @@ var TodoMVC = TodoMVC || {};
 			completed: '.completed a',
 			active: '.active a',
 			all: '.all a',
-			summary: '#todo-count',
+			summary: '#tobuy-count',
 			clear: '#clear-completed'
 		},
 
@@ -116,8 +116,8 @@ var TodoMVC = TodoMVC || {};
 
 		onClearClick: function () {
 			var completed = this.collection.getCompleted();
-			completed.forEach(function (todo) {
-				todo.destroy();
+			completed.forEach(function (tobuy) {
+				tobuy.destroy();
 			});
 		}
 	});

@@ -102,14 +102,14 @@
 
 			router.mapNav({
 				url: '/',
-				moduleId: 'js/viewmodels/todoapp',
+				moduleId: 'js/viewmodels/tobuyapp',
 				name: 'TodoMVC',
 				caption: 'Durandal • TodoMVC'
 			});
 
 			router.mapNav({
 				url: '#/:filter',
-				moduleId: 'js/viewmodels/todoapp',
+				moduleId: 'js/viewmodels/tobuyapp',
 				name: 'TodoMVC',
 				hash: '#/filter',
 				caption: 'Durandal • TodoMVC'

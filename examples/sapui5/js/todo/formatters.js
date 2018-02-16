@@ -1,4 +1,4 @@
-/*global jQuery, todo */
+/*global jQuery, tobuy */
 /*jshint unused:false */
 
 /*
@@ -7,10 +7,10 @@
 (function () {
 	'use strict';
 
-	jQuery.sap.declare('todo.formatters');
+	jQuery.sap.declare('tobuy.formatters');
 
-	todo.formatters = {
-		// Returns whether all todos are completed
+	tobuy.formatters = {
+		// Returns whether all tobuys are completed
 		allCompletedTodosFormatter: function (aTodos) {
 			return !(aTodos.some(function (element, index, array) {
 				return element.done === false;
@@ -25,7 +25,7 @@
 			return 'false';
 		},
 
-		// Returns whether a completed todo is available
+		// Returns whether a completed tobuy is available
 		hasCompletedTodosFormatter: function (aTodos) {
 			return aTodos.some(function (element, index, array) {
 				return element.done === true;
@@ -37,11 +37,11 @@
 			return aTodos.length > 0;
 		},
 
-		// Counts the number of open todos
+		// Counts the number of open tobuys
 		openTodoCountFormatter: function (aTodos) {
 			var numberOfOpenItems = 0;
-			aTodos.forEach(function (todo) {
-				if (todo.done === false) {
+			aTodos.forEach(function (tobuy) {
+				if (tobuy.done === false) {
 					numberOfOpenItems++;
 				}
 			});

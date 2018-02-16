@@ -16,17 +16,17 @@ define([
 		 */
 		'hub/route/change(true)': function (route) {
 			return hub
-				// Emit `todos/filter` with the new `route` on `hub`, yield `void 0` to not mutate arguments for next handler
-				.emit('todos/filter', route)
+				// Emit `tobuys/filter` with the new `route` on `hub`, yield `void 0` to not mutate arguments for next handler
+				.emit('tobuys/filter', route)
 				.yield();
 		},
 
 		/**
-		 * HUB `todos/filter` handler.
+		 * HUB `tobuys/filter` handler.
 		 * Called whenever the task list filter is updated
 		 * @param {String} filter New filter
 		 */
-		'hub/todos/filter': function (filter) {
+		'hub/tobuys/filter': function (filter) {
 			this.$element
 				// Find all `a` elements with a `href` attribute staring with `#`
 				.find('a[href^="#"]')

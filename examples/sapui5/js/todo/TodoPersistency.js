@@ -1,16 +1,16 @@
-/*global jQuery, todo */
+/*global jQuery, tobuy */
 /*jshint unused:false */
 
 (function () {
 	'use strict';
 
-	jQuery.sap.declare('todo.TodoPersistency');
+	jQuery.sap.declare('tobuy.TodoPersistency');
 
-	todo.TodoPersistency = function (aName) {
+	tobuy.TodoPersistency = function (aName) {
 		this.name = aName;
 	};
 
-	todo.TodoPersistency.prototype = (function () {
+	tobuy.TodoPersistency.prototype = (function () {
 		var storage = window.localStorage;
 
 		return {

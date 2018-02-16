@@ -5,7 +5,7 @@ define([
 	'use strict';
 
 	/**
-	 * Component for the `.new-todo` input
+	 * Component for the `.new-tobuy` input
 	 */
 
 	var ENTER_KEY = 13;
@@ -28,7 +28,7 @@ define([
 
 				if (value !== '') {
 					hub
-						.emit('todos/add', value)
+						.emit('tobuys/add', value)
 						// Wait for all handlers to execute
 						.then(function () {
 							// Set `$element` value to `''`

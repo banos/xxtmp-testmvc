@@ -9,7 +9,7 @@ module Storage = struct
       (fun () -> failwith "Storage is not supported by this browser")
       (fun v -> v)
 
-  let key = string "jsoo-todo-state"
+  let key = string "jsoo-tobuy-state"
 
   let find () =
     let r = storage##getItem(key) in
@@ -128,7 +128,7 @@ module View = struct
 
   let task_input =
     Html5.(input ~a:[
-        a_class ["new-todo"] ;
+        a_class ["new-tobuy"] ;
         a_placeholder "What needs to be done?" ;
         a_autofocus `Autofocus ;
       ] ())
@@ -144,7 +144,7 @@ module View = struct
       Lwt.return @@ if evt##keyCode = 13 then send_some (Add task_input_dom##value)) ;
 
     Html5.(header ~a:[a_class ["header"]] [
-        h1 [ pcdata "todos" ];
+        h1 [ pcdata "tobuys" ];
         task_input
       ])
 
@@ -155,16 +155,16 @@ module View = struct
     task_input_dom##focus ()
 
   (** One item in the tasks list *)
-  let todo_item (todo:Model.task) =
+  let tobuy_item (tobuy:Model.task) =
     let input_check =
       Html5.(input ~a:(
           let l = [
             a_input_type `Checkbox ;
             a_class ["toggle"] ;
             a_onclick (fun _ ->
-              send_some (Check (todo.id, (not todo.completed))); true
+              send_some (Check (tobuy.id, (not tobuy.completed))); true
             )]
-          in if todo.completed then a_checked `Checked :: l else l
+          in if tobuy.completed then a_checked `Checked :: l else l
         ) ())
     in
 
@@ -172,22 +172,22 @@ module View = struct
       Html5.(input ~a:[
           a_input_type `Text ;
           a_class ["edit"] ;
-          a_value todo.description ;
-          a_id (Printf.sprintf "todo-%u" todo.id) ;
+          a_value tobuy.description ;
+          a_id (Printf.sprintf "tobuy-%u" tobuy.id) ;
           a_onblur (fun _ ->
-            send_some (Editing_task (todo.Model.id, false)); true ) ;
+            send_some (Editing_task (tobuy.Model.id, false)); true ) ;
         ] ())
     in
     let input_edit_dom = To_dom.of_input input_edit in
 
     bind_event Ev.inputs input_edit_dom (fun _ ->
-      Lwt.return @@ send_some (Update_task (todo.id, input_edit_dom##value))) ;
+      Lwt.return @@ send_some (Update_task (tobuy.id, input_edit_dom##value))) ;
 
     let key_handler evt =
       if evt##keyCode = 13 then
-        send_some (Editing_task (todo.id, false))
+        send_some (Editing_task (tobuy.id, false))
       else if evt##keyCode = 27 then
-        send_some (Action.Escape todo.id)
+        send_some (Action.Escape tobuy.id)
       else () ;
       Lwt.return_unit
     in
@@ -197,34 +197,34 @@ module View = struct
     bind_event Ev.keydowns input_edit_dom key_handler ;
 
     let css_class l =
-      let l = if todo.completed then "completed"::l else l in
-      if todo.editing then "editing"::l else l
+      let l = if tobuy.completed then "completed"::l else l in
+      if tobuy.editing then "editing"::l else l
     in
 
     Html5.(li ~a:[a_class (css_class [])] [
       div ~a:[a_class ["view"]] [
         input_check;
         label ~a:[a_ondblclick (
-            fun evt -> send_some (Editing_task (todo.id, true)); true;
-          )] [pcdata todo.Model.description];
+            fun evt -> send_some (Editing_task (tobuy.id, true)); true;
+          )] [pcdata tobuy.Model.description];
         button ~a:[a_class ["destroy"]; a_onclick (
-            fun evt -> send_some (Delete todo.Model.id); true;
+            fun evt -> send_some (Delete tobuy.Model.id); true;
           )] []
       ];
       input_edit;
     ])
 
-  let focus_todo_item id =
-    let e = Dom_html.getElementById(Printf.sprintf "todo-%u" id) in
+  let focus_tobuy_item id =
+    let e = Dom_html.getElementById(Printf.sprintf "tobuy-%u" id) in
     Js.Opt.case (Dom_html.CoerceTo.input e)
       (fun e -> ()) (fun e -> e##focus ())
 
   (** Build the tasks list *)
   let task_list visibility tasks =
-    let is_visible todo =
+    let is_visible tobuy =
       match visibility with
-      | Model.Completed -> todo.Model.completed
-      | Active -> not todo.completed
+      | Model.Completed -> tobuy.Model.completed
+      | Active -> not tobuy.completed
       | All -> true
     in
     let all_completed = List.for_all (fun e -> e.Model.completed) tasks in
@@ -248,8 +248,8 @@ module View = struct
     Html5.(section ~a:[a_class ["main"]; a_style css_visibility] [
         toggle_input;
         label ~a:[a_for "toggle-all"] [pcdata "Mark all as complete"];
-        ul ~a:[a_class ["todo-list"]]
-          (List.rev_map todo_item (List.filter is_visible tasks))
+        ul ~a:[a_class ["tobuy-list"]]
+          (List.rev_map tobuy_item (List.filter is_visible tasks))
       ])
 
   let visibility_swap uri visibility actual_visibility =
@@ -283,7 +283,7 @@ module View = struct
     in
     let html =
       footer ~a:a_footer [
-        span ~a:[a_class ["todo-count"]] [
+        span ~a:[a_class ["tobuy-count"]] [
           strong ~a:[] [pcdata (string_of_int (List.length tasks_left))];
           pcdata (item ^ " left")
         ];
@@ -301,7 +301,7 @@ module View = struct
 
   let info_footer =
     Html5.(footer ~a:[a_class ["info"]] [
-        p [pcdata "Double-click to edit a todo"];
+        p [pcdata "Double-click to edit a tobuy"];
         p [
           pcdata "Written by ";
           a ~a:[a_href "https://stephanelegrand.wordpress.com/"] [pcdata "Stéphane Legrand"]
@@ -316,15 +316,15 @@ module View = struct
         ];
         p [
           pcdata "Part of ";
-          a ~a:[a_href "http://todomvc.com"] [pcdata "TodoMVC"]
+          a ~a:[a_href "http://tobuymvc.com"] [pcdata "TodoMVC"]
         ]
       ])
 
   (** Build the HTML for the application *)
   let view m =
     Html5.(
-      div ~a:[a_class ["todomvc-wrapper"]] [
-        section ~a:[a_class ["todoapp"]] [
+      div ~a:[a_class ["tobuymvc-wrapper"]] [
+        section ~a:[a_class ["tobuyapp"]] [
           task_entry ;
           task_list m.Model.visibility m.Model.tasks ;
           controls m.Model.visibility m.Model.tasks
@@ -419,7 +419,7 @@ struct
     end ;
     begin match a with
       | Editing_task (id, is_edit) ->
-        if is_edit then View.focus_todo_item id
+        if is_edit then View.focus_tobuy_item id
       | _ -> ();
     end ;
     Storage.set @@ Model.to_json m ;
@@ -430,7 +430,7 @@ end
 let main _ =
   let doc = Dom_html.document in
   let parent =
-    Js.Opt.get (doc##getElementById(Js.string "todomvc"))
+    Js.Opt.get (doc##getElementById(Js.string "tobuymvc"))
       (fun () -> assert false)
   in
   (* restore the saved state or empty state if not found *)

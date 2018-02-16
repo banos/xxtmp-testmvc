@@ -9,21 +9,21 @@ define([
 		$modelFactory: Todo,
 
 		markAll: function (done) {
-			this.each(function (todo) {
-				todo.setCompleted(done);
-				todo.save();
+			this.each(function (tobuy) {
+				tobuy.setCompleted(done);
+				tobuy.save();
 			});
 		},
 
 		clearCompleted: function () {
 			var self = this;
 
-			// remove all completed todos in a sequence
-			flow().seqEach(this.$items, function (todo, cb) {
-				if (todo.isCompleted()) {
-					todo.remove(null, function (err) {
+			// remove all completed tobuys in a sequence
+			flow().seqEach(this.$items, function (tobuy, cb) {
+				if (tobuy.isCompleted()) {
+					tobuy.remove(null, function (err) {
 						if (!err) {
-							self.remove(todo);
+							self.remove(tobuy);
 						}
 						cb(err);
 					});

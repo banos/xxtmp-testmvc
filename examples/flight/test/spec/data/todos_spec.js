@@ -1,4 +1,4 @@
-describeComponent('data/todos', function () {
+describeComponent('data/tobuys', function () {
 	'use strict';
 
 	describe('without datastore', function () {

@@ -4,7 +4,7 @@ set -e
 
 get_changes ()
 {
-	git remote add current https://github.com/tastejs/todomvc.git && \
+	git remote add current https://github.com/tastejs/tobuymvc.git && \
 	git fetch --quiet current && \
 	git diff HEAD origin/master --name-only |  awk 'BEGIN {FS = "/"}; {print $1 "/" $2 "/" $3}' | grep -v \/\/ | grep examples | awk -F '[/]' '{print "--framework=" $2}'|uniq
 }

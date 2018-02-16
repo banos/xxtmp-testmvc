@@ -24,4 +24,4 @@ Get help from other Kendo UI users:
 * [Kendo UI on Twitter](http://twitter.com/kendoui)
 * [Kendo UI on Google +](https://plus.google.com/117798269023828336983/posts)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._

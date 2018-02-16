@@ -8,7 +8,7 @@
 
 	var TodoItem = {
 		// `effectCause`
-		// i.e. "removeClick" = "a click to remove a todoItem"
+		// i.e. "removeClick" = "a click to remove a tobuyItem"
 
 		removeClick: function () {
 			TodoApp.trigger('removeTodo', {
@@ -51,7 +51,7 @@
 		},
 
 		init: function () {
-			$('#todo-list')
+			$('#tobuy-list')
 				.on('click', '.destroy', TodoItem.removeClick)
 				.on('click', '.toggle', TodoItem.toggleClick)
 				.on('dblclick', 'label', TodoItem.editDblClick)
@@ -60,5 +60,5 @@
 		}
 	};
 
-	TodoApp.bind('todoListRendered', TodoItem.init);
+	TodoApp.bind('tobuyListRendered', TodoItem.init);
 })(jQuery);

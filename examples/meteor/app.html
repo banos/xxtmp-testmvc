@@ -3,23 +3,23 @@
 	<title>Meteor • TodoMVC</title>
 </head>
 <body>
-	<section id="todoapp" data-framework="meteor">
-		{{> todoapp}}
+	<section id="tobuyapp" data-framework="meteor">
+		{{> tobuyapp}}
 	</section>
 	<footer id="info">
-		<p>Double-click to edit a todo</p>
+		<p>Double-click to edit a tobuy</p>
 		<p>Created by Matthias Stumpp - <a href="http://github.com/MStumpp">GitHub</a>&nbsp;&nbsp;<a href="http://twitter.com/MatStumpp">Twitter</a></p>
-		<p><a href="http://todomvcapp.meteor.com">Meteor TodoMVC</a></p>
-		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		<p><a href="http://tobuymvcapp.meteor.com">Meteor TodoMVC</a></p>
+		<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 	</footer>
 </body>
 
-<template name="todoapp">
+<template name="tobuyapp">
 	<header id="header">
-		<h1>todos</h1>
-		<input id="new-todo" placeholder="What needs to be done?" autofocus>
+		<h1>tobuys</h1>
+		<input id="new-tobuy" placeholder="What needs to be done?" autofocus>
 	</header>
-	{{#if todos}}
+	{{#if tobuys}}
 		{{> main}}
 		{{> footer}}
 	{{/if}}
@@ -27,20 +27,20 @@
 
 <template name="main">
 	<section id="main">
-		<input id="toggle-all" type="checkbox" checked="{{#unless todos_not_completed}}checked{{/unless}}">
+		<input id="toggle-all" type="checkbox" checked="{{#unless tobuys_not_completed}}checked{{/unless}}">
 		<label for="toggle-all">Mark all as complete</label>
-		<ul id="todo-list">
-			{{#each todos}}
-				{{> todo}}
+		<ul id="tobuy-list">
+			{{#each tobuys}}
+				{{> tobuy}}
 			{{/each}}
 		</ul>
 	</section>
 </template>
 
-<template name="todo">
-	<li class="{{#if todo_completed}}completed{{/if}}{{#if todo_editing}}editing{{/if}}">
+<template name="tobuy">
+	<li class="{{#if tobuy_completed}}completed{{/if}}{{#if tobuy_editing}}editing{{/if}}">
 		<div class="view">
-			<input class="toggle" type="checkbox" checked="{{#if todo_completed}}checked{{/if}}">
+			<input class="toggle" type="checkbox" checked="{{#if tobuy_completed}}checked{{/if}}">
 			<label>{{title}}</label>
 			<button class="destroy"></button>
 		</div>
@@ -50,8 +50,8 @@
 
 <template name="footer">
 	<footer id="footer">
-		<span id="todo-count"><strong>{{todos_not_completed}}</strong>
-			{{#if todos_one_not_completed}}item{{else}}items{{/if}} left</span>
+		<span id="tobuy-count"><strong>{{tobuys_not_completed}}</strong>
+			{{#if tobuys_one_not_completed}}item{{else}}items{{/if}} left</span>
 		<ul id="filters">
 					{{#each filters}}
 						<li>
@@ -59,7 +59,7 @@
 						</li>
 					{{/each}}
 		</ul>
-		{{#if todos_completed}}
+		{{#if tobuys_completed}}
 			<button id="clear-completed">Clear completed</button>
 		{{/if}}
 	</footer>

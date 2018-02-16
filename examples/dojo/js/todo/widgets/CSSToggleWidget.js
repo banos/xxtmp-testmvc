@@ -15,7 +15,7 @@ define([
 		// |			<head>
 		// |				<script src="/path/to/dojo-toolkit/dojo/dojo.js" type="text/javascript"
 		// |				 data-dojo-config="parseOnLoad: 1,
-		// |				                   packages: [{name: 'todo', location: '/path/to/todo-package'}],
+		// |				                   packages: [{name: 'tobuy', location: '/path/to/tobuy-package'}],
 		// |				                   deps: ['dojo/parser', 'dojo/domReady!']"></script>
 		// |				<style type="text/css">
 		// |					.boldText {
@@ -26,7 +26,7 @@ define([
 		// |			<body>
 		// |				<script type="dojo/require">at: "dojox/mvc/at"</script>
 		// |				<input id="checkbox" data-dojo-type="dijit/form/CheckBox">
-		// |				<div data-dojo-type="todo/CssToggleWidget"
+		// |				<div data-dojo-type="tobuy/CssToggleWidget"
 		// |				 data-dojo-props="_setBoldAttr: {type: 'classExists', className: 'boldText'},
 		// |				                  bold: at('widget:checkbox', 'checked')">This text will be bold when above check box is checked.</div>
 		// |			</body>

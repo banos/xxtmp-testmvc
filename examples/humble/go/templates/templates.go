@@ -20,7 +20,7 @@ func init() {
 	var err error
 	g := temple.NewGroup()
 
-	if err = g.AddPartial("footer", `<span class="todo-count">
+	if err = g.AddPartial("footer", `<span class="tobuy-count">
 	<strong>{{ len .Todos.Remaining }}</strong>
 	item{{ if ne (len .Todos.Remaining) 1}}s{{end}} left
 </span>
@@ -43,7 +43,7 @@ func init() {
 		panic(err)
 	}
 
-	if err = g.AddPartial("todo", `<!-- <li {{ if .Completed }}class="completed"{{ end }}> -->
+	if err = g.AddPartial("tobuy", `<!-- <li {{ if .Completed }}class="completed"{{ end }}> -->
 	<div class="view">
 		<input class="toggle" type="checkbox" {{ if .Completed }}checked{{ end }}>
 		<label>{{ .Title }}</label>
@@ -56,14 +56,14 @@ func init() {
 	}
 
 	if err = g.AddTemplate("app", `<header class="header">
-	<h1>todos</h1>
-	<input class="new-todo" placeholder="What needs to be done?" autofocus>
+	<h1>tobuys</h1>
+	<input class="new-tobuy" placeholder="What needs to be done?" autofocus>
 </header>
 {{ if gt (len .Todos.All) 0 }}
 <section class="main">
 	<input class="toggle-all" type="checkbox" {{ if eq (len .Todos.All) (len .Todos.Completed) }}checked{{ end }}>
 	<label for="toggle-all">Mark all as complete</label>
-	<ul class="todo-list">
+	<ul class="tobuy-list">
 	</ul>
 </section>
 {{ end }}

@@ -14,9 +14,9 @@ node_modules/alt/*
 node_modules/alt/dist/*
 !node_modules/alt/dist/alt.js
 
-node_modules/todomvc-app-css/*
-!node_modules/todomvc-app-css/index.css
+node_modules/tobuymvc-app-css/*
+!node_modules/tobuymvc-app-css/index.css
 
-node_modules/todomvc-common/*
-!node_modules/todomvc-common/base.css
-!node_modules/todomvc-common/base.js
+node_modules/tobuymvc-common/*
+!node_modules/tobuymvc-common/base.css
+!node_modules/tobuymvc-common/base.js

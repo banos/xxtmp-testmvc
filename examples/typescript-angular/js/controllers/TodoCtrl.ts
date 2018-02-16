@@ -1,16 +1,16 @@
 /// <reference path='../_all.ts' />
 
-module todos {
+module tobuys {
 	'use strict';
 
 	/**
 	 * The main controller for the app. The controller:
-	 * - retrieves and persists the model via the todoStorage service
+	 * - retrieves and persists the model via the tobuyStorage service
 	 * - exposes the model to the template and provides event handlers
 	 */
 	export class TodoCtrl {
 
-		private todos: TodoItem[];
+		private tobuys: TodoItem[];
 
 		// $inject annotation.
 		// It provides $injector with information about dependencies to be injected into constructor
@@ -19,7 +19,7 @@ module todos {
 		public static $inject = [
 			'$scope',
 			'$location',
-			'todoStorage',
+			'tobuyStorage',
 			'filterFilter'
 		];
 
@@ -28,10 +28,10 @@ module todos {
 		constructor(
 			private $scope: ITodoScope,
 			private $location: ng.ILocationService,
-			private todoStorage: ITodoStorage,
+			private tobuyStorage: ITodoStorage,
 			private filterFilter
 		) {
-			this.todos = $scope.todos = todoStorage.get();
+			this.tobuys = $scope.tobuys = tobuyStorage.get();
 
 			$scope.newTodo = '';
 			$scope.editedTodo = null;
@@ -42,7 +42,7 @@ module todos {
 
 			// watching for events/changes in scope, which are caused by view/user input
 			// if you subscribe to scope or event with lifetime longer than this controller, make sure you unsubscribe.
-			$scope.$watch('todos', () => this.onTodos(), true);
+			$scope.$watch('tobuys', () => this.onTodos(), true);
 			$scope.$watch('location.path()', path => this.onPath(path))
 
 			if ($location.path() === '') $location.path('/');
@@ -56,10 +56,10 @@ module todos {
 		}
 
 		onTodos() {
-			this.$scope.remainingCount = this.filterFilter(this.todos, { completed: false }).length;
-			this.$scope.doneCount = this.todos.length - this.$scope.remainingCount;
+			this.$scope.remainingCount = this.filterFilter(this.tobuys, { completed: false }).length;
+			this.$scope.doneCount = this.tobuys.length - this.$scope.remainingCount;
 			this.$scope.allChecked = !this.$scope.remainingCount
-			this.todoStorage.put(this.todos);
+			this.tobuyStorage.put(this.tobuys);
 		}
 
 		addTodo() {
@@ -68,23 +68,23 @@ module todos {
 				return;
 			}
 
-			this.todos.push(new TodoItem(newTodo, false));
+			this.tobuys.push(new TodoItem(newTodo, false));
 			this.$scope.newTodo = '';
 		}
 
-		editTodo(todoItem: TodoItem) {
-			this.$scope.editedTodo = todoItem;
+		editTodo(tobuyItem: TodoItem) {
+			this.$scope.editedTodo = tobuyItem;
 
-			// Clone the original todo in case editing is cancelled.
-			this.$scope.originalTodo = angular.extend({}, todoItem);
+			// Clone the original tobuy in case editing is cancelled.
+			this.$scope.originalTodo = angular.extend({}, tobuyItem);
 		}
 
-		revertEdits(todoItem: TodoItem) {
-			this.todos[this.todos.indexOf(todoItem)] = this.$scope.originalTodo;
+		revertEdits(tobuyItem: TodoItem) {
+			this.tobuys[this.tobuys.indexOf(tobuyItem)] = this.$scope.originalTodo;
 			this.$scope.reverted = true;
 		}
 
-		doneEditing(todoItem: TodoItem) {
+		doneEditing(tobuyItem: TodoItem) {
 			this.$scope.editedTodo = null;
 			this.$scope.originalTodo = null;
 			if (this.$scope.reverted) {
@@ -92,22 +92,22 @@ module todos {
 				this.$scope.reverted = null;
 				return;
 			}
-			todoItem.title = todoItem.title.trim();
-			if (!todoItem.title) {
-				this.removeTodo(todoItem);
+			tobuyItem.title = tobuyItem.title.trim();
+			if (!tobuyItem.title) {
+				this.removeTodo(tobuyItem);
 			}
 		}
 
-		removeTodo(todoItem: TodoItem) {
-			this.todos.splice(this.todos.indexOf(todoItem), 1);
+		removeTodo(tobuyItem: TodoItem) {
+			this.tobuys.splice(this.tobuys.indexOf(tobuyItem), 1);
 		}
 
 		clearDoneTodos() {
-			this.$scope.todos = this.todos = this.todos.filter(todoItem => !todoItem.completed);
+			this.$scope.tobuys = this.tobuys = this.tobuys.filter(tobuyItem => !tobuyItem.completed);
 		}
 
 		markAll(completed: boolean) {
-			this.todos.forEach(todoItem => { todoItem.completed = completed; });
+			this.tobuys.forEach(tobuyItem => { tobuyItem.completed = completed; });
 		}
 	}
 

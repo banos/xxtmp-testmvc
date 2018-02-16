@@ -12,7 +12,7 @@ Here are some links you may find helpful:
 
 * [Official Documentation](https://mithril.js.org/api.html)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 ## Credit
 This TodoMVC application was created by [taylorhakes](https://github.com/taylorhakes).

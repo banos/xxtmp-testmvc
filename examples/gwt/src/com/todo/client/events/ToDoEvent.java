@@ -1,10 +1,10 @@
-package com.todo.client.events;
+package com.tobuy.client.events;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.EventHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.SimpleEventBus;
-import com.todo.client.ToDoItem;
+import com.tobuy.client.ToDoItem;
 
 public abstract class ToDoEvent<H extends EventHandler> extends GwtEvent<H> {
 

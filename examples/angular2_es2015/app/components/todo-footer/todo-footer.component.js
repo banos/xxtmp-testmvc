@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TodoStoreService } from '../../services/todo-store.service';
-import template from './todo-footer.template.html';
+import { TodoStoreService } from '../../services/tobuy-store.service';
+import template from './tobuy-footer.template.html';
 
 @Component({
-	selector: 'todo-footer',
+	selector: 'tobuy-footer',
 	template: template
 })
 export class TodoFooterComponent {
-	constructor(todoStore:TodoStoreService, route:ActivatedRoute) {
-		this._todoStore = todoStore;
+	constructor(tobuyStore:TodoStoreService, route:ActivatedRoute) {
+		this._tobuyStore = tobuyStore;
 		this._route = route;
 		this.currentStatus = '';
 	}
@@ -24,18 +24,18 @@ export class TodoFooterComponent {
 	}
 
 	removeCompleted() {
-		this._todoStore.removeCompleted();
+		this._tobuyStore.removeCompleted();
 	}
 
 	getCount() {
-		return this._todoStore.todos.length;
+		return this._tobuyStore.tobuys.length;
 	}
 
 	getRemainingCount() {
-		return this._todoStore.getRemaining().length;
+		return this._tobuyStore.getRemaining().length;
 	}
 
 	hasCompleted() {
-		return this._todoStore.getCompleted().length > 0;
+		return this._tobuyStore.getCompleted().length > 0;
 	}
 }

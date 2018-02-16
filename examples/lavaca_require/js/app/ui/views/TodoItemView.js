@@ -8,7 +8,7 @@ define(function (require) {
 	var ESC_KEY = 27;
 
 	var View = require('lavaca/mvc/View');
-	require('rdust!templates/todo-item');
+	require('rdust!templates/tobuy-item');
 
 	/**
 	 * Todos view type
@@ -45,14 +45,14 @@ define(function (require) {
 		 * @property template
 		 * @type String
 		 */
-		template: 'templates/todo-item',
+		template: 'templates/tobuy-item',
 
 		/**
 		 * A class name added to the view container
 		 * @property className
 		 * @type String
 		 */
-		className: 'todo-item',
+		className: 'tobuy-item',
 
 		/**
 		 * Executes when the template renders successfully

@@ -5,8 +5,8 @@
   },
   "dependencies": {
     "angular": "^1.3.13",
-    "todomvc-app-css": "^2.0.0",
-    "todomvc-common": "^1.0.1"
+    "tobuymvc-app-css": "^2.0.0",
+    "tobuymvc-common": "^1.0.1"
   },
   "devDependencies": {
     "typescript": "^1.5.0-alpha"

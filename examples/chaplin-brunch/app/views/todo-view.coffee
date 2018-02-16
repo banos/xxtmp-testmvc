@@ -11,7 +11,7 @@ module.exports = class TodoView extends View
   listen:
     'change model': 'render'
 
-  template: require './templates/todo'
+  template: require './templates/tobuy'
   tagName: 'li'
 
   render: ->

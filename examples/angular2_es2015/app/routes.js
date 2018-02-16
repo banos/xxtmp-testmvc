@@ -1,4 +1,4 @@
-import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { TodoListComponent } from './components/tobuy-list/tobuy-list.component';
 
 export let routes = [
   { path: '', component: TodoListComponent, pathMatch: 'full' },

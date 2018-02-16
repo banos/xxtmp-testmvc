@@ -7,7 +7,7 @@ var app = app || {};
 	// Todo Item View
 	// --------------
 
-	// The DOM element for a todo item...
+	// The DOM element for a tobuy item...
 	app.TodoView = Backbone.View.extend({
 		//... is a list tag.
 		tagName:  'li',
@@ -35,7 +35,7 @@ var app = app || {};
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
-		// Re-render the titles of the todo item.
+		// Re-render the titles of the tobuy item.
 		render: function () {
 			this.el.innerHTML = this.template(this.model.toJSON());
 			var method = this.model.get('completed') ? 'add' : 'remove';
@@ -70,7 +70,7 @@ var app = app || {};
 			this.input.value = this.input.value;
 		},
 
-		// Close the `"editing"` mode, saving changes to the todo.
+		// Close the `"editing"` mode, saving changes to the tobuy.
 		close: function (e, discard) {
 			var value = discard ?
 				this.model.get('title') : this.input.value.trim();

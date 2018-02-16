@@ -1,8 +1,8 @@
 /// <reference path='../_all.ts' />
 
-module todos {
+module tobuys {
 	export interface ITodoStorage {
 		get (): TodoItem[];
-		put(todos: TodoItem[]);
+		put(tobuys: TodoItem[]);
 	}
 }

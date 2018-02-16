@@ -2,14 +2,14 @@ define([
 	'intern!bdd',
 	'intern/chai!expect',
 	'dojo/on',
-	'todo/widgets/TodoEscape',
+	'tobuy/widgets/TodoEscape',
 	'../../handleCleaner'
 ], function (bdd, expect, on, TodoEscape, handleCleaner) {
 	'use strict';
 
 	var ESCAPE_KEY = 27;
 
-	bdd.describe('Test todo/widgets/TodoEscape', function () {
+	bdd.describe('Test tobuy/widgets/TodoEscape', function () {
 		var handles = [];
 		bdd.afterEach(handleCleaner(handles));
 

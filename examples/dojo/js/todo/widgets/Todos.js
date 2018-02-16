@@ -75,7 +75,7 @@ define([
 			},
 
 			getStatefulStoreData: function (data) {
-				return getStateful({todos: data});
+				return getStateful({tobuys: data});
 			}
 		},
 
@@ -132,19 +132,19 @@ define([
 			};
 
 			this.own(computed(this, 'filteredTodos', lang.hitch(this, function (completed, status) {
-				var todos = this.get('todos');
+				var tobuys = this.get('tobuys');
 				if (!status) {
-					return todos;
+					return tobuys;
 				} else {
 					var filteredTodos = [];
 					for (var i = 0; i < completed.length; i++) {
 						if (completed[i] === statusTable[status]) {
-							filteredTodos.push(todos[i]);
+							filteredTodos.push(tobuys[i]);
 						}
 					}
 					return filteredTodos;
 				}
-			}), lang.mixin(at(this.get('todos'), 'completed'), {each: true}), at(this, 'status')));
+			}), lang.mixin(at(this.get('tobuys'), 'completed'), {each: true}), at(this, 'status')));
 
 			this.own(computed(this, 'remainingCount', function (completed) {
 				var count = 0;
@@ -152,7 +152,7 @@ define([
 					count += +!completed[i];
 				}
 				return count;
-			}, lang.mixin(at(this.get('todos'), 'completed'), {each: true})));
+			}, lang.mixin(at(this.get('tobuys'), 'completed'), {each: true})));
 
 			this.own(computed(this, 'completedCount', function (completed) {
 				var count = 0;
@@ -160,7 +160,7 @@ define([
 					count += +completed[i];
 				}
 				return count;
-			}, lang.mixin(at(this.get('todos'), 'completed'), {each: true})));
+			}, lang.mixin(at(this.get('tobuys'), 'completed'), {each: true})));
 
 			this.own(computed(this, 'areAllChecked', function (remainingCount) {
 				return remainingCount === 0;
@@ -179,7 +179,7 @@ define([
 					completed: false
 				};
 				ret = when(this.addStore(data), lang.hitch(this, function () {
-					this.get('todos').push(new Stateful(data));
+					this.get('tobuys').push(new Stateful(data));
 					this.set('newTodo', '');
 					this.set('saving', false);
 				}), lang.hitch(this, function (e) {
@@ -191,25 +191,25 @@ define([
 			return ret;
 		},
 
-		saveTodo: function (todo, originalTitle, originalCompleted) {
+		saveTodo: function (tobuy, originalTitle, originalCompleted) {
 			this.set('saving', true);
-			var data = lang.mixin({}, todo);
+			var data = lang.mixin({}, tobuy);
 			delete data.isEditing;
 			return when(this.putStore(data), lang.hitch(this, function () {
 				this.set('saving', false);
 			}), lang.hitch(this, function (e) {
 				this.set('saving', false);
-				todo.set('title', originalTitle);
-				todo.set('completed', originalCompleted);
+				tobuy.set('title', originalTitle);
+				tobuy.set('completed', originalCompleted);
 				throw e;
 			}));
 		},
 
-		removeTodo: function (todo) {
+		removeTodo: function (tobuy) {
 			this.set('saving', true);
-			return when(this.removeStore(this.store.getIdentity(todo)), lang.hitch(this, function () {
+			return when(this.removeStore(this.store.getIdentity(tobuy)), lang.hitch(this, function () {
 				this.set('saving', false);
-				this.get('todos').splice(array.indexOf(this.get('todos'), todo), 1);
+				this.get('tobuys').splice(array.indexOf(this.get('tobuys'), tobuy), 1);
 			}), lang.hitch(this, function (e) {
 				this.set('saving', false);
 				throw e;
@@ -217,27 +217,27 @@ define([
 		},
 
 		replaceTodo: function (oldTodo, newTodo) {
-			var index = this.get('todos').indexOf(oldTodo);
+			var index = this.get('tobuys').indexOf(oldTodo);
 			if (index >= 0) {
-				this.get('todos').splice(index, 1, newTodo);
+				this.get('tobuys').splice(index, 1, newTodo);
 			}
 		},
 
 		markAll: function () {
 			var current = this.get('areAllChecked');
-			array.forEach(this.get('todos'), function (todo) {
-				var old = todo.get('completed');
+			array.forEach(this.get('tobuys'), function (tobuy) {
+				var old = tobuy.get('completed');
 				if (old !== current) {
-					todo.set('completed', current);
-					this.saveTodo(todo, todo.get('title'), old);
+					tobuy.set('completed', current);
+					this.saveTodo(tobuy, tobuy.get('title'), old);
 				}
 			}, this);
 		},
 
 		clearCompletedTodos: function () {
-			array.forEach(this.get('todos').slice(), function (todo) {
-				if (todo.get('completed')) {
-					this.removeTodo(todo);
+			array.forEach(this.get('tobuys').slice(), function (tobuy) {
+				if (tobuy.get('completed')) {
+					this.removeTodo(tobuy);
 				}
 			}, this);
 		}

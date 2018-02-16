@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra._
@@ -16,7 +16,7 @@ object TodoList {
   )
 
   case class State(
-    todos:      Seq[Todo],
+    tobuys:      Seq[Todo],
     editing:    Option[TodoId]
   )
 
@@ -26,7 +26,7 @@ object TodoList {
   implicit val r1: Reusability[Props] =
     Reusability.fn[Props]((p1, p2) => p1.currentFilter == p2.currentFilter)
   implicit val r2: Reusability[State] =
-    Reusability.fn[State]((s1, s2) => s1.editing == s2.editing && (s1.todos eq s2.todos))
+    Reusability.fn[State]((s1, s2) => s1.editing == s2.editing && (s1.tobuys eq s2.tobuys))
 
   /**
    * One difference between normal react and scalajs-react is the use of backends.
@@ -67,17 +67,17 @@ object TodoList {
     /**
      * @param cb Two changes to the same `State` must be combined using a callback like this.
      *           If not, rerendering will prohibit the second from having its effect.
-     *           For this example, the current `State` contains both `editing` and the list of todos.
+     *           For this example, the current `State` contains both `editing` and the list of tobuys.
      */
     def editingDone(cb: Callback = Callback.empty): Callback =
       $.modState(_.copy(editing = None), cb)
 
     def render(P: Props, S: State): ReactTagOf[html.Div] = {
-      val todos           = S.todos
-      val filteredTodos   = todos filter P.currentFilter.accepts
+      val tobuys           = S.tobuys
+      val filteredTodos   = tobuys filter P.currentFilter.accepts
 
-      val activeCount     = todos count TodoFilter.Active.accepts
-      val completedCount  = todos.length - activeCount
+      val activeCount     = tobuys count TodoFilter.Active.accepts
+      val completedCount  = tobuys.length - activeCount
 
       /**
         * `cbs.value()` checks if `Props` changed (according to `Reusability`),
@@ -86,22 +86,22 @@ object TodoList {
         */
       val callbacks = cbs.value()
       <.div(
-        <.h1("todos"),
+        <.h1("tobuys"),
         <.header(
           ^.className := "header",
           <.input(
-            ^.className     := "new-todo",
+            ^.className     := "new-tobuy",
             ^.placeholder   := "What needs to be done?",
             ^.onKeyDown   ==>? callbacks.handleNewTodoKeyDown,
             ^.autoFocus     := true
           )
         ),
-        todos.nonEmpty ?= todoList(P, callbacks, S.editing, filteredTodos, activeCount),
-        todos.nonEmpty ?= footer(P, activeCount, completedCount)
+        tobuys.nonEmpty ?= tobuyList(P, callbacks, S.editing, filteredTodos, activeCount),
+        tobuys.nonEmpty ?= footer(P, activeCount, completedCount)
       )
     }
 
-    def todoList(P:             Props,
+    def tobuyList(P:             Props,
                  callbacks:     Callbacks,
                  editing:       Option[TodoId],
                  filteredTodos: Seq[Todo],
@@ -115,16 +115,16 @@ object TodoList {
           ^.onChange  ==> callbacks.toggleAll
         ),
         <.ul(
-          ^.className := "todo-list",
-          filteredTodos.map(todo =>
+          ^.className := "tobuy-list",
+          filteredTodos.map(tobuy =>
             TodoItem(TodoItem.Props(
-              onToggle         = P.model.toggleCompleted(todo.id),
-              onDelete         = P.model.delete(todo.id),
-              onStartEditing   = startEditing(todo.id),
-              onUpdateTitle    = callbacks.updateTitle(todo.id),
+              onToggle         = P.model.toggleCompleted(tobuy.id),
+              onDelete         = P.model.delete(tobuy.id),
+              onStartEditing   = startEditing(tobuy.id),
+              onUpdateTitle    = callbacks.updateTitle(tobuy.id),
               onCancelEditing  = editingDone(),
-              todo             = todo,
-              isEditing        = editing.contains(todo.id)
+              tobuy             = tobuy,
+              isEditing        = editing.contains(tobuy.id)
             ))
           )
         )
@@ -143,7 +143,7 @@ object TodoList {
   private val component =
     ReactComponentB[Props]("TodoList")
       /* state derived from the props */
-      .initialState_P(p => State(p.model.todos, None))
+      .initialState_P(p => State(p.model.tobuys, None))
       .renderBackend[Backend]
       /**
        * Makes the component subscribe to events coming from the model.
@@ -151,11 +151,11 @@ object TodoList {
        * The last function is the actual event handling, in this case
        *  we just overwrite the whole list in `state`.
        */
-      .configure(Listenable.install((p: Props) => p.model, $ => (todos: Seq[Todo]) => $.modState(_.copy(todos = todos))))
+      .configure(Listenable.install((p: Props) => p.model, $ => (tobuys: Seq[Todo]) => $.modState(_.copy(tobuys = tobuys))))
       /**
        * Optimization where we specify whether the component can have changed.
        * In this case we avoid comparing model and routerConfig, and only do
-       *  reference checking on the list of todos.
+       *  reference checking on the list of tobuys.
        *
        * The implementation of the «equality» checks are in the Reusability
        *  typeclass instances for `State` and `Props` at the top of the file.

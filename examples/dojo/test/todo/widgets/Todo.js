@@ -5,14 +5,14 @@ define([
 	'dojo/when',
 	'dojo/Deferred',
 	'dojo/Stateful',
-	'todo/widgets/Todo',
+	'tobuy/widgets/Todo',
 	'../../handleCleaner'
 ], function (bdd, expect, lang, when, Deferred, Stateful, Todo, handleCleaner) {
 	'use strict';
 
 	// For supporting Intern's true/false check
 	/*jshint -W030*/
-	bdd.describe('Test todo/widgets/Todo', function () {
+	bdd.describe('Test tobuy/widgets/Todo', function () {
 		var w;
 		var handles = [];
 		var emptyTemplateString = '<div><\/div>';
@@ -26,10 +26,10 @@ define([
 					title: 'Foo',
 					completed: false
 				}),
-				todosWidget: new Stateful({
-					saveTodo: function (todo, originalTitle, originalCompleted) {
+				tobuysWidget: new Stateful({
+					saveTodo: function (tobuy, originalTitle, originalCompleted) {
 						w.saveTodoArgs = {
-							todo: todo,
+							tobuy: tobuy,
 							originalTitle: originalTitle,
 							originalCompleted: originalCompleted
 						};
@@ -40,8 +40,8 @@ define([
 							newTodo: newTodo
 						};
 					},
-					removeTodo: function (todo) {
-						w.removeTodoArgs = {todo: todo};
+					removeTodo: function (tobuy) {
+						w.removeTodoArgs = {tobuy: tobuy};
 					}
 				})
 			}));
@@ -50,7 +50,7 @@ define([
 
 		bdd.afterEach(handleCleaner(handles));
 
-		bdd.it('Missing todosWidget reference', function () {
+		bdd.it('Missing tobuysWidget reference', function () {
 			var caught;
 			var w = new Todo({
 				templateString: emptyTemplateString
@@ -88,7 +88,7 @@ define([
 			w.target.set('title', 'Bar');
 			w.saveEdits(fakeSubmitEvent);
 			expect(preventedDefault).to.be.true;
-			expect(w.saveTodoArgs.todo.get('title')).to.equal('Bar');
+			expect(w.saveTodoArgs.tobuy.get('title')).to.equal('Bar');
 			expect(w.saveTodoArgs.originalTitle).to.equal('Foo');
 			expect(w.get('isEditing')).not.to.be.true;
 
@@ -108,9 +108,9 @@ define([
 				expect(w.target.get('title')).to.equal('Bar0');
 				expect(w.get('isEditing')).not.to.be.true;
 			}).then(function () {
-				w.todosWidget.saveTodo = function (todo, originalTitle, originalCompleted) {
-					todo.set('title', originalTitle);
-					todo.set('completed', originalCompleted);
+				w.tobuysWidget.saveTodo = function (tobuy, originalTitle, originalCompleted) {
+					tobuy.set('title', originalTitle);
+					tobuy.set('completed', originalCompleted);
 					var dfd = new Deferred();
 					dfd.reject(new Error());
 					return dfd.promise;
@@ -139,17 +139,17 @@ define([
 		bdd.it('Toggling completed state', function () {
 			w.target.set('completed', true);
 			w.toggleCompleted();
-			expect(w.saveTodoArgs.todo.get('completed')).to.be.true;
+			expect(w.saveTodoArgs.tobuy.get('completed')).to.be.true;
 			expect(w.saveTodoArgs.originalCompleted).not.to.be.true;
 			w.target.set('completed', false);
 			w.toggleCompleted();
-			expect(w.saveTodoArgs.todo.get('completed')).not.to.be.true;
+			expect(w.saveTodoArgs.tobuy.get('completed')).not.to.be.true;
 			expect(w.saveTodoArgs.originalCompleted).to.be.true;
 		});
 
-		bdd.it('Removing todo', function () {
+		bdd.it('Removing tobuy', function () {
 			w.removeTodo();
-			expect(w.removeTodoArgs.todo).to.deep.equal(w.target);
+			expect(w.removeTodoArgs.tobuy).to.deep.equal(w.target);
 			expect(w._destroyed).to.be.true;
 		});
 	});

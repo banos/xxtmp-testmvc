@@ -42,8 +42,8 @@ System.config({
     "fetch": "github:github/fetch@0.9.0",
     "nodelibs-process": "github:jspm/nodelibs-process@0.1.2",
     "text": "github:systemjs/plugin-text@0.0.2",
-    "todomvc-app-css": "npm:todomvc-app-css@2.0.4",
-    "todomvc-common": "npm:todomvc-common@1.0.2",
+    "tobuymvc-app-css": "npm:tobuymvc-app-css@2.0.4",
+    "tobuymvc-common": "npm:tobuymvc-common@1.0.2",
     "underscore": "npm:underscore@1.8.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"

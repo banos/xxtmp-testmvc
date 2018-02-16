@@ -1,7 +1,7 @@
 'use strict';
 
 var View = require('ampersand-view');
-var todoTemplate = require('../templates/todo.jade');
+var tobuyTemplate = require('../templates/tobuy.jade');
 var ENTER_KEY = 13;
 var ESC_KEY = 27;
 
@@ -17,7 +17,7 @@ module.exports = View.extend({
 	// called 'jadeify' lets us require a ".jade" file as if
 	// it were a module and it will compile it to a function
 	// for us. This function returns HTML as per #2 above.
-	template: todoTemplate,
+	template: tobuyTemplate,
 	// Events work like backbone they're all delegated to
 	// root element.
 	events: {

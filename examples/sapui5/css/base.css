@@ -23,7 +23,7 @@ button {
 body {
 	font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	line-height: 1.4em;
-	background: #eaeaea url('../bower_components/todomvc-common/bg.png');
+	background: #eaeaea url('../bower_components/tobuymvc-common/bg.png');
 	color: #4d4d4d;
 	width: 550px;
 	margin: 0 auto;
@@ -39,7 +39,7 @@ body {
 	font-size: inherit;
 }
 
-#todoapp {
+#tobuyapp {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
 	margin: 130px 0 40px 0;
@@ -51,7 +51,7 @@ body {
 				0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
 
-#todoapp:before {
+#tobuyapp:before {
 	content: '';
 	border-left: 1px solid #f5d6d6;
 	border-right: 1px solid #f5d6d6;
@@ -62,16 +62,16 @@ body {
 	height: 100%;
 }
 
-#todoapp input::-webkit-input-placeholder {
+#tobuyapp input::-webkit-input-placeholder {
 	font-style: italic;
 }
 
-#todoapp input:-moz-placeholder {
+#tobuyapp input:-moz-placeholder {
 	font-style: italic;
 	color: #a9a9a9;
 }
 
-#todoapp h1 {
+#tobuyapp h1 {
 	position: absolute;
 	top: -120px;
 	width: 100%;
@@ -120,9 +120,9 @@ body {
 	border-top: 1px dotted #adadad;
 }
 
-#new-todo,
-.sapUiTfBrd.sapUiTfRo.todo,
-.sapUiTfBrd.sapUiTfStd.todo {
+#new-tobuy,
+.sapUiTfBrd.sapUiTfRo.tobuy,
+.sapUiTfBrd.sapUiTfStd.tobuy {
 	position: relative;
 	margin: 0;
 	margin-right: 153px;
@@ -147,12 +147,12 @@ body {
 	font-smoothing: antialiased;
 }
 
-.sapUiTfBrd.sapUiTfStd.todo {
+.sapUiTfBrd.sapUiTfStd.tobuy {
 	border: 1px solid #999;
 	box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.sapUiTfBrd.sapUiTfRo.todo[data-completed="true"] {
+.sapUiTfBrd.sapUiTfRo.tobuy[data-completed="true"] {
 	color: #a9a9a9;
 	text-decoration: line-through;
 }
@@ -187,7 +187,7 @@ body {
 	color: #737373;
 }
 
-#new-todo {
+#new-tobuy {
 	padding: 15px 15px 16px 60px;
 	border: none;
 	background: rgba(0, 0, 0, 0.02);
@@ -195,19 +195,19 @@ body {
 	box-shadow: none;
 }
 
-#todo-list {
+#tobuy-list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-#todo-list li {
+#tobuy-list li {
 	position: relative;
 	font-size: 24px;
 	border-top: 1px dotted #ccc;
 }
 
-#todo-list input[type='checkbox'] {
+#tobuy-list input[type='checkbox'] {
 	text-align: center;
 	width: 40px;
 	/* auto, since non-WebKit browsers doesn't support input styling */
@@ -223,7 +223,7 @@ body {
 	appearance: none;
 }
 
-#todo-list input[type='checkbox']:after {
+#tobuy-list input[type='checkbox']:after {
 	content: '✔';
 	line-height: 62px;
 	font-size: 20px;
@@ -231,14 +231,14 @@ body {
 	text-shadow: 0 -1px 0 #bfbfbf;
 }
 
-#todo-list input[type='checkbox']:checked:after {
+#tobuy-list input[type='checkbox']:checked:after {
 	color: #85ada7;
 	text-shadow: 0 1px 0 #669991;
 	bottom: 1px;
 	position: relative;
 }
 
-#todo-list input:not([type='checkbox']) {
+#tobuy-list input:not([type='checkbox']) {
 	word-break: break-word;
 	padding: 15px;
 	margin-left: 45px;
@@ -251,7 +251,7 @@ body {
 	transition: color 0.4s;
 }
 
-#todo-list li .destroy {
+#tobuy-list li .destroy {
 	outline: none;
 	background-color: transparent;
 	display: none;
@@ -271,7 +271,7 @@ body {
 	transition: all 0.2s;
 }
 
-#todo-list li .destroy:hover {
+#tobuy-list li .destroy:hover {
 	text-shadow: 0 0 1px #000,
 				 0 0 10px rgba(199, 107, 107, 0.8);
 	-webkit-transform: scale(1.3);
@@ -281,17 +281,17 @@ body {
 	transform: scale(1.3);
 }
 
-#todo-list li .destroy:after {
+#tobuy-list li .destroy:after {
 	content: '✖';
 }
 
-#todo-list li:hover .destroy {
+#tobuy-list li:hover .destroy {
 	display: block;
 }
 
-#todo-list .sapUiRrNoData,
-#todo-list .sapUiRrPtb,
-#todo-list .sapUiRrFtr {
+#tobuy-list .sapUiRrNoData,
+#tobuy-list .sapUiRrPtb,
+#tobuy-list .sapUiRrFtr {
 	display: none;
 }
 
@@ -335,11 +335,11 @@ body {
 	text-align: left;
 }
 
-#todo-count {
+#tobuy-count {
 	vertical-align: 1px;
 }
 
-#todo-count:first-letter {
+#tobuy-count:first-letter {
 	font-weight: bold;
 }
 
@@ -546,7 +546,7 @@ hr {
 	/**body*/.learn-bar > .learn {
 		left: 8px;
 	}
-	/**body*/.learn-bar #todoapp {
+	/**body*/.learn-bar #tobuyapp {
 		width: 550px;
 		margin: 130px auto 40px auto;
 	}

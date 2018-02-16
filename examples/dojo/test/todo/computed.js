@@ -4,14 +4,14 @@ define([
 	'dojo/_base/lang',
 	'dojox/mvc/at',
 	'dojox/mvc/getStateful',
-	'todo/computed',
+	'tobuy/computed',
 	'../handleCleaner'
 ], function (bdd, expect, lang, at, getStateful, computed, handleCleaner) {
 	'use strict';
 
 	// For supporting Intern's true/false check
 	/*jshint -W030*/
-	bdd.describe('Test todo/computed', function () {
+	bdd.describe('Test tobuy/computed', function () {
 		var handles = [];
 		bdd.afterEach(handleCleaner(handles));
 

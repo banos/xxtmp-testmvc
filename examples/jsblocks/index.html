@@ -4,19 +4,19 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>jsblocks • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section data-query="view(Todos)" class="todoapp">
+		<section data-query="view(Todos)" class="tobuyapp">
 			<header class="header">
-				<h1>todos</h1>
-				<input data-query="val(newTodo.title).keydown(addTodo)" class="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>tobuys</h1>
+				<input data-query="val(newTodo.title).keydown(addTodo)" class="new-tobuy" placeholder="What needs to be done?" autofocus>
 			</header>
-			<section data-query="visible(todos().length > 0)" style="display: none;" class="main">
-				<input data-query="checked(todos.remaining() == 0).click(todos.toggleAll)" class="toggle-all" type="checkbox">
+			<section data-query="visible(tobuys().length > 0)" style="display: none;" class="main">
+				<input data-query="checked(tobuys.remaining() == 0).click(tobuys.toggleAll)" class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul data-query="each(todos.view)" class="todo-list">
+				<ul data-query="each(tobuys.view)" class="tobuy-list">
 					<li data-query="setClass('completed', completed).setClass('editing', editing).dblclick(edit)">
 						<div class="view">
 							<input data-query="checked(completed).click(toggleComplete)" class="toggle" type="checkbox">
@@ -27,9 +27,9 @@
 					</li>
 				</ul>
 			</section>
-			<footer data-query="visible(todos().length > 0)" style="display: none;" class="footer">
-				<span class="todo-count">
-					<strong>{{todos.remaining}}</strong> {{todos.remaining() == 1 ? 'item' : 'items'}} left
+			<footer data-query="visible(tobuys().length > 0)" style="display: none;" class="footer">
+				<span class="tobuy-count">
+					<strong>{{tobuys.remaining}}</strong> {{tobuys.remaining() == 1 ? 'item' : 'items'}} left
 				</span>
 				<ul class="filters">
 					<li>
@@ -42,17 +42,17 @@
 						<a data-query="setClass('selected', filter() == 'completed')" href="#/completed">Completed</a>
 					</li>
 				</ul>
-				<button data-query="visible(todos().length != todos.remaining()).click(todos.clearCompleted)" class="clear-completed">
+				<button data-query="visible(tobuys().length != tobuys.remaining()).click(tobuys.clearCompleted)" class="clear-completed">
 					Clear completed
 				</button>
 			</footer>
 		</section>
 		<footer class="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="https://github.com/astoilkov">Antonio Stoilkov</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/blocks/blocks.js"></script>
 		<script src="js/app.js"></script>
 	</body>

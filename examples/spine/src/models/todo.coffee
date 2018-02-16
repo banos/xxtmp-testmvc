@@ -3,10 +3,10 @@ class window.Todo extends Spine.Model
 	@extend Spine.Model.Local
 
 	@active: ->
-		@select (todo) -> !todo.completed
+		@select (tobuy) -> !tobuy.completed
 
 	@completed: ->
-		@select (todo) -> !!todo.completed
+		@select (tobuy) -> !!tobuy.completed
 
 	@destroyCompleted: ->
-		todo.destroy() for todo in @completed()
+		tobuy.destroy() for tobuy in @completed()

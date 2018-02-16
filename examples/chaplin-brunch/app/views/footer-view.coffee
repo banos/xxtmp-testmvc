@@ -7,7 +7,7 @@ module.exports = class FooterView extends View
   events:
     'click #clear-completed': 'clearCompleted'
   listen:
-    'todos:filter mediator': 'updateFilterer'
+    'tobuys:filter mediator': 'updateFilterer'
     'all collection': 'renderCounter'
   template: require './templates/footer'
 
@@ -28,12 +28,12 @@ module.exports = class FooterView extends View
     active = @collection.getActive().length
     completed = @collection.getCompleted().length
 
-    @find('#todo-count > strong').textContent = active
+    @find('#tobuy-count > strong').textContent = active
     countDescription = (if active is 1 then 'item' else 'items')
-    @find('.todo-count-title').textContent = countDescription
+    @find('.tobuy-count-title').textContent = countDescription
 
     utils.toggle @find('#clear-completed'), completed > 0
     utils.toggle @el, total > 0
 
   clearCompleted: ->
-    @publishEvent 'todos:clear'
+    @publishEvent 'tobuys:clear'

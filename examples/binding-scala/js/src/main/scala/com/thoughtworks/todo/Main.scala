@@ -1,4 +1,4 @@
-package com.thoughtworks.todo
+package com.thoughtworks.tobuy
 
 import com.thoughtworks.binding.{Binding, dom}
 import com.thoughtworks.binding.Binding.{BindingSeq, Constants, Var, Vars}
@@ -14,15 +14,15 @@ import upickle.default.{read, write}
   final class Todo(val title: String, val completed: Boolean)
   object Todo {
     def apply(title: String, completed: Boolean) = new Todo(title, completed)
-    def unapply(todo: Todo) = Option((todo.title, todo.completed))
+    def unapply(tobuy: Todo) = Option((tobuy.title, tobuy.completed))
   }
 
   final case class TodoList(text: String, hash: String, items: BindingSeq[Todo])
 
   object Models {
-    val LocalStorageName = "todos-binding.scala"
+    val LocalStorageName = "tobuys-binding.scala"
     def load() = LocalStorage(LocalStorageName).toSeq.flatMap(read[Seq[Todo]])
-    def save(todos: Seq[Todo]) = LocalStorage(LocalStorageName) = write(todos)
+    def save(tobuys: Seq[Todo]) = LocalStorage(LocalStorageName) = write(tobuys)
 
     val allTodos = Vars[Todo](load(): _*)
 
@@ -32,11 +32,11 @@ import upickle.default.{read, write}
     val editingTodo = Var[Option[Todo]](None)
 
     val all = TodoList("All", "#/", allTodos)
-    val active = TodoList("Active", "#/active", for {todo <- allTodos if !todo.completed} yield todo)
-    val completed = TodoList("Completed", "#/completed", for {todo <- allTodos if todo.completed} yield todo)
-    val todoLists = Seq(all, active, completed)
+    val active = TodoList("Active", "#/active", for {tobuy <- allTodos if !tobuy.completed} yield tobuy)
+    val completed = TodoList("Completed", "#/completed", for {tobuy <- allTodos if tobuy.completed} yield tobuy)
+    val tobuyLists = Seq(all, active, completed)
 
-    def getCurrentTodoList = todoLists.find(_.hash == window.location.hash).getOrElse(all)
+    def getCurrentTodoList = tobuyLists.find(_.hash == window.location.hash).getOrElse(all)
     val currentTodoList = Var(getCurrentTodoList)
     @dom val hashBinding: Binding[Unit] = window.location.hash = currentTodoList.bind.hash
     hashBinding.watch()
@@ -58,12 +58,12 @@ import upickle.default.{read, write}
       }
     }
     <header class="header">
-      <h1>todos</h1>
-      <input class="new-todo" autofocus={true} placeholder="What needs to be done?" onkeydown={keyDownHandler}/>
+      <h1>tobuys</h1>
+      <input class="new-tobuy" autofocus={true} placeholder="What needs to be done?" onkeydown={keyDownHandler}/>
     </header>
   }
 
-  @dom def todoListItem(todo: Todo): Binding[Node] = {
+  @dom def tobuyListItem(tobuy: Todo): Binding[Node] = {
     // onblur is not only triggered by user interaction, but also triggered by programmatic DOM changes.
     // In order to suppress this behavior, we have to replace the onblur event listener to a dummy handler before programmatic DOM changes.
     val suppressOnBlur = Var(false)
@@ -72,9 +72,9 @@ import upickle.default.{read, write}
       editingTodo := None
       event.currentTarget.asInstanceOf[HTMLInputElement].value.trim match {
         case "" =>
-          allTodos.get.remove(allTodos.get.indexOf(todo))
+          allTodos.get.remove(allTodos.get.indexOf(tobuy))
         case trimmedTitle =>
-          allTodos.get(allTodos.get.indexOf(todo)) = Todo(trimmedTitle, todo.completed)
+          allTodos.get(allTodos.get.indexOf(tobuy)) = Todo(trimmedTitle, tobuy.completed)
       }
     }
     def keyDownHandler = { event: KeyboardEvent =>
@@ -89,15 +89,15 @@ import upickle.default.{read, write}
     }
     def ignoreEvent = { _: Event => }
     @dom def blurHandler: Binding[Event => Any] = if (suppressOnBlur.bind) ignoreEvent else submit
-    val edit = <input class="edit" value={ todo.title } onblur={ blurHandler.bind } onkeydown={ keyDownHandler } />
+    val edit = <input class="edit" value={ tobuy.title } onblur={ blurHandler.bind } onkeydown={ keyDownHandler } />
     def toggleHandler = { event: Event =>
-      allTodos.get(allTodos.get.indexOf(todo)) = Todo(todo.title, event.currentTarget.asInstanceOf[HTMLInputElement].checked)
+      allTodos.get(allTodos.get.indexOf(tobuy)) = Todo(tobuy.title, event.currentTarget.asInstanceOf[HTMLInputElement].checked)
     }
-    <li class={s"${if (todo.completed) "completed" else ""} ${if (editingTodo.bind.contains(todo)) "editing" else ""}"}>
+    <li class={s"${if (tobuy.completed) "completed" else ""} ${if (editingTodo.bind.contains(tobuy)) "editing" else ""}"}>
       <div class="view">
-        <input class="toggle" type="checkbox" checked={todo.completed} onclick={toggleHandler}/>
-        <label ondblclick={ _: Event => editingTodo := Some(todo); edit.focus() }>{ todo.title }</label>
-        <button class="destroy" onclick={ _: Event => allTodos.get.remove(allTodos.get.indexOf(todo)) }></button>
+        <input class="toggle" type="checkbox" checked={tobuy.completed} onclick={toggleHandler}/>
+        <label ondblclick={ _: Event => editingTodo := Some(tobuy); edit.focus() }>{ tobuy.title }</label>
+        <button class="destroy" onclick={ _: Event => allTodos.get.remove(allTodos.get.indexOf(tobuy)) }></button>
       </div>
       { edit }
     </li>
@@ -105,31 +105,31 @@ import upickle.default.{read, write}
 
   @dom def mainSection: Binding[Node] = {
     def toggleAllClickHandler = { event: Event =>
-      for ((todo, i) <- allTodos.get.zipWithIndex) {
-        if (todo.completed != event.currentTarget.asInstanceOf[HTMLInputElement].checked) {
-          allTodos.get(i) = Todo(todo.title, event.currentTarget.asInstanceOf[HTMLInputElement].checked)
+      for ((tobuy, i) <- allTodos.get.zipWithIndex) {
+        if (tobuy.completed != event.currentTarget.asInstanceOf[HTMLInputElement].checked) {
+          allTodos.get(i) = Todo(tobuy.title, event.currentTarget.asInstanceOf[HTMLInputElement].checked)
         }
       }
     }
     <section class="main" style:display={if (allTodos.length.bind == 0) "none" else ""}>
       <input type="checkbox" class="toggle-all" checked={active.items.length.bind == 0} onclick={toggleAllClickHandler}/>
       <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">{ for { todo <- currentTodoList.bind.items } yield todoListItem(todo).bind }</ul>
+      <ul class="tobuy-list">{ for { tobuy <- currentTodoList.bind.items } yield tobuyListItem(tobuy).bind }</ul>
     </section>
   }
 
   @dom def footer: Binding[Node] = {
     def clearCompletedClickHandler = { _: Event =>
-      allTodos.get --= (for { todo <- allTodos.get if todo.completed } yield todo)
+      allTodos.get --= (for { tobuy <- allTodos.get if tobuy.completed } yield tobuy)
     }
     <footer class="footer" style:display={if (allTodos.length.bind == 0) "none" else ""}>
-      <span class="todo-count">
+      <span class="tobuy-count">
         <strong>{ active.items.length.bind.toString }</strong> { if (active.items.length.bind == 1) "item" else "items"} left
       </span>
       <ul class="filters">{
-        for { todoList <- Constants(todoLists: _*) } yield {
+        for { tobuyList <- Constants(tobuyLists: _*) } yield {
           <li>
-            <a href={ todoList.hash } class={ if (todoList == currentTodoList.bind) "selected" else "" }>{ todoList.text }</a>
+            <a href={ tobuyList.hash } class={ if (tobuyList == currentTodoList.bind) "selected" else "" }>{ tobuyList.text }</a>
           </li>
         }
       }</ul>
@@ -140,15 +140,15 @@ import upickle.default.{read, write}
     </footer>
   }
 
-  @dom def todoapp: Binding[BindingSeq[Node]] = {
-    <section class="todoapp">{ header.bind }{ mainSection.bind }{ footer.bind }</section>
+  @dom def tobuyapp: Binding[BindingSeq[Node]] = {
+    <section class="tobuyapp">{ header.bind }{ mainSection.bind }{ footer.bind }</section>
     <footer class="info">
-      <p>Double-click to edit a todo</p>
+      <p>Double-click to edit a tobuy</p>
       <p>Written by <a href="https://github.com/atry">Yang Bo</a></p>
-      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+      <p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
     </footer>
   }
 
-  @JSExport def main(container: Node) = dom.render(container, todoapp)
+  @JSExport def main(container: Node) = dom.render(container, tobuyapp)
 
 }

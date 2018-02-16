@@ -1,19 +1,19 @@
-(ns todomvc.components.todo-input
+(ns tobuymvc.components.tobuy-input
   (:require [reagent.core :as reagent]
-            [todomvc.actions :as actions]
-            [todomvc.helpers :as helpers]))
+            [tobuymvc.actions :as actions]
+            [tobuymvc.helpers :as helpers]))
 
 (defn on-key-down [k title default]
   (let [key-pressed (.-which k)]
     (condp = key-pressed
-      helpers/enter-key (actions/add-todo title default)
+      helpers/enter-key (actions/add-tobuy title default)
       nil)))
 
 (defn component-render []
   (let [default ""
         title (reagent/atom default)]
     (fn []
-      [:input#new-todo {:type "text"
+      [:input#new-tobuy {:type "text"
                         :value @title
                         :placeholder "What needs to be done?"
                         :on-change #(reset! title (-> % .-target .-value))

@@ -39,7 +39,7 @@ DEALINGS IN THE SOFTWARE.
 ---------------------------------------------------------------------------------------
 
 index.html
-https://github.com/documentcloud/backbone/blob/master/examples/todos/index.html
+https://github.com/documentcloud/backbone/blob/master/examples/tobuys/index.html
 -->
 
 <!doctype html>
@@ -47,31 +47,31 @@ https://github.com/documentcloud/backbone/blob/master/examples/todos/index.html
 	<head>
 		<meta charset="utf-8">
 		<title>TypeScript & Backbone.js • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section class="todoapp">
+		<section class="tobuyapp">
 			<header class="header">
-				<h1>todos</h1>
-				 <div class="create-todo">
-					<input class="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>tobuys</h1>
+				 <div class="create-tobuy">
+					<input class="new-tobuy" placeholder="What needs to be done?" autofocus>
 				</div>
 			</header>
 			<section class="main">
 				<input class="check toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul class="todo-list"></ul>
+				<ul class="tobuy-list"></ul>
 			</section>
 			<footer class="footer">
-				<div class="todo-stats"></div>
+				<div class="tobuy-stats"></div>
 			</footer>
 		</section>
 		<footer class="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>TypeScript version by <a href="http://blogs.msdn.com/lukeh">Luke Hoban</a></p>
 			<p>Cleanup, edits: <a href="http://addyosmani.com">Addy Osmani</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 
 		<!-- Templates -->
@@ -79,15 +79,15 @@ https://github.com/documentcloud/backbone/blob/master/examples/todos/index.html
 		<script type="text/template" id="item-template">
 			<div class="view display">
 				<input class="toggle check" type="checkbox" <%= completed ? 'checked' : '' %>>
-				<label class="todo-content"><%= title %></label>
+				<label class="tobuy-content"><%= title %></label>
 				<button class="destroy"></button>
 			</div>
-			<input class="edit todo-input" value="<%= title %>">
+			<input class="edit tobuy-input" value="<%= title %>">
 		</script>
 
 		<script type="text/template" id="stats-template">
 			<% if (total) { %>
-				<span class="todo-count">
+				<span class="tobuy-count">
 					<strong class="number"><%= remaining %></strong>
 					<span class="word"><%= remaining == 1 ? 'item' : 'items' %></span> left
 				</span>
@@ -104,13 +104,13 @@ https://github.com/documentcloud/backbone/blob/master/examples/todos/index.html
 				</li>
 			</ul>
 			<% if (completed) { %>
-				<span class="todo-clear">
+				<span class="tobuy-clear">
 					<button class="clear-completed">Clear completed</button>
 				</span>
 			<% } %>
 		</script>
 
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 		<script src="node_modules/lodash/index.js"></script>
 		<script src="node_modules/backbone/backbone.js"></script>

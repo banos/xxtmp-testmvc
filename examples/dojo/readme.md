@@ -22,7 +22,7 @@ Get help from other Dojo users:
 * [Mailing list](http://dojotoolkit.org/community)
 * [Dojo on Twitter](http://twitter.com/dojo)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Running
@@ -31,10 +31,10 @@ To run the Dojo example, you need to build Dojo with TodoMVC profile.
 To do so, do the following. You need either java or node on your system to run these:
 
 ```
-cd /path/to/todomvc/examples/dojo
+cd /path/to/tobuymvc/examples/dojo
 npm install
 mv ./node_modules/dojo-util ./node_modules/util
-./node_modules/util/buildscripts/build.sh --profile ./profiles/todomvc.profile.js --release
+./node_modules/util/buildscripts/build.sh --profile ./profiles/tobuymvc.profile.js --release
 ```
 
 

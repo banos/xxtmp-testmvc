@@ -1,8 +1,8 @@
 define([
-	'./todo/store/TodoLocalStorage',
-	'./todo/widgets/CSSToggleWidget',
-	'./todo/widgets/Todo',
-	'./todo/widgets/TodoEscape',
-	'./todo/widgets/TodoFocus',
-	'./todo/widgets/Todos'
+	'./tobuy/store/TodoLocalStorage',
+	'./tobuy/widgets/CSSToggleWidget',
+	'./tobuy/widgets/Todo',
+	'./tobuy/widgets/TodoEscape',
+	'./tobuy/widgets/TodoFocus',
+	'./tobuy/widgets/Todos'
 ], 1);

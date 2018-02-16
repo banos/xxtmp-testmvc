@@ -9,7 +9,7 @@ define([
 	'use strict';
 
 	/**
-	 * Component for the `.todo-list` list
+	 * Component for the `.tobuy-list` list
 	 */
 
 	var ENTER_KEY = 13;
@@ -17,7 +17,7 @@ define([
 	var STORAGE = window.localStorage;
 
 	/**
-	 * Generates `tasks` JSON from HTML and triggers `todos/change` on `hub`
+	 * Generates `tasks` JSON from HTML and triggers `tobuys/change` on `hub`
 	 * @private
 	 */
 	function update() {
@@ -40,8 +40,8 @@ define([
 			// Get underlying Array
 			.get();
 
-		// Emit `todos/change` with the new `tasks` on `hub`
-		return hub.emit('todos/change', tasks);
+		// Emit `tobuys/change` with the new `tasks` on `hub`
+		return hub.emit('tobuys/change', tasks);
 	}
 
 	return Component.extend({
@@ -50,19 +50,19 @@ define([
 		 * Called when this component is started
 		 */
 		'sig/start': function () {
-			// Get previously stored tasks from `STORAGE` under the key `todos-troopjs`
-			var storage = STORAGE.getItem('todos-troopjs');
+			// Get previously stored tasks from `STORAGE` under the key `tobuys-troopjs`
+			var storage = STORAGE.getItem('tobuys-troopjs');
 
-			// Emit `todos/change` with deserialized tasks or `[]` on `hub`
-			return hub.emit('todos/change', storage !== null ? JSON.parse(storage) : []);
+			// Emit `tobuys/change` with deserialized tasks or `[]` on `hub`
+			return hub.emit('tobuys/change', storage !== null ? JSON.parse(storage) : []);
 		},
 
 		/**
-		 * HUB `todos/change` handler (memorized).
+		 * HUB `tobuys/change` handler (memorized).
 		 * Called whenever the task list is updated
 		 * @param {Array} tasks Updated task array
 		 */
-		'hub/todos/change(true)': function (tasks) {
+		'hub/tobuys/change(true)': function (tasks) {
 			var $element = this.$element;
 			// Get template HTML
 			var template = $element
@@ -90,16 +90,16 @@ define([
 						.end();
 				}));
 
-			// Serialize `tasks` to JSON and store in `STORAGE` under the key `todos-troopjs`
-			STORAGE.setItem('todos-troopjs', JSON.stringify(tasks));
+			// Serialize `tasks` to JSON and store in `STORAGE` under the key `tobuys-troopjs`
+			STORAGE.setItem('tobuys-troopjs', JSON.stringify(tasks));
 		},
 
 		/**
-		 * HUB `todos/add` handler.
+		 * HUB `tobuys/add` handler.
 		 * Called when a new task is created
 		 * @param {String} title Task title
 		 */
-		'hub/todos/add': function (title) {
+		'hub/tobuys/add': function (title) {
 			var $element = this.$element;
 			// Get template HTML
 			var template = $element
@@ -120,11 +120,11 @@ define([
 		},
 
 		/**
-		 * HUB `todos/complete` handler.
+		 * HUB `tobuys/complete` handler.
 		 * Called whenever all tasks change their `completed` state in bulk
 		 * @param {Boolean} toggle Completed state
 		 */
-		'hub/todos/complete': function (toggle) {
+		'hub/tobuys/complete': function (toggle) {
 			// Find all `.toggle` elements, set `checked` property to `toggle`, trigger `change` DOM event
 			this.$element
 				.find('.toggle')
@@ -137,10 +137,10 @@ define([
 		},
 
 		/**
-		 * HUB `todos/clear` handler.
+		 * HUB `tobuys/clear` handler.
 		 * Called whenever all completed tasks should be cleared
 		 */
-		'hub/todos/clear': function () {
+		'hub/tobuys/clear': function () {
 			// Find `.destroy` elements that are a descendants of `li:has(.toggle:checked)`, trigger `click` DOM event
 			this.$element
 				.find('li:has(.toggle:checked) .destroy')
@@ -148,11 +148,11 @@ define([
 		},
 
 		/**
-		 * HUB `todos/filter` handler.
+		 * HUB `tobuys/filter` handler.
 		 * Called whenever the task list filter is updated
 		 * @param {String} filter New filter
 		 */
-		'hub/todos/filter(true)': function (filter) {
+		'hub/tobuys/filter(true)': function (filter) {
 			var $element = this.$element;
 
 			// Toggle CSS classes depending on `filter`

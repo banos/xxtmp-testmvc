@@ -10,12 +10,12 @@ node_modules/backbone.localstorage/*
 node_modules/backbone.nativeview/*
 !node_modules/backbone.nativeview/backbone.nativeview.js
 
-node_modules/todomvc-app-css/*
-!node_modules/todomvc-app-css/index.css
+node_modules/tobuymvc-app-css/*
+!node_modules/tobuymvc-app-css/index.css
 
-node_modules/todomvc-common/*
-!node_modules/todomvc-common/base.css
-!node_modules/todomvc-common/base.js
+node_modules/tobuymvc-common/*
+!node_modules/tobuymvc-common/base.css
+!node_modules/tobuymvc-common/base.js
 
 node_modules/coffee-script-brunch/*
 node_modules/javascript-brunch/*

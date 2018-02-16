@@ -1,19 +1,19 @@
 // Server-side code
 
-// All the todos are stored in an in-memory array on the server
+// All the tobuys are stored in an in-memory array on the server
 // This should not be done in production apps
-var todos = [];
+var tobuys = [];
 
 // Define actions which can be called from the client using
 // ss.rpc('demo.ACTIONNAME', param1, param2...)
 exports.actions = function (req, res, ss) {
 	return {
 		getAll: function () {
-			res(todos);
+			res(tobuys);
 		},
 		update: function (clientTodos) {
-			todos = clientTodos;
-			ss.publish.all('updateTodos', todos);
+			tobuys = clientTodos;
+			ss.publish.all('updateTodos', tobuys);
 		}
 	};
 };

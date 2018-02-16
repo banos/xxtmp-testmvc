@@ -24,11 +24,11 @@ module.exports = function Page(browser) {
 
 	this.getClearCompletedButtonCss = function () { return 'button' + classOrId + 'clear-completed'; };
 
-	this.getNewInputCss = function () { return 'input' + classOrId + 'new-todo'; };
+	this.getNewInputCss = function () { return 'input' + classOrId + 'new-tobuy'; };
 
 	this.getToggleAllCss = function () { return 'input' + classOrId + 'toggle-all'; };
 
-	this.getItemCountCss = function () { return 'span' + classOrId + 'todo-count'; };
+	this.getItemCountCss = function () { return 'span' + classOrId + 'tobuy-count'; };
 
 	this.getFilterCss = function (index) {
 		return classOrId + 'filters li:nth-of-type(' + (index + 1) + ') a, ' +
@@ -43,7 +43,7 @@ module.exports = function Page(browser) {
 
 	this.getFilterCompletedCss = function () { return this.getFilterCss(2); };
 
-	this.getListCss = function (suffixCss) { return 'ul' + classOrId + 'todo-list' + (suffixCss || ''); };
+	this.getListCss = function (suffixCss) { return 'ul' + classOrId + 'tobuy-list' + (suffixCss || ''); };
 
 	this.getListItemCss = function (index, suffixCss, excludeParentSelector) {
 		suffixCss = (index === undefined ? '' : ':nth-of-type(' + (index + 1) + ')') + (suffixCss || '');
@@ -175,12 +175,12 @@ module.exports = function Page(browser) {
 	this.ensureAppIsVisibleAndLoaded = function () {
 		return this.waitForVisibility(false, this.getFooterSectionCss(), 'Footer is not hidden')
 			.then(this.waitForElement.bind(
-				this, '.new-todo, #new-todo', 'Could not find new todo input field', undefined))
+				this, '.new-tobuy, #new-tobuy', 'Could not find new tobuy input field', undefined))
 			.then(function (newTodoElement) {
 				return newTodoElement.getAttribute('id');
 			})
 			.then(function (newTodoElementId) {
-				if (newTodoElementId === 'new-todo') { return; }
+				if (newTodoElementId === 'new-tobuy') { return; }
 				idSelectors = false;
 				classOrId = idSelectors ? '#' : '.';
 			});

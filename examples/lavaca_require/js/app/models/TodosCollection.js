@@ -4,7 +4,7 @@ define(function (require) {
 	'use strict';
 
 	// Constants
-	var LOCAL_STORAGE_KEY = 'todos-lavaca-require';
+	var LOCAL_STORAGE_KEY = 'tobuys-lavaca-require';
 
 	var Collection = require('lavaca/mvc/Collection');
 

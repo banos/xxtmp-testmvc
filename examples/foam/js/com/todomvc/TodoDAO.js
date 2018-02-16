@@ -2,7 +2,7 @@
 	/* global CLASS */
 	'use strict';
 	CLASS({
-		package: 'com.todomvc',
+		package: 'com.tobuymvc',
 		name: 'TodoDAO',
 		extendsModel: 'foam.dao.ProxyDAO',
 		methods: [

@@ -2,12 +2,12 @@ import 'dart:html' as dom;
 import 'package:angular/angular.dart';
 
 @NgDirective(
-	selector: '[todo-escape]',
-	map: const {'todo-escape': '&onEscape'}
+	selector: '[tobuy-escape]',
+	map: const {'tobuy-escape': '&onEscape'}
 )
 @NgDirective(
-	selector: '[todo-focus]',
-	map: const {'todo-focus': '@todoFocus'}
+	selector: '[tobuy-focus]',
+	map: const {'tobuy-focus': '@tobuyFocus'}
 )
 class TodoDOMEventDirective {
 	final Map<int, Function> listeners = {};
@@ -35,7 +35,7 @@ class TodoDOMEventDirective {
 				dom.KeyCode.ESC);
 	}
 
-	set todoFocus(watchExpr) {
+	set tobuyFocus(watchExpr) {
 		scope.$watch(watchExpr, (value) {
 			if (value) {
 				element.focus();

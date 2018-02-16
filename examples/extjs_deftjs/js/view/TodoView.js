@@ -3,22 +3,22 @@
 */
 Ext.define('TodoDeftJS.view.TodoView', {
 	extend: 'Ext.view.View',
-	alias: 'widget.todoDeftJS-view-todoView',
+	alias: 'widget.tobuyDeftJS-view-tobuyView',
 	controller: 'TodoDeftJS.controller.TodoController',
-	inject: ['templateLoader', 'todoStore'],
+	inject: ['templateLoader', 'tobuyStore'],
 
 	config: {
 		templateLoader: null,
-		todoStore: null
+		tobuyStore: null
 	},
 
 	initComponent: function () {
 		Ext.apply(this, {
-			itemSelector: 'li.todo',
+			itemSelector: 'li.tobuy',
 			store: this.getTodoStore(),
 			tpl: '',
 			loader: {
-				url: 'templates/todolist.tpl',
+				url: 'templates/tobuylist.tpl',
 				autoLoad: true,
 				renderer: this.getTemplateLoader().templateRenderer
 			},

@@ -38,7 +38,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------------------- */
 // Todos.js
-// https://github.com/documentcloud/backbone/blob/master/examples/todos/todos.js
+// https://github.com/documentcloud/backbone/blob/master/examples/tobuys/tobuys.js
 
 // An example Backbone application contributed by
 // [Jérôme Gravel-Niquet](http://jgn.me/). This demo uses a simple
@@ -110,7 +110,7 @@ declare var Store: any;
 // Our basic **Todo** model has `title`, `order`, and `completed` attributes.
 class Todo extends Backbone.Model {
 
-	// Default attributes for the todo.
+	// Default attributes for the tobuy.
 	defaults() {
 		return {
 			title: '',
@@ -118,14 +118,14 @@ class Todo extends Backbone.Model {
 		}
 	}
 
-	// Ensure that each todo created has `title`.
+	// Ensure that each tobuy created has `title`.
 	initialize() {
 		if (!this.get('title')) {
 			this.set({ 'title': this.defaults().title });
 		}
 	}
 
-	// Toggle the `completed` state of this todo item.
+	// Toggle the `completed` state of this tobuy item.
 	toggle() {
 		this.save({ completed: !this.get('completed') });
 	}
@@ -140,22 +140,22 @@ class Todo extends Backbone.Model {
 // Todo Collection
 // ---------------
 
-// The collection of todos is backed by *localStorage* instead of a remote
+// The collection of tobuys is backed by *localStorage* instead of a remote
 // server.
 class TodoList extends Backbone.Collection {
 
 	// Reference to this collection's model.
 	model = Todo;
 
-	// Save all of the todo items under the `'todos'` namespace.
-	localStorage = new Store('todos-typescript-backbone');
+	// Save all of the tobuy items under the `'tobuys'` namespace.
+	localStorage = new Store('tobuys-typescript-backbone');
 
-	// Filter down the list of all todo items that are completed.
+	// Filter down the list of all tobuy items that are completed.
 	completed() {
-		return this.filter((todo: Todo) => todo.get('completed'));
+		return this.filter((tobuy: Todo) => tobuy.get('completed'));
 	}
 
-	// Filter down the list to only todo items that are still not completed.
+	// Filter down the list to only tobuy items that are still not completed.
 	remaining() {
 		return this.without.apply(this, this.completed());
 	}
@@ -168,8 +168,8 @@ class TodoList extends Backbone.Collection {
 	}
 
 	// Todos are sorted by their original insertion order.
-	comparator(todo: Todo) {
-		return todo.get('order');
+	comparator(tobuy: Todo) {
+		return tobuy.get('order');
 	}
 
 }
@@ -181,7 +181,7 @@ var taskFilter;
 // Todo Item View
 // --------------
 
-// The DOM element for a todo item...
+// The DOM element for a tobuy item...
 class TodoView extends Backbone.View {
 
 	// The TodoView listens for changes to its model, re-rendering. Since there's
@@ -203,7 +203,7 @@ class TodoView extends Backbone.View {
 		// The DOM events specific to an item.
 		this.events = {
 			'click .check': 'toggleDone',
-			'dblclick label.todo-content': 'edit',
+			'dblclick label.tobuy-content': 'edit',
 			'click button.destroy': 'clear',
 			'keypress .edit': 'updateOnEnter',
 			'keydown .edit': 'revertOnEscape',
@@ -221,13 +221,13 @@ class TodoView extends Backbone.View {
 		this.model.bind('visible', this.toggleVisible);
 	}
 
-	// Re-render the contents of the todo item.
+	// Re-render the contents of the tobuy item.
 	render() {
 		this.$el
 			.html(this.template(this.model.toJSON()))
 			.toggleClass('completed', this.model.get('completed'));
 		this.toggleVisible();
-		this.input = this.$('.todo-input');
+		this.input = this.$('.tobuy-input');
 		return this;
 	}
 
@@ -250,7 +250,7 @@ class TodoView extends Backbone.View {
 		this.input.focus();
 	}
 
-	// Close the `'editing'` mode, saving changes to the todo.
+	// Close the `'editing'` mode, saving changes to the tobuy.
 	close() {
 		var trimmedValue = this.input.val().trim();
 
@@ -315,8 +315,8 @@ class AppView extends Backbone.View {
 
 	// Delegated events for creating new items, and clearing completed ones.
 	events = {
-		'keypress .new-todo': 'createOnEnter',
-		'click .todo-clear button': 'clearCompleted',
+		'keypress .new-tobuy': 'createOnEnter',
+		'click .tobuy-clear button': 'clearCompleted',
 		'click .toggle-all': 'toggleAllComplete'
 	};
 
@@ -330,14 +330,14 @@ class AppView extends Backbone.View {
 		super();
 		// Instead of generating a new element, bind to the existing skeleton of
 		// the App already present in the HTML.
-		this.setElement($('.todoapp'), true);
+		this.setElement($('.tobuyapp'), true);
 
 		// At initialization we bind to the relevant events on the `Todos`
 		// collection, when items are added or changed. Kick things off by
-		// loading any preexisting todos that might be saved in *localStorage*.
+		// loading any preexisting tobuys that might be saved in *localStorage*.
 		_.bindAll(this, 'addOne', 'addAll', 'render', 'toggleAllComplete', 'filter');
 
-		this.input = this.$('.new-todo');
+		this.input = this.$('.new-tobuy');
 		this.allCheckbox = this.$('.toggle-all')[0];
 		this.mainElement = this.$('.main')[0];
 		this.footerElement = this.$('.footer')[0];
@@ -351,7 +351,7 @@ class AppView extends Backbone.View {
 		Todos.fetch();
 
 		// Initialize the router, showing the selected view
-		const todoRouter = new TodoRouter();
+		const tobuyRouter = new TodoRouter();
 		Backbone.history.start();
 	}
 
@@ -365,7 +365,7 @@ class AppView extends Backbone.View {
 			this.mainElement.style.display = 'block';
 			this.footerElement.style.display = 'block';
 
-			this.$('.todo-stats').html(this.statsTemplate({
+			this.$('.tobuy-stats').html(this.statsTemplate({
 				total: Todos.length,
 				completed: completed,
 				remaining: remaining
@@ -384,11 +384,11 @@ class AppView extends Backbone.View {
 		this.allCheckbox.checked = !remaining;
 	}
 
-	// Add a single todo item to the list by creating a view for it, and
+	// Add a single tobuy item to the list by creating a view for it, and
 	// appending its element to the `<ul>`.
-	addOne(todo: Todo) {
-		var view = new TodoView({ model: todo });
-		this.$('.todo-list').append(view.render().el);
+	addOne(tobuy: Todo) {
+		var view = new TodoView({ model: tobuy });
+		this.$('.tobuy-list').append(view.render().el);
 	}
 
 	// Add all items in the **Todos** collection at once.
@@ -402,8 +402,8 @@ class AppView extends Backbone.View {
 		this.filterAll();
 	}
 
-	filterOne(todo: Todo) {
-		todo.trigger('visible');
+	filterOne(tobuy: Todo) {
+		tobuy.trigger('visible');
 	}
 
 	filterAll() {
@@ -428,15 +428,15 @@ class AppView extends Backbone.View {
 		}
 	}
 
-	// Clear all completed todo items, destroying their models.
+	// Clear all completed tobuy items, destroying their models.
 	clearCompleted() {
-		_.each(Todos.completed(), (todo: Todo) => todo.clear());
+		_.each(Todos.completed(), (tobuy: Todo) => tobuy.clear());
 		return false;
 	}
 
 	toggleAllComplete() {
 		var completed = this.allCheckbox.checked;
-		Todos.each((todo: Todo) => todo.save({ 'completed': completed }));
+		Todos.each((tobuy: Todo) => tobuy.save({ 'completed': completed }));
 	}
 
 }

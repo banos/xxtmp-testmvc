@@ -3,29 +3,29 @@
 	<head>
 		<meta charset="utf-8">
 		<title>jQuery • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+				<h1>tobuys</h1>
+				<input id="new-tobuy" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section id="main">
 				<input id="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list"></ul>
+				<ul id="tobuy-list"></ul>
 			</section>
 			<footer id="footer"></footer>
 		</section>
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
-		<script id="todo-template" type="text/x-handlebars-template">
+		<script id="tobuy-template" type="text/x-handlebars-template">
 			{{#this}}
 			<li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
 				<div class="view">
@@ -38,7 +38,7 @@
 		{{/this}}
 		</script>
 		<script id="footer-template" type="text/x-handlebars-template">
-			<span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
+			<span id="tobuy-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
 			<ul id="filters">
 				<li>
 					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
@@ -52,7 +52,7 @@
 			</ul>
 			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
 		</script>
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>
 		<script src="node_modules/handlebars/dist/handlebars.js"></script>
 		<script src="node_modules/director/build/director.js"></script>

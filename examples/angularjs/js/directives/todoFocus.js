@@ -4,12 +4,12 @@
  * Directive that places focus on the element it is applied to when the
  * expression it binds to evaluates to true
  */
-angular.module('todomvc')
-	.directive('todoFocus', function todoFocus($timeout) {
+angular.module('tobuymvc')
+	.directive('tobuyFocus', function tobuyFocus($timeout) {
 		'use strict';
 
 		return function (scope, elem, attrs) {
-			scope.$watch(attrs.todoFocus, function (newVal) {
+			scope.$watch(attrs.tobuyFocus, function (newVal) {
 				if (newVal) {
 					$timeout(function () {
 						elem[0].focus();

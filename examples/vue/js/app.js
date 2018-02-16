@@ -1,21 +1,21 @@
-/*global Vue, todoStorage */
+/*global Vue, tobuyStorage */
 
 (function (exports) {
 
 	'use strict';
 
 	var filters = {
-		all: function (todos) {
-			return todos;
+		all: function (tobuys) {
+			return tobuys;
 		},
-		active: function (todos) {
-			return todos.filter(function (todo) {
-				return !todo.completed;
+		active: function (tobuys) {
+			return tobuys.filter(function (tobuy) {
+				return !tobuy.completed;
 			});
 		},
-		completed: function (todos) {
-			return todos.filter(function (todo) {
-				return todo.completed;
+		completed: function (tobuys) {
+			return tobuys.filter(function (tobuy) {
+				return tobuy.completed;
 			});
 		}
 	};
@@ -23,21 +23,21 @@
 	exports.app = new Vue({
 
 		// the root element that will be compiled
-		el: '.todoapp',
+		el: '.tobuyapp',
 
 		// app initial state
 		data: {
-			todos: todoStorage.fetch(),
+			tobuys: tobuyStorage.fetch(),
 			newTodo: '',
 			editedTodo: null,
 			visibility: 'all'
 		},
 
-		// watch todos change for localStorage persistence
+		// watch tobuys change for localStorage persistence
 		watch: {
-			todos: {
+			tobuys: {
 				deep: true,
-				handler: todoStorage.save
+				handler: tobuyStorage.save
 			}
 		},
 
@@ -45,18 +45,18 @@
 		// http://vuejs.org/guide/computed.html
 		computed: {
 			filteredTodos: function () {
-				return filters[this.visibility](this.todos);
+				return filters[this.visibility](this.tobuys);
 			},
 			remaining: function () {
-				return filters.active(this.todos).length;
+				return filters.active(this.tobuys).length;
 			},
 			allDone: {
 				get: function () {
 					return this.remaining === 0;
 				},
 				set: function (value) {
-					this.todos.forEach(function (todo) {
-						todo.completed = value;
+					this.tobuys.forEach(function (tobuy) {
+						tobuy.completed = value;
 					});
 				}
 			}
@@ -75,38 +75,38 @@
 				if (!value) {
 					return;
 				}
-				this.todos.push({ id: this.todos.length + 1, title: value, completed: false });
+				this.tobuys.push({ id: this.tobuys.length + 1, title: value, completed: false });
 				this.newTodo = '';
 			},
 
-			removeTodo: function (todo) {
-				var index = this.todos.indexOf(todo);
-				this.todos.splice(index, 1);
+			removeTodo: function (tobuy) {
+				var index = this.tobuys.indexOf(tobuy);
+				this.tobuys.splice(index, 1);
 			},
 
-			editTodo: function (todo) {
-				this.beforeEditCache = todo.title;
-				this.editedTodo = todo;
+			editTodo: function (tobuy) {
+				this.beforeEditCache = tobuy.title;
+				this.editedTodo = tobuy;
 			},
 
-			doneEdit: function (todo) {
+			doneEdit: function (tobuy) {
 				if (!this.editedTodo) {
 					return;
 				}
 				this.editedTodo = null;
-				todo.title = todo.title.trim();
-				if (!todo.title) {
-					this.removeTodo(todo);
+				tobuy.title = tobuy.title.trim();
+				if (!tobuy.title) {
+					this.removeTodo(tobuy);
 				}
 			},
 
-			cancelEdit: function (todo) {
+			cancelEdit: function (tobuy) {
 				this.editedTodo = null;
-				todo.title = this.beforeEditCache;
+				tobuy.title = this.beforeEditCache;
 			},
 
 			removeCompleted: function () {
-				this.todos = filters.active(this.todos);
+				this.tobuys = filters.active(this.tobuys);
 			}
 		},
 
@@ -114,7 +114,7 @@
 		// before focusing on the input field.
 		// http://vuejs.org/guide/custom-directive.html
 		directives: {
-			'todo-focus': function (el, binding) {
+			'tobuy-focus': function (el, binding) {
 				if (binding.value) {
 					el.focus();
 				}

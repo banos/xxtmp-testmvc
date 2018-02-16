@@ -1,4 +1,4 @@
-/*global jQuery, sap, todo, $ */
+/*global jQuery, sap, tobuy, $ */
 /*jshint unused:false */
 
 /*
@@ -8,13 +8,13 @@
 (function () {
 	'use strict';
 
-	jQuery.sap.require('todo.SmartTextField');
-	jQuery.sap.require('todo.formatters');
+	jQuery.sap.require('tobuy.SmartTextField');
+	jQuery.sap.require('tobuy.formatters');
 
-	sap.ui.jsview('todo.Todo', {
+	sap.ui.jsview('tobuy.Todo', {
 
 		getControllerName: function () {
-			return 'todo.Todo';
+			return 'tobuy.Todo';
 		},
 
 		controls: [],
@@ -22,69 +22,69 @@
 		repeater: false,
 
 		createContent: function (oController) {
-			var toggleAll, newTodo, todosRepeater, completedDataTemplate, todoTemplate, todoCount,
-				todosSelection, clearCompleted, todosFooter;
+			var toggleAll, newTodo, tobuysRepeater, completedDataTemplate, tobuyTemplate, tobuyCount,
+				tobuysSelection, clearCompleted, tobuysFooter;
 
-			// Toggle button to mark all todos as completed / open
+			// Toggle button to mark all tobuys as completed / open
 			toggleAll = new sap.ui.commons.CheckBox({
 				id: 'toggle-all',
 				checked: {
-					path: '/todos/',
-					formatter: todo.formatters.allCompletedTodosFormatter
+					path: '/tobuys/',
+					formatter: tobuy.formatters.allCompletedTodosFormatter
 				},
 				visible: {
-					path: '/todos/',
-					formatter: todo.formatters.isArrayNonEmptyFormatter
+					path: '/tobuys/',
+					formatter: tobuy.formatters.isArrayNonEmptyFormatter
 				}
 			}).attachChange(function () {
 				oController.toggleAll();
 			});
 			this.controls.push(toggleAll);
 
-			// Text field for entering a new todo
-			newTodo = new todo.SmartTextField('new-todo', {
+			// Text field for entering a new tobuy
+			newTodo = new tobuy.SmartTextField('new-tobuy', {
 				placeholder: 'What needs to be done?',
 				autofocus: true
 			}).attachChange(function () {
 				oController.createTodo(this.getProperty('value'));
 				this.setValue('');
-			}).addStyleClass('create-todo');
+			}).addStyleClass('create-tobuy');
 
 			this.controls.push(newTodo);
 
-			// Row repeater that will hold our todos
-			todosRepeater = new sap.ui.commons.RowRepeater('todo-list', {
+			// Row repeater that will hold our tobuys
+			tobuysRepeater = new sap.ui.commons.RowRepeater('tobuy-list', {
 				design: sap.ui.commons.RowRepeaterDesign.Transparent,
 				numberOfRows: 100
 			});
-			this.repeater = todosRepeater;
+			this.repeater = tobuysRepeater;
 
-			// Completed flag that is later bound to the done status of a todo
+			// Completed flag that is later bound to the done status of a tobuy
 			// We attach this to each text field and write it to the DOM as a data-*
 			// attribute; this way, we can refer to it in our stylesheet
 			completedDataTemplate = new sap.ui.core.CustomData({
 				key: 'completed',
 				value: {
 					path: 'done',
-					formatter: todo.formatters.booleanToStringFormatter
+					formatter: tobuy.formatters.booleanToStringFormatter
 				},
 				writeToDom: true
 			});
 
-			// A template used by the row repeater to render a todo
-			todoTemplate = new sap.ui.commons.layout.HorizontalLayout({
+			// A template used by the row repeater to render a tobuy
+			tobuyTemplate = new sap.ui.commons.layout.HorizontalLayout({
 				content: [new sap.ui.commons.CheckBox({
 					checked: '{done}'
 				}).attachChange(function () {
-					oController.todoToggled(this.getBindingContext());
-				}), new todo.SmartTextField({
+					oController.tobuyToggled(this.getBindingContext());
+				}), new tobuy.SmartTextField({
 					value: '{text}',
 					strongediting: true
 				}).attachBrowserEvent('dblclick', function (e) {
 					$('.destroy').css('display', 'none');
 				}).attachChange(function () {
-					oController.todoRenamed(this.getBindingContext());
-				}).addStyleClass('todo').addCustomData(completedDataTemplate),
+					oController.tobuyRenamed(this.getBindingContext());
+				}).addStyleClass('tobuy').addCustomData(completedDataTemplate),
 				new sap.ui.commons.Button({
 					lite: true,
 					text: ''
@@ -94,26 +94,26 @@
 			});
 
 			// Helper function to rebind the aggregation with different filters
-			todosRepeater.rebindAggregation = function (filters) {
+			tobuysRepeater.rebindAggregation = function (filters) {
 				this.unbindRows();
-				this.bindRows('/todos/', todoTemplate, null, filters);
+				this.bindRows('/tobuys/', tobuyTemplate, null, filters);
 			};
 
-			// Initially, we don't filter any todos
-			todosRepeater.rebindAggregation([]);
+			// Initially, we don't filter any tobuys
+			tobuysRepeater.rebindAggregation([]);
 
-			this.controls.push(todosRepeater);
+			this.controls.push(tobuysRepeater);
 
-			// Counts open todos
-			todoCount = new sap.ui.commons.TextView('todo-count', {
+			// Counts open tobuys
+			tobuyCount = new sap.ui.commons.TextView('tobuy-count', {
 				text: {
-					path: '/todos/',
-					formatter: todo.formatters.openTodoCountFormatter
+					path: '/tobuys/',
+					formatter: tobuy.formatters.openTodoCountFormatter
 				}
 			});
 
-			// Allows selecting what todos to show
-			todosSelection = new sap.ui.commons.SegmentedButton('filters', {
+			// Allows selecting what tobuys to show
+			tobuysSelection = new sap.ui.commons.SegmentedButton('filters', {
 
 				id: 'TodosSelection',
 				buttons: [new sap.ui.commons.Button({
@@ -130,32 +130,32 @@
 					text: 'Completed'
 				})]
 			}).attachSelect(function (e) {
-				oController.todosSelected(e.getParameters().selectedButtonId);
+				oController.tobuysSelected(e.getParameters().selectedButtonId);
 			});
-			todosSelection.setSelectedButton('AllTodos');
+			tobuysSelection.setSelectedButton('AllTodos');
 
-			// Button to clear all completed todos
+			// Button to clear all completed tobuys
 			clearCompleted = new sap.ui.commons.Button({
 				id: 'clear-completed',
 				lite: true,
 				text: 'Clear Completed',
 				visible: {
-					path: '/todos/',
-					formatter: todo.formatters.hasCompletedTodosFormatter
+					path: '/tobuys/',
+					formatter: tobuy.formatters.hasCompletedTodosFormatter
 				}
 			}).attachPress(function () {
 				oController.clearCompletedTodos();
 			});
 
-			todosFooter = new sap.ui.commons.layout.HorizontalLayout('footer', {
-				content: [todoCount, todosSelection, clearCompleted],
+			tobuysFooter = new sap.ui.commons.layout.HorizontalLayout('footer', {
+				content: [tobuyCount, tobuysSelection, clearCompleted],
 				visible: {
-					path: '/todos/',
-					formatter: todo.formatters.isArrayNonEmptyFormatter
+					path: '/tobuys/',
+					formatter: tobuy.formatters.isArrayNonEmptyFormatter
 				}
 			});
 
-			this.controls.push(todosFooter);
+			this.controls.push(tobuysFooter);
 
 			return this.controls;
 		},

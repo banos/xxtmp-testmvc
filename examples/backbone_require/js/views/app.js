@@ -3,8 +3,8 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'collections/todos',
-	'views/todos',
+	'collections/tobuys',
+	'views/tobuys',
 	'text!templates/stats.html',
 	'common'
 ], function ($, _, Backbone, Todos, TodoView, statsTemplate, Common) {
@@ -15,27 +15,27 @@ define([
 
 		// Instead of generating a new element, bind to the existing skeleton of
 		// the App already present in the HTML.
-		el: '#todoapp',
+		el: '#tobuyapp',
 
 		// Compile our stats template
 		template: _.template(statsTemplate),
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
-			'keypress #new-todo':		'createOnEnter',
+			'keypress #new-tobuy':		'createOnEnter',
 			'click #clear-completed':	'clearCompleted',
 			'click #toggle-all':		'toggleAllComplete'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
 		// collection, when items are added or changed. Kick things off by
-		// loading any preexisting todos that might be saved in *localStorage*.
+		// loading any preexisting tobuys that might be saved in *localStorage*.
 		initialize: function () {
 			this.allCheckbox = this.$('#toggle-all')[0];
-			this.$input = this.$('#new-todo');
+			this.$input = this.$('#new-tobuy');
 			this.$footer = this.$('#footer');
 			this.$main = this.$('#main');
-			this.$todoList = this.$('#todo-list');
+			this.$tobuyList = this.$('#tobuy-list');
 
 			this.listenTo(Todos, 'add', this.addOne);
 			this.listenTo(Todos, 'reset', this.addAll);
@@ -73,21 +73,21 @@ define([
 			this.allCheckbox.checked = !remaining;
 		},
 
-		// Add a single todo item to the list by creating a view for it, and
+		// Add a single tobuy item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
-		addOne: function (todo) {
-			var view = new TodoView({ model: todo });
-			this.$todoList.append(view.render().el);
+		addOne: function (tobuy) {
+			var view = new TodoView({ model: tobuy });
+			this.$tobuyList.append(view.render().el);
 		},
 
 		// Add all items in the **Todos** collection at once.
 		addAll: function () {
-			this.$todoList.empty();
+			this.$tobuyList.empty();
 			Todos.each(this.addOne, this);
 		},
 
-		filterOne: function (todo) {
-			todo.trigger('visible');
+		filterOne: function (tobuy) {
+			tobuy.trigger('visible');
 		},
 
 		filterAll: function () {
@@ -114,7 +114,7 @@ define([
 			this.$input.val('');
 		},
 
-		// Clear all completed todo items, destroying their models.
+		// Clear all completed tobuy items, destroying their models.
 		clearCompleted: function () {
 			_.invoke(Todos.completed(), 'destroy');
 			return false;
@@ -123,8 +123,8 @@ define([
 		toggleAllComplete: function () {
 			var completed = this.allCheckbox.checked;
 
-			Todos.each(function (todo) {
-				todo.save({
+			Todos.each(function (tobuy) {
+				tobuy.save({
 					completed: completed
 				});
 			});

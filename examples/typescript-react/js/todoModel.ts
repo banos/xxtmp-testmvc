@@ -16,12 +16,12 @@ import { Utils } from "./utils";
 class TodoModel implements ITodoModel {
 
   public key : string;
-  public todos : Array<ITodo>;
+  public tobuys : Array<ITodo>;
   public onChanges : Array<any>;
 
   constructor(key) {
     this.key = key;
-    this.todos = Utils.store(key);
+    this.tobuys = Utils.store(key);
     this.onChanges = [];
   }
 
@@ -30,12 +30,12 @@ class TodoModel implements ITodoModel {
   }
 
   public inform() {
-    Utils.store(this.key, this.todos);
+    Utils.store(this.key, this.tobuys);
     this.onChanges.forEach(function (cb) { cb(); });
   }
 
   public addTodo(title : string) {
-    this.todos = this.todos.concat({
+    this.tobuys = this.tobuys.concat({
       id: Utils.uuid(),
       title: title,
       completed: false
@@ -48,43 +48,43 @@ class TodoModel implements ITodoModel {
     // Note: It's usually better to use immutable data structures since they're
     // easier to reason about and React works very well with them. That's why
     // we use map(), filter() and reduce() everywhere instead of mutating the
-    // array or todo items themselves.
-    this.todos = this.todos.map<ITodo>((todo : ITodo) => {
-      return Utils.extend({}, todo, {completed: checked});
+    // array or tobuy items themselves.
+    this.tobuys = this.tobuys.map<ITodo>((tobuy : ITodo) => {
+      return Utils.extend({}, tobuy, {completed: checked});
     });
 
     this.inform();
   }
 
-  public toggle(todoToToggle : ITodo) {
-    this.todos = this.todos.map<ITodo>((todo : ITodo) => {
-      return todo !== todoToToggle ?
-        todo :
-        Utils.extend({}, todo, {completed: !todo.completed});
+  public toggle(tobuyToToggle : ITodo) {
+    this.tobuys = this.tobuys.map<ITodo>((tobuy : ITodo) => {
+      return tobuy !== tobuyToToggle ?
+        tobuy :
+        Utils.extend({}, tobuy, {completed: !tobuy.completed});
     });
 
     this.inform();
   }
 
-  public destroy(todo : ITodo) {
-    this.todos = this.todos.filter(function (candidate) {
-      return candidate !== todo;
+  public destroy(tobuy : ITodo) {
+    this.tobuys = this.tobuys.filter(function (candidate) {
+      return candidate !== tobuy;
     });
 
     this.inform();
   }
 
-  public save(todoToSave : ITodo, text : string) {
-    this.todos = this.todos.map(function (todo) {
-      return todo !== todoToSave ? todo : Utils.extend({}, todo, {title: text});
+  public save(tobuyToSave : ITodo, text : string) {
+    this.tobuys = this.tobuys.map(function (tobuy) {
+      return tobuy !== tobuyToSave ? tobuy : Utils.extend({}, tobuy, {title: text});
     });
 
     this.inform();
   }
 
   public clearCompleted() {
-    this.todos = this.todos.filter(function (todo) {
-      return !todo.completed;
+    this.tobuys = this.tobuys.filter(function (tobuy) {
+      return !tobuy.completed;
     });
 
     this.inform();

@@ -4,11 +4,11 @@ import TodoList from 'Todos/TodoList';
 import Filter from 'Controls/Filter';
 
 define App extends AppController {
-	section .todoapp {
+	section .tobuyapp {
 		header {
-			h1 > 'todos'
+			h1 > 'tobuys'
 	
-			TodoInput .new-todo
+			TodoInput .new-tobuy
 				autofocus
 				placeholder = 'What needs to be done?'
 				;
@@ -20,9 +20,9 @@ define App extends AppController {
 	
 			footer .footer {
 	
-				span .todo-count {
-					strong > '~[bind: status.todoCount]'
-					span > ' item~[bind: status.todoCount != 1 ? "s"] left'
+				span .tobuy-count {
+					strong > '~[bind: status.tobuyCount]'
+					span > ' item~[bind: status.tobuyCount != 1 ? "s"] left'
 				}
 	
 				Filter;
@@ -35,8 +35,8 @@ define App extends AppController {
 		}
 	}
 	footer .info {
-		p { 'Double-click to edit a todo' }
+		p { 'Double-click to edit a tobuy' }
 		p { 'Created by ' a href='http://github.com/tenbits' > 'Alex Kit' }
-		p { 'Part of ' a href='http://todomvc.com' > 'TodoMVC' }
+		p { 'Part of ' a href='http://tobuymvc.com' > 'TodoMVC' }
 	}
 }

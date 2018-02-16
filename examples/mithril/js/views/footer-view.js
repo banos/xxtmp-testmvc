@@ -7,7 +7,7 @@ app.footer = function (ctrl) {
 	var amountActive = ctrl.list.length - amountCompleted;
 
 	return m('footer#footer', [
-		m('span#todo-count', [
+		m('span#tobuy-count', [
 			m('strong', amountActive), ' item' + (amountActive !== 1 ? 's' : '') + ' left'
 		]),
 		m('ul#filters', [

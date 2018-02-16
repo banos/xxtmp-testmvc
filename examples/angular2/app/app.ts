@@ -2,56 +2,56 @@ import {Component} from 'angular2/core';
 import {TodoStore, Todo} from './services/store';
 
 @Component({
-	selector: 'todo-app',
+	selector: 'tobuy-app',
 	templateUrl: 'app/app.html'
 })
 export default class TodoApp {
-	todoStore: TodoStore;
+	tobuyStore: TodoStore;
 	newTodoText = '';
 
-	constructor(todoStore: TodoStore) {
-		this.todoStore = todoStore;
+	constructor(tobuyStore: TodoStore) {
+		this.tobuyStore = tobuyStore;
 	}
 
-	stopEditing(todo: Todo, editedTitle: string) {
-		todo.title = editedTitle;
-		todo.editing = false;
+	stopEditing(tobuy: Todo, editedTitle: string) {
+		tobuy.title = editedTitle;
+		tobuy.editing = false;
 	}
 
-	cancelEditingTodo(todo: Todo) {
-		todo.editing = false;
+	cancelEditingTodo(tobuy: Todo) {
+		tobuy.editing = false;
 	}
 
-	updateEditingTodo(todo: Todo, editedTitle: string) {
+	updateEditingTodo(tobuy: Todo, editedTitle: string) {
 		editedTitle = editedTitle.trim();
-		todo.editing = false;
+		tobuy.editing = false;
 
 		if (editedTitle.length === 0) {
-			return this.todoStore.remove(todo);
+			return this.tobuyStore.remove(tobuy);
 		}
 
-		todo.title = editedTitle;
+		tobuy.title = editedTitle;
 	}
 
-	editTodo(todo: Todo) {
-		todo.editing = true;
+	editTodo(tobuy: Todo) {
+		tobuy.editing = true;
 	}
 
 	removeCompleted() {
-		this.todoStore.removeCompleted();
+		this.tobuyStore.removeCompleted();
 	}
 
-	toggleCompletion(todo: Todo) {
-		this.todoStore.toggleCompletion(todo);
+	toggleCompletion(tobuy: Todo) {
+		this.tobuyStore.toggleCompletion(tobuy);
 	}
 
-	remove(todo: Todo){
-		this.todoStore.remove(todo);
+	remove(tobuy: Todo){
+		this.tobuyStore.remove(tobuy);
 	}
 
 	addTodo() {
 		if (this.newTodoText.trim().length) {
-			this.todoStore.add(this.newTodoText);
+			this.tobuyStore.add(this.newTodoText);
 			this.newTodoText = '';
 		}
 	}

@@ -9,7 +9,7 @@ define([
 	'dojo/store/Memory',
 	'dojox/mvc/at',
 	'dojox/mvc/getPlainValue',
-	'todo/widgets/Todos',
+	'tobuy/widgets/Todos',
 	'../../handleCleaner'
 ], function (bdd, expect, array, declare, router, Deferred, Stateful, Memory, at, getPlainValue, Todos, handleCleaner) {
 	// To use Dojo's super call method, inherited()
@@ -17,7 +17,7 @@ define([
 
 	// For supporting Intern's true/false check
 	/*jshint -W030*/
-	bdd.describe('Test todo/widgets/Todos', function () {
+	bdd.describe('Test tobuy/widgets/Todos', function () {
 		var w;
 		var handles = [];
 		var initialData = [
@@ -48,7 +48,7 @@ define([
 			statusForElem: 'active',
 			postMixInProperties: function () {
 				this.inherited(arguments);
-				this.set('isEmpty', at(this.get('todos'), 'length').transform(this.emptyConverter));
+				this.set('isEmpty', at(this.get('tobuys'), 'length').transform(this.emptyConverter));
 				this.set('remainingCountMessage', at(this, 'remainingCount').transform(this.pluralizeConverter));
 				this.set('statusMatches', at(this, 'status').transform(this.statusConverter));
 			}
@@ -66,11 +66,11 @@ define([
 				templateString: emptyTemplateString
 			});
 			handles.push(w);
-			expect(w.store.storageId).to.equal('todos-dojo');
+			expect(w.store.storageId).to.equal('tobuys-dojo');
 		});
 
 		bdd.it('Initial data', function () {
-			expect(getPlainValue(w.get('todos'))).to.deep.equal(initialData);
+			expect(getPlainValue(w.get('tobuys'))).to.deep.equal(initialData);
 			expect(w.get('remainingCount')).to.equal(1);
 			expect(w.get('completedCount')).to.equal(2);
 			expect(w.get('areAllChecked')).not.to.be.true;
@@ -112,7 +112,7 @@ define([
 			expect(w.get('statusMatches')).not.to.be.true;
 		});
 
-		bdd.it('Adding todo', function () {
+		bdd.it('Adding tobuy', function () {
 			var preventedDefault;
 			var fakeEvent = {
 				preventDefault: function () {
@@ -162,7 +162,7 @@ define([
 			]);
 		});
 
-		bdd.it('Removing todo', function () {
+		bdd.it('Removing tobuy', function () {
 			w.removeTodo(initialData[1]);
 			expect(w.store.data).to.deep.equal([
 				{
@@ -181,34 +181,34 @@ define([
 			expect(w.get('isEmpty')).to.be.true;
 		});
 
-		bdd.it('Reverting todo', function () {
-			var todo = w.get('todos')[1];
+		bdd.it('Reverting tobuy', function () {
+			var tobuy = w.get('tobuys')[1];
 			var original = {
-				title: todo.get('title'),
-				completed: todo.get('completed'),
-				id: todo.get('id')
+				title: tobuy.get('title'),
+				completed: tobuy.get('completed'),
+				id: tobuy.get('id')
 			};
-			todo.set('title', 'Bar0');
-			w.replaceTodo(todo, original);
-			expect(getPlainValue(w.get('todos'))).to.deep.equal(initialData);
+			tobuy.set('title', 'Bar0');
+			w.replaceTodo(tobuy, original);
+			expect(getPlainValue(w.get('tobuys'))).to.deep.equal(initialData);
 			w.replaceTodo({}, original);
-			expect(getPlainValue(w.get('todos'))).to.deep.equal(initialData);
+			expect(getPlainValue(w.get('tobuys'))).to.deep.equal(initialData);
 		});
 
-		bdd.it('Marking all todos as complete', function () {
+		bdd.it('Marking all tobuys as complete', function () {
 			w.set('areAllChecked', !w.get('areAllChecked'));
 			w.markAll();
-			expect(array.every(w.store.data, function (todo) {
-				return todo.completed;
+			expect(array.every(w.store.data, function (tobuy) {
+				return tobuy.completed;
 			})).to.be.true;
 			w.set('areAllChecked', !w.get('areAllChecked'));
 			w.markAll();
-			expect(array.every(w.store.data, function (todo) {
-				return !todo.completed;
+			expect(array.every(w.store.data, function (tobuy) {
+				return !tobuy.completed;
 			})).to.be.true;
 		});
 
-		bdd.it('Removing completed todos', function () {
+		bdd.it('Removing completed tobuys', function () {
 			w.clearCompletedTodos();
 			expect(w.store.data).to.deep.equal([
 				{
@@ -247,17 +247,17 @@ define([
 			}, function () {
 				expect(w.get('saving')).not.to.be.true;
 			}).then(function () {
-				var todo = new Stateful({
+				var tobuy = new Stateful({
 					title: 'Foo1',
 					completed: true,
 					id: 1
 				});
-				return w.saveTodo(todo, 'Foo0', false).then(function () {
+				return w.saveTodo(tobuy, 'Foo0', false).then(function () {
 					throw new Error('saveTodo() shouldn\'t succeed if the corresponding store method doesn\'t.');
 				}, function () {
 					expect(w.get('saving')).not.to.be.true;
-					expect(todo.get('title')).to.equal('Foo0');
-					expect(todo.get('completed')).not.to.be.true;
+					expect(tobuy.get('title')).to.equal('Foo0');
+					expect(tobuy.get('completed')).not.to.be.true;
 				});
 			}).then(function () {
 				return w.removeTodo().then(function () {

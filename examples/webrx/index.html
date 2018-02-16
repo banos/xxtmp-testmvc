@@ -3,23 +3,23 @@
 	<head>
 		<meta charset="utf-8">
 		<title>WebRx • TodoMVC</title>
-		<link href="node_modules/todomvc-common/base.css" rel="stylesheet">
-		<link href="node_modules/todomvc-app-css/index.css" rel="stylesheet">
+		<link href="node_modules/tobuymvc-common/base.css" rel="stylesheet">
+		<link href="node_modules/tobuymvc-app-css/index.css" rel="stylesheet">
 	</head>
 	<body>
-		<section class="todoapp">
+		<section class="tobuyapp">
 			<header class="header">
-				<h1>todos</h1>
+				<h1>tobuys</h1>
 				<input autofocus data-bind="textInput: @current,
 					keyPress: { 'enter': { command: addCmd, parameter: $data } }"
-					class="new-todo" placeholder="What needs to be done?">
+					class="new-tobuy" placeholder="What needs to be done?">
 			</header>
 
-			<section data-bind="visible: todos.length" class="main">
+			<section data-bind="visible: tobuys.length" class="main">
 				<input data-bind="checked: remainingCount === 0, command: completeAllCmd" class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 
-				<ul data-bind="foreach: filteredTodos" class="todo-list">
+				<ul data-bind="foreach: filteredTodos" class="tobuy-list">
 					<li data-bind="css: { completed: completed, editing: editing }">
 						<div class="view">
 							<input class="toggle" data-bind="checked: @completed" type="checkbox">
@@ -42,7 +42,7 @@
 			</section>
 
 			<footer data-bind="visible: completedCount || remainingCount" class="footer">
-				<span class="todo-count"><strong data-bind="text: remainingCount">0</strong>
+				<span class="tobuy-count"><strong data-bind="text: remainingCount">0</strong>
 				<span data-bind="text: remainingCount === 1 ? 'item' : 'items'"></span> left</span>
 
 				<ul class="filters">
@@ -64,12 +64,12 @@
 		</section>
 
 		<footer class="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="https://github.com/oliverw">Oliver Weichhold</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/rx/dist/rx.all.js"></script>
 		<script src="node_modules/webrx/dist/web.rx.js"></script>
 		<script src="js/app.js"></script>

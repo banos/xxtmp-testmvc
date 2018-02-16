@@ -13,7 +13,7 @@
 
     ESCAPE_KEY = 27;
 
-    TPL = Handlebars.compile($('#todo-template').html());
+    TPL = Handlebars.compile($('#tobuy-template').html());
 
     Todos.prototype.elements = {
       '.edit': 'editElem'
@@ -31,21 +31,21 @@
     function Todos() {
       this.render = bind(this.render, this);
       Todos.__super__.constructor.apply(this, arguments);
-      this.todo.bind('update', this.render);
-      this.todo.bind('destroy', this.release);
+      this.tobuy.bind('update', this.render);
+      this.tobuy.bind('destroy', this.release);
     }
 
     Todos.prototype.render = function() {
-      this.replace(TPL(this.todo));
+      this.replace(TPL(this.tobuy));
       return this;
     };
 
     Todos.prototype.remove = function() {
-      return this.todo.destroy();
+      return this.tobuy.destroy();
     };
 
     Todos.prototype.toggleStatus = function() {
-      return this.todo.updateAttribute('completed', !this.todo.completed);
+      return this.tobuy.updateAttribute('completed', !this.tobuy.completed);
     };
 
     Todos.prototype.edit = function() {
@@ -58,7 +58,7 @@
       this.el.removeClass('editing');
       val = $.trim(this.editElem.val());
       if (val) {
-        return this.todo.updateAttribute('title', val);
+        return this.tobuy.updateAttribute('title', val);
       } else {
         return this.remove();
       }
@@ -72,7 +72,7 @@
 
     Todos.prototype.revertEdit = function() {
       this.el.removeClass('editing');
-      return this.editElem.val(this.todo.title);
+      return this.editElem.val(this.tobuy.title);
     };
 
     Todos.prototype.revertEditOnEscape = function(e) {

@@ -5,5 +5,5 @@
 define({
 	ENTER_KEY: 13,
 	ESCAPE_KEY: 27,
-	localStorageItem: 'todos-knockout-require'
+	localStorageItem: 'tobuys-knockout-require'
 });

@@ -8,18 +8,18 @@ var utils_1 = require("./utils");
 var TodoModel = (function () {
     function TodoModel(key) {
         this.key = key;
-        this.todos = utils_1.Utils.store(key);
+        this.tobuys = utils_1.Utils.store(key);
         this.onChanges = [];
     }
     TodoModel.prototype.subscribe = function (onChange) {
         this.onChanges.push(onChange);
     };
     TodoModel.prototype.inform = function () {
-        utils_1.Utils.store(this.key, this.todos);
+        utils_1.Utils.store(this.key, this.tobuys);
         this.onChanges.forEach(function (cb) { cb(); });
     };
     TodoModel.prototype.addTodo = function (title) {
-        this.todos = this.todos.concat({
+        this.tobuys = this.tobuys.concat({
             id: utils_1.Utils.uuid(),
             title: title,
             completed: false
@@ -27,34 +27,34 @@ var TodoModel = (function () {
         this.inform();
     };
     TodoModel.prototype.toggleAll = function (checked) {
-        this.todos = this.todos.map(function (todo) {
-            return utils_1.Utils.extend({}, todo, { completed: checked });
+        this.tobuys = this.tobuys.map(function (tobuy) {
+            return utils_1.Utils.extend({}, tobuy, { completed: checked });
         });
         this.inform();
     };
-    TodoModel.prototype.toggle = function (todoToToggle) {
-        this.todos = this.todos.map(function (todo) {
-            return todo !== todoToToggle ?
-                todo :
-                utils_1.Utils.extend({}, todo, { completed: !todo.completed });
+    TodoModel.prototype.toggle = function (tobuyToToggle) {
+        this.tobuys = this.tobuys.map(function (tobuy) {
+            return tobuy !== tobuyToToggle ?
+                tobuy :
+                utils_1.Utils.extend({}, tobuy, { completed: !tobuy.completed });
         });
         this.inform();
     };
-    TodoModel.prototype.destroy = function (todo) {
-        this.todos = this.todos.filter(function (candidate) {
-            return candidate !== todo;
+    TodoModel.prototype.destroy = function (tobuy) {
+        this.tobuys = this.tobuys.filter(function (candidate) {
+            return candidate !== tobuy;
         });
         this.inform();
     };
-    TodoModel.prototype.save = function (todoToSave, text) {
-        this.todos = this.todos.map(function (todo) {
-            return todo !== todoToSave ? todo : utils_1.Utils.extend({}, todo, { title: text });
+    TodoModel.prototype.save = function (tobuyToSave, text) {
+        this.tobuys = this.tobuys.map(function (tobuy) {
+            return tobuy !== tobuyToSave ? tobuy : utils_1.Utils.extend({}, tobuy, { title: text });
         });
         this.inform();
     };
     TodoModel.prototype.clearCompleted = function () {
-        this.todos = this.todos.filter(function (todo) {
-            return !todo.completed;
+        this.tobuys = this.tobuys.filter(function (tobuy) {
+            return !tobuy.completed;
         });
         this.inform();
     };

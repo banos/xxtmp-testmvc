@@ -1,12 +1,12 @@
-<section id="todoapp">
+<section id="tobuyapp">
   <header id="header">
-    <h1>todos</h1>
-    <input type="text" id="new-todo" onkeydown={{action 'createTodo'}} placeholder="What needs to be done?" autofocus>
+    <h1>tobuys</h1>
+    <input type="text" id="new-tobuy" onkeydown={{action 'createTodo'}} placeholder="What needs to be done?" autofocus>
   </header>
     {{outlet}}
     {{#if (gt model.length 0)}}
       <footer id="footer">
-        <span id="todo-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
+        <span id="tobuy-count"><strong>{{remaining.length}}</strong> {{pluralize 'item' remaining.length}} left</span>
         <ul id="filters">
           <li>{{#link-to "index" activeClass="selected"}}All{{/link-to}}</li>
           <li>{{#link-to "active" activeClass="selected"}}Active{{/link-to}}</li>
@@ -19,11 +19,11 @@
     {{/if}}
 </section>
 <footer id="info">
-  <p>Double-click to edit a todo</p>
+  <p>Double-click to edit a tobuy</p>
   <p>
     Created by
     <a href="http://github.com/cibernox">Miguel Camba</a>,
     <a href="http://github.com/addyosmani">Addy Osmani</a>
   </p>
-  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  <p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 </footer>

@@ -7,14 +7,14 @@
 'use strict';
 
 var State = require('ampersand-state');
-var Todos = require('./todos');
+var Todos = require('./tobuys');
 
 
 module.exports = State.extend({
 	initialize: function () {
-		// Listen to changes to the todos collection that will
+		// Listen to changes to the tobuys collection that will
 		// affect lengths we want to calculate.
-		this.listenTo(this.todos, 'change:completed add remove', this.handleTodosUpdate);
+		this.listenTo(this.tobuys, 'change:completed add remove', this.handleTodosUpdate);
 		// We also want to calculate these values once on init
 		this.handleTodosUpdate();
 		// Listen for changes to `mode` so we can update
@@ -22,7 +22,7 @@ module.exports = State.extend({
 		this.listenTo(this, 'change:mode', this.handleModeChange);
 	},
 	collections: {
-		todos: Todos
+		tobuys: Todos
 	},
 	// We used only session properties here because there's
 	// no API or persistance layer for these in this app.
@@ -70,10 +70,10 @@ module.exports = State.extend({
 	// so they're easy to listen to and bind to DOM
 	// where needed.
 	handleTodosUpdate: function () {
-		var total = this.todos.length;
+		var total = this.tobuys.length;
 		// use a method we defined on the collection itself
-		// to count how many todos are completed
-		var completed = this.todos.getCompletedCount();
+		// to count how many tobuys are completed
+		var completed = this.tobuys.getCompletedCount();
 		// We use `set` here in order to update multiple attributes at once
 		// It's possible to set directely using `this.completedCount = completed` ...
 		this.set({
@@ -84,6 +84,6 @@ module.exports = State.extend({
 		});
 	},
 	handleModeChange: function () {
-		this.todos.setMode(this.mode);
+		this.tobuys.setMode(this.mode);
 	}
 });

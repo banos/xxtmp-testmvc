@@ -2,13 +2,13 @@
 /*global app */
 
 var View = require('ampersand-view');
-var TodoView = require('./todo');
+var TodoView = require('./tobuy');
 var ENTER_KEY = 13;
 
 
 module.exports = View.extend({
 	events: {
-		'keypress [data-hook~=todo-input]': 'handleMainInput',
+		'keypress [data-hook~=tobuy-input]': 'handleMainInput',
 		'click [data-hook~=mark-all]': 'handleMarkAllClick',
 		'click [data-hook~=clear-completed]': 'handleClearClick'
 	},
@@ -44,7 +44,7 @@ module.exports = View.extend({
 		// does pluralizing.
 		'model.itemsLeftHtml': {
 			type: 'innerHTML',
-			hook: 'todo-count'
+			hook: 'tobuy-count'
 		},
 		// Add 'selected' to right
 		// element
@@ -66,26 +66,26 @@ module.exports = View.extend({
 	},
 	// cache
 	initialize: function () {
-		this.mainInput = this.queryByHook('todo-input');
-		this.renderCollection(app.me.todos.subset, TodoView, this.queryByHook('todo-container'));
+		this.mainInput = this.queryByHook('tobuy-input');
+		this.renderCollection(app.me.tobuys.subset, TodoView, this.queryByHook('tobuy-container'));
 	},
 	// handles DOM event from main input
 	handleMainInput: function (e) {
 		var val = this.mainInput.value.trim();
 		if (e.which === ENTER_KEY && val) {
-			app.me.todos.add({title: val});
+			app.me.tobuys.add({title: val});
 			this.mainInput.value = '';
 		}
 	},
 	// Here we set all to state provided.
 	handleMarkAllClick: function () {
 		var targetState = !app.me.allCompleted;
-		app.me.todos.each(function (todo) {
-			todo.completed = targetState;
+		app.me.tobuys.each(function (tobuy) {
+			tobuy.completed = targetState;
 		});
 	},
 	// Handler for clear click
 	handleClearClick: function () {
-		app.me.todos.clearCompleted();
+		app.me.tobuys.clearCompleted();
 	}
 });

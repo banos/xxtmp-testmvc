@@ -96,7 +96,7 @@ Here are some links you may find helpful:
 	
 - [Atma.js on GitHub](https://github.com/atmajs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 ### Implementation
 

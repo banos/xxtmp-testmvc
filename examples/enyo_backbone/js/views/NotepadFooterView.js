@@ -7,7 +7,7 @@ enyo.kind({
 	showing: false,
 	components: [{
 		tag: 'span',
-		id: 'todo-count',
+		id: 'tobuy-count',
 		components: [{
 			name: 'count',
 			id: 'count-number',

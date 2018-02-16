@@ -1,8 +1,8 @@
-(function (todo) {
+(function (tobuy) {
 
 	'use strict';
 
-	todo.FooterView = function (scope, template, model, router, dispatcher) {
+	tobuy.FooterView = function (scope, template, model, router, dispatcher) {
 
 		// get data from the injected model
 		var items = model.get();
@@ -40,4 +40,4 @@
 
 	};
 
-})(window.todo = window.todo || {});
+})(window.tobuy = window.tobuy || {});

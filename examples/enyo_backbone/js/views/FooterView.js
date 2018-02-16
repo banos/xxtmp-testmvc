@@ -7,7 +7,7 @@ enyo.kind({
 	tag: 'footer',
 	components: [{
 		tag: 'p',
-		content: 'Double-click to edit a todo'
+		content: 'Double-click to edit a tobuy'
 	}, {
 		tag: 'p',
 		components: [{
@@ -23,6 +23,6 @@ enyo.kind({
 	}, {
 		tag: 'p',
 		allowHtml: true,
-		content: 'Part of <a href="http://todomvc.com">TodoMVC</a>'
+		content: 'Part of <a href="http://tobuymvc.com">TodoMVC</a>'
 	}]
 });

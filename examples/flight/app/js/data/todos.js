@@ -5,33 +5,33 @@ define([
 	'flight/lib/component',
 	'app/store'
 ], function (defineComponent, dataStore) {
-	function todos() {
+	function tobuys() {
 		var filter;
 		this.attributes({
 			dataStore: dataStore
 		});
 
 		this.add = function (e, data) {
-			var todo = this.attr.dataStore.save({
+			var tobuy = this.attr.dataStore.save({
 				title: data.title,
 				completed: false
 			});
 
-			this.trigger('dataTodoAdded', { todo: todo, filter: filter });
+			this.trigger('dataTodoAdded', { tobuy: tobuy, filter: filter });
 		};
 
 		this.remove = function (e, data) {
-			var todo = this.attr.dataStore.destroy(data.id);
+			var tobuy = this.attr.dataStore.destroy(data.id);
 
-			this.trigger('dataTodoRemoved', todo);
+			this.trigger('dataTodoRemoved', tobuy);
 		};
 
 		this.load = function () {
-			var todos;
+			var tobuys;
 
 			filter = localStorage.getItem('filter');
-			todos = this.find();
-			this.trigger('dataTodosLoaded', { todos: todos });
+			tobuys = this.find();
+			this.trigger('dataTodosLoaded', { tobuys: tobuys });
 		};
 
 		this.update = function (e, data) {
@@ -40,43 +40,43 @@ define([
 
 		this.toggleCompleted = function (e, data) {
 			var eventType;
-			var todo = this.attr.dataStore.get(data.id);
+			var tobuy = this.attr.dataStore.get(data.id);
 
-			todo.completed = !todo.completed;
-			this.attr.dataStore.save(todo);
+			tobuy.completed = !tobuy.completed;
+			this.attr.dataStore.save(tobuy);
 
 			eventType = filter ? 'dataTodoRemoved' : 'dataTodoToggled';
 
-			this.trigger(eventType, todo);
+			this.trigger(eventType, tobuy);
 		};
 
 		this.toggleAllCompleted = function (e, data) {
 			this.attr.dataStore.updateAll({ completed: data.completed });
-			this.trigger('dataTodoToggledAll', { todos: this.find(filter) });
+			this.trigger('dataTodoToggledAll', { tobuys: this.find(filter) });
 		};
 
 		this.filter = function (e, data) {
-			var todos;
+			var tobuys;
 
 			localStorage.setItem('filter', data.filter);
 			filter = data.filter;
-			todos = this.find();
+			tobuys = this.find();
 
-			this.trigger('dataTodosFiltered', { todos: todos });
+			this.trigger('dataTodosFiltered', { tobuys: tobuys });
 		};
 
 		this.find = function () {
-			var todos;
+			var tobuys;
 
 			if (filter) {
-				todos = this.attr.dataStore.find(function (each) {
+				tobuys = this.attr.dataStore.find(function (each) {
 					return (typeof each[filter] !== 'undefined') ? each.completed : !each.completed;
 				});
 			} else {
-				todos = this.attr.dataStore.all();
+				tobuys = this.attr.dataStore.all();
 			}
 
-			return todos;
+			return tobuys;
 		};
 
 		this.clearCompleted = function () {
@@ -98,5 +98,5 @@ define([
 		});
 	}
 
-	return defineComponent(todos);
+	return defineComponent(tobuys);
 });

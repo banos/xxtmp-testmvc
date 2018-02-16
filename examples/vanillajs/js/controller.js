@@ -59,7 +59,7 @@
 
 	/**
 	 * An event to fire on load. Will get all items and display them in the
-	 * todo-list
+	 * tobuy-list
 	 */
 	Controller.prototype.showAll = function () {
 		var self = this;
@@ -178,7 +178,7 @@
 	 * @param {number} id The ID of the element to complete or uncomplete
 	 * @param {object} checkbox The checkbox to check the state of complete
 	 *                          or not
-	 * @param {boolean|undefined} silent Prevent re-filtering the todo items
+	 * @param {boolean|undefined} silent Prevent re-filtering the tobuy items
 	 */
 	Controller.prototype.toggleComplete = function (id, completed, silent) {
 		var self = this;
@@ -211,34 +211,34 @@
 
 	/**
 	 * Updates the pieces of the page which change depending on the remaining
-	 * number of todos.
+	 * number of tobuys.
 	 */
 	Controller.prototype._updateCount = function () {
 		var self = this;
-		self.model.getCount(function (todos) {
-			self.view.render('updateElementCount', todos.active);
+		self.model.getCount(function (tobuys) {
+			self.view.render('updateElementCount', tobuys.active);
 			self.view.render('clearCompletedButton', {
-				completed: todos.completed,
-				visible: todos.completed > 0
+				completed: tobuys.completed,
+				visible: tobuys.completed > 0
 			});
 
-			self.view.render('toggleAll', {checked: todos.completed === todos.total});
-			self.view.render('contentBlockVisibility', {visible: todos.total > 0});
+			self.view.render('toggleAll', {checked: tobuys.completed === tobuys.total});
+			self.view.render('contentBlockVisibility', {visible: tobuys.total > 0});
 		});
 	};
 
 	/**
-	 * Re-filters the todo items, based on the active route.
-	 * @param {boolean|undefined} force  forces a re-painting of todo items.
+	 * Re-filters the tobuy items, based on the active route.
+	 * @param {boolean|undefined} force  forces a re-painting of tobuy items.
 	 */
 	Controller.prototype._filter = function (force) {
 		var activeRoute = this._activeRoute.charAt(0).toUpperCase() + this._activeRoute.substr(1);
 
-		// Update the elements on the page, which change with each completed todo
+		// Update the elements on the page, which change with each completed tobuy
 		this._updateCount();
 
 		// If the last active route isn't "All", or we're switching routes, we
-		// re-create the todo item elements, calling:
+		// re-create the tobuy item elements, calling:
 		//   this.show[All|Active|Completed]();
 		if (force || this._lastActiveRoute !== 'All' || this._lastActiveRoute !== activeRoute) {
 			this['show' + activeRoute]();
@@ -251,7 +251,7 @@
 	 * Simply updates the filter nav's selected states
 	 */
 	Controller.prototype._updateFilterState = function (currentPage) {
-		// Store a reference to the active route, allowing us to re-filter todo
+		// Store a reference to the active route, allowing us to re-filter tobuy
 		// items as they are marked complete or incomplete.
 		this._activeRoute = currentPage;
 

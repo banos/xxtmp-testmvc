@@ -22,7 +22,7 @@ Get help from other Elm users:
 * [@elmlang on Twitter](https://twitter.com/elmlang)
 * [@czaplic on Twitter](https://twitter.com/czaplic)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 

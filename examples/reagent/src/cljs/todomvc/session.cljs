@@ -1,14 +1,14 @@
-(ns todomvc.session
+(ns tobuymvc.session
   (:require [reagent.core :as reagent]
             [alandipert.storage-atom :refer [local-storage]]))
 
 (reset! alandipert.storage-atom/storage-delay 0)
 
-(def todos (local-storage (reagent/atom (sorted-map)) :todos-reagent))
+(def tobuys (local-storage (reagent/atom (sorted-map)) :tobuys-reagent))
 ;; will look like {id {:id _ :title _ :completed _ }}
 
-(def todos-counter (local-storage (reagent/atom 0) :todos-counter-reagent))
-;; will inc for each new todo
+(def tobuys-counter (local-storage (reagent/atom 0) :tobuys-counter-reagent))
+;; will inc for each new tobuy
 
-(def todos-display-type (reagent/atom :all))
+(def tobuys-display-type (reagent/atom :all))
 ;; the options are :all, :active, :completed

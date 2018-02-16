@@ -1,10 +1,10 @@
-(function (todo) {
+(function (tobuy) {
 	'use strict';
 
 	var ENTER_KEY = 13;
 	var ESCAPE_KEY = 27;
 
-	todo.MainView = function (scope, template, model, router, dispatcher) {
+	tobuy.MainView = function (scope, template, model, router, dispatcher) {
 
 		// get data from the injected model
 		var items = model.get();
@@ -104,4 +104,4 @@
 
 	};
 
-})(window.todo = window.todo || {});
+})(window.tobuy = window.tobuy || {});

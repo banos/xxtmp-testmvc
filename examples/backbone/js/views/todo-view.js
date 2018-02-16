@@ -7,7 +7,7 @@ var app = app || {};
 	// Todo Item View
 	// --------------
 
-	// The DOM element for a todo item...
+	// The DOM element for a tobuy item...
 	app.TodoView = Backbone.View.extend({
 		//... is a list tag.
 		tagName:  'li',
@@ -35,7 +35,7 @@ var app = app || {};
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
-		// Re-render the titles of the todo item.
+		// Re-render the titles of the tobuy item.
 		render: function () {
 			// Backbone LocalStorage is adding `id` attribute instantly after
 			// creating a model.  This causes our TodoView to render twice. Once
@@ -43,7 +43,7 @@ var app = app || {};
 			// filter out the second redundant render, which is caused by this
 			// `id` change.  It's known Backbone LocalStorage bug, therefore
 			// we've to create a workaround.
-			// https://github.com/tastejs/todomvc/issues/469
+			// https://github.com/tastejs/tobuymvc/issues/469
 			if (this.model.changed.id !== undefined) {
 				return;
 			}
@@ -76,7 +76,7 @@ var app = app || {};
 			this.$input.focus();
 		},
 
-		// Close the `"editing"` mode, saving changes to the todo.
+		// Close the `"editing"` mode, saving changes to the tobuy.
 		close: function () {
 			var value = this.$input.val();
 			var trimmedValue = value.trim();

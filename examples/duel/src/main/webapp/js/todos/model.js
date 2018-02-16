@@ -1,8 +1,8 @@
 /*global window */
 
-var todos = todos || {};
+var tobuys = tobuys || {};
 
-(function (todos, localStorage, KEY) {
+(function (tobuys, localStorage, KEY) {
 	'use strict';
 
 	/*-- private members -------------------------------*/
@@ -81,7 +81,7 @@ var todos = todos || {};
 
 	/*-- export public interface -------------------------------*/
 
-	todos.model = {
+	tobuys.model = {
 		viewData: function (filter) {
 			return {
 				tasks: filterTasks(filter),
@@ -144,4 +144,4 @@ var todos = todos || {};
 			save();
 		}
 	};
-})(todos, window.localStorage, 'todos-duel');
+})(tobuys, window.localStorage, 'tobuys-duel');

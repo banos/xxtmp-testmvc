@@ -8,7 +8,7 @@
 	     * It has two simple entry points:
 	     *
 	     *   - bind(eventName, handler)
-	     *     Takes a todo application event and registers the handler
+	     *     Takes a tobuy application event and registers the handler
 	     *   - render(command, parameterObject)
 	     *     Renders the given command with the options
 	     */
@@ -18,20 +18,20 @@
 		this.ENTER_KEY = 13;
 		this.ESCAPE_KEY = 27;
 
-		this.$todoList = qs('.todo-list');
-		this.$todoItemCounter = qs('.todo-count');
+		this.$tobuyList = qs('.tobuy-list');
+		this.$tobuyItemCounter = qs('.tobuy-count');
 		this.$clearCompleted = qs('.clear-completed');
 		this.$main = qs('.main');
 		this.$footer = qs('.footer');
 		this.$toggleAll = qs('.toggle-all');
-		this.$newTodo = qs('.new-todo');
+		this.$newTodo = qs('.new-tobuy');
 	}
 
 	View.prototype._removeItem = function (id) {
 		var elem = qs('[data-id="' + id + '"]');
 
 		if (elem) {
-			this.$todoList.removeChild(elem);
+			this.$tobuyList.removeChild(elem);
 		}
 	};
 
@@ -96,13 +96,13 @@
 		var self = this;
 		var viewCommands = {
 			showEntries: function () {
-				self.$todoList.innerHTML = self.template.show(parameter);
+				self.$tobuyList.innerHTML = self.template.show(parameter);
 			},
 			removeItem: function () {
 				self._removeItem(parameter);
 			},
 			updateElementCount: function () {
-				self.$todoItemCounter.innerHTML = self.template.itemCounter(parameter);
+				self.$tobuyItemCounter.innerHTML = self.template.itemCounter(parameter);
 			},
 			clearCompletedButton: function () {
 				self._clearCompletedButton(parameter.completed, parameter.visible);
@@ -140,7 +140,7 @@
 
 	View.prototype._bindItemEditDone = function (handler) {
 		var self = this;
-		$delegate(self.$todoList, 'li .edit', 'blur', function () {
+		$delegate(self.$tobuyList, 'li .edit', 'blur', function () {
 			if (!this.dataset.iscanceled) {
 				handler({
 					id: self._itemId(this),
@@ -149,7 +149,7 @@
 			}
 		});
 
-		$delegate(self.$todoList, 'li .edit', 'keypress', function (event) {
+		$delegate(self.$tobuyList, 'li .edit', 'keypress', function (event) {
 			if (event.keyCode === self.ENTER_KEY) {
 				// Remove the cursor from the input when you hit enter just like if it
 				// were a real form
@@ -160,7 +160,7 @@
 
 	View.prototype._bindItemEditCancel = function (handler) {
 		var self = this;
-		$delegate(self.$todoList, 'li .edit', 'keyup', function (event) {
+		$delegate(self.$tobuyList, 'li .edit', 'keyup', function (event) {
 			if (event.keyCode === self.ESCAPE_KEY) {
 				this.dataset.iscanceled = true;
 				this.blur();
@@ -188,17 +188,17 @@
 			});
 
 		} else if (event === 'itemEdit') {
-			$delegate(self.$todoList, 'li label', 'dblclick', function () {
+			$delegate(self.$tobuyList, 'li label', 'dblclick', function () {
 				handler({id: self._itemId(this)});
 			});
 
 		} else if (event === 'itemRemove') {
-			$delegate(self.$todoList, '.destroy', 'click', function () {
+			$delegate(self.$tobuyList, '.destroy', 'click', function () {
 				handler({id: self._itemId(this)});
 			});
 
 		} else if (event === 'itemToggle') {
-			$delegate(self.$todoList, '.toggle', 'click', function () {
+			$delegate(self.$tobuyList, '.toggle', 'click', function () {
 				handler({
 					id: self._itemId(this),
 					completed: this.checked

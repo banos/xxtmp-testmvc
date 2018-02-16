@@ -1,4 +1,4 @@
-package com.todo.client;
+package com.tobuy.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.view.client.AbstractDataProvider;
-import com.todo.client.ToDoPresenter.ViewEventHandler;
+import com.tobuy.client.ToDoPresenter.ViewEventHandler;
 
 /**
  * A view for the {@link ToDoPresenter}
@@ -57,7 +57,7 @@ public class ToDoView extends Composite implements ToDoPresenter.View {
 	Element mainSection;
 
 	@UiField
-	Element todoStatsContainer;
+	Element tobuyStatsContainer;
 
 	@UiField
 	Button clearCompleted;
@@ -66,21 +66,21 @@ public class ToDoView extends Composite implements ToDoPresenter.View {
 	InputElement toggleAll;
 
 	@UiField(provided = true)
-	CellList<ToDoItem> todoTable = new CellList<ToDoItem>(new ToDoCell());
+	CellList<ToDoItem> tobuyTable = new CellList<ToDoItem>(new ToDoCell());
 
 	public ToDoView() {
 		initWidget(uiBinder.createAndBindUi(this));
 
 		// removes the yellow highlight
-		todoTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.DISABLED);
+		tobuyTable.setKeyboardSelectionPolicy(KeyboardSelectionPolicy.DISABLED);
 
 		// add IDs to the elements that have ui:field attributes. This is required because the UiBinder
 		// does not permit the addition of ID attributes to elements marked with ui:field.
 		// *SIGH*
 		mainSection.setId("main");
 		clearCompleted.getElement().setId("clear-completed");
-		taskText.getElement().setId("new-todo");
-		todoStatsContainer.setId("footer");
+		taskText.getElement().setId("new-tobuy");
+		tobuyStatsContainer.setId("footer");
 		toggleAll.setId("toggle-all");
 	}
 
@@ -128,7 +128,7 @@ public class ToDoView extends Composite implements ToDoPresenter.View {
 
 	@Override
 	public void setDataProvider(AbstractDataProvider<ToDoItem> data) {
-		data.addDataDisplay(todoTable);
+		data.addDataDisplay(tobuyTable);
 	}
 
 	@Override
@@ -141,7 +141,7 @@ public class ToDoView extends Composite implements ToDoPresenter.View {
 		int remainingTasks = totalTasks - completedTasks;
 
 		displayOrHide(mainSection, totalTasks == 0);
-		displayOrHide(todoStatsContainer, totalTasks == 0);
+		displayOrHide(tobuyStatsContainer, totalTasks == 0);
 		displayOrHide(clearCompleted.getElement(), completedTasks == 0);
 
 		remainingTasksCount.setInnerText(Integer.toString(remainingTasks));

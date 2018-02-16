@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react.Callback
 import org.scalajs.dom

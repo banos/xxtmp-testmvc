@@ -27,7 +27,7 @@ Get help from other Backbone.Marionette users:
 * [Backbone.Marionette on StackOverflow](http://stackoverflow.com/questions/tagged/backbone.marionette)
 * [Backbone.Marionette on Twitter](http://twitter.com/marionettejs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation

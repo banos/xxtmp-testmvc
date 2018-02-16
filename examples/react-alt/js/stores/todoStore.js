@@ -8,97 +8,97 @@ var app = app || {};
 	'use strict';
 
 	var Utils = app.Utils;
-	var LOCALSTORAGE_NAMESPACE = 'react-alt-todo';
+	var LOCALSTORAGE_NAMESPACE = 'react-alt-tobuy';
 
 	var TodoStore = function () {
 		this.state = {
-			todos: Utils.store(LOCALSTORAGE_NAMESPACE + '.todos'),
+			tobuys: Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys'),
 			nowShowing: Utils.store(LOCALSTORAGE_NAMESPACE + '.nowShowing') || app.ALL_TODOS,
 			editing: Utils.store(LOCALSTORAGE_NAMESPACE + '.editing') || null
 		};
 
 		this.bindListeners({
-			addTodo: app.todoActions.addTodo,
-			toggleAll: app.todoActions.toggleAll,
-			toggle: app.todoActions.toggle,
-			destroy: app.todoActions.destroy,
-			save: app.todoActions.save,
-			clearCompleted: app.todoActions.clearCompleted,
-			edit: app.todoActions.edit,
-			show: app.todoActions.show
+			addTodo: app.tobuyActions.addTodo,
+			toggleAll: app.tobuyActions.toggleAll,
+			toggle: app.tobuyActions.toggle,
+			destroy: app.tobuyActions.destroy,
+			save: app.tobuyActions.save,
+			clearCompleted: app.tobuyActions.clearCompleted,
+			edit: app.tobuyActions.edit,
+			show: app.tobuyActions.show
 		});
 	};
 
-	TodoStore.prototype.addTodo = function (todo) {
+	TodoStore.prototype.addTodo = function (tobuy) {
 		this.setState({
-			todos: this.state.todos.concat(todo)
+			tobuys: this.state.tobuys.concat(tobuy)
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
 	TodoStore.prototype.toggleAll = function (checked) {
-		var updatedTodos = this.state.todos.map(function (todo) {
-			return Utils.extend({}, todo, {completed: checked});
+		var updatedTodos = this.state.tobuys.map(function (tobuy) {
+			return Utils.extend({}, tobuy, {completed: checked});
 		});
 
 		this.setState({
-			todos: updatedTodos
+			tobuys: updatedTodos
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
-	TodoStore.prototype.toggle = function (todoToToggle) {
-		var updatedTodos = this.state.todos.map(function (todo) {
-			return todo !== todoToToggle ?
-				todo :
-				Utils.extend({}, todo, {completed: !todo.completed});
+	TodoStore.prototype.toggle = function (tobuyToToggle) {
+		var updatedTodos = this.state.tobuys.map(function (tobuy) {
+			return tobuy !== tobuyToToggle ?
+				tobuy :
+				Utils.extend({}, tobuy, {completed: !tobuy.completed});
 		});
 
 		this.setState({
-			todos: updatedTodos
+			tobuys: updatedTodos
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
-	TodoStore.prototype.destroy = function (todoToDestroy) {
-		var updatedTodos = this.state.todos.filter(function (todo) {
-			return todo !== todoToDestroy;
+	TodoStore.prototype.destroy = function (tobuyToDestroy) {
+		var updatedTodos = this.state.tobuys.filter(function (tobuy) {
+			return tobuy !== tobuyToDestroy;
 		});
 
 		this.setState({
-			todos: updatedTodos
+			tobuys: updatedTodos
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
 	TodoStore.prototype.save = function (command) {
-		var updatedTodos = this.state.todos.map(function (todo) {
-			return todo !== command.todoToSave ?
-				todo :
-				Utils.extend({}, command.todoToSave, {title: command.text});
+		var updatedTodos = this.state.tobuys.map(function (tobuy) {
+			return tobuy !== command.tobuyToSave ?
+				tobuy :
+				Utils.extend({}, command.tobuyToSave, {title: command.text});
 		});
 
 		this.setState({
-			todos: updatedTodos
+			tobuys: updatedTodos
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
 	TodoStore.prototype.clearCompleted = function () {
-		var updatedTodos = this.state.todos.filter(function (todo) {
-			return !todo.completed;
+		var updatedTodos = this.state.tobuys.filter(function (tobuy) {
+			return !tobuy.completed;
 		});
 
 		this.setState({
-			todos: updatedTodos
+			tobuys: updatedTodos
 		});
 
-		Utils.store(LOCALSTORAGE_NAMESPACE + '.todos', this.state.todos);
+		Utils.store(LOCALSTORAGE_NAMESPACE + '.tobuys', this.state.tobuys);
 	};
 
 	TodoStore.prototype.edit = function (id) {
@@ -119,5 +119,5 @@ var app = app || {};
 
 	TodoStore.displayName = 'TodoStore';
 
-	app.todoStore = app.alt.createStore(TodoStore);
+	app.tobuyStore = app.alt.createStore(TodoStore);
 })();

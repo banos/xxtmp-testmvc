@@ -1,7 +1,7 @@
 {
-  "name": "todomvc-sapui5",
+  "name": "tobuymvc-sapui5",
   "version": "0.0.0",
   "dependencies": {
-    "todomvc-common": "~0.3.0"
+    "tobuymvc-common": "~0.3.0"
   }
 }

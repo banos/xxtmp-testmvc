@@ -3,17 +3,17 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Serenade.js • TodoMVC</title>
-		<link href="node_modules/todomvc-common/base.css" rel="stylesheet">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link href="node_modules/tobuymvc-common/base.css" rel="stylesheet">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
 		<script id="app" type="text/serenade">
-			section#todoapp
+			section#tobuyapp
 				header#header
 					form[event:submit=newTodo!]
-						h1 "todos"
+						h1 "tobuys"
 
-						input#new-todo[binding:change=@newTitle placeholder="What needs to be done?" autofocus="autofocus"]
+						input#new-tobuy[binding:change=@newTitle placeholder="What needs to be done?" autofocus="autofocus"]
 
 				- if @allCount
 					section#main
@@ -21,12 +21,12 @@
 
 						label[for="toggle-all"] "Mark all as complete"
 
-						ul#todo-list
+						ul#tobuy-list
 							- collection @filtered
-								- view "todo"
+								- view "tobuy"
 
 					footer#footer
-						span#todo-count
+						span#tobuy-count
 							strong @activeCount
 							" "
 							@label
@@ -43,7 +43,7 @@
 								"Clear completed"
 		</script>
 
-		<script id="todo" type="text/serenade">
+		<script id="tobuy" type="text/serenade">
 			li[class:editing=@edit class:completed=@completed]
 				form[event:submit=edited!]
 					input.edit[on:load=loadField event:blur=edited! binding:change=@title]
@@ -55,12 +55,12 @@
 		</script>
 
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://elabs.se">Elabs</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/director/build/director.js"></script>
 		<script src="js/lib/serenade.js"></script>
 		<script src="js/app.js"></script>

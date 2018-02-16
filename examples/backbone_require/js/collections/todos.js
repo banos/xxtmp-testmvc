@@ -3,7 +3,7 @@ define([
 	'underscore',
 	'backbone',
 	'backboneLocalstorage',
-	'models/todo'
+	'models/tobuy'
 ], function (_, Backbone, Store, Todo) {
 	'use strict';
 
@@ -11,15 +11,15 @@ define([
 		// Reference to this collection's model.
 		model: Todo,
 
-		// Save all of the todo items under this example's namespace.
-		localStorage: new Store('todos-backbone'),
+		// Save all of the tobuy items under this example's namespace.
+		localStorage: new Store('tobuys-backbone'),
 
-		// Filter down the list of all todo items that are finished.
+		// Filter down the list of all tobuy items that are finished.
 		completed: function () {
 			return this.where({completed: true});
 		},
 
-		// Filter down the list to only todo items that are still not finished.
+		// Filter down the list to only tobuy items that are still not finished.
 		remaining: function () {
 			return this.where({completed: false});
 		},

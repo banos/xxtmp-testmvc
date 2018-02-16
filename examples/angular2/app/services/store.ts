@@ -18,37 +18,37 @@ export class Todo {
 }
 
 export class TodoStore {
-	todos: Array<Todo>;
+	tobuys: Array<Todo>;
 
 	constructor() {
-		let persistedTodos = JSON.parse(localStorage.getItem('angular2-todos') || '[]');
+		let persistedTodos = JSON.parse(localStorage.getItem('angular2-tobuys') || '[]');
 		// Normalize back into classes
-		this.todos = persistedTodos.map( (todo: {_title: String, completed: Boolean}) => {
-			let ret = new Todo(todo._title);
-			ret.completed = todo.completed;
+		this.tobuys = persistedTodos.map( (tobuy: {_title: String, completed: Boolean}) => {
+			let ret = new Todo(tobuy._title);
+			ret.completed = tobuy.completed;
 			return ret;
 		});
 	}
 
 	private updateStore() {
-		localStorage.setItem('angular2-todos', JSON.stringify(this.todos));
+		localStorage.setItem('angular2-tobuys', JSON.stringify(this.tobuys));
 	}
 
 	private getWithCompleted(completed: Boolean) {
-		return this.todos.filter((todo: Todo) => todo.completed === completed);
+		return this.tobuys.filter((tobuy: Todo) => tobuy.completed === completed);
 	}
 
 	allCompleted() {
-		return this.todos.length === this.getCompleted().length;
+		return this.tobuys.length === this.getCompleted().length;
 	}
 
 	setAllTo(completed: Boolean) {
-		this.todos.forEach((t: Todo) => t.completed = completed);
+		this.tobuys.forEach((t: Todo) => t.completed = completed);
 		this.updateStore();
 	}
 
 	removeCompleted() {
-		this.todos = this.getWithCompleted(false);
+		this.tobuys = this.getWithCompleted(false);
 		this.updateStore();
 	}
 
@@ -60,18 +60,18 @@ export class TodoStore {
 		return this.getWithCompleted(true);
 	}
 
-	toggleCompletion(todo: Todo) {
-		todo.completed = !todo.completed;
+	toggleCompletion(tobuy: Todo) {
+		tobuy.completed = !tobuy.completed;
 		this.updateStore();
 	}
 
-	remove(todo: Todo) {
-		this.todos.splice(this.todos.indexOf(todo), 1);
+	remove(tobuy: Todo) {
+		this.tobuys.splice(this.tobuys.indexOf(tobuy), 1);
 		this.updateStore();
 	}
 
 	add(title: String) {
-		this.todos.push(new Todo(title));
+		this.tobuys.push(new Todo(title));
 		this.updateStore();
 	}
 }

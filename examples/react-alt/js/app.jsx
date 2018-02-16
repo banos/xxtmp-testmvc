@@ -12,8 +12,8 @@ var app = app || {};
 	app.COMPLETED_TODOS = 'completed';
 	var TodoFooter = app.TodoFooter;
 	var TodoItem = app.TodoItem;
-	var TodoActions = app.todoActions;
-	var TodoStore = app.todoStore;
+	var TodoActions = app.tobuyActions;
+	var TodoStore = app.tobuyStore;
 
 	var ENTER_KEY = 13;
 
@@ -73,21 +73,21 @@ var app = app || {};
 			TodoActions.toggleAll(checked);
 		},
 
-		toggle: function (todoToToggle) {
-			TodoActions.toggle(todoToToggle);
+		toggle: function (tobuyToToggle) {
+			TodoActions.toggle(tobuyToToggle);
 		},
 
-		destroy: function (todo) {
-			TodoActions.destroy(todo);
+		destroy: function (tobuy) {
+			TodoActions.destroy(tobuy);
 		},
 
-		edit: function (todo) {
-			TodoActions.edit(todo.id);
+		edit: function (tobuy) {
+			TodoActions.edit(tobuy.id);
 		},
 
-		save: function (todoToSave, text) {
+		save: function (tobuyToSave, text) {
 			TodoActions.save({
-				todoToSave: todoToSave,
+				tobuyToSave: tobuyToSave,
 				text: text
 			});
 
@@ -105,39 +105,39 @@ var app = app || {};
 		render: function () {
 			var footer = null;
 			var main = null;
-			var todos = this.state.todos;
+			var tobuys = this.state.tobuys;
 
-			var shownTodos = todos.filter(function (todo) {
+			var shownTodos = tobuys.filter(function (tobuy) {
 				switch (this.state.nowShowing) {
 				case app.ACTIVE_TODOS:
-					return !todo.completed;
+					return !tobuy.completed;
 				case app.COMPLETED_TODOS:
-					return todo.completed;
+					return tobuy.completed;
 				default:
 					return true;
 				}
 			}, this);
 
-			var todoItems = shownTodos.map(function (todo) {
+			var tobuyItems = shownTodos.map(function (tobuy) {
 				return (
 					<TodoItem
-						key={todo.id}
-						todo={todo}
-						onToggle={this.toggle.bind(this, todo)}
-						onDestroy={this.destroy.bind(this, todo)}
-						onEdit={this.edit.bind(this, todo)}
-						editing={this.state.editing === todo.id}
-						onSave={this.save.bind(this, todo)}
+						key={tobuy.id}
+						tobuy={tobuy}
+						onToggle={this.toggle.bind(this, tobuy)}
+						onDestroy={this.destroy.bind(this, tobuy)}
+						onEdit={this.edit.bind(this, tobuy)}
+						editing={this.state.editing === tobuy.id}
+						onSave={this.save.bind(this, tobuy)}
 						onCancel={this.cancel}
 					/>
 				);
 			}, this);
 
-			var activeTodoCount = todos.reduce(function (accum, todo) {
-				return todo.completed ? accum : accum + 1;
+			var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+				return tobuy.completed ? accum : accum + 1;
 			}, 0);
 
-			var completedCount = todos.length - activeTodoCount;
+			var completedCount = tobuys.length - activeTodoCount;
 
 			if (activeTodoCount || completedCount) {
 				footer =
@@ -149,7 +149,7 @@ var app = app || {};
 					/>;
 			}
 
-			if (todos.length) {
+			if (tobuys.length) {
 				main = (
 					<section className="main">
 						<input
@@ -158,8 +158,8 @@ var app = app || {};
 							onChange={this.toggleAll}
 							checked={activeTodoCount === 0}
 						/>
-						<ul className="todo-list">
-							{todoItems}
+						<ul className="tobuy-list">
+							{tobuyItems}
 						</ul>
 					</section>
 				);
@@ -168,10 +168,10 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>todos</h1>
+						<h1>tobuys</h1>
 						<input
 							ref="newField"
-							className="new-todo"
+							className="new-tobuy"
 							placeholder="What needs to be done?"
 							value={this.state.newTodo}
 							onKeyDown={this.handleNewTodoKeyDown}
@@ -188,6 +188,6 @@ var app = app || {};
 
 	React.render(
 		<TodoApp/>,
-		document.getElementsByClassName('todoapp')[0]
+		document.getElementsByClassName('tobuyapp')[0]
 	);
 })();

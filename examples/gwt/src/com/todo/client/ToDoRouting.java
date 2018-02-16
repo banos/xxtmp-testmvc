@@ -1,31 +1,31 @@
-package com.todo.client;
+package com.tobuy.client;
 
 public enum ToDoRouting {
 	/**
-	 * Displays all todo items.
+	 * Displays all tobuy items.
 	 */
 	ALL(new MatchAll()),
 	/**
-	 * Displays active todo items - i.e. those that have not been done.
+	 * Displays active tobuy items - i.e. those that have not been done.
 	 */
 	ACTIVE(new MatchActive()),
 	/**
-	 * Displays completed todo items - i.e. those that have been done.
+	 * Displays completed tobuy items - i.e. those that have been done.
 	 */
 	COMPLETED(new MatchCompleted());
 
 	/**
-	 * Matcher used to filter todo items, based on some criteria.
+	 * Matcher used to filter tobuy items, based on some criteria.
 	 */
 	public interface Matcher {
 		/**
-		 * Determines whether the given todo item meets the criteria of this matcher.
+		 * Determines whether the given tobuy item meets the criteria of this matcher.
 		 */
 		boolean matches(ToDoItem item);
 	}
 
 	/**
-	 * A matcher that matches any todo item.
+	 * A matcher that matches any tobuy item.
 	 */
 	private static class MatchAll implements Matcher {
 		@Override
@@ -35,7 +35,7 @@ public enum ToDoRouting {
 	}
 
 	/**
-	 * A matcher that matches only active todo items.
+	 * A matcher that matches only active tobuy items.
 	 */
 	private static class MatchActive implements Matcher {
 		@Override
@@ -45,7 +45,7 @@ public enum ToDoRouting {
 	}
 
 	/**
-	 * A matcher that matches only completed todo items.
+	 * A matcher that matches only completed tobuy items.
 	 */
 	private static class MatchCompleted implements Matcher {
 		@Override

@@ -3,10 +3,10 @@
 */
 Ext.define('TodoDeftJS.controller.TodoController', {
 	extend: 'Deft.mvc.ViewController',
-	inject: ['todoStore'],
+	inject: ['tobuyStore'],
 
 	config: {
-		todoStore: null,
+		tobuyStore: null,
 		currentTodo: null
 	},
 
@@ -38,34 +38,34 @@ Ext.define('TodoDeftJS.controller.TodoController', {
 			this.getTodoStore().add(newTodo);
 		}
 
-		Ext.dom.Query.selectNode('#new-todo').focus();
+		Ext.dom.Query.selectNode('#new-tobuy').focus();
 	},
 
-	toggleCompleted: function (todo) {
-		todo.set('completed', !todo.get('completed'));
+	toggleCompleted: function (tobuy) {
+		tobuy.set('completed', !tobuy.get('completed'));
 	},
 
-	deleteTodo: function (todo) {
-		this.getTodoStore().remove(todo);
+	deleteTodo: function (tobuy) {
+		this.getTodoStore().remove(tobuy);
 	},
 
-	updateTodo: function (todo, title) {
+	updateTodo: function (tobuy, title) {
 		this.setCurrentTodo(null);
 
-		if ((todo === null) || (todo === undefined)) {
+		if ((tobuy === null) || (tobuy === undefined)) {
 			return;
 		}
 
-		todo.set('editing', false);
+		tobuy.set('editing', false);
 		title = title.trim();
 
 		if (((title != null) && (title != undefined) && title.length)) {
-			todo.set('title', Ext.util.Format.htmlEncode(title));
+			tobuy.set('title', Ext.util.Format.htmlEncode(title));
 		} else {
-			this.deleteTodo(todo);
+			this.deleteTodo(tobuy);
 		}
 
-		Ext.dom.Query.selectNode('#new-todo').focus();
+		Ext.dom.Query.selectNode('#new-tobuy').focus();
 	},
 
 	completedCount: function () {
@@ -82,7 +82,7 @@ Ext.define('TodoDeftJS.controller.TodoController', {
 
 	onNewTodoKeyDown: function (view, event) {
 		var title;
-		if (event.target.id === 'new-todo' && event.keyCode === Ext.EventObject.ENTER) {
+		if (event.target.id === 'new-tobuy' && event.keyCode === Ext.EventObject.ENTER) {
 			title = event.target.value.trim();
 			this.addTodo(title);
 			event.target.value = null;
@@ -91,11 +91,11 @@ Ext.define('TodoDeftJS.controller.TodoController', {
 		return true;
 	},
 
-	onTodoEditClick: function (view, todo, item, idx, event) {
+	onTodoEditClick: function (view, tobuy, item, idx, event) {
 		var editField;
-		this.setCurrentTodo(todo);
-		todo.set('editing', true);
-		editField = Ext.dom.Query.selectNode('#todo-list li.editing .edit');
+		this.setCurrentTodo(tobuy);
+		tobuy.set('editing', true);
+		editField = Ext.dom.Query.selectNode('#tobuy-list li.editing .edit');
 		editField.focus();
 		// Ensure that focus() doesn't select all the text as well by resetting the value.
 		editField.value = editField.value;
@@ -110,29 +110,29 @@ Ext.define('TodoDeftJS.controller.TodoController', {
 		}
 	},
 
-	onEditTodoKeyDown: function (view, todo, item, idx, event) {
+	onEditTodoKeyDown: function (view, tobuy, item, idx, event) {
 		var title;
 
 		if (event.keyCode === Ext.EventObject.ENTER) {
-			if (event.target.id === 'new-todo') {
+			if (event.target.id === 'new-tobuy') {
 				this.onNewTodoKeyDown(view, event);
 				return false;
 			}
 
 			title = event.target.value.trim();
 			Ext.fly(event.target).un('blur', this.onTodoBlur, this);
-			this.updateTodo(todo, title);
+			this.updateTodo(tobuy, title);
 			return false;
 		}
 
 		return true;
 	},
 
-	onTodoClick: function (view, todo, item, idx, event) {
+	onTodoClick: function (view, tobuy, item, idx, event) {
 		if (Ext.fly(event.target).hasCls('toggle')) {
-			this.toggleCompleted(todo);
+			this.toggleCompleted(tobuy);
 		} else if (Ext.fly(event.target).hasCls('destroy')) {
-			this.deleteTodo(todo);
+			this.deleteTodo(tobuy);
 		}
 		return true;
 	},

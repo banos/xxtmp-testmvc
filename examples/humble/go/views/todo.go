@@ -3,18 +3,18 @@ package views
 import (
 	"strings"
 
-	"github.com/go-humble/examples/todomvc/go/models"
-	"github.com/go-humble/examples/todomvc/go/templates"
+	"github.com/go-humble/examples/tobuymvc/go/models"
+	"github.com/go-humble/examples/tobuymvc/go/templates"
 	"github.com/go-humble/temple/temple"
 	"github.com/go-humble/view"
 	"honnef.co/go/js/dom"
 )
 
 var (
-	todoTmpl = templates.MustGetPartial("todo")
+	tobuyTmpl = templates.MustGetPartial("tobuy")
 )
 
-// Todo is a view for a single todo item.
+// Todo is a view for a single tobuy item.
 type Todo struct {
 	Model *models.Todo
 	tmpl  *temple.Partial
@@ -22,12 +22,12 @@ type Todo struct {
 	events []*view.EventListener
 }
 
-// NewTodo creates and returns a new Todo view, using the given todo as the
+// NewTodo creates and returns a new Todo view, using the given tobuy as the
 // model.
-func NewTodo(todo *models.Todo) *Todo {
+func NewTodo(tobuy *models.Todo) *Todo {
 	return &Todo{
-		Model: todo,
-		tmpl:  todoTmpl,
+		Model: tobuy,
+		tmpl:  tobuyTmpl,
 	}
 }
 
@@ -62,12 +62,12 @@ func (v *Todo) delegateEvents() {
 			triggerOnKeyCode(escapeKey, v.CancelEdit)))
 }
 
-// Toggle toggles the completeness of the todo.
+// Toggle toggles the completeness of the tobuy.
 func (v *Todo) Toggle(ev dom.Event) {
 	v.Model.Toggle()
 }
 
-// Remove removes the todo form the list.
+// Remove removes the tobuy form the list.
 func (v *Todo) Remove(ev dom.Event) {
 	v.Model.Remove()
 }
@@ -82,12 +82,12 @@ func (v *Todo) Edit(ev dom.Event) {
 	input.SelectionStart = input.SelectionEnd + len(input.Value)
 }
 
-// CommitEdit sets the title of the todo to the new title. After the edit has
-// been committed, the todo is no longer in the editing state.
+// CommitEdit sets the title of the tobuy to the new title. After the edit has
+// been committed, the tobuy is no longer in the editing state.
 func (v *Todo) CommitEdit(ev dom.Event) {
 	input := v.Element().QuerySelector(".edit").(*dom.HTMLInputElement)
 	newTitle := strings.TrimSpace(input.Value)
-	// If the newTitle is an empty string, delete the todo. Otherwise set the
+	// If the newTitle is an empty string, delete the tobuy. Otherwise set the
 	// new title.
 	if newTitle != "" {
 		v.Model.SetTitle(newTitle)
@@ -96,8 +96,8 @@ func (v *Todo) CommitEdit(ev dom.Event) {
 	}
 }
 
-// CancelEdit resets the title of the todo to its old value. It does not commit
-// the edit. After the edit has been canceled, the todo is no longer in the
+// CancelEdit resets the title of the tobuy to its old value. It does not commit
+// the edit. After the edit has been canceled, the tobuy is no longer in the
 // editing state.
 func (v *Todo) CancelEdit(ev dom.Event) {
 	removeClass(v.Element(), "editing")

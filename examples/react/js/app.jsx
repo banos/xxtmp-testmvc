@@ -59,20 +59,20 @@ var app = app || {};
 			this.props.model.toggleAll(checked);
 		},
 
-		toggle: function (todoToToggle) {
-			this.props.model.toggle(todoToToggle);
+		toggle: function (tobuyToToggle) {
+			this.props.model.toggle(tobuyToToggle);
 		},
 
-		destroy: function (todo) {
-			this.props.model.destroy(todo);
+		destroy: function (tobuy) {
+			this.props.model.destroy(tobuy);
 		},
 
-		edit: function (todo) {
-			this.setState({editing: todo.id});
+		edit: function (tobuy) {
+			this.setState({editing: tobuy.id});
 		},
 
-		save: function (todoToSave, text) {
-			this.props.model.save(todoToSave, text);
+		save: function (tobuyToSave, text) {
+			this.props.model.save(tobuyToSave, text);
 			this.setState({editing: null});
 		},
 
@@ -87,39 +87,39 @@ var app = app || {};
 		render: function () {
 			var footer;
 			var main;
-			var todos = this.props.model.todos;
+			var tobuys = this.props.model.tobuys;
 
-			var shownTodos = todos.filter(function (todo) {
+			var shownTodos = tobuys.filter(function (tobuy) {
 				switch (this.state.nowShowing) {
 				case app.ACTIVE_TODOS:
-					return !todo.completed;
+					return !tobuy.completed;
 				case app.COMPLETED_TODOS:
-					return todo.completed;
+					return tobuy.completed;
 				default:
 					return true;
 				}
 			}, this);
 
-			var todoItems = shownTodos.map(function (todo) {
+			var tobuyItems = shownTodos.map(function (tobuy) {
 				return (
 					<TodoItem
-						key={todo.id}
-						todo={todo}
-						onToggle={this.toggle.bind(this, todo)}
-						onDestroy={this.destroy.bind(this, todo)}
-						onEdit={this.edit.bind(this, todo)}
-						editing={this.state.editing === todo.id}
-						onSave={this.save.bind(this, todo)}
+						key={tobuy.id}
+						tobuy={tobuy}
+						onToggle={this.toggle.bind(this, tobuy)}
+						onDestroy={this.destroy.bind(this, tobuy)}
+						onEdit={this.edit.bind(this, tobuy)}
+						editing={this.state.editing === tobuy.id}
+						onSave={this.save.bind(this, tobuy)}
 						onCancel={this.cancel}
 					/>
 				);
 			}, this);
 
-			var activeTodoCount = todos.reduce(function (accum, todo) {
-				return todo.completed ? accum : accum + 1;
+			var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+				return tobuy.completed ? accum : accum + 1;
 			}, 0);
 
-			var completedCount = todos.length - activeTodoCount;
+			var completedCount = tobuys.length - activeTodoCount;
 
 			if (activeTodoCount || completedCount) {
 				footer =
@@ -131,7 +131,7 @@ var app = app || {};
 					/>;
 			}
 
-			if (todos.length) {
+			if (tobuys.length) {
 				main = (
 					<section className="main">
 						<input
@@ -140,8 +140,8 @@ var app = app || {};
 							onChange={this.toggleAll}
 							checked={activeTodoCount === 0}
 						/>
-						<ul className="todo-list">
-							{todoItems}
+						<ul className="tobuy-list">
+							{tobuyItems}
 						</ul>
 					</section>
 				);
@@ -150,9 +150,9 @@ var app = app || {};
 			return (
 				<div>
 					<header className="header">
-						<h1>todos</h1>
+						<h1>tobuys</h1>
 						<input
-							className="new-todo"
+							className="new-tobuy"
 							placeholder="What needs to be done?"
 							value={this.state.newTodo}
 							onKeyDown={this.handleNewTodoKeyDown}
@@ -167,12 +167,12 @@ var app = app || {};
 		}
 	});
 
-	var model = new app.TodoModel('react-todos');
+	var model = new app.TodoModel('react-tobuys');
 
 	function render() {
 		React.render(
 			<TodoApp model={model}/>,
-			document.getElementsByClassName('todoapp')[0]
+			document.getElementsByClassName('tobuyapp')[0]
 		);
 	}
 

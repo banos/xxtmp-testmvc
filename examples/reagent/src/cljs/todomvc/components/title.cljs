@@ -1,4 +1,4 @@
-(ns todomvc.components.title)
+(ns tobuymvc.components.title)
 
 (defn component []
-  [:h1 "todos"])
+  [:h1 "tobuys"])

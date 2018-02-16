@@ -11,9 +11,9 @@ define([
 		});
 
 		this.recount = function () {
-			var todos = this.attr.dataStore.all();
-			var all = todos.length;
-			var remaining = todos.reduce(function (memo, each) {
+			var tobuys = this.attr.dataStore.all();
+			var all = tobuys.length;
+			var remaining = tobuys.reduce(function (memo, each) {
 				return memo += each.completed ? 0 : 1;
 			}, 0);
 

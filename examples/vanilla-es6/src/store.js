@@ -19,7 +19,7 @@ export default class Store {
 		/**
 		 * Read the local ItemList from localStorage.
 		 *
-		 * @returns {ItemList} Current array of todos
+		 * @returns {ItemList} Current array of tobuys
 		 */
 		this.getLocalStorage = () => {
 			return liveTodos || JSON.parse(localStorage.getItem(name) || '[]');
@@ -28,10 +28,10 @@ export default class Store {
 		/**
 		 * Write the local ItemList to localStorage.
 		 *
-		 * @param {ItemList} todos Array of todos to write
+		 * @param {ItemList} tobuys Array of tobuys to write
 		 */
-		this.setLocalStorage = (todos) => {
-			localStorage.setItem(name, JSON.stringify(liveTodos = todos));
+		this.setLocalStorage = (tobuys) => {
+			localStorage.setItem(name, JSON.stringify(liveTodos = tobuys));
 		};
 
 		if (callback) {
@@ -51,12 +51,12 @@ export default class Store {
 	 * })
 	 */
 	find(query, callback) {
-		const todos = this.getLocalStorage();
+		const tobuys = this.getLocalStorage();
 		let k;
 
-		callback(todos.filter(todo => {
+		callback(tobuys.filter(tobuy => {
 			for (k in query) {
-				if (query[k] !== todo[k]) {
+				if (query[k] !== tobuy[k]) {
 					return false;
 				}
 			}
@@ -72,20 +72,20 @@ export default class Store {
 	 */
 	update(update, callback) {
 		const id = update.id;
-		const todos = this.getLocalStorage();
-		let i = todos.length;
+		const tobuys = this.getLocalStorage();
+		let i = tobuys.length;
 		let k;
 
 		while (i--) {
-			if (todos[i].id === id) {
+			if (tobuys[i].id === id) {
 				for (k in update) {
-					todos[i][k] = update[k];
+					tobuys[i][k] = update[k];
 				}
 				break;
 			}
 		}
 
-		this.setLocalStorage(todos);
+		this.setLocalStorage(tobuys);
 
 		if (callback) {
 			callback();
@@ -99,9 +99,9 @@ export default class Store {
 	 * @param {function()} [callback] Called when item is inserted
 	 */
 	insert(item, callback) {
-		const todos = this.getLocalStorage();
-		todos.push(item);
-		this.setLocalStorage(todos);
+		const tobuys = this.getLocalStorage();
+		tobuys.push(item);
+		this.setLocalStorage(tobuys);
 
 		if (callback) {
 			callback();
@@ -117,24 +117,24 @@ export default class Store {
 	remove(query, callback) {
 		let k;
 
-		const todos = this.getLocalStorage().filter(todo => {
+		const tobuys = this.getLocalStorage().filter(tobuy => {
 			for (k in query) {
-				if (query[k] !== todo[k]) {
+				if (query[k] !== tobuy[k]) {
 					return true;
 				}
 			}
 			return false;
 		});
 
-		this.setLocalStorage(todos);
+		this.setLocalStorage(tobuys);
 
 		if (callback) {
-			callback(todos);
+			callback(tobuys);
 		}
 	}
 
 	/**
-	 * Count total, active, and completed todos.
+	 * Count total, active, and completed tobuys.
 	 *
 	 * @param {function(number, number, number)} callback Called when the count is completed
 	 */

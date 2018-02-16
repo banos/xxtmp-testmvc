@@ -1,5 +1,5 @@
 CollectionView = require './base/collection-view'
-TodoView = require './todo-view'
+TodoView = require './tobuy-view'
 utils = require 'lib/utils'
 
 module.exports = class TodosView extends CollectionView
@@ -7,11 +7,11 @@ module.exports = class TodosView extends CollectionView
   events:
     'click #toggle-all': 'toggleCompleted'
   itemView: TodoView
-  listSelector: '#todo-list'
+  listSelector: '#tobuy-list'
   listen:
     'all collection': 'renderCheckbox'
-    'todos:clear mediator': 'clear'
-  template: require './templates/todos'
+    'tobuys:clear mediator': 'clear'
+  template: require './templates/tobuys'
 
   render: ->
     super
@@ -23,7 +23,7 @@ module.exports = class TodosView extends CollectionView
 
   toggleCompleted: (event) ->
     isChecked = event.delegateTarget.checked
-    @collection.forEach (todo) -> todo.save completed: isChecked
+    @collection.forEach (tobuy) -> tobuy.save completed: isChecked
 
   clear: ->
     @collection.getCompleted().forEach (model) ->

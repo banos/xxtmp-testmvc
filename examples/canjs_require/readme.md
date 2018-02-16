@@ -27,7 +27,7 @@ Get help from other CanJS users:
 * [CanJS Forums](http://forum.javascriptmvc.com/#Forum/canjs)
 * [CanJS on Twitter](http://twitter.com/canjs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation
@@ -91,11 +91,11 @@ templates. By default the Mustache view will be used but an EJS example is avail
 You can easily change it by modifying the `view` option in the `js/app.js` file:
 
 ```js
-Models.Todo.findAll({}, function (todos) {
-	new Todos('#todoapp', {
-		todos: todos,
+Models.Todo.findAll({}, function (tobuys) {
+	new Todos('#tobuyapp', {
+		tobuys: tobuys,
 		state: can.route,
-		view: 'views/todos.ejs'
+		view: 'views/tobuys.ejs'
 	});
 });
 ```

@@ -15,7 +15,7 @@ var app = app || {};
 			var self = this;
 			kb.ViewModel.prototype.constructor.call(this);
 
-			// New todo title.
+			// New tobuy title.
 			this.title = ko.observable('');
 
 			// The function used for filtering is dynamically selected based on the filterMode.
@@ -31,28 +31,28 @@ var app = app || {};
 			});
 
 			// A collectionObservable can be used to hold the instance of the collection.
-			this.todos = kb.collectionObservable(new app.Todos(), app.TodoViewModel, {filters: filterFn});
+			this.tobuys = kb.collectionObservable(new app.Todos(), app.TodoViewModel, {filters: filterFn});
 
 			// Note: collectionObservables do not track nested model attribute changes by design to avoid
 			// list redrawing when models change so changes need to be manually tracked and triggered.
-			this.todoAttributesTrigger = kb.triggeredObservable(this.todos.collection(), 'change add remove');
-			this.todoStats = ko.computed(function () {
-				self.todoAttributesTrigger(); // manual dependency on model attribute changes
+			this.tobuyAttributesTrigger = kb.triggeredObservable(this.tobuys.collection(), 'change add remove');
+			this.tobuyStats = ko.computed(function () {
+				self.tobuyAttributesTrigger(); // manual dependency on model attribute changes
 				return {
-					tasksExist: !!self.todos.collection().length,
-					completedCount: self.todos.collection().where({completed: true}).length,
-					remainingCount: self.todos.collection().where({completed: false}).length
+					tasksExist: !!self.tobuys.collection().length,
+					completedCount: self.tobuys.collection().where({completed: true}).length,
+					remainingCount: self.tobuys.collection().where({completed: false}).length
 				};
 			});
 
 			// When the checkbox state is written to the observable, all of the models are updated
 			this.toggleCompleted = ko.computed({
-				read: function () { return !self.todoStats().remainingCount; },
-				write: function (value) { self.todos.collection().each(function (model) { model.save({completed: value}); }); }
+				read: function () { return !self.tobuyStats().remainingCount; },
+				write: function (value) { self.tobuys.collection().each(function (model) { model.save({completed: value}); }); }
 			});
 
-			// Fetch the todos and the collectionObservable will update once the models are loaded
-			this.todos.collection().fetch();
+			// Fetch the tobuys and the collectionObservable will update once the models are loaded
+			this.tobuys.collection().fetch();
 
 			// Use a Backbone router to update the filter mode
 			new Backbone.Router().route('*filter', null, function (filter) { self.filterMode(filter || ''); });
@@ -62,13 +62,13 @@ var app = app || {};
 		// Create a new model in the underlying collection and the observable will automatically synchronize
 		onAddTodo: function (self, e) {
 			if (e.keyCode === ENTER_KEY && $.trim(self.title())) {
-				self.todos.collection().create({title: $.trim(self.title())});
+				self.tobuys.collection().create({title: $.trim(self.title())});
 				self.title('');
 			}
 		},
 
 		// Operate on the underlying collection instead of the observable given the observable could be filtered
-		onClearCompleted: function (self) { _.invoke(self.todos.collection().where({completed: true}), 'destroy'); },
+		onClearCompleted: function (self) { _.invoke(self.tobuys.collection().where({completed: true}), 'destroy'); },
 
 		// Helper function to keep expressions out of markup
 		getLabel: function (count) { return ko.utils.unwrapObservable(count) === 1 ? 'item' : 'items'; }

@@ -2,20 +2,20 @@
  * @author Mike Britton, Cliff Hall
  *
  * @class TodoProxy
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  *
  */
 puremvc.define({
-		name: 'todomvc.model.proxy.TodoProxy',
+		name: 'tobuymvc.model.proxy.TodoProxy',
 		parent: puremvc.Proxy
 	},
 
 	// INSTANCE MEMBERS
 	{
-		todos: [],
+		tobuys: [],
 		stats: {},
-		filter: todomvc.AppConstants.FILTER_ALL,
-		LOCAL_STORAGE: 'todos-puremvc',
+		filter: tobuymvc.AppConstants.FILTER_ALL,
+		LOCAL_STORAGE: 'tobuys-puremvc',
 
 		onRegister: function() {
 			this.loadData();
@@ -27,20 +27,20 @@ puremvc.define({
 				this.saveData();
 			}
 			storageObject = JSON.parse( localStorage.getItem( this.LOCAL_STORAGE ) );
-			this.todos = storageObject.todos;
+			this.tobuys = storageObject.tobuys;
 			this.filter = storageObject.filter;
 			this.computeStats();
 		},
 
 		saveData: function() {
-			var storageObject = { todos:this.todos, filter:this.filter };
+			var storageObject = { tobuys:this.tobuys, filter:this.filter };
 			localStorage.setItem( this.LOCAL_STORAGE, JSON.stringify( storageObject ) );
 		},
 
 		computeStats: function() {
-			this.stats.totalTodo        = this.todos.length;
-			this.stats.todoCompleted    = this.getCompletedCount();
-			this.stats.todoLeft         = this.stats.totalTodo - this.stats.todoCompleted;
+			this.stats.totalTodo        = this.tobuys.length;
+			this.stats.tobuyCompleted    = this.getCompletedCount();
+			this.stats.tobuyLeft         = this.stats.totalTodo - this.stats.tobuyCompleted;
 		},
 
 		filterTodos: function ( filter ) {
@@ -48,78 +48,78 @@ puremvc.define({
 			this.filter = filter;
 			this.saveData();
 
-			i = this.todos.length,
+			i = this.tobuys.length,
 				filtered = [];
 
 			while ( i-- ) {
-				if ( filter === todomvc.AppConstants.FILTER_ALL ) {
-					filtered.push( this.todos[ i ] );
-				} else if ( this.todos[i].completed === true && filter === todomvc.AppConstants.FILTER_COMPLETED ) {
-					filtered.push( this.todos[ i ] );
-				} else if ( this.todos[i].completed === false && filter === todomvc.AppConstants.FILTER_ACTIVE ) {
-					filtered.push( this.todos[ i ] );
+				if ( filter === tobuymvc.AppConstants.FILTER_ALL ) {
+					filtered.push( this.tobuys[ i ] );
+				} else if ( this.tobuys[i].completed === true && filter === tobuymvc.AppConstants.FILTER_COMPLETED ) {
+					filtered.push( this.tobuys[ i ] );
+				} else if ( this.tobuys[i].completed === false && filter === tobuymvc.AppConstants.FILTER_ACTIVE ) {
+					filtered.push( this.tobuys[ i ] );
 				}
 			}
 
-			this.sendNotification( todomvc.AppConstants.TODOS_FILTERED, { todos:filtered, stats:this.stats, filter:this.filter } );
+			this.sendNotification( tobuymvc.AppConstants.TODOS_FILTERED, { tobuys:filtered, stats:this.stats, filter:this.filter } );
 		},
 
-		todosModified: function() {
+		tobuysModified: function() {
 			this.computeStats();
 			this.filterTodos( this.filter );
 		},
 
 		removeTodosCompleted: function() {
-			var i = this.todos.length;
+			var i = this.tobuys.length;
 			while ( i-- ) {
-				if ( this.todos[ i ].completed ) {
-					this.todos.splice( i, 1 );
+				if ( this.tobuys[ i ].completed ) {
+					this.tobuys.splice( i, 1 );
 				}
 			}
-			this.todosModified();
+			this.tobuysModified();
 		},
 
 		deleteTodo: function( id ) {
-			var i = this.todos.length;
+			var i = this.tobuys.length;
 			while ( i-- ) {
-				if ( this.todos[i].id === id ) {
-					this.todos.splice(i, 1);
+				if ( this.tobuys[i].id === id ) {
+					this.tobuys.splice(i, 1);
 				}
 			}
-			this.todosModified();
+			this.tobuysModified();
 		},
 
 		toggleCompleteStatus: function( status ) {
-			var i = this.todos.length;
+			var i = this.tobuys.length;
 			while ( i-- ) {
-				this.todos[ i ].completed = status;
+				this.tobuys[ i ].completed = status;
 			}
-			this.todosModified();
+			this.tobuysModified();
 		},
 
-		updateTodo: function( todo ) {
-			var i = this.todos.length;
+		updateTodo: function( tobuy ) {
+			var i = this.tobuys.length;
 			while ( i-- ) {
-				if ( this.todos[ i ].id === todo.id ) {
-					 this.todos[ i ].title = todo.title;
-					 this.todos[ i ].completed = todo.completed;
+				if ( this.tobuys[ i ].id === tobuy.id ) {
+					 this.tobuys[ i ].title = tobuy.title;
+					 this.tobuys[ i ].completed = tobuy.completed;
 				}
 			}
-			this.todosModified();
+			this.tobuysModified();
 		},
 
 		addTodo: function( newTodo ) {
 			newTodo.id = this.getUuid();
-			this.todos.unshift( newTodo );
-			this.todosModified();
+			this.tobuys.unshift( newTodo );
+			this.tobuysModified();
 		},
 
 		getCompletedCount: function() {
-			var i = this.todos.length,
+			var i = this.tobuys.length,
 				completed = 0;
 
 			while ( i-- ) {
-				if ( this.todos[ i ].completed ) {
+				if ( this.tobuys[ i ].completed ) {
 					completed++;
 				}
 			}

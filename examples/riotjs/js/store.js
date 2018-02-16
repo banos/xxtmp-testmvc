@@ -2,14 +2,14 @@
 
 	'use strict';
 
-	var STORAGE_KEY = 'todos-riotjs';
+	var STORAGE_KEY = 'tobuys-riotjs';
 
-	exports.todoStorage = {
+	exports.tobuyStorage = {
 		fetch: function () {
 			return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 		},
-		save: function (todos) {
-			localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+		save: function (tobuys) {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(tobuys));
 		}
 	};
 

@@ -10,13 +10,13 @@ var TodoMVC = TodoMVC || {};
 	// Todo List Item View
 	// -------------------
 	//
-	// Display an individual todo item, and respond to changes
+	// Display an individual tobuy item, and respond to changes
 	// that are made to the item, including marking completed.
 	TodoMVC.TodoView = Mn.View.extend({
 
 		tagName: 'li',
 
-		template: '#template-todoItemView',
+		template: '#template-tobuyItemView',
 
 		className: function () {
 			return this.model.get('completed') ? 'completed' : 'active';
@@ -56,9 +56,9 @@ var TodoMVC = TodoMVC || {};
 		},
 
 		onEditFocusout: function () {
-			var todoText = this.ui.edit.val().trim();
-			if (todoText) {
-				this.model.set('title', todoText).save();
+			var tobuyText = this.ui.edit.val().trim();
+			if (tobuyText) {
+				this.model.set('title', tobuyText).save();
 				this.$el.removeClass('editing');
 			} else {
 				this.destroy();
@@ -89,7 +89,7 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.ListViewBody = Mn.CollectionView.extend({
 		tagName: 'ul',
 
-		id: 'todo-list',
+		id: 'tobuy-list',
 
 		childView: TodoMVC.TodoView,
 
@@ -105,7 +105,7 @@ var TodoMVC = TodoMVC || {};
 	// Manages List View
 	TodoMVC.ListView = Mn.View.extend({
 
-		template: '#template-todoListView',
+		template: '#template-tobuyListView',
 
 		regions: {
 			listBody: {
@@ -144,8 +144,8 @@ var TodoMVC = TodoMVC || {};
 		onToggleAllClick: function (e) {
 			var isChecked = e.currentTarget.checked;
 
-			this.collection.each(function (todo) {
-				todo.save({ completed: isChecked });
+			this.collection.each(function (tobuy) {
+				tobuy.save({ completed: isChecked });
 			});
 		},
 

@@ -1,7 +1,7 @@
 class window.Todos extends Spine.Controller
 	ENTER_KEY = 13
 	ESCAPE_KEY = 27
-	TPL = Handlebars.compile $('#todo-template').html()
+	TPL = Handlebars.compile $('#tobuy-template').html()
 
 	elements:
 		'.edit': 'editElem'
@@ -16,18 +16,18 @@ class window.Todos extends Spine.Controller
 
 	constructor: ->
 		super
-		@todo.bind 'update', @render
-		@todo.bind 'destroy', @release
+		@tobuy.bind 'update', @render
+		@tobuy.bind 'destroy', @release
 
 	render: =>
-		@replace TPL( @todo )
+		@replace TPL( @tobuy )
 		@
 
 	remove: ->
-		@todo.destroy()
+		@tobuy.destroy()
 
 	toggleStatus: ->
-		@todo.updateAttribute 'completed', !@todo.completed
+		@tobuy.updateAttribute 'completed', !@tobuy.completed
 
 	edit: ->
 		@el.addClass 'editing'
@@ -36,14 +36,14 @@ class window.Todos extends Spine.Controller
 	finishEdit: ->
 		@el.removeClass 'editing'
 		val = $.trim @editElem.val()
-		if val then @todo.updateAttribute( 'title', val ) else @remove()
+		if val then @tobuy.updateAttribute( 'title', val ) else @remove()
 
 	finishEditOnEnter: (e) ->
 		@finishEdit() if e.which is ENTER_KEY
 
 	revertEdit: ->
 		@el.removeClass 'editing'
-		@editElem.val(@todo.title)
+		@editElem.val(@tobuy.title)
 
 	revertEditOnEscape: (e) ->
 		@revertEdit() if e.which is ESCAPE_KEY

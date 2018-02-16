@@ -114,7 +114,7 @@ enyo.kind({
 		var completed = enyo.$['toggle-all'].getAttribute('checked') ? true : false;
 		// enyo stores all its objects at the top, and each object knows where to point in the DOM
 		// No need to find something in the DOM, just grab the top level enyo object that represents it
-		// toggle all children of the todo list
+		// toggle all children of the tobuy list
 		this.releaseCollection();
 		this.load();
 		this.collection.models.forEach(function (child) {
@@ -135,10 +135,10 @@ enyo.kind({
 		var falseTasks; // array of active tasks
 		var completedTasks; // array of completed tasks
 		var length; // length of all tasks
-		var todoList; // DOM representation of the todo list
-		// if we have created the todo-list in the enyo hierarchy
-		if (enyo.$['todo-list']) {
-			todoList = enyo.$['todo-list'];
+		var tobuyList; // DOM representation of the tobuy list
+		// if we have created the tobuy-list in the enyo hierarchy
+		if (enyo.$['tobuy-list']) {
+			tobuyList = enyo.$['tobuy-list'];
 			$('#filters a').removeClass('selected');
 			// reset the collection being used by the controller
 			this.releaseCollection();
@@ -188,8 +188,8 @@ enyo.kind({
 					enyo.$['clear-completed'].show();
 				}
 			}
-			// set the correct ui representation for each task.  Use the top level todo-list object to navigate down the rows
-			enyo.$['todo-list'].children.forEach(function (child) {
+			// set the correct ui representation for each task.  Use the top level tobuy-list object to navigate down the rows
+			enyo.$['tobuy-list'].children.forEach(function (child) {
 				checked = child.controller.data.attributes.completed;
 				if (checked) {
 					child.addClass('completed');

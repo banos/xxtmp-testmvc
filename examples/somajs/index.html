@@ -3,38 +3,38 @@
 	<head>
 		<meta charset="utf-8">
 		<title>soma.js • TodoMVC</title>
-		<link rel="stylesheet" href="node_modules/todomvc-common/base.css">
-		<link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
+		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 		<link rel="stylesheet" href="css/app.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 
-			<!-- HEADER VIEW, template: /views/header.js (todo.HeaderView) -->
+			<!-- HEADER VIEW, template: /views/header.js (tobuy.HeaderView) -->
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" placeholder="What needs to be done?" autofocus data-keypress="add()" data-blur="clear()">
+				<h1>tobuys</h1>
+				<input id="new-tobuy" placeholder="What needs to be done?" autofocus data-keypress="add()" data-blur="clear()">
 			</header>
 
-			<!-- MAIN VIEW, template: /views/main.js (todo.MainView) -->
+			<!-- MAIN VIEW, template: /views/main.js (tobuy.MainView) -->
 			<section id="main" data-show="{{isVisible}}">
 				<input id="toggle-all" type="checkbox" data-click="toggleAll()" data-checked="{{allCompleted}}">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list" class="data-cloak">
-					<li data-repeat="todo in items" class="{{completedClass(todo.completed)}} {{todo.editing}}">
+				<ul id="tobuy-list" class="data-cloak">
+					<li data-repeat="tobuy in items" class="{{completedClass(tobuy.completed)}} {{tobuy.editing}}">
 						<div class="view">
-							<input class="toggle" type="checkbox" data-checked="{{todo.completed}}" data-click="toggle(todo)">
-							<label data-dblclick="edit(todo)">{{todo.title}}</label>
-							<button class="destroy" data-click="remove(todo)"></button>
+							<input class="toggle" type="checkbox" data-checked="{{tobuy.completed}}" data-click="toggle(tobuy)">
+							<label data-dblclick="edit(tobuy)">{{tobuy.title}}</label>
+							<button class="destroy" data-click="remove(tobuy)"></button>
 						</div>
-						<input class="edit" value="{{todo.title}}" data-keydown="update(todo)" data-blur="update(todo)">
+						<input class="edit" value="{{tobuy.title}}" data-keydown="update(tobuy)" data-blur="update(tobuy)">
 					</li>
 				</ul>
 			</section>
 
-			<!-- FOOTER VIEW, template: /views/footer.js (todo.FooterView) -->
+			<!-- FOOTER VIEW, template: /views/footer.js (tobuy.FooterView) -->
 			<footer id="footer" class="data-cloak" data-show="{{footerVisible}}">
-				<span id="todo-count"><strong>{{active}}</strong> {{itemLabel}} left</span>
+				<span id="tobuy-count"><strong>{{active}}</strong> {{itemLabel}} left</span>
 				<ul id="filters">
 					<li>
 						<a class="{{highlightFilter('')}}" href="#/">All</a>
@@ -52,19 +52,19 @@
 		</section>
 
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://soundstep.com">Romuald Quantin</a> (<a href="http://somajs.github.io/somajs/">soma.js</a>)</p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 
 		<!-- LIBRARIES -->
-		<script src="node_modules/todomvc-common/base.js"></script>
+		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/director/build/director.js"></script>
 		<script src="node_modules/soma.js/build/soma.js"></script>
 		<script src="node_modules/soma-template/build/soma-template.js"></script>
 
 		<!-- TODO APP -->
-		<script src="js/models/todos.js"></script>
+		<script src="js/models/tobuys.js"></script>
 		<script src="js/models/router.js"></script>
 		<script src="js/views/header.js"></script>
 		<script src="js/views/main.js"></script>

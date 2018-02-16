@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react.Callback
 import japgolly.scalajs.react.extra.Broadcaster
@@ -7,12 +7,12 @@ import scala.language.postfixOps
 
 class TodoModel(storage: Storage) extends Broadcaster[Seq[Todo]] {
   private object State {
-    var todos = Seq.empty[Todo]
+    var tobuys = Seq.empty[Todo]
 
     def mod(f: Seq[Todo] => Seq[Todo]): Callback = {
-      val newTodos = f(todos)
+      val newTodos = f(tobuys)
 
-      Callback(todos = newTodos) >>
+      Callback(tobuys = newTodos) >>
       storage.store(newTodos)    >>
       broadcast(newTodos)
     }
@@ -36,8 +36,8 @@ class TodoModel(storage: Storage) extends Broadcaster[Seq[Todo]] {
   def delete(id: TodoId): Callback =
     State.mod(_.filterNot(_.id == id))
 
-  def todos: Seq[Todo] =
-    State.todos
+  def tobuys: Seq[Todo] =
+    State.tobuys
 
   def toggleAll(checked: Boolean): Callback =
     State.mod(_.map(_.copy(isCompleted = checked)))

@@ -29,7 +29,7 @@ var app = app || {};
 			var nowShowing = this.props.nowShowing;
 			return (
 				<footer className="footer">
-					<span className="todo-count">
+					<span className="tobuy-count">
 						<strong>{this.props.count}</strong> {activeTodoWord} left
 					</span>
 					<ul className="filters">

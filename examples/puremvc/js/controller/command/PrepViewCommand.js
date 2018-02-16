@@ -2,10 +2,10 @@
  * @author Mike Britton
  *
  * @class PrepViewCommand
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define ({
-		name: 'todomvc.controller.command.PrepViewCommand',
+		name: 'tobuymvc.controller.command.PrepViewCommand',
 		parent: puremvc.SimpleCommand
 	},
 
@@ -16,8 +16,8 @@ puremvc.define ({
 		 * @override
 		 */
 		execute: function (note) {
-			this.facade.registerMediator( new todomvc.view.mediator.TodoFormMediator() );
-			this.facade.registerMediator( new todomvc.view.mediator.RoutesMediator() );
+			this.facade.registerMediator( new tobuymvc.view.mediator.TodoFormMediator() );
+			this.facade.registerMediator( new tobuymvc.view.mediator.RoutesMediator() );
 		}
 	}
 );

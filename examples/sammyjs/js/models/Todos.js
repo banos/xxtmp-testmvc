@@ -9,7 +9,7 @@
 		flag: null,
 
 		createId: (function () {
-			// Creates a unique ID for every todoItem.
+			// Creates a unique ID for every tobuyItem.
 			var s4 = function () {
 				return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 			};
@@ -20,16 +20,16 @@
 		})(),
 
 		findOne: function (param, value) {
-			var todo = {};
+			var tobuy = {};
 
 			Todos.all.forEach(function (thisTodo, i) {
 				if (thisTodo[param] === value) {
-					todo.todo = thisTodo;
-					todo.index = i;
+					tobuy.tobuy = thisTodo;
+					tobuy.index = i;
 				}
 			});
 
-			return todo;
+			return tobuy;
 		},
 
 		filter: function (param, value) {
@@ -40,14 +40,14 @@
 
 		get: function (id) {
 			if (id && id !== 'active' && id !== 'completed') {
-				// We are looking for a particular todoItem.
+				// We are looking for a particular tobuyItem.
 				return Todos.findOne('id', id);
 			} else if (id === 'active' || id === 'completed') {
-				// We either want to receive only the completed or active todoItems.
+				// We either want to receive only the completed or active tobuyItems.
 				return Todos.filter('completed', id === 'completed');
 			} else {
-				// We want all of the todoItems.
-				return JSON.parse(localStorage.getItem('todos-sammyjs')) || [];
+				// We want all of the tobuyItems.
+				return JSON.parse(localStorage.getItem('tobuys-sammyjs')) || [];
 			}
 		},
 
@@ -72,11 +72,11 @@
 		},
 
 		toggleCompleted: function (e, data) {
-			Todos.get(data.id).todo.completed = !Todos.get(data.id).todo.completed;
+			Todos.get(data.id).tobuy.completed = !Todos.get(data.id).tobuy.completed;
 
 			TodoApp.trigger('toggledTodoCompleted', {
 				id: data.id,
-				completed: Todos.get(data.id).todo.completed
+				completed: Todos.get(data.id).tobuy.completed
 			});
 
 			Todos.sync();
@@ -101,7 +101,7 @@
 				return Todos.remove(e, data);
 			}
 
-			Todos.get(data.id).todo.name = data.name;
+			Todos.get(data.id).tobuy.name = data.name;
 
 			Todos.syncQuiet();
 		},
@@ -130,18 +130,18 @@
 		},
 
 		syncQuiet: function () {
-			// Syncs data with `localStorage`, without forcing all of the todoItems
+			// Syncs data with `localStorage`, without forcing all of the tobuyItems
 			// to repaint.
-			localStorage.setItem('todos-sammyjs', JSON.stringify(Todos.all));
+			localStorage.setItem('tobuys-sammyjs', JSON.stringify(Todos.all));
 
-			TodoApp.trigger('todosUpdatedQuiet', Todos.getData());
+			TodoApp.trigger('tobuysUpdatedQuiet', Todos.getData());
 		},
 
 		sync: function () {
-			// Syncs data with `localStorage`, and rebuilds the todoItems.
+			// Syncs data with `localStorage`, and rebuilds the tobuyItems.
 			Todos.syncQuiet();
 
-			TodoApp.trigger('todosUpdated', Todos.getData());
+			TodoApp.trigger('tobuysUpdated', Todos.getData());
 		}
 	};
 

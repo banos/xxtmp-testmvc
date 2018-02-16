@@ -1,4 +1,4 @@
-name: angular-dart-todomvc
+name: angular-dart-tobuymvc
 version: 0.0.0
 environment:
   sdk: '>=1.0.0 <=1.9.1'

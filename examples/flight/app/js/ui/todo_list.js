@@ -3,12 +3,12 @@
 
 define([
 	'flight/lib/component',
-	'text!templates/todo.html',
+	'text!templates/tobuy.html',
 	'app/utils'
-], function (defineComponent, todoTmpl, utils) {
-	function todoList() {
+], function (defineComponent, tobuyTmpl, utils) {
+	function tobuyList() {
 		var ENTER_KEY = 13;
-		var template = utils.tmpl(todoTmpl);
+		var template = utils.tmpl(tobuyTmpl);
 
 		this.attributes({
 			destroySelector: 'button.destroy',
@@ -19,8 +19,8 @@ define([
 
 		this.renderAll = function (e, data) {
 			this.$node.html('');
-			data.todos.forEach(function (each) {
-				this.render(e, { todo: each });
+			data.tobuys.forEach(function (each) {
+				this.render(e, { tobuy: each });
 			}, this);
 		};
 
@@ -29,30 +29,30 @@ define([
 				return;
 			}
 
-			this.$node.append(template(data.todo));
+			this.$node.append(template(data.tobuy));
 		};
 
 		this.edit = function (e, data) {
-			var $todoEl = $(data.el).parents('li');
+			var $tobuyEl = $(data.el).parents('li');
 
-			$todoEl.addClass('editing');
+			$tobuyEl.addClass('editing');
 			this.select('editSelector').focus();
 		};
 
 		this.requestUpdate = function (e) {
 			var $inputEl = $(e.currentTarget);
-			var $todoEl = $inputEl.parents('li');
+			var $tobuyEl = $inputEl.parents('li');
 			var value = $inputEl.val().trim();
-			var id = $todoEl.attr('id');
+			var id = $tobuyEl.attr('id');
 
-			if (!$todoEl.hasClass('editing')) {
+			if (!$tobuyEl.hasClass('editing')) {
 				return;
 			}
 
-			$todoEl.removeClass('editing');
+			$tobuyEl.removeClass('editing');
 
 			if (value) {
-				$todoEl.find('label').html(value);
+				$tobuyEl.find('label').html(value);
 				this.trigger('uiUpdateRequested',  { id: id, title: value });
 			} else {
 				this.trigger('uiRemoveRequested', { id: id });
@@ -71,15 +71,15 @@ define([
 		};
 
 		this.remove = function (e, data) {
-			var $todoEl = this.$node.find('#' + data.id);
-			$todoEl.remove();
+			var $tobuyEl = this.$node.find('#' + data.id);
+			$tobuyEl.remove();
 		};
 
 		this.toggle = function (e, data) {
-			var $todoEl = $(data.el).parents('li');
+			var $tobuyEl = $(data.el).parents('li');
 
-			$todoEl.toggleClass('completed');
-			this.trigger('uiToggleRequested', { id: $todoEl.attr('id') });
+			$tobuyEl.toggleClass('completed');
+			this.trigger('uiToggleRequested', { id: $tobuyEl.attr('id') });
 		};
 
 		this.after('initialize', function () {
@@ -104,5 +104,5 @@ define([
 		});
 	}
 
-	return defineComponent(todoList);
+	return defineComponent(tobuyList);
 });

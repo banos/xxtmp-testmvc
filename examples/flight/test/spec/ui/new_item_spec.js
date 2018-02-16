@@ -4,7 +4,7 @@ describeComponent('ui/new_item', function () {
 	var ENTER_KEY = 13;
 
 	beforeEach(function () {
-		this.setupComponent(readFixtures('new_todo.html'));
+		this.setupComponent(readFixtures('new_tobuy.html'));
 	});
 
 	it('triggers uiAddRequested on enter', function () {

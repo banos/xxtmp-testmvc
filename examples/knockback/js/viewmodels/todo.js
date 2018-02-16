@@ -32,7 +32,7 @@ var app = app || {};
 			if (!self.editing()) {
 				self.editTitle(self.title());
 				self.editing(true);
-				$('.todo-input').focus(); // give the input focus
+				$('.tobuy-input').focus(); // give the input focus
 			}
 		},
 

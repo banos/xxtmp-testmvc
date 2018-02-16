@@ -4360,12 +4360,12 @@ Q:[function(){Y.P()},"$0","ao",0,0,1],
 W:{
 "^":"a;Q,a,b,c,d,e,f,r,x,y",
 vo:function(){var z,y,x
-z=window.localStorage.getItem("todos-vanilladart")
+z=window.localStorage.getItem("tobuys-vanilladart")
 if(z!=null)try{y=C.xr.kV(z)
 J.kH(y,new Y.nv(this))}catch(x){H.Ru(x)
-P.JS("Could not load todos form local storage.")}},
+P.JS("Could not load tobuys form local storage.")}},
 XY:function(){var z,y
-z=document.querySelector(".new-todo")
+z=document.querySelector(".new-tobuy")
 y=J.Zm(z)
 H.J(new W.O(0,y.Q,y.a,W.V(new Y.f1(this,z)),y.b),[H.N(y,0)]).Z()
 y=J.Vg(this.c)
@@ -4423,13 +4423,13 @@ J.pP(a).h(0,"selected")},
 vn:function(){var z,y,x,w
 z=H.J([],[M.GX])
 for(y=this.Q,x=y.length,w=0;w<y.length;y.length===x||(0,H.lk)(y),++w)z.push(y[w].a)
-window.localStorage.setItem("todos-vanilladart",C.xr.KP(z))},
+window.localStorage.setItem("tobuys-vanilladart",C.xr.KP(z))},
 Y:function(){this.vo()
 this.XY()
 var z=H.J(new W.R(window,"hashchange",!1),[null])
 H.J(new W.O(0,z.Q,z.a,W.V(new Y.T(this)),z.b),[H.N(z,0)]).Z()
 this.xG()},
-static:{P:function(){var z=new Y.W(H.J([],[Y.S]),document.querySelector(".todo-list"),document.querySelector(".main"),document.querySelector(".toggle-all"),document.querySelector(".footer"),document.querySelector(".todo-count"),document.querySelector(".clear-completed"),document.querySelector(".filters a[href=\"#/\"]"),document.querySelector(".filters a[href=\"#/active\"]"),document.querySelector(".filters a[href=\"#/completed\"]"))
+static:{P:function(){var z=new Y.W(H.J([],[Y.S]),document.querySelector(".tobuy-list"),document.querySelector(".main"),document.querySelector(".toggle-all"),document.querySelector(".footer"),document.querySelector(".tobuy-count"),document.querySelector(".clear-completed"),document.querySelector(".filters a[href=\"#/\"]"),document.querySelector(".filters a[href=\"#/active\"]"),document.querySelector(".filters a[href=\"#/completed\"]"))
 z.Y()
 return z}}},
 T:{
@@ -4480,9 +4480,9 @@ xE:function(a){var z,y,x,w,v,u
 z=this.a
 y=z.b===!0
 x="\t\t\t<li "+(y?"class=\"completed\"":"")+">\n\t\t\t<div class='view'>\n\t\t\t<input class='toggle' type='checkbox' "
-z=W.U9(x+(y?"checked":"")+">\n\t\t\t<label class='todo-content'>"+H.d(C.oW.WJ(z.a))+"</label>\n\t\t\t<button class='destroy'></button>\n\t\t\t</div>\n\t\t\t<input class='edit' value='"+H.d(C.oW.WJ(z.a))+"'>\n\t\t\t</li>\n\t\t",null,null)
+z=W.U9(x+(y?"checked":"")+">\n\t\t\t<label class='tobuy-content'>"+H.d(C.oW.WJ(z.a))+"</label>\n\t\t\t<button class='destroy'></button>\n\t\t\t</div>\n\t\t\t<input class='edit' value='"+H.d(C.oW.WJ(z.a))+"'>\n\t\t\t</li>\n\t\t",null,null)
 this.b=z
-w=J.c1(z,".todo-content")
+w=J.c1(z,".tobuy-content")
 v=J.c1(this.b,".edit")
 z=J.c1(this.b,".toggle")
 this.c=z

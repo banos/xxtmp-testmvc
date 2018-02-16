@@ -7,7 +7,7 @@
 
 		var TodoModel = function () {
 
-			var storeKey = 'todos-somajs';
+			var storeKey = 'tobuys-somajs';
 
 			return {
 				get: function () {

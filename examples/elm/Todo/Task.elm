@@ -102,7 +102,7 @@ view model =
             Maybe.withDefault model.description model.edits
 
         elementId =
-            "todo-" ++ toString model.id
+            "tobuy-" ++ toString model.id
     in
         li
             [ class className ]

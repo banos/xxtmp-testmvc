@@ -1,6 +1,6 @@
 HeaderView = require '../views/header-view'
 FooterView = require '../views/footer-view'
-TodosView = require '../views/todos-view'
+TodosView = require '../views/tobuys-view'
 mediator = require 'mediator'
 
 module.exports = class IndexController extends Chaplin.Controller
@@ -8,7 +8,7 @@ module.exports = class IndexController extends Chaplin.Controller
   # We compose structure in order for it to be rendered only once.
   beforeAction: ->
     @reuse 'structure', ->
-      params = collection: mediator.todos
+      params = collection: mediator.tobuys
       @header = new HeaderView params
       @footer = new FooterView params
 
@@ -17,8 +17,8 @@ module.exports = class IndexController extends Chaplin.Controller
   # one controller per screen.
   list: (params) ->
     filterer = params.filterer?.trim() ? 'all'
-    @publishEvent 'todos:filter', filterer
-    @view = new TodosView collection: mediator.todos, filterer: (model) ->
+    @publishEvent 'tobuys:filter', filterer
+    @view = new TodosView collection: mediator.tobuys, filterer: (model) ->
       switch filterer
         when 'completed' then model.get('completed')
         when 'active' then not model.get('completed')

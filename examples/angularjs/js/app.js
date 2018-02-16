@@ -5,18 +5,18 @@
  *
  * @type {angular.Module}
  */
-angular.module('todomvc', ['ngRoute', 'ngResource'])
+angular.module('tobuymvc', ['ngRoute', 'ngResource'])
 	.config(function ($routeProvider) {
 		'use strict';
 
 		var routeConfig = {
 			controller: 'TodoCtrl',
-			templateUrl: 'todomvc-index.html',
+			templateUrl: 'tobuymvc-index.html',
 			resolve: {
-				store: function (todoStorage) {
+				store: function (tobuyStorage) {
 					// Get the correct module (API or localStorage).
-					return todoStorage.then(function (module) {
-						module.get(); // Fetch the todo records in the background.
+					return tobuyStorage.then(function (module) {
+						module.get(); // Fetch the tobuy records in the background.
 						return module;
 					});
 				}

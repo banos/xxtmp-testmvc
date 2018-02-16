@@ -1,9 +1,9 @@
 /*global Router:false */
-(function (todo, Router) {
+(function (tobuy, Router) {
 
 	'use strict';
 
-	todo.Router = function (dispatcher) {
+	tobuy.Router = function (dispatcher) {
 
 		// create the router (director.js)
 		var router = new Router().init().configure({
@@ -24,4 +24,4 @@
 		};
 	};
 
-})(window.todo = window.todo || {}, Router);
+})(window.tobuy = window.tobuy || {}, Router);

@@ -97,7 +97,7 @@ var Application, Todos, mediator, _ref,
 
 mediator = require('mediator');
 
-Todos = require('models/todos');
+Todos = require('models/tobuys');
 
 module.exports = Application = (function(_super) {
   __extends(Application, _super);
@@ -110,12 +110,12 @@ module.exports = Application = (function(_super) {
   Application.prototype.title = 'Chaplin • TodoMVC';
 
   Application.prototype.initMediator = function() {
-    mediator.todos = new Todos();
+    mediator.tobuys = new Todos();
     return Application.__super__.initMediator.apply(this, arguments);
   };
 
   Application.prototype.start = function() {
-    mediator.todos.fetch();
+    mediator.tobuys.fetch();
     return Application.__super__.start.apply(this, arguments);
   };
 
@@ -133,7 +133,7 @@ HeaderView = require('../views/header-view');
 
 FooterView = require('../views/footer-view');
 
-TodosView = require('../views/todos-view');
+TodosView = require('../views/tobuys-view');
 
 mediator = require('mediator');
 
@@ -149,7 +149,7 @@ module.exports = IndexController = (function(_super) {
     return this.reuse('structure', function() {
       var params;
       params = {
-        collection: mediator.todos
+        collection: mediator.tobuys
       };
       this.header = new HeaderView(params);
       return this.footer = new FooterView(params);
@@ -159,9 +159,9 @@ module.exports = IndexController = (function(_super) {
   IndexController.prototype.list = function(params) {
     var filterer, _ref1, _ref2;
     filterer = (_ref1 = (_ref2 = params.filterer) != null ? _ref2.trim() : void 0) != null ? _ref1 : 'all';
-    this.publishEvent('todos:filter', filterer);
+    this.publishEvent('tobuys:filter', filterer);
     return this.view = new TodosView({
-      collection: mediator.todos,
+      collection: mediator.tobuys,
       filterer: function(model) {
         switch (filterer) {
           case 'completed':
@@ -218,7 +218,7 @@ module.exports = utils;
 module.exports = Chaplin.mediator;
 });
 
-;require.register("models/todo", function(exports, require, module) {
+;require.register("models/tobuy", function(exports, require, module) {
 var Todo, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -259,12 +259,12 @@ module.exports = Todo = (function(_super) {
 })(Chaplin.Model);
 });
 
-;require.register("models/todos", function(exports, require, module) {
+;require.register("models/tobuys", function(exports, require, module) {
 var Todo, Todos, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-Todo = require('models/todo');
+Todo = require('models/tobuy');
 
 module.exports = Todos = (function(_super) {
   __extends(Todos, _super);
@@ -276,7 +276,7 @@ module.exports = Todos = (function(_super) {
 
   Todos.prototype.model = Todo;
 
-  Todos.prototype.localStorage = new Store('todos-chaplin');
+  Todos.prototype.localStorage = new Store('tobuys-chaplin');
 
   Todos.prototype.allAreCompleted = function() {
     return this.getCompleted().length === this.length;
@@ -294,8 +294,8 @@ module.exports = Todos = (function(_super) {
     });
   };
 
-  Todos.prototype.comparator = function(todo) {
-    return todo.get('created');
+  Todos.prototype.comparator = function(tobuy) {
+    return tobuy.get('created');
   };
 
   return Todos;
@@ -382,7 +382,7 @@ module.exports = FooterView = (function(_super) {
   };
 
   FooterView.prototype.listen = {
-    'todos:filter mediator': 'updateFilterer',
+    'tobuys:filter mediator': 'updateFilterer',
     'all collection': 'renderCounter'
   };
 
@@ -414,15 +414,15 @@ module.exports = FooterView = (function(_super) {
     total = this.collection.length;
     active = this.collection.getActive().length;
     completed = this.collection.getCompleted().length;
-    this.find('#todo-count > strong').textContent = active;
+    this.find('#tobuy-count > strong').textContent = active;
     countDescription = (active === 1 ? 'item' : 'items');
-    this.find('.todo-count-title').textContent = countDescription;
+    this.find('.tobuy-count-title').textContent = countDescription;
     utils.toggle(this.find('#clear-completed'), completed > 0);
     return utils.toggle(this.el, total > 0);
   };
 
   FooterView.prototype.clearCompleted = function() {
-    return this.publishEvent('todos:clear');
+    return this.publishEvent('tobuys:clear');
   };
 
   return FooterView;
@@ -450,7 +450,7 @@ module.exports = HeaderView = (function(_super) {
   HeaderView.prototype.el = '#header';
 
   HeaderView.prototype.events = {
-    'keypress #new-todo': 'createOnEnter'
+    'keypress #new-tobuy': 'createOnEnter'
   };
 
   HeaderView.prototype.template = require('./templates/header');
@@ -465,7 +465,7 @@ module.exports = HeaderView = (function(_super) {
     this.collection.create({
       title: title
     });
-    return this.find('#new-todo').value = '';
+    return this.find('#new-tobuy').value = '';
   };
 
   return HeaderView;
@@ -480,7 +480,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<span id=\"todo-count\">\n  <strong></strong>\n  <span class=\"todo-count-title\">items</span>\n  left\n</span>\n<ul id=\"filters\">\n  <li>\n    <a href=\"#/\">All</a>\n  </li>\n  <li>\n    <a href=\"#/active\">Active</a>\n  </li>\n  <li>\n    <a href=\"#/completed\">Completed</a>\n  </li>\n</ul>\n<button id=\"clear-completed\">Clear completed</button>\n";
+  return "<span id=\"tobuy-count\">\n  <strong></strong>\n  <span class=\"tobuy-count-title\">items</span>\n  left\n</span>\n<ul id=\"filters\">\n  <li>\n    <a href=\"#/\">All</a>\n  </li>\n  <li>\n    <a href=\"#/active\">Active</a>\n  </li>\n  <li>\n    <a href=\"#/completed\">Completed</a>\n  </li>\n</ul>\n<button id=\"clear-completed\">Clear completed</button>\n";
   });
 if (typeof define === 'function' && define.amd) {
   define([], function() {
@@ -500,7 +500,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<h1>todos</h1>\n<input id=\"new-todo\" placeholder=\"What needs to be done?\" autofocus>\n";
+  return "<h1>tobuys</h1>\n<input id=\"new-tobuy\" placeholder=\"What needs to be done?\" autofocus>\n";
   });
 if (typeof define === 'function' && define.amd) {
   define([], function() {
@@ -513,7 +513,7 @@ if (typeof define === 'function' && define.amd) {
 }
 });
 
-;require.register("views/templates/todo", function(exports, require, module) {
+;require.register("views/templates/tobuy", function(exports, require, module) {
 var __templateData = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -550,14 +550,14 @@ if (typeof define === 'function' && define.amd) {
 }
 });
 
-;require.register("views/templates/todos", function(exports, require, module) {
+;require.register("views/templates/tobuys", function(exports, require, module) {
 var __templateData = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<input id=\"toggle-all\" type=\"checkbox\">\n<label for=\"toggle-all\">Mark all as complete</label>\n<ul id=\"todo-list\"></ul>\n";
+  return "<input id=\"toggle-all\" type=\"checkbox\">\n<label for=\"toggle-all\">Mark all as complete</label>\n<ul id=\"tobuy-list\"></ul>\n";
   });
 if (typeof define === 'function' && define.amd) {
   define([], function() {
@@ -570,7 +570,7 @@ if (typeof define === 'function' && define.amd) {
 }
 });
 
-;require.register("views/todo-view", function(exports, require, module) {
+;require.register("views/tobuy-view", function(exports, require, module) {
 var TodoView, View, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
@@ -597,7 +597,7 @@ module.exports = TodoView = (function(_super) {
     'change model': 'render'
   };
 
-  TodoView.prototype.template = require('./templates/todo');
+  TodoView.prototype.template = require('./templates/tobuy');
 
   TodoView.prototype.tagName = 'li';
 
@@ -649,14 +649,14 @@ module.exports = TodoView = (function(_super) {
 })(View);
 });
 
-;require.register("views/todos-view", function(exports, require, module) {
+;require.register("views/tobuys-view", function(exports, require, module) {
 var CollectionView, TodoView, TodosView, utils, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 CollectionView = require('./base/collection-view');
 
-TodoView = require('./todo-view');
+TodoView = require('./tobuy-view');
 
 utils = require('lib/utils');
 
@@ -676,14 +676,14 @@ module.exports = TodosView = (function(_super) {
 
   TodosView.prototype.itemView = TodoView;
 
-  TodosView.prototype.listSelector = '#todo-list';
+  TodosView.prototype.listSelector = '#tobuy-list';
 
   TodosView.prototype.listen = {
     'all collection': 'renderCheckbox',
-    'todos:clear mediator': 'clear'
+    'tobuys:clear mediator': 'clear'
   };
 
-  TodosView.prototype.template = require('./templates/todos');
+  TodosView.prototype.template = require('./templates/tobuys');
 
   TodosView.prototype.render = function() {
     TodosView.__super__.render.apply(this, arguments);
@@ -698,8 +698,8 @@ module.exports = TodosView = (function(_super) {
   TodosView.prototype.toggleCompleted = function(event) {
     var isChecked;
     isChecked = event.delegateTarget.checked;
-    return this.collection.forEach(function(todo) {
-      return todo.save({
+    return this.collection.forEach(function(tobuy) {
+      return tobuy.save({
         completed: isChecked
       });
     });

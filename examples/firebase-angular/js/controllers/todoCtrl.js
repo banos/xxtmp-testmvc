@@ -1,4 +1,4 @@
-/*global todomvc, angular, Firebase */
+/*global tobuymvc, angular, Firebase */
 'use strict';
 
 /**
@@ -6,26 +6,26 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArray) {
-	var url = 'https://todomvc-angular.firebaseio.com/todos';
+tobuymvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArray) {
+	var url = 'https://tobuymvc-angular.firebaseio.com/tobuys';
 	var fireRef = new Firebase(url);
 
-	// Bind the todos to the firebase provider.
-	$scope.todos = $firebaseArray(fireRef);
+	// Bind the tobuys to the firebase provider.
+	$scope.tobuys = $firebaseArray(fireRef);
 	$scope.newTodo = '';
 	$scope.editedTodo = null;
 
-	$scope.$watch('todos', function () {
+	$scope.$watch('tobuys', function () {
 		var total = 0;
 		var remaining = 0;
-		$scope.todos.forEach(function (todo) {
+		$scope.tobuys.forEach(function (tobuy) {
 			// Skip invalid entries so they don't break the entire app.
-			if (!todo || !todo.title) {
+			if (!tobuy || !tobuy.title) {
 				return;
 			}
 
 			total++;
-			if (todo.completed === false) {
+			if (tobuy.completed === false) {
 				remaining++;
 			}
 		});
@@ -40,49 +40,49 @@ todomvc.controller('TodoCtrl', function TodoCtrl($scope, $location, $firebaseArr
 		if (!newTodo.length) {
 			return;
 		}
-		$scope.todos.$add({
+		$scope.tobuys.$add({
 			title: newTodo,
 			completed: false
 		});
 		$scope.newTodo = '';
 	};
 
-	$scope.editTodo = function (todo) {
-		$scope.editedTodo = todo;
+	$scope.editTodo = function (tobuy) {
+		$scope.editedTodo = tobuy;
 		$scope.originalTodo = angular.extend({}, $scope.editedTodo);
 	};
 
-	$scope.doneEditing = function (todo) {
+	$scope.doneEditing = function (tobuy) {
 		$scope.editedTodo = null;
-		var title = todo.title.trim();
+		var title = tobuy.title.trim();
 		if (title) {
-			$scope.todos.$save(todo);
+			$scope.tobuys.$save(tobuy);
 		} else {
-			$scope.removeTodo(todo);
+			$scope.removeTodo(tobuy);
 		}
 	};
 
-	$scope.revertEditing = function (todo) {
-		todo.title = $scope.originalTodo.title;
-		$scope.doneEditing(todo);
+	$scope.revertEditing = function (tobuy) {
+		tobuy.title = $scope.originalTodo.title;
+		$scope.doneEditing(tobuy);
 	};
 
-	$scope.removeTodo = function (todo) {
-		$scope.todos.$remove(todo);
+	$scope.removeTodo = function (tobuy) {
+		$scope.tobuys.$remove(tobuy);
 	};
 
 	$scope.clearCompletedTodos = function () {
-		$scope.todos.forEach(function (todo) {
-			if (todo.completed) {
-				$scope.removeTodo(todo);
+		$scope.tobuys.forEach(function (tobuy) {
+			if (tobuy.completed) {
+				$scope.removeTodo(tobuy);
 			}
 		});
 	};
 
 	$scope.markAll = function (allCompleted) {
-		$scope.todos.forEach(function (todo) {
-			todo.completed = allCompleted;
-			$scope.todos.$save(todo);
+		$scope.tobuys.forEach(function (tobuy) {
+			tobuy.completed = allCompleted;
+			$scope.tobuys.$save(tobuy);
 		});
 	};
 

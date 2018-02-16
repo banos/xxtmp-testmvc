@@ -1,15 +1,15 @@
 /**
  * @author Mike Britton
  *
- * @class todomvc.Application
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @class tobuymvc.Application
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.Application',
+		name: 'tobuymvc.Application',
 		constructor: function() {
 			// register the startup command and trigger it.
-			this.facade.registerCommand( todomvc.AppConstants.STARTUP, todomvc.controller.command.StartupCommand );
-			this.facade.sendNotification( todomvc.AppConstants.STARTUP );
+			this.facade.registerCommand( tobuymvc.AppConstants.STARTUP, tobuymvc.controller.command.StartupCommand );
+			this.facade.sendNotification( tobuymvc.AppConstants.STARTUP );
 		}
 	},
 
@@ -19,6 +19,6 @@ puremvc.define({
 		STARTUP: 'startup',
 
 		// Get an instance of the PureMVC Facade. This creates the Model, View, and Controller instances.
-		facade: puremvc.Facade.getInstance( todomvc.AppConstants.CORE_NAME )
+		facade: puremvc.Facade.getInstance( tobuymvc.AppConstants.CORE_NAME )
 	}
 );

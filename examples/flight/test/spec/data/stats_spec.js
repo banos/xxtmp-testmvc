@@ -18,7 +18,7 @@ describeComponent('data/stats', function () {
 			expect('dataStatsCounted').toHaveBeenTriggeredOn(document);
 		});
 
-		it('should trigger dataStatsCounted when todos are loaded', function () {
+		it('should trigger dataStatsCounted when tobuys are loaded', function () {
 			spyOnEvent(document, 'dataStatsCounted');
 			$(document).trigger('dataTodosLoaded');
 			expect('dataStatsCounted').toHaveBeenTriggeredOn(document);

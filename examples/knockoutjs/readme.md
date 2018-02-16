@@ -28,9 +28,9 @@ Get help from other Knockout.js users:
 * [Knockout.js on Twitter](http://twitter.com/knockoutjs)
 * [Knockout.js on Google +](https://plus.google.com/communities/106789046312204355684/stream/c5bfcfdf-3690-44a6-b015-35aad4f4e42e)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Credit
 
-This TodoMVC application was originally created by [ashish101](https://github.com/ashish01/knockoutjs-todos), then refactored by Addy Osmani and later rewritten by TodoMVC contributors.
+This TodoMVC application was originally created by [ashish101](https://github.com/ashish01/knockoutjs-tobuys), then refactored by Addy Osmani and later rewritten by TodoMVC contributors.

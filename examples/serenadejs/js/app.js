@@ -84,12 +84,12 @@
         return this.activeCount === 0;
       },
       set: function(value) {
-        var todo, _i, _len, _ref2, _results;
+        var tobuy, _i, _len, _ref2, _results;
         _ref2 = this.all;
         _results = [];
         for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-          todo = _ref2[_i];
-          _results.push(todo.completed = value);
+          tobuy = _ref2[_i];
+          _results.push(tobuy.completed = value);
         }
         return _results;
       }
@@ -154,29 +154,29 @@
   })();
 
   TodoController = (function() {
-    function TodoController(todo) {
-      this.todo = todo;
+    function TodoController(tobuy) {
+      this.tobuy = tobuy;
     }
 
     TodoController.prototype.removeTodo = function() {
-      return this.todo.remove();
+      return this.tobuy.remove();
     };
 
     TodoController.prototype.edit = function() {
-      this.todo.edit = true;
+      this.tobuy.edit = true;
       return this.field.select();
     };
 
     TodoController.prototype.edited = function() {
-      if (this.todo.title.trim()) {
-        this.todo.title = this.todo.title.trim();
-        if (this.todo.edit) {
-          this.todo.edit = false;
+      if (this.tobuy.title.trim()) {
+        this.tobuy.title = this.tobuy.title.trim();
+        if (this.tobuy.edit) {
+          this.tobuy.edit = false;
         }
       } else {
-        this.todo.remove();
+        this.tobuy.remove();
       }
-      return this.todo.app.changed.trigger();
+      return this.tobuy.app.changed.trigger();
     };
 
     TodoController.prototype.loadField = function(field) {
@@ -187,10 +187,10 @@
 
   })();
 
-  app = new App(JSON.parse(localStorage.getItem('todos-serenade')));
+  app = new App(JSON.parse(localStorage.getItem('tobuys-serenade')));
 
   app.changed.bind(function() {
-    return localStorage.setItem('todos-serenade', app);
+    return localStorage.setItem('tobuys-serenade', app);
   });
 
   router = Router({
@@ -209,11 +209,11 @@
 
   Serenade.view('app', document.getElementById('app').innerHTML);
 
-  Serenade.view('todo', document.getElementById('todo').innerHTML);
+  Serenade.view('tobuy', document.getElementById('tobuy').innerHTML);
 
   Serenade.controller('app', AppController);
 
-  Serenade.controller('todo', TodoController);
+  Serenade.controller('tobuy', TodoController);
 
   document.body.insertBefore(Serenade.render('app', app), document.body.children[0]);
 

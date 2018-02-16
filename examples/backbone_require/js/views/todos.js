@@ -3,16 +3,16 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'text!templates/todos.html',
+	'text!templates/tobuys.html',
 	'common'
-], function ($, _, Backbone, todosTemplate, Common) {
+], function ($, _, Backbone, tobuysTemplate, Common) {
 	'use strict';
 
 	var TodoView = Backbone.View.extend({
 
 		tagName:  'li',
 
-		template: _.template(todosTemplate),
+		template: _.template(tobuysTemplate),
 
 		// The DOM events specific to an item.
 		events: {
@@ -33,7 +33,7 @@ define([
 			this.listenTo(this.model, 'visible', this.toggleVisible);
 		},
 
-		// Re-render the titles of the todo item.
+		// Re-render the titles of the tobuy item.
 		render: function () {
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.toggleClass('completed', this.model.get('completed'));
@@ -66,7 +66,7 @@ define([
 			this.$input.focus();
 		},
 
-		// Close the `"editing"` mode, saving changes to the todo.
+		// Close the `"editing"` mode, saving changes to the tobuy.
 		close: function () {
 			var value = this.$input.val();
 			var trimmedValue = value.trim();

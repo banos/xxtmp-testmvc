@@ -13,9 +13,9 @@
 	var ESCAPE_KEY = 27;
 
 	// Create our Ractive instance
-	var todoList = new Ractive({
+	var tobuyList = new Ractive({
 		// Specify a target element - an ID, a CSS selector, or the element itself
-		el: 'todoapp',
+		el: 'tobuyapp',
 
 		// Specify a template, or the ID of a script tag containing the template
 		template: '#main',
@@ -92,9 +92,9 @@
 	// libraries, where you use CSS selectors to dictate what event corresponds
 	// to what action, in Ractive the 'meaning' of the event is baked into the
 	// template itself (e.g. <button on-click='remove'>Remove</button>).
-	todoList.on({
+	tobuyList.on({
 
-		// Removing a todo is as straightforward as splicing it out of the array -
+		// Removing a tobuy is as straightforward as splicing it out of the array -
 		// Ractive intercepts calls to array mutator methods and updates the view
 		// accordingly. The DOM is updated in the most efficient manner possible.
 		remove: function (event, index) {
@@ -163,6 +163,6 @@
 		}
 	});
 
-	window.todoList = todoList;
+	window.tobuyList = tobuyList;
 
 })(window, Ractive);

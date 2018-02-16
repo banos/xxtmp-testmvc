@@ -1,8 +1,8 @@
 /// <reference path='../_all.ts' />
 
-module todos {
+module tobuys {
 	export interface ITodoScope extends ng.IScope {
-		todos: TodoItem[];
+		tobuys: TodoItem[];
 		newTodo: string;
 		editedTodo: TodoItem;
 		originalTodo: TodoItem;

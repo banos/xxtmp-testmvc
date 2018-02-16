@@ -19,29 +19,29 @@ var Todo = (function () {
 exports.Todo = Todo;
 var TodoStore = (function () {
     function TodoStore() {
-        var persistedTodos = JSON.parse(localStorage.getItem('angular2-todos') || '[]');
+        var persistedTodos = JSON.parse(localStorage.getItem('angular2-tobuys') || '[]');
         // Normalize back into classes
-        this.todos = persistedTodos.map(function (todo) {
-            var ret = new Todo(todo._title);
-            ret.completed = todo.completed;
+        this.tobuys = persistedTodos.map(function (tobuy) {
+            var ret = new Todo(tobuy._title);
+            ret.completed = tobuy.completed;
             return ret;
         });
     }
     TodoStore.prototype.updateStore = function () {
-        localStorage.setItem('angular2-todos', JSON.stringify(this.todos));
+        localStorage.setItem('angular2-tobuys', JSON.stringify(this.tobuys));
     };
     TodoStore.prototype.getWithCompleted = function (completed) {
-        return this.todos.filter(function (todo) { return todo.completed === completed; });
+        return this.tobuys.filter(function (tobuy) { return tobuy.completed === completed; });
     };
     TodoStore.prototype.allCompleted = function () {
-        return this.todos.length === this.getCompleted().length;
+        return this.tobuys.length === this.getCompleted().length;
     };
     TodoStore.prototype.setAllTo = function (completed) {
-        this.todos.forEach(function (t) { return t.completed = completed; });
+        this.tobuys.forEach(function (t) { return t.completed = completed; });
         this.updateStore();
     };
     TodoStore.prototype.removeCompleted = function () {
-        this.todos = this.getWithCompleted(false);
+        this.tobuys = this.getWithCompleted(false);
         this.updateStore();
     };
     TodoStore.prototype.getRemaining = function () {
@@ -50,16 +50,16 @@ var TodoStore = (function () {
     TodoStore.prototype.getCompleted = function () {
         return this.getWithCompleted(true);
     };
-    TodoStore.prototype.toggleCompletion = function (todo) {
-        todo.completed = !todo.completed;
+    TodoStore.prototype.toggleCompletion = function (tobuy) {
+        tobuy.completed = !tobuy.completed;
         this.updateStore();
     };
-    TodoStore.prototype.remove = function (todo) {
-        this.todos.splice(this.todos.indexOf(todo), 1);
+    TodoStore.prototype.remove = function (tobuy) {
+        this.tobuys.splice(this.tobuys.indexOf(tobuy), 1);
         this.updateStore();
     };
     TodoStore.prototype.add = function (title) {
-        this.todos.push(new Todo(title));
+        this.tobuys.push(new Todo(title));
         this.updateStore();
     };
     return TodoStore;

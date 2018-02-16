@@ -20,8 +20,8 @@ var stats = new Store({
 	plural: 'items'
 });
 
-// Synchronize the store on 'todos-olives' localStorage
-tasks.sync('todos-olives');
+// Synchronize the store on 'tobuys-olives' localStorage
+tasks.sync('tobuys-olives');
 
 // Initialize Input UI by giving it a view and a model.
 input(document.querySelector('#header input'), tasks);

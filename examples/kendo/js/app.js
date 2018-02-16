@@ -9,24 +9,24 @@ var app = app || {};
 		operator: 'eq'
 	};
 
-	// Route object to manage filtering the todo item list
+	// Route object to manage filtering the tobuy item list
 	var router = new kendo.Router();
 
 	router.route('/', function () {
-		app.todoData.filter({});
-		app.todoViewModel.set('filter', '');
+		app.tobuyData.filter({});
+		app.tobuyViewModel.set('filter', '');
 	});
 
 	router.route('/active', function () {
 		filterBase.value = false;
-		app.todoData.filter(filterBase);
-		app.todoViewModel.set('filter', 'active');
+		app.tobuyData.filter(filterBase);
+		app.tobuyViewModel.set('filter', 'active');
 	});
 
 	router.route('/completed', function () {
 		filterBase.value = true;
-		app.todoData.filter(filterBase);
-		app.todoViewModel.set('filter', 'completed');
+		app.tobuyData.filter(filterBase);
+		app.tobuyViewModel.set('filter', 'completed');
 	});
 
 	// Todo Model Object
@@ -44,8 +44,8 @@ var app = app || {};
 	// Kendo UI DataSource and adds custom transports for saving data to
 	// localStorage.
 	// Implementation in js/lib/kendo.data.localstoragedatasource.ds
-	app.todoData = new kendo.data.extensions.LocalStorageDataSource({
-		itemBase: 'todos-kendo',
+	app.tobuyData = new kendo.data.extensions.LocalStorageDataSource({
+		itemBase: 'tobuys-kendo',
 		schema: {
 			model: app.Todo
 		},
@@ -54,44 +54,44 @@ var app = app || {};
 				return el.get('completed');
 			});
 
-			app.todoViewModel.set('allCompleted', completed.length === this.data().length);
+			app.tobuyViewModel.set('allCompleted', completed.length === this.data().length);
 		}
 	});
 
-	// The core ViewModel for our todo app
-	app.todoViewModel = kendo.observable({
-		todos: app.todoData,
+	// The core ViewModel for our tobuy app
+	app.tobuyViewModel = kendo.observable({
+		tobuys: app.tobuyData,
 		filter: null,
 
 		// Main element visibility handler
 		isVisible: function () {
-			return this.get('todos').data().length ? '' : 'hidden';
+			return this.get('tobuys').data().length ? '' : 'hidden';
 		},
 
-		// new todo value
+		// new tobuy value
 		newTodo: null,
 
 		// Core CRUD Methods
 		saveTodo: function () {
-			var todos = this.get('todos');
+			var tobuys = this.get('tobuys');
 			var newTodo = this.get('newTodo');
 
-			var todo = new app.Todo({
+			var tobuy = new app.Todo({
 				title: newTodo.trim(),
 				completed: false,
 				edit: false
 			});
 
-			todos.add(todo);
-			todos.sync();
+			tobuys.add(tobuy);
+			tobuys.sync();
 			this.set('newTodo', null);
 		},
 
 		toggleAll: function () {
 
-			var completed = this.completedTodos().length === this.get('todos').data().length;
+			var completed = this.completedTodos().length === this.get('tobuys').data().length;
 
-			$.grep(this.get('todos').data(), function (el) {
+			$.grep(this.get('tobuys').data(), function (el) {
 				el.set('completed', !completed);
 			});
 		},
@@ -108,7 +108,7 @@ var app = app || {};
 				editData = e.data;
 				title = e.data.get('title');
 
-				// If the todo has a title, set it's edit property
+				// If the tobuy has a title, set it's edit property
 				// to false. Otherwise, delete it.
 				if (editData.title.trim()) {
 					editData.set('title', title.trim());
@@ -117,32 +117,32 @@ var app = app || {};
 				}
 			}
 
-			this.todos.sync();
+			this.tobuys.sync();
 			editData.set('edit', false);
 		},
 		cancelEdit: function (e) {
 			e.set('title', this.get('titleCache'));
 			e.set('edit', false);
-			this.todos.sync();
+			this.tobuys.sync();
 		},
 
 		sync: function () {
-			this.get('todos').sync();
+			this.get('tobuys').sync();
 		},
 		destroy: function (e) {
-			this.todos.remove(e.data);
-			this.todos.sync();
+			this.tobuys.remove(e.data);
+			this.tobuys.sync();
 		},
 		destroyCompleted: function () {
 			$.each(this.completedTodos(), function (index, value) {
-				this.todos.remove(value);
+				this.tobuys.remove(value);
 			}.bind(this));
-			this.todos.sync();
+			this.tobuys.sync();
 		},
 
-		// Methods for retrieving filtered todos and count values
+		// Methods for retrieving filtered tobuys and count values
 		activeTodos: function () {
-			return $.grep(this.get('todos').data(), function (el) {
+			return $.grep(this.get('tobuys').data(), function (el) {
 				return !el.get('completed');
 			});
 		},
@@ -150,7 +150,7 @@ var app = app || {};
 			return this.activeTodos().length;
 		},
 		completedTodos: function () {
-			return $.grep(this.get('todos').data(), function (el) {
+			return $.grep(this.get('tobuys').data(), function (el) {
 				return el.get('completed');
 			});
 		},
@@ -166,7 +166,7 @@ var app = app || {};
 		},
 
 		// Class attribute bound methods
-		todoItemClass: function (item) {
+		tobuyItemClass: function (item) {
 			if (item.get('edit')) {
 				return 'editing';
 			}
@@ -185,8 +185,8 @@ var app = app || {};
 
 	});
 
-	// Bind the ViewModel to the todoapp DOM element
-	kendo.bind($('#todoapp'), app.todoViewModel);
+	// Bind the ViewModel to the tobuyapp DOM element
+	kendo.bind($('#tobuyapp'), app.tobuyViewModel);
 
 	router.start();
 

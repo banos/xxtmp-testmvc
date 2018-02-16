@@ -2,10 +2,10 @@
 define(function () {
 	'use strict';
 
-	return function (todo) {
-		todo.text = todo.text && todo.text.trim() || '';
-		todo.complete = !!todo.complete;
+	return function (tobuy) {
+		tobuy.text = tobuy.text && tobuy.text.trim() || '';
+		tobuy.complete = !!tobuy.complete;
 
-		return todo;
+		return tobuy;
 	};
 });

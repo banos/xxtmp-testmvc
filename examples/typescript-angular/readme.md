@@ -29,7 +29,7 @@ Get help from other TypeScript users:
 * [Forums](https://github.com/Microsoft/TypeScript/issues)
 * [TypeScript on Twitter](http://twitter.com/typescriptlang)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation
@@ -70,10 +70,10 @@ Start reading `TodoCtrl.ts` first, continue with `Application.ts` and `index.htm
 
 ### AngularJS
 
-There is very little difference between this app and the vanilla AngularJS todo app in how AngularJS is used.
+There is very little difference between this app and the vanilla AngularJS tobuy app in how AngularJS is used.
 The only significant difference is that dependency injection is done via annotated constructors, which allows minification of JavaScript.
 
-It's definitely possible to convert the vanillajs todo app into TypeScript, but TypeScript's benefits are more obvious with a full blown framework and project structure.
+It's definitely possible to convert the vanillajs tobuy app into TypeScript, but TypeScript's benefits are more obvious with a full blown framework and project structure.
 
 
 ## Running

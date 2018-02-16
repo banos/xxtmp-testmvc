@@ -3,22 +3,22 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Kendo UI • TodoMVC</title>
-		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
+		<link rel="stylesheet" href="bower_components/tobuymvc-common/base.css">
 	</head>
 	<body>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<h1>todos</h1>
-				<input id="new-todo" data-bind="enter: saveTodo, value: newTodo"
+				<h1>tobuys</h1>
+				<input id="new-tobuy" data-bind="enter: saveTodo, value: newTodo"
 						 placeholder="What needs to be done?" autofocus>
 			</header>
 			<section id="main" data-bind="attr: { class : isVisible }">
 				<input id="toggle-all" type="checkbox" data-bind="events: { click: toggleAll }, checked: allCompleted">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="todo-list" data-template="item-template" data-bind="source: todos"></ul>
+				<ul id="tobuy-list" data-template="item-template" data-bind="source: tobuys"></ul>
 			</section>
 			<footer id="footer" class="hidden" data-bind="attr: { class: isVisible }">
-				<span id="todo-count">
+				<span id="tobuy-count">
 					<strong data-bind="text: activeCount"></strong>
 					<span data-bind="text: activeCountText"></span> left
 				</span>
@@ -41,12 +41,12 @@
 			</footer>
 		</section>
 		<div id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Credits <a href="https://github.com/bsatrom">Brandon Satrom</a>, <a href="https://github.com/burkeholland">Burke Holland</a> &amp; <a href="https://github.com/akorchev">Atanas Korchev</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</div>
 		<script type="text/template" id="item-template">
-			<li data-bind="attr: { class: todoItemClass }">
+			<li data-bind="attr: { class: tobuyItemClass }">
 				<div class="view">
 					<input class="toggle" type="checkbox" data-bind="checked: completed, events: { change: sync }">
 					<label data-bind="text: title, events: { dblclick: startEdit } "></label>
@@ -56,7 +56,7 @@
 				<input class="edit" data-bind="value: title, events: { blur: endEdit, change: endEdit }, enter: endEdit, escape: cancelEdit">
 			</li>
 		</script>
-		<script src="bower_components/todomvc-common/base.js"></script>
+		<script src="bower_components/tobuymvc-common/base.js"></script>
 		<script src="bower_components/jquery/jquery.js"></script>
 		<script src="bower_components/kendo-ui/src/js/kendo.core.js"></script>
 		<script src="bower_components/kendo-ui/src/js/kendo.data.js"></script>

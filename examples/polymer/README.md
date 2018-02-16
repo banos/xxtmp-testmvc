@@ -35,8 +35,8 @@ Polymer and the web component polyfills are intended to work in the latest versi
 1. Install [node.js](nodejs.org) (required for `bower` client-side package management)
 1. Install bower: `npm install -g bower`
 
-1. From the `todomvc\` folder, run `bower update`
-1. Start a web server in the `todomvc\` folder.  Hint: if you have python installed, you can just run:
+1. From the `tobuymvc\` folder, run `bower update`
+1. Start a web server in the `tobuymvc\` folder.  Hint: if you have python installed, you can just run:
 
      `python -m SimpleHTTPServer`
 

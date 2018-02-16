@@ -13,7 +13,7 @@ if (list.length === 0) {
 
 // run the tests for each framework
 list.forEach(function (framework) {
-	testSuite.todoMVCTest(
+	testSuite.tobuyMVCTest(
 		framework.name,
 		rootUrl + framework.path + '/index.html', argv.speedMode,
 		argv.laxMode, argv.browser);

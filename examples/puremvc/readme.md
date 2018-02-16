@@ -26,7 +26,7 @@ Get help from other PureMVC users:
 * [PureMVC on Twitter](http://twitter.com/puremvc)
 * [PureMVC on Google +](https://plus.google.com/+puremvc/posts)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation

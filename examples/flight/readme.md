@@ -16,7 +16,7 @@ Here are some links you may find helpful:
 * [Installation](https://github.com/flightjs/flight/blob/master/README.md#installation)
 * [Flight on Twitter](https://twitter.com/flightjs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Running the Tests

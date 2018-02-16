@@ -4,10 +4,10 @@
 
 	// Basic Todo entry model
 	var Todo = can.Model.LocalStorage.extend({
-		storageName: 'todos-canjs'
+		storageName: 'tobuys-canjs'
 	}, {
 		init: function () {
-			// Autosave when changing the text or completing the todo
+			// Autosave when changing the text or completing the tobuy
 			this.on('change', function (ev, prop) {
 				if (prop === 'text' || prop === 'complete') {
 					ev.target.save();
@@ -21,9 +21,9 @@
 		filter: function (check) {
 			var list = [];
 
-			this.each(function (todo) {
-				if (check(todo)) {
-					list.push(todo);
+			this.each(function (tobuy) {
+				if (check(tobuy)) {
+					list.push(tobuy);
 				}
 			});
 
@@ -31,8 +31,8 @@
 		},
 
 		completed: function () {
-			return this.filter(function (todo) {
-				return todo.attr('complete');
+			return this.filter(function (tobuy) {
+				return tobuy.attr('complete');
 			});
 		},
 

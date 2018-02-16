@@ -1,8 +1,8 @@
 // Dojo build profile for TodoMVC.
 // Usage:
-//		> cd /path/to/todomvc/examples/dojo
+//		> cd /path/to/tobuymvc/examples/dojo
 //		> npm install
-//		> ./node_modules/dojo-util/buildscripts/build.sh --profile ./profiles/todomvc.profile.js --release
+//		> ./node_modules/dojo-util/buildscripts/build.sh --profile ./profiles/tobuymvc.profile.js --release
 
 /*jshint unused:false*/
 var profile = {
@@ -35,7 +35,7 @@ var profile = {
 	layers: {
 		'dojo/dojo': {
 			include: [
-				// dojo, dijit and dojox modules from js/todo/*.js
+				// dojo, dijit and dojox modules from js/tobuy/*.js
 				'dojo/_base/declare',
 				'dojo/_base/array',
 				'dojo/_base/lang',

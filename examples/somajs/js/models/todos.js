@@ -1,10 +1,10 @@
-(function (todo) {
+(function (tobuy) {
 
 	'use strict';
 
-	todo.Model = function () {
+	tobuy.Model = function () {
 
-		var storeKey = 'todos-somajs';
+		var storeKey = 'tobuys-somajs';
 
 		return {
 			get: function () {
@@ -24,4 +24,4 @@
 		};
 	};
 
-})(window.todo = window.todo || {});
+})(window.tobuy = window.tobuy || {});

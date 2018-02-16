@@ -1,5 +1,5 @@
 {
-  "name": "angular2-esnext-todomvc",
+  "name": "angular2-esnext-tobuymvc",
   "version": "3.0.0",
   "main": "app/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blacksonic/angular2-esnext-todomvc.git"
+    "url": "git+https://github.com/blacksonic/angular2-esnext-tobuymvc.git"
   },
   "author": {
     "name": "blacksonic",
@@ -17,7 +17,7 @@
   "license": "ISC",
   "keywords": [
     "angular2",
-    "todomvc",
+    "tobuymvc",
     "es6"
   ],
   "description": "Angular 2 TodoMVC application in Javascript (ES6/ES7).",
@@ -38,8 +38,8 @@
     "localStorage": "1.0.3",
     "node-uuid": "1.4.7",
     "rxjs": "5.0.0-beta.12",
-    "todomvc-app-css": "2.0.6",
-    "todomvc-common": "1.0.2",
+    "tobuymvc-app-css": "2.0.6",
+    "tobuymvc-common": "1.0.2",
     "zone.js": "0.6.25"
   },
   "devDependencies": {

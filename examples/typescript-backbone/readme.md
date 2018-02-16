@@ -29,7 +29,7 @@ Get help from other TypeScript users:
 * [Forums](https://github.com/Microsoft/TypeScript/issues)
 * [TypeScript on Twitter](http://twitter.com/typescriptlang)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation

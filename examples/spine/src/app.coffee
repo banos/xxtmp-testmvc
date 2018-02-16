@@ -2,17 +2,17 @@ class TodoApp extends Spine.Controller
 	ENTER_KEY = 13
 
 	elements:
-		'#new-todo':        'newTodoInput'
+		'#new-tobuy':        'newTodoInput'
 		'#toggle-all':      'toggleAllElem'
 		'#main':			'main'
-		'#todo-list':       'todos'
+		'#tobuy-list':       'tobuys'
 		'#footer':          'footer'
-		'#todo-count':      'count'
+		'#tobuy-count':      'count'
 		'#filters a':       'filters'
 		'#clear-completed': 'clearCompleted'
 
 	events:
-		'keyup #new-todo':        'new'
+		'keyup #new-tobuy':        'new'
 		'click #toggle-all':      'toggleAll'
 		'click #clear-completed': 'clearCompletedItem'
 
@@ -48,23 +48,23 @@ class TodoApp extends Spine.Controller
 			else
 				Todo.all()
 
-	addNew: (todo) =>
-		view = new Todos todo: todo
-		@todos.append view.render().el
+	addNew: (tobuy) =>
+		view = new Todos tobuy: tobuy
+		@tobuys.append view.render().el
 
 	addAll: =>
-		@todos.empty()
-		@addNew todo for todo in @getByFilter()
+		@tobuys.empty()
+		@addNew tobuy for tobuy in @getByFilter()
 
 	toggleAll: (e) ->
 		checked = e.target.checked
-		Todo.each (todo) ->
+		Todo.each (tobuy) ->
 			###
 			TODO: Model updateAttribute sometimes won't stick:
 				https://github.com/maccman/spine/issues/219
 			###
-			todo.updateAttribute 'completed', checked
-			todo.trigger 'update', todo
+			tobuy.updateAttribute 'completed', checked
+			tobuy.trigger 'update', tobuy
 
 	clearCompletedItem: ->
 		Todo.destroyCompleted()
@@ -84,5 +84,5 @@ class TodoApp extends Spine.Controller
 		@count.html "<strong>#{ active }</strong> #{ text active } left"
 
 $ ->
-	new TodoApp el: $('#todoapp')
+	new TodoApp el: $('#tobuyapp')
 	Spine.Route.setup()

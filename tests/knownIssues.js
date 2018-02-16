@@ -1,17 +1,17 @@
 module.exports = [
 
 	// durandal routing is very very slow.
-	// see: https://github.com/tastejs/todomvc/issues/831
+	// see: https://github.com/tastejs/tobuymvc/issues/831
 	'TodoMVC - durandal, Routing, should allow me to display active items',
 	'TodoMVC - durandal, Routing, should allow me to display completed items',
 	'TodoMVC - durandal, Routing, should allow me to display all items',
 	'TodoMVC - durandal, Routing, should highlight the currently applied filter',
 
-	// https://github.com/tastejs/todomvc/issues/828
+	// https://github.com/tastejs/tobuymvc/issues/828
 	// routing should default to all
 	'TodoMVC - sammyjs, Routing, should highlight the currently applied filter',
 
-	// https://github.com/tastejs/todomvc/issues/824
+	// https://github.com/tastejs/tobuymvc/issues/824
 	// this implementation has numerous edit experience issues
 	'TodoMVC - angularjs_require, Mark all as completed, should allow me to mark all items as completed',
 	'TodoMVC - angularjs_require, Mark all as completed, should allow me to clear the completion state of all items',
@@ -19,22 +19,22 @@ module.exports = [
 	'TodoMVC - angularjs_require, Mark all as completed, complete all checkbox should update state when items are completed / cleared',
 
 	// jscs:enable
-	// https://github.com/tastejs/todomvc/issues/815
+	// https://github.com/tastejs/tobuymvc/issues/815
 	// does not hide other controls while editing
 	'TodoMVC - dojo, Editing, should hide other controls when editing',
 
-	// https://github.com/tastejs/todomvc/issues/816
+	// https://github.com/tastejs/tobuymvc/issues/816
 	// atma does not hide the main section, instead it hides the toggle-all checkbox
 	'TodoMVC - atmajs, No Todos, should hide #main and #footer',
 
-	// https://github.com/tastejs/todomvc/issues/819
+	// https://github.com/tastejs/tobuymvc/issues/819
 	// the edit experience with soma is quite broken. You can
 	// get multiple elements into an edit state
 	'TodoMVC - somajs_require, Editing, should remove the item if an empty text string was entered',
 	'TodoMVC - somajs_require, Editing, should cancel edits on escape',
 
 	// the following are covered by the following issue:
-	// https://github.com/tastejs/todomvc/issues/789
+	// https://github.com/tastejs/tobuymvc/issues/789
 	'TodoMVC - closure, Editing, should cancel edits on escape',
 	'TodoMVC - ariatemplates, Editing, should cancel edits on escape',
 	'TodoMVC - dermis, Editing, should cancel edits on escape',
@@ -50,7 +50,7 @@ module.exports = [
 	'TodoMVC - knockoutjs_require, Editing, should cancel edits on escape',
 
 	// all the following are covered by this issue:
-	// https://github.com/tastejs/todomvc/issues/856
+	// https://github.com/tastejs/tobuymvc/issues/856
 	'TodoMVC - knockoutjs, Routing, should respect the back button',
 	'TodoMVC - spine, Routing, should respect the back button',
 	'TodoMVC - serenadejs, Routing, should respect the back button',
@@ -103,7 +103,7 @@ module.exports = [
 	'TodoMVC - extjs, Item, should allow me to un-mark items as complete',
 	'TodoMVC - extjs, Editing, should save edits on blur',
 	'TodoMVC - extjs, Editing, should cancel edits on escape',
-	'TodoMVC - extjs, Counter, should display the current number of todo items',
+	'TodoMVC - extjs, Counter, should display the current number of tobuy items',
 	'TodoMVC - extjs, Clear completed button, should display the number of completed items',
 	'TodoMVC - extjs, Clear completed button, should remove completed items when clicked',
 	'TodoMVC - extjs, Clear completed button, should be hidden when there are no items that are completed',

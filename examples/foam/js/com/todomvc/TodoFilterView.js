@@ -3,10 +3,10 @@
 	'use strict';
 	// Needed to massage the HTML to fit TodoMVC spec; it works without this.
 	CLASS({
-		package: 'com.todomvc',
+		package: 'com.tobuymvc',
 		name: 'TodoFilterView',
 		extendsModel: 'foam.ui.ChoiceListView',
-		requires: ['com.todomvc.Todo'],
+		requires: ['com.tobuymvc.Todo'],
 		properties: [
 			{
 				name: 'choices',

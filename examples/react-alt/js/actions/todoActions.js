@@ -8,7 +8,7 @@ var app = app || {};
 
 	var Utils = app.Utils;
 
-	app.todoActions = app.alt.generateActions(
+	app.tobuyActions = app.alt.generateActions(
 		'toggleAll',
 		'toggle',
 		'destroy',
@@ -18,8 +18,8 @@ var app = app || {};
 		'show'
 	);
 
-	app.todoActions = Utils.extend(
-		app.todoActions,
+	app.tobuyActions = Utils.extend(
+		app.tobuyActions,
 		app.alt.createActions({
 			addTodo: function (title) {
 				return {

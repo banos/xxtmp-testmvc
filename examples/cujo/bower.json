@@ -1,8 +1,8 @@
 {
-  "name": "todomvc-cujoJS",
+  "name": "tobuymvc-cujoJS",
   "version": "0.0.0",
   "dependencies": {
-    "todomvc-common": "~0.3.0",
+    "tobuymvc-common": "~0.3.0",
     "curl": "~0.7.4",
     "cola": "latest",
     "poly": "~0.5.1",

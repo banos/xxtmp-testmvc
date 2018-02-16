@@ -15,24 +15,24 @@
     Todo.extend(Spine.Model.Local);
 
     Todo.active = function() {
-      return this.select(function(todo) {
-        return !todo.completed;
+      return this.select(function(tobuy) {
+        return !tobuy.completed;
       });
     };
 
     Todo.completed = function() {
-      return this.select(function(todo) {
-        return !!todo.completed;
+      return this.select(function(tobuy) {
+        return !!tobuy.completed;
       });
     };
 
     Todo.destroyCompleted = function() {
-      var i, len, ref, results, todo;
+      var i, len, ref, results, tobuy;
       ref = this.completed();
       results = [];
       for (i = 0, len = ref.length; i < len; i++) {
-        todo = ref[i];
-        results.push(todo.destroy());
+        tobuy = ref[i];
+        results.push(tobuy.destroy());
       }
       return results;
     };

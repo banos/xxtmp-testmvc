@@ -1,9 +1,9 @@
 /*global window */
 /*jshint camelcase:false */
 
-var todos = todos || {};
+var tobuys = tobuys || {};
 
-(function (todos, document) {
+(function (tobuys, document) {
 	'use strict';
 
 	/*-- private members -------------------------------*/
@@ -24,12 +24,12 @@ var todos = todos || {};
 
 	function refreshView() {
 		// get the data
-		var data = todos.model.viewData(curFilter());
+		var data = tobuys.model.viewData(curFilter());
 
 		// build the view
-		var view = todos.views.TodoApp(data).toDOM();
+		var view = tobuys.views.TodoApp(data).toDOM();
 
-		var old = find('.todoapp');
+		var old = find('.tobuyapp');
 		if (old) {
 			// replace old task list
 			old.parentNode.replaceChild(view, old);
@@ -37,7 +37,7 @@ var todos = todos || {};
 			// insert at top
 			document.body.insertBefore(view, document.body.firstChild);
 		}
-		find('.new-todo').focus();
+		find('.new-tobuy').focus();
 	}
 
 	function add(input) {
@@ -48,7 +48,7 @@ var todos = todos || {};
 			return;
 		}
 
-		todos.model.add(title);
+		tobuys.model.add(title);
 		refreshView();
 	}
 
@@ -57,15 +57,15 @@ var todos = todos || {};
 		input.value = title;
 
 		if (title) {
-			todos.model.edit(id, title);
+			tobuys.model.edit(id, title);
 		} else {
-			todos.model.remove(id);
+			tobuys.model.remove(id);
 		}
 		refreshView();
 	}
 
 	function reset(input, id) {
-		var task = todos.model.find(id);
+		var task = tobuys.model.find(id);
 		if (task) {
 			input.value = task.title;
 		}
@@ -74,7 +74,7 @@ var todos = todos || {};
 	/*-- export public interface -------------------------------*/
 
 	// event handlers
-	todos.actions = {
+	tobuys.actions = {
 		addOnKeydown: function (e) {
 			if (e.keyCode === ENTER_KEY) {
 				add(this);
@@ -106,13 +106,13 @@ var todos = todos || {};
 		removeOnClick: function (id) {
 			// create a closure around the ID
 			return function () {
-				todos.model.remove(id);
+				tobuys.model.remove(id);
 				refreshView();
 			};
 		},
 
 		clearOnClick: function () {
-			todos.model.expunge();
+			tobuys.model.expunge();
 			refreshView();
 		},
 
@@ -133,13 +133,13 @@ var todos = todos || {};
 		completedOnChange: function (id) {
 			// create a closure around the ID
 			return function () {
-				todos.model.toggle(id, this.checked);
+				tobuys.model.toggle(id, this.checked);
 				refreshView();
 			};
 		},
 
 		toggleOnChange: function () {
-			todos.model.toggleAll(this.checked);
+			tobuys.model.toggleAll(this.checked);
 			refreshView();
 		}
 	};
@@ -148,4 +148,4 @@ var todos = todos || {};
 
 	refreshView();
 
-})(todos, window.document);
+})(tobuys, window.document);

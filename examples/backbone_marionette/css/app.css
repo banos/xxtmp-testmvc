@@ -1,4 +1,4 @@
-#todoapp.filter-active #todo-list .completed,
-#todoapp.filter-completed #todo-list .active {
+#tobuyapp.filter-active #tobuy-list .completed,
+#tobuyapp.filter-completed #tobuy-list .active {
 	display: none;
 }

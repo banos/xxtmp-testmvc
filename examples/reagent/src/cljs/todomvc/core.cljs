@@ -1,36 +1,36 @@
-(ns todomvc.core
+(ns tobuymvc.core
   (:require [reagent.core :as reagent]
-            [todomvc.session :as session]
-            [todomvc.actions :as actions]
-            [todomvc.helpers :as helpers]
-            [todomvc.components.title :as title]
-            [todomvc.components.todo-input :as todo-input]
-            [todomvc.components.footer :as footer]
-            [todomvc.components.todos-toggle :as todos-toggle]
-            [todomvc.components.todos-list :as todos-list]
-            [todomvc.components.todos-count :as todos-count]
-            [todomvc.components.todos-filters :as todos-filters]
-            [todomvc.components.todos-clear :as todos-clear]))
+            [tobuymvc.session :as session]
+            [tobuymvc.actions :as actions]
+            [tobuymvc.helpers :as helpers]
+            [tobuymvc.components.title :as title]
+            [tobuymvc.components.tobuy-input :as tobuy-input]
+            [tobuymvc.components.footer :as footer]
+            [tobuymvc.components.tobuys-toggle :as tobuys-toggle]
+            [tobuymvc.components.tobuys-list :as tobuys-list]
+            [tobuymvc.components.tobuys-count :as tobuys-count]
+            [tobuymvc.components.tobuys-filters :as tobuys-filters]
+            [tobuymvc.components.tobuys-clear :as tobuys-clear]))
 
-(defn todo-app []
+(defn tobuy-app []
   [:div
-   [:section#todoapp
+   [:section#tobuyapp
     [:header#header
      [title/component]
-     [todo-input/component]]
+     [tobuy-input/component]]
     [:div {:style 
-           {:display (helpers/display-elem (helpers/todos-any?
-                                            @session/todos))}}
+           {:display (helpers/display-elem (helpers/tobuys-any?
+                                            @session/tobuys))}}
      [:section#main
-      [todos-toggle/component]
-      [todos-list/component (helpers/todos-all @session/todos)]]
+      [tobuys-toggle/component]
+      [tobuys-list/component (helpers/tobuys-all @session/tobuys)]]
      [:footer#footer
-      [todos-count/component]
-      [todos-filters/component]
-      [todos-clear/component]
+      [tobuys-count/component]
+      [tobuys-filters/component]
+      [tobuys-clear/component]
       ]]]
    [footer/component]])
 
 (defn ^:export run []
-  (reagent/render [todo-app]
+  (reagent/render [tobuy-app]
                   (js/document.getElementById "app")))

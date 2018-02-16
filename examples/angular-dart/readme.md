@@ -32,7 +32,7 @@ Get help from other Dart users:
 * [Dart on Twitter](http://twitter.com/dart_lang)
 * [Dart on Google +](https://plus.google.com/+dartlang/posts)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 ## Running
 

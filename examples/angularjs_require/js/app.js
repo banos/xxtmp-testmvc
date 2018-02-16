@@ -5,14 +5,14 @@ require([
 	'angular'
 ], function (angular) {
 	require([
-		'controllers/todo', 
-		'directives/todoFocus', 
-		'directives/todoEscape',
-		'services/todoStorage'
-	], function (todoCtrl, todoFocusDir, todoEscapeDir, todoStorageSrv) {
+		'controllers/tobuy', 
+		'directives/tobuyFocus', 
+		'directives/tobuyEscape',
+		'services/tobuyStorage'
+	], function (tobuyCtrl, tobuyFocusDir, tobuyEscapeDir, tobuyStorageSrv) {
 		angular
-			.module('todomvc', [todoFocusDir, todoEscapeDir, todoStorageSrv])
-			.controller('TodoController', todoCtrl);
-		angular.bootstrap(document, ['todomvc']);			
+			.module('tobuymvc', [tobuyFocusDir, tobuyEscapeDir, tobuyStorageSrv])
+			.controller('TodoController', tobuyCtrl);
+		angular.bootstrap(document, ['tobuymvc']);			
 	});	
 });

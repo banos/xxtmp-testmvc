@@ -1,12 +1,12 @@
-(ns todomvc.components.todo-edit
+(ns tobuymvc.components.tobuy-edit
   (:require [reagent.core :as reagent]
-            [todomvc.actions :as actions]
-            [todomvc.helpers :as helpers]))
+            [tobuymvc.actions :as actions]
+            [tobuymvc.helpers :as helpers]))
 
 (defn on-key-down [k id title default editing]
   (let [key-pressed (.-which k)]
     (condp = key-pressed
-      helpers/enter-key (actions/save-todo id title editing)
+      helpers/enter-key (actions/save-tobuy id title editing)
       helpers/escape-key (do (reset! title default)
                              (reset! editing false))
       nil)))
@@ -19,7 +19,7 @@
                     :style {:display (helpers/display-elem @editing)}
                     :value @edit-title
                     :on-change #(reset! edit-title (-> % .-target .-value))
-                    :on-blur #(actions/save-todo id edit-title editing)
+                    :on-blur #(actions/save-tobuy id edit-title editing)
                     :on-key-down #(on-key-down % id edit-title default editing)}])))
 
 (defn component-did-update [x]

@@ -9597,7 +9597,7 @@ var _elm_lang$navigation$Navigation$subMap = F2(
 	});
 _elm_lang$core$Native_Platform.effectManagers['Navigation'] = {pkg: 'elm-lang/navigation', init: _elm_lang$navigation$Navigation$init, onEffects: _elm_lang$navigation$Navigation$onEffects, onSelfMsg: _elm_lang$navigation$Navigation$onSelfMsg, tag: 'fx', cmdMap: _elm_lang$navigation$Navigation$cmdMap, subMap: _elm_lang$navigation$Navigation$subMap};
 
-var _evancz$elm_todomvc$Todo_Task$onFinish = F2(
+var _evancz$elm_tobuymvc$Todo_Task$onFinish = F2(
 	function (enterMessage, escapeMessage) {
 		var select = function (key) {
 			var _p0 = key;
@@ -9612,7 +9612,7 @@ var _evancz$elm_todomvc$Todo_Task$onFinish = F2(
 			'keydown',
 			A2(_elm_lang$core$Json_Decode$map, select, _elm_lang$html$Html_Events$keyCode));
 	});
-var _evancz$elm_todomvc$Todo_Task$update = F2(
+var _evancz$elm_tobuymvc$Todo_Task$update = F2(
 	function (msg, model) {
 		var _p1 = msg;
 		switch (_p1.ctor) {
@@ -9655,30 +9655,30 @@ var _evancz$elm_todomvc$Todo_Task$update = F2(
 				return _elm_lang$core$Maybe$Nothing;
 		}
 	});
-var _evancz$elm_todomvc$Todo_Task$init = F2(
+var _evancz$elm_tobuymvc$Todo_Task$init = F2(
 	function (desc, id) {
 		return {description: desc, completed: false, edits: _elm_lang$core$Maybe$Nothing, id: id};
 	});
-var _evancz$elm_todomvc$Todo_Task$Model = F4(
+var _evancz$elm_tobuymvc$Todo_Task$Model = F4(
 	function (a, b, c, d) {
 		return {description: a, completed: b, edits: c, id: d};
 	});
-var _evancz$elm_todomvc$Todo_Task$Delete = {ctor: 'Delete'};
-var _evancz$elm_todomvc$Todo_Task$Completed = function (a) {
+var _evancz$elm_tobuymvc$Todo_Task$Delete = {ctor: 'Delete'};
+var _evancz$elm_tobuymvc$Todo_Task$Completed = function (a) {
 	return {ctor: 'Completed', _0: a};
 };
-var _evancz$elm_todomvc$Todo_Task$Commit = {ctor: 'Commit'};
-var _evancz$elm_todomvc$Todo_Task$Cancel = {ctor: 'Cancel'};
-var _evancz$elm_todomvc$Todo_Task$Edit = function (a) {
+var _evancz$elm_tobuymvc$Todo_Task$Commit = {ctor: 'Commit'};
+var _evancz$elm_tobuymvc$Todo_Task$Cancel = {ctor: 'Cancel'};
+var _evancz$elm_tobuymvc$Todo_Task$Edit = function (a) {
 	return {ctor: 'Edit', _0: a};
 };
-var _evancz$elm_todomvc$Todo_Task$Focus = function (a) {
+var _evancz$elm_tobuymvc$Todo_Task$Focus = function (a) {
 	return {ctor: 'Focus', _0: a};
 };
-var _evancz$elm_todomvc$Todo_Task$view = function (model) {
+var _evancz$elm_tobuymvc$Todo_Task$view = function (model) {
 	var elementId = A2(
 		_elm_lang$core$Basics_ops['++'],
-		'todo-',
+		'tobuy-',
 		_elm_lang$core$Basics$toString(model.id));
 	var description = A2(_elm_lang$core$Maybe$withDefault, model.description, model.edits);
 	var className = A2(
@@ -9716,7 +9716,7 @@ var _evancz$elm_todomvc$Todo_Task$view = function (model) {
 								_elm_lang$html$Html_Attributes$type$('checkbox'),
 								_elm_lang$html$Html_Attributes$checked(model.completed),
 								_elm_lang$html$Html_Events$onClick(
-								_evancz$elm_todomvc$Todo_Task$Completed(
+								_evancz$elm_tobuymvc$Todo_Task$Completed(
 									_elm_lang$core$Basics$not(model.completed)))
 							]),
 						_elm_lang$core$Native_List.fromArray(
@@ -9726,7 +9726,7 @@ var _evancz$elm_todomvc$Todo_Task$view = function (model) {
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Events$onDoubleClick(
-								_evancz$elm_todomvc$Todo_Task$Focus(elementId))
+								_evancz$elm_tobuymvc$Todo_Task$Focus(elementId))
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -9737,7 +9737,7 @@ var _evancz$elm_todomvc$Todo_Task$view = function (model) {
 						_elm_lang$core$Native_List.fromArray(
 							[
 								_elm_lang$html$Html_Attributes$class('destroy'),
-								_elm_lang$html$Html_Events$onClick(_evancz$elm_todomvc$Todo_Task$Delete)
+								_elm_lang$html$Html_Events$onClick(_evancz$elm_tobuymvc$Todo_Task$Delete)
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[]))
@@ -9750,19 +9750,19 @@ var _evancz$elm_todomvc$Todo_Task$view = function (model) {
 						_elm_lang$html$Html_Attributes$value(description),
 						_elm_lang$html$Html_Attributes$name('title'),
 						_elm_lang$html$Html_Attributes$id(elementId),
-						_elm_lang$html$Html_Events$onInput(_evancz$elm_todomvc$Todo_Task$Edit),
-						_elm_lang$html$Html_Events$onBlur(_evancz$elm_todomvc$Todo_Task$Commit),
-						A2(_evancz$elm_todomvc$Todo_Task$onFinish, _evancz$elm_todomvc$Todo_Task$Commit, _evancz$elm_todomvc$Todo_Task$Cancel)
+						_elm_lang$html$Html_Events$onInput(_evancz$elm_tobuymvc$Todo_Task$Edit),
+						_elm_lang$html$Html_Events$onBlur(_evancz$elm_tobuymvc$Todo_Task$Commit),
+						A2(_evancz$elm_tobuymvc$Todo_Task$onFinish, _evancz$elm_tobuymvc$Todo_Task$Commit, _evancz$elm_tobuymvc$Todo_Task$Cancel)
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[]))
 			]));
 };
 
-var _evancz$elm_todomvc$Todo$subscriptions = function (model) {
+var _evancz$elm_tobuymvc$Todo$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _evancz$elm_todomvc$Todo$fromUrl = function (hash) {
+var _evancz$elm_tobuymvc$Todo$fromUrl = function (hash) {
 	var cleanHash = A2(_elm_lang$core$String$dropLeft, 2, hash);
 	return _elm_lang$core$Native_Utils.eq(
 		A2(
@@ -9772,20 +9772,20 @@ var _evancz$elm_todomvc$Todo$fromUrl = function (hash) {
 				['all', 'active', 'completed'])),
 		true) ? _elm_lang$core$Maybe$Just(cleanHash) : _elm_lang$core$Maybe$Nothing;
 };
-var _evancz$elm_todomvc$Todo$urlParser = _elm_lang$navigation$Navigation$makeParser(
+var _evancz$elm_tobuymvc$Todo$urlParser = _elm_lang$navigation$Navigation$makeParser(
 	function (_p0) {
-		return _evancz$elm_todomvc$Todo$fromUrl(
+		return _evancz$elm_tobuymvc$Todo$fromUrl(
 			function (_) {
 				return _.hash;
 			}(_p0));
 	});
-var _evancz$elm_todomvc$Todo$toUrl = function (visibility) {
+var _evancz$elm_tobuymvc$Todo$toUrl = function (visibility) {
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
 		'#/',
 		_elm_lang$core$String$toLower(visibility));
 };
-var _evancz$elm_todomvc$Todo$infoFooter = A2(
+var _evancz$elm_tobuymvc$Todo$infoFooter = A2(
 	_elm_lang$html$Html$footer,
 	_elm_lang$core$Native_List.fromArray(
 		[
@@ -9799,7 +9799,7 @@ var _evancz$elm_todomvc$Todo$infoFooter = A2(
 				[]),
 			_elm_lang$core$Native_List.fromArray(
 				[
-					_elm_lang$html$Html$text('Double-click to edit a todo')
+					_elm_lang$html$Html$text('Double-click to edit a tobuy')
 				])),
 			A2(
 			_elm_lang$html$Html$p,
@@ -9830,7 +9830,7 @@ var _evancz$elm_todomvc$Todo$infoFooter = A2(
 					_elm_lang$html$Html$a,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Attributes$href('http://todomvc.com')
+							_elm_lang$html$Html_Attributes$href('http://tobuymvc.com')
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -9838,14 +9838,14 @@ var _evancz$elm_todomvc$Todo$infoFooter = A2(
 						]))
 				]))
 		]));
-var _evancz$elm_todomvc$Todo$emptyModel = {
+var _evancz$elm_tobuymvc$Todo$emptyModel = {
 	tasks: _elm_lang$core$Native_List.fromArray(
 		[]),
 	visibility: 'All',
 	field: '',
 	uid: 0
 };
-var _evancz$elm_todomvc$Todo$save = _elm_lang$core$Native_Platform.outgoingPort(
+var _evancz$elm_tobuymvc$Todo$save = _elm_lang$core$Native_Platform.outgoingPort(
 	'save',
 	function (v) {
 		return {
@@ -9863,14 +9863,14 @@ var _evancz$elm_todomvc$Todo$save = _elm_lang$core$Native_Platform.outgoingPort(
 			visibility: v.visibility
 		};
 	});
-var _evancz$elm_todomvc$Todo$Model = F4(
+var _evancz$elm_tobuymvc$Todo$Model = F4(
 	function (a, b, c, d) {
 		return {tasks: a, field: b, uid: c, visibility: d};
 	});
-var _evancz$elm_todomvc$Todo$ChangeVisibility = function (a) {
+var _evancz$elm_tobuymvc$Todo$ChangeVisibility = function (a) {
 	return {ctor: 'ChangeVisibility', _0: a};
 };
-var _evancz$elm_todomvc$Todo$visibilitySwap = F3(
+var _evancz$elm_tobuymvc$Todo$visibilitySwap = F3(
 	function (uri, visibility, actualVisibility) {
 		var className = _elm_lang$core$Native_Utils.eq(visibility, actualVisibility) ? 'selected' : '';
 		return A2(
@@ -9878,7 +9878,7 @@ var _evancz$elm_todomvc$Todo$visibilitySwap = F3(
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_elm_lang$html$Html_Events$onClick(
-					_evancz$elm_todomvc$Todo$ChangeVisibility(visibility))
+					_evancz$elm_tobuymvc$Todo$ChangeVisibility(visibility))
 				]),
 			_elm_lang$core$Native_List.fromArray(
 				[
@@ -9895,11 +9895,11 @@ var _evancz$elm_todomvc$Todo$visibilitySwap = F3(
 						]))
 				]));
 	});
-var _evancz$elm_todomvc$Todo$CheckAll = function (a) {
+var _evancz$elm_tobuymvc$Todo$CheckAll = function (a) {
 	return {ctor: 'CheckAll', _0: a};
 };
-var _evancz$elm_todomvc$Todo$DeleteComplete = {ctor: 'DeleteComplete'};
-var _evancz$elm_todomvc$Todo$controls = F2(
+var _evancz$elm_tobuymvc$Todo$DeleteComplete = {ctor: 'DeleteComplete'};
+var _evancz$elm_tobuymvc$Todo$controls = F2(
 	function (visibility, tasks) {
 		var tasksCompleted = _elm_lang$core$List$length(
 			A2(
@@ -9924,7 +9924,7 @@ var _evancz$elm_todomvc$Todo$controls = F2(
 					_elm_lang$html$Html$span,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Attributes$class('todo-count')
+							_elm_lang$html$Html_Attributes$class('tobuy-count')
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -9948,11 +9948,11 @@ var _evancz$elm_todomvc$Todo$controls = F2(
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
-							A3(_evancz$elm_todomvc$Todo$visibilitySwap, '#/', 'All', visibility),
+							A3(_evancz$elm_tobuymvc$Todo$visibilitySwap, '#/', 'All', visibility),
 							_elm_lang$html$Html$text(' '),
-							A3(_evancz$elm_todomvc$Todo$visibilitySwap, '#/active', 'Active', visibility),
+							A3(_evancz$elm_tobuymvc$Todo$visibilitySwap, '#/active', 'Active', visibility),
 							_elm_lang$html$Html$text(' '),
-							A3(_evancz$elm_todomvc$Todo$visibilitySwap, '#/completed', 'Completed', visibility)
+							A3(_evancz$elm_tobuymvc$Todo$visibilitySwap, '#/completed', 'Completed', visibility)
 						])),
 					A2(
 					_elm_lang$html$Html$button,
@@ -9961,7 +9961,7 @@ var _evancz$elm_todomvc$Todo$controls = F2(
 							_elm_lang$html$Html_Attributes$class('clear-completed'),
 							_elm_lang$html$Html_Attributes$hidden(
 							_elm_lang$core$Native_Utils.eq(tasksCompleted, 0)),
-							_elm_lang$html$Html_Events$onClick(_evancz$elm_todomvc$Todo$DeleteComplete)
+							_elm_lang$html$Html_Events$onClick(_evancz$elm_tobuymvc$Todo$DeleteComplete)
 						]),
 					_elm_lang$core$Native_List.fromArray(
 						[
@@ -9976,10 +9976,10 @@ var _evancz$elm_todomvc$Todo$controls = F2(
 						]))
 				]));
 	});
-var _evancz$elm_todomvc$Todo$UpdateTask = function (a) {
+var _evancz$elm_tobuymvc$Todo$UpdateTask = function (a) {
 	return {ctor: 'UpdateTask', _0: a};
 };
-var _evancz$elm_todomvc$Todo$taskList = F2(
+var _evancz$elm_tobuymvc$Todo$taskList = F2(
 	function (visibility, tasks) {
 		var cssVisibility = _elm_lang$core$List$isEmpty(tasks) ? 'hidden' : 'visible';
 		var allCompleted = A2(
@@ -9988,13 +9988,13 @@ var _evancz$elm_todomvc$Todo$taskList = F2(
 				return _.completed;
 			},
 			tasks);
-		var isVisible = function (todo) {
+		var isVisible = function (tobuy) {
 			var _p1 = visibility;
 			switch (_p1) {
 				case 'Completed':
-					return todo.completed;
+					return tobuy.completed;
 				case 'Active':
-					return _elm_lang$core$Basics$not(todo.completed);
+					return _elm_lang$core$Basics$not(tobuy.completed);
 				default:
 					return true;
 			}
@@ -10021,7 +10021,7 @@ var _evancz$elm_todomvc$Todo$taskList = F2(
 							_elm_lang$html$Html_Attributes$name('toggle'),
 							_elm_lang$html$Html_Attributes$checked(allCompleted),
 							_elm_lang$html$Html_Events$onClick(
-							_evancz$elm_todomvc$Todo$CheckAll(
+							_evancz$elm_tobuymvc$Todo$CheckAll(
 								_elm_lang$core$Basics$not(allCompleted)))
 						]),
 					_elm_lang$core$Native_List.fromArray(
@@ -10040,17 +10040,17 @@ var _evancz$elm_todomvc$Todo$taskList = F2(
 					_elm_lang$html$Html$ul,
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_elm_lang$html$Html_Attributes$class('todo-list')
+							_elm_lang$html$Html_Attributes$class('tobuy-list')
 						]),
 					A2(
 						_elm_lang$core$List$map,
 						function (task) {
-							var taskView = _evancz$elm_todomvc$Todo_Task$view(task);
+							var taskView = _evancz$elm_tobuymvc$Todo_Task$view(task);
 							var id = task.id;
 							return A2(
 								_elm_lang$html$Html_App$map,
 								function (msg) {
-									return _evancz$elm_todomvc$Todo$UpdateTask(
+									return _evancz$elm_tobuymvc$Todo$UpdateTask(
 										{ctor: '_Tuple2', _0: id, _1: msg});
 								},
 								taskView);
@@ -10058,23 +10058,23 @@ var _evancz$elm_todomvc$Todo$taskList = F2(
 						A2(_elm_lang$core$List$filter, isVisible, tasks)))
 				]));
 	});
-var _evancz$elm_todomvc$Todo$Add = {ctor: 'Add'};
-var _evancz$elm_todomvc$Todo$UpdateField = function (a) {
+var _evancz$elm_tobuymvc$Todo$Add = {ctor: 'Add'};
+var _evancz$elm_tobuymvc$Todo$UpdateField = function (a) {
 	return {ctor: 'UpdateField', _0: a};
 };
-var _evancz$elm_todomvc$Todo$NoOp = {ctor: 'NoOp'};
-var _evancz$elm_todomvc$Todo$focusTask = function (elementId) {
+var _evancz$elm_tobuymvc$Todo$NoOp = {ctor: 'NoOp'};
+var _evancz$elm_tobuymvc$Todo$focusTask = function (elementId) {
 	return A3(
 		_elm_lang$core$Task$perform,
 		function (_p2) {
-			return _evancz$elm_todomvc$Todo$NoOp;
+			return _evancz$elm_tobuymvc$Todo$NoOp;
 		},
 		function (_p3) {
-			return _evancz$elm_todomvc$Todo$NoOp;
+			return _evancz$elm_tobuymvc$Todo$NoOp;
 		},
 		_elm_lang$dom$Dom$focus(elementId));
 };
-var _evancz$elm_todomvc$Todo$update = F2(
+var _evancz$elm_tobuymvc$Todo$update = F2(
 	function (msg, model) {
 		var _p4 = A2(_elm_lang$core$Debug$log, 'MESSAGE: ', msg);
 		switch (_p4.ctor) {
@@ -10087,7 +10087,7 @@ var _evancz$elm_todomvc$Todo$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
-					_1: _evancz$elm_todomvc$Todo$save(model)
+					_1: _evancz$elm_tobuymvc$Todo$save(model)
 				};
 			case 'Add':
 				var description = _elm_lang$core$String$trim(model.field);
@@ -10101,18 +10101,18 @@ var _evancz$elm_todomvc$Todo$update = F2(
 							model.tasks,
 							_elm_lang$core$Native_List.fromArray(
 								[
-									A2(_evancz$elm_todomvc$Todo_Task$init, description, model.uid)
+									A2(_evancz$elm_tobuymvc$Todo_Task$init, description, model.uid)
 								]))
 					});
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
-					_1: _evancz$elm_todomvc$Todo$save(newModel)
+					_1: _evancz$elm_tobuymvc$Todo$save(newModel)
 				};
 			case 'UpdateTask':
 				var _p6 = _p4._0._1;
 				var updateTask = function (t) {
-					return _elm_lang$core$Native_Utils.eq(t.id, _p4._0._0) ? A2(_evancz$elm_todomvc$Todo_Task$update, _p6, t) : _elm_lang$core$Maybe$Just(t);
+					return _elm_lang$core$Native_Utils.eq(t.id, _p4._0._0) ? A2(_evancz$elm_tobuymvc$Todo_Task$update, _p6, t) : _elm_lang$core$Maybe$Just(t);
 				};
 				var newModel = _elm_lang$core$Native_Utils.update(
 					model,
@@ -10126,14 +10126,14 @@ var _evancz$elm_todomvc$Todo$update = F2(
 						newModel,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_evancz$elm_todomvc$Todo$save(newModel),
-								_evancz$elm_todomvc$Todo$focusTask(_p5._0)
+								_evancz$elm_tobuymvc$Todo$save(newModel),
+								_evancz$elm_tobuymvc$Todo$focusTask(_p5._0)
 							]));
 				} else {
 					return {
 						ctor: '_Tuple2',
 						_0: newModel,
-						_1: _evancz$elm_todomvc$Todo$save(newModel)
+						_1: _evancz$elm_tobuymvc$Todo$save(newModel)
 					};
 				}
 			case 'DeleteComplete':
@@ -10153,7 +10153,7 @@ var _evancz$elm_todomvc$Todo$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
-					_1: _evancz$elm_todomvc$Todo$save(newModel)
+					_1: _evancz$elm_tobuymvc$Todo$save(newModel)
 				};
 			case 'CheckAll':
 				var updateTask = function (t) {
@@ -10169,7 +10169,7 @@ var _evancz$elm_todomvc$Todo$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
-					_1: _evancz$elm_todomvc$Todo$save(newModel)
+					_1: _evancz$elm_tobuymvc$Todo$save(newModel)
 				};
 			default:
 				var newModel = _elm_lang$core$Native_Utils.update(
@@ -10178,34 +10178,34 @@ var _evancz$elm_todomvc$Todo$update = F2(
 				return {
 					ctor: '_Tuple2',
 					_0: newModel,
-					_1: _evancz$elm_todomvc$Todo$save(model)
+					_1: _evancz$elm_tobuymvc$Todo$save(model)
 				};
 		}
 	});
-var _evancz$elm_todomvc$Todo$urlUpdate = F2(
+var _evancz$elm_tobuymvc$Todo$urlUpdate = F2(
 	function (result, model) {
 		var _p8 = result;
 		if (_p8.ctor === 'Just') {
 			return A2(
-				_evancz$elm_todomvc$Todo$update,
-				_evancz$elm_todomvc$Todo$ChangeVisibility(
+				_evancz$elm_tobuymvc$Todo$update,
+				_evancz$elm_tobuymvc$Todo$ChangeVisibility(
 					_elm_community$string_extra$String_Extra$toSentenceCase(_p8._0)),
 				model);
 		} else {
 			return A2(
-				_evancz$elm_todomvc$Todo$update,
-				_evancz$elm_todomvc$Todo$ChangeVisibility('All'),
+				_evancz$elm_tobuymvc$Todo$update,
+				_evancz$elm_tobuymvc$Todo$ChangeVisibility('All'),
 				model);
 		}
 	});
-var _evancz$elm_todomvc$Todo$init = F2(
+var _evancz$elm_tobuymvc$Todo$init = F2(
 	function (flags, url) {
 		return A2(
-			_evancz$elm_todomvc$Todo$urlUpdate,
+			_evancz$elm_tobuymvc$Todo$urlUpdate,
 			url,
-			A2(_elm_lang$core$Maybe$withDefault, _evancz$elm_todomvc$Todo$emptyModel, flags));
+			A2(_elm_lang$core$Maybe$withDefault, _evancz$elm_tobuymvc$Todo$emptyModel, flags));
 	});
-var _evancz$elm_todomvc$Todo$taskEntry = function (task) {
+var _evancz$elm_tobuymvc$Todo$taskEntry = function (task) {
 	return A2(
 		_elm_lang$html$Html$header,
 		_elm_lang$core$Native_List.fromArray(
@@ -10220,30 +10220,30 @@ var _evancz$elm_todomvc$Todo$taskEntry = function (task) {
 					[]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html$text('todos')
+						_elm_lang$html$Html$text('tobuys')
 					])),
 				A2(
 				_elm_lang$html$Html$input,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('new-todo'),
+						_elm_lang$html$Html_Attributes$class('new-tobuy'),
 						_elm_lang$html$Html_Attributes$placeholder('What needs to be done?'),
 						_elm_lang$html$Html_Attributes$autofocus(true),
 						_elm_lang$html$Html_Attributes$value(task),
 						_elm_lang$html$Html_Attributes$name('newTodo'),
-						_elm_lang$html$Html_Events$onInput(_evancz$elm_todomvc$Todo$UpdateField),
-						A2(_evancz$elm_todomvc$Todo_Task$onFinish, _evancz$elm_todomvc$Todo$Add, _evancz$elm_todomvc$Todo$NoOp)
+						_elm_lang$html$Html_Events$onInput(_evancz$elm_tobuymvc$Todo$UpdateField),
+						A2(_evancz$elm_tobuymvc$Todo_Task$onFinish, _evancz$elm_tobuymvc$Todo$Add, _evancz$elm_tobuymvc$Todo$NoOp)
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[]))
 			]));
 };
-var _evancz$elm_todomvc$Todo$view = function (model) {
+var _evancz$elm_tobuymvc$Todo$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		_elm_lang$core$Native_List.fromArray(
 			[
-				_elm_lang$html$Html_Attributes$class('todomvc-wrapper'),
+				_elm_lang$html$Html_Attributes$class('tobuymvc-wrapper'),
 				_elm_lang$html$Html_Attributes$style(
 				_elm_lang$core$Native_List.fromArray(
 					[
@@ -10256,22 +10256,22 @@ var _evancz$elm_todomvc$Todo$view = function (model) {
 				_elm_lang$html$Html$section,
 				_elm_lang$core$Native_List.fromArray(
 					[
-						_elm_lang$html$Html_Attributes$class('todoapp')
+						_elm_lang$html$Html_Attributes$class('tobuyapp')
 					]),
 				_elm_lang$core$Native_List.fromArray(
 					[
-						A2(_elm_lang$html$Html_Lazy$lazy, _evancz$elm_todomvc$Todo$taskEntry, model.field),
-						A3(_elm_lang$html$Html_Lazy$lazy2, _evancz$elm_todomvc$Todo$taskList, model.visibility, model.tasks),
-						A3(_elm_lang$html$Html_Lazy$lazy2, _evancz$elm_todomvc$Todo$controls, model.visibility, model.tasks)
+						A2(_elm_lang$html$Html_Lazy$lazy, _evancz$elm_tobuymvc$Todo$taskEntry, model.field),
+						A3(_elm_lang$html$Html_Lazy$lazy2, _evancz$elm_tobuymvc$Todo$taskList, model.visibility, model.tasks),
+						A3(_elm_lang$html$Html_Lazy$lazy2, _evancz$elm_tobuymvc$Todo$controls, model.visibility, model.tasks)
 					])),
-				_evancz$elm_todomvc$Todo$infoFooter
+				_evancz$elm_tobuymvc$Todo$infoFooter
 			]));
 };
-var _evancz$elm_todomvc$Todo$main = {
+var _evancz$elm_tobuymvc$Todo$main = {
 	main: A2(
 		_elm_lang$navigation$Navigation$programWithFlags,
-		_evancz$elm_todomvc$Todo$urlParser,
-		{urlUpdate: _evancz$elm_todomvc$Todo$urlUpdate, view: _evancz$elm_todomvc$Todo$view, init: _evancz$elm_todomvc$Todo$init, update: _evancz$elm_todomvc$Todo$update, subscriptions: _evancz$elm_todomvc$Todo$subscriptions}),
+		_evancz$elm_tobuymvc$Todo$urlParser,
+		{urlUpdate: _evancz$elm_tobuymvc$Todo$urlUpdate, view: _evancz$elm_tobuymvc$Todo$view, init: _evancz$elm_tobuymvc$Todo$init, update: _evancz$elm_tobuymvc$Todo$update, subscriptions: _evancz$elm_tobuymvc$Todo$subscriptions}),
 	flags: _elm_lang$core$Json_Decode$oneOf(
 		_elm_lang$core$Native_List.fromArray(
 			[
@@ -10339,7 +10339,7 @@ var _evancz$elm_todomvc$Todo$main = {
 
 var Elm = {};
 Elm['Todo'] = Elm['Todo'] || {};
-_elm_lang$core$Native_Platform.addPublicModule(Elm['Todo'], 'Todo', typeof _evancz$elm_todomvc$Todo$main === 'undefined' ? null : _evancz$elm_todomvc$Todo$main);
+_elm_lang$core$Native_Platform.addPublicModule(Elm['Todo'], 'Todo', typeof _evancz$elm_tobuymvc$Todo$main === 'undefined' ? null : _evancz$elm_tobuymvc$Todo$main);
 
 if (typeof define === "function" && define['amd'])
 {

@@ -5,10 +5,10 @@
 
 	var TodoItem = {
 		renderAllTodos: function (e, data) {
-			this.renderEach('templates/todoItem.template', data.visible).then(function () {
-				$('#todo-list').html(this.content);
+			this.renderEach('templates/tobuyItem.template', data.visible).then(function () {
+				$('#tobuy-list').html(this.content);
 
-				TodoApp.trigger('todoItemsRendered', data);
+				TodoApp.trigger('tobuyItemsRendered', data);
 			});
 		},
 
@@ -21,26 +21,26 @@
 		},
 
 		editingTodo: function (e, data) {
-			var todo = $('[data-id="' + data.id + '"]');
+			var tobuy = $('[data-id="' + data.id + '"]');
 
-			todo.addClass('editing');
+			tobuy.addClass('editing');
 
-			todo.find('.edit').focus().val(todo.find('.edit').val());
+			tobuy.find('.edit').focus().val(tobuy.find('.edit').val());
 		},
 
 		doneEditingTodo: function (e, data) {
-			var todo = $('[data-id="' + data.id + '"]');
+			var tobuy = $('[data-id="' + data.id + '"]');
 
-			todo.removeClass('editing');
+			tobuy.removeClass('editing');
 
 			if (data.name) {
-				todo.find('label').text(data.name);
-				todo.find('.edit').val(data.name);
+				tobuy.find('label').text(data.name);
+				tobuy.find('.edit').val(data.name);
 			}
 		}
 	};
 
-	TodoApp.bind('todosUpdated', TodoItem.renderAllTodos);
+	TodoApp.bind('tobuysUpdated', TodoItem.renderAllTodos);
 
 	TodoApp.bind('toggleAllTodosCompleted', TodoItem.toggleCompleteClass);
 	TodoApp.bind('toggledTodoCompleted', TodoItem.toggleCompleteClass);

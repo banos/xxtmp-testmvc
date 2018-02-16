@@ -15,10 +15,10 @@
 		this.controller = new app.Controller(this.model, this.view);
 	}
 
-	var todo = new Todo('todos-vanillajs');
+	var tobuy = new Todo('tobuys-vanillajs');
 
 	function setView() {
-		todo.controller.setView(document.location.hash);
+		tobuy.controller.setView(document.location.hash);
 	}
 	$on(window, 'load', setView);
 	$on(window, 'hashchange', setView);

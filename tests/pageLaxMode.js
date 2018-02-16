@@ -18,7 +18,7 @@ module.exports = function PageLaxMode() {
 		return [
 			'section > ul',
 			'section > div > ul',
-			'ul#todo-list'
+			'ul#tobuy-list'
 		].map(function (listCss) {
 			return listCss + (suffixCss || '');
 		}).join(', ');
@@ -55,7 +55,7 @@ module.exports = function PageLaxMode() {
 		return [
 			'header > input',
 			'header > * > input',
-			'input#new-todo'
+			'input#new-tobuy'
 		].join(', ');
 	};
 

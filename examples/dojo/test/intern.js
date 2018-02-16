@@ -1,12 +1,12 @@
 // To run the test cases:
 //     With node.js:
-//         > cd /path/to/todomvc/examples/dojo/
+//         > cd /path/to/tobuymvc/examples/dojo/
 //         > node node_modules/intern/bin/intern-client.js config=test/intern
 //     With node.js and WebDriver:
-//         > cd /path/to/todomvc/examples/dojo/
+//         > cd /path/to/tobuymvc/examples/dojo/
 //         > npm test
 //     With browser:
-//         > cd /path/to/todomvc
+//         > cd /path/to/tobuymvc
 //         > gulp serve
 //         Then hit: http://localhost:8080/examples/dojo/node_modules/intern/client.html?config=test/intern
 define((function (global) {
@@ -34,8 +34,8 @@ define((function (global) {
 					location: './node_modules/dojox'
 				},
 				{
-					name: 'todo',
-					location: './js/todo'
+					name: 'tobuy',
+					location: './js/tobuy'
 				},
 				{
 					name: 'test',
@@ -43,10 +43,10 @@ define((function (global) {
 				}
 			],
 			map: {
-				'todo/widgets/Todos': {
+				'tobuy/widgets/Todos': {
 					'dojo/router': 'test/RouterMock'
 				},
-				'test/todo/widgets/Todos': {
+				'test/tobuy/widgets/Todos': {
 					'dojo/router': 'test/RouterMock'
 				}
 			}

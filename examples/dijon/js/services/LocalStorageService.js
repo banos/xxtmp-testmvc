@@ -11,10 +11,10 @@
 		return {
 			system: undefined, //inject
 			store: function( data ) {
-				return localStorage.setItem( 'todos-dijon', JSON.stringify( data ) );
+				return localStorage.setItem( 'tobuys-dijon', JSON.stringify( data ) );
 			},
 			retrieve: function() {
-				var data = localStorage.getItem( 'todos-dijon' ),
+				var data = localStorage.getItem( 'tobuys-dijon' ),
 					output = ( data && JSON.parse( data ) ) || [];
 				this.system.notify( 'StorageService:retrieveCompleted', output );
 			}

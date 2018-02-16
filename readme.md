@@ -2,9 +2,9 @@
 
 > Helping you select an MV\* framework
 
-### [Website](http://todomvc.com)&nbsp;&nbsp;&nbsp;&nbsp;[Blog](http://blog.tastejs.com)&nbsp;&nbsp;&nbsp;&nbsp;[TasteJS](http://tastejs.com)
+### [Website](http://tobuymvc.com)&nbsp;&nbsp;&nbsp;&nbsp;[Blog](http://blog.tastejs.com)&nbsp;&nbsp;&nbsp;&nbsp;[TasteJS](http://tastejs.com)
 
-[![Build Status](https://travis-ci.org/tastejs/todomvc.svg)](https://travis-ci.org/tastejs/todomvc)
+[![Build Status](https://travis-ci.org/tastejs/tobuymvc.svg)](https://travis-ci.org/tastejs/tobuymvc)
 
 
 Developers these days are spoiled with choice when it comes to selecting an MV\* framework for structuring and organizing JavaScript web apps.
@@ -16,7 +16,7 @@ To help solve this problem, we created TodoMVC - a project which offers the same
 
 ## Team
 
-TodoMVC would not be possible without a strong team of [contributors](https://github.com/tastejs/todomvc/contributors) helping push the project forward each day. Additionally, we have a core project team composed of:
+TodoMVC would not be possible without a strong team of [contributors](https://github.com/tastejs/tobuymvc/contributors) helping push the project forward each day. Additionally, we have a core project team composed of:
 
 #### [Addy Osmani](https://github.com/addyosmani) - Founder/Lead
 

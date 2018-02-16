@@ -22,7 +22,7 @@ app.view = (function () {
 	return function (ctrl) {
 		return [
 			m('header#header', [
-				m('h1', 'todos'), m('input#new-todo[placeholder="What needs to be done?"]', {
+				m('h1', 'tobuys'), m('input#new-tobuy[placeholder="What needs to be done?"]', {
 					onkeyup: app.watchInput(ctrl.add.bind(ctrl),
 						ctrl.clearTitle.bind(ctrl)),
 					value: ctrl.title(),
@@ -44,7 +44,7 @@ app.view = (function () {
 					onclick: ctrl.completeAll.bind(ctrl),
 					checked: ctrl.allCompleted()
 				}),
-				m('ul#todo-list', [
+				m('ul#tobuy-list', [
 					ctrl.list.filter(ctrl.isVisible.bind(ctrl)).map(function (task, index) {
 						return m('li', { class: (function () {
 							var classes = '';

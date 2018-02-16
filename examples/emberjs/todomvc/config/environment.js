@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
 	var ENV = {
-		modulePrefix: 'todomvc',
+		modulePrefix: 'tobuymvc',
 		environment: environment,
 		baseURL: null,
 		locationType: 'hash',

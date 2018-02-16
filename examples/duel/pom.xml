@@ -6,8 +6,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.todomvc.duel</groupId>
-	<artifactId>todomvc</artifactId>
+	<groupId>com.tobuymvc.duel</groupId>
+	<artifactId>tobuymvc</artifactId>
 	<version>0.2.0</version>
 	<packaging>war</packaging>
 
@@ -24,8 +24,8 @@
 		<slf4j.version>1.7.12</slf4j.version>
 		<javac.version>1.7</javac.version>
 
-		<duel.clientPrefix>todos.views</duel.clientPrefix>
-		<duel.serverPrefix>com.todomvc.duel.views</duel.serverPrefix>
+		<duel.clientPrefix>tobuys.views</duel.clientPrefix>
+		<duel.serverPrefix>com.tobuymvc.duel.views</duel.serverPrefix>
 		<duel.sourceDir>${resourcesDir}/views/</duel.sourceDir>
 		<duel.clientPath>/js/</duel.clientPath>
 

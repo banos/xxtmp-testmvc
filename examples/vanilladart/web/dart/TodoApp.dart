@@ -1,13 +1,13 @@
-part of todomvc;
+part of tobuymvc;
 
 class TodoApp {
-  List<TodoWidget> todoWidgets = new List<TodoWidget>();
+  List<TodoWidget> tobuyWidgets = new List<TodoWidget>();
 
-  Element todoListElement = querySelector('.todo-list');
+  Element tobuyListElement = querySelector('.tobuy-list');
   Element mainElement = querySelector('.main');
   InputElement checkAllCheckboxElement = querySelector('.toggle-all');
   Element footerElement = querySelector('.footer');
-  Element countElement = querySelector('.todo-count');
+  Element countElement = querySelector('.tobuy-count');
   Element clearCompletedElement = querySelector('.clear-completed');
   Element showAllElement = querySelector('.filters a[href="#/"]');
   Element showActiveElement = querySelector('.filters a[href="#/active"]');
@@ -24,19 +24,19 @@ class TodoApp {
   }
 
   void initLocalStorage() {
-    var jsonList = window.localStorage['todos-vanilladart'];
+    var jsonList = window.localStorage['tobuys-vanilladart'];
     if (jsonList != null) {
       try {
-        List<Map> todos = JSON.decode(jsonList);
-        todos.forEach((todo) => addTodo(new Todo.fromJson(todo)));
+        List<Map> tobuys = JSON.decode(jsonList);
+        tobuys.forEach((tobuy) => addTodo(new Todo.fromJson(tobuy)));
       } catch (e) {
-        print('Could not load todos form local storage.');
+        print('Could not load tobuys form local storage.');
       }
     }
   }
 
   void initElementEventListeners() {
-    InputElement newTodoElement = querySelector('.new-todo');
+    InputElement newTodoElement = querySelector('.new-tobuy');
 
     newTodoElement.onKeyDown.listen((KeyboardEvent e) {
       if (e.keyCode == KeyCode.ENTER) {
@@ -51,9 +51,9 @@ class TodoApp {
     });
 
     checkAllCheckboxElement.onClick.listen((e) {
-      for (var todoWidget in todoWidgets) {
-        if (todoWidget.todo.completed != checkAllCheckboxElement.checked) {
-          todoWidget.toggle();
+      for (var tobuyWidget in tobuyWidgets) {
+        if (tobuyWidget.tobuy.completed != checkAllCheckboxElement.checked) {
+          tobuyWidget.toggle();
         }
       }
       updateCounts();
@@ -62,27 +62,27 @@ class TodoApp {
 
     clearCompletedElement.onClick.listen((_) {
       var newList = new List<TodoWidget>();
-      for (TodoWidget todoWidget in todoWidgets) {
-        if (todoWidget.todo.completed) {
-          todoWidget.element.remove();
+      for (TodoWidget tobuyWidget in tobuyWidgets) {
+        if (tobuyWidget.tobuy.completed) {
+          tobuyWidget.element.remove();
         } else {
-          newList.add(todoWidget);
+          newList.add(tobuyWidget);
         }
       }
-      todoWidgets = newList;
+      tobuyWidgets = newList;
       updateFooterDisplay();
       save();
     });
   }
 
-  void addTodo(Todo todo) {
-    var todoWidget = new TodoWidget(this, todo);
-    todoWidgets.add(todoWidget);
-    todoListElement.nodes.add(todoWidget.createElement());
+  void addTodo(Todo tobuy) {
+    var tobuyWidget = new TodoWidget(this, tobuy);
+    tobuyWidgets.add(tobuyWidget);
+    tobuyListElement.nodes.add(tobuyWidget.createElement());
   }
 
   void updateFooterDisplay() {
-    var display = todoWidgets.length == 0 ? 'none' : 'block';
+    var display = tobuyWidgets.length == 0 ? 'none' : 'block';
     checkAllCheckboxElement.style.display = display;
     mainElement.style.display = display;
     footerElement.style.display = display;
@@ -90,9 +90,9 @@ class TodoApp {
   }
 
   void updateCounts() {
-    var complete = todoWidgets.where((w) => w.todo.completed).length;
-    checkAllCheckboxElement.checked = (complete == todoWidgets.length);
-    var left = todoWidgets.length - complete;
+    var complete = tobuyWidgets.where((w) => w.tobuy.completed).length;
+    checkAllCheckboxElement.checked = (complete == tobuyWidgets.length);
+    var left = tobuyWidgets.length - complete;
     countElement.innerHtml =
         '<strong>$left</strong> item${left != 1 ? 's' : ''} left';
     if (complete == 0) {
@@ -103,8 +103,8 @@ class TodoApp {
     updateFilter();
   }
 
-  void removeTodo(TodoWidget todoWidget) {
-    todoWidgets.removeAt(todoWidgets.indexOf(todoWidget));
+  void removeTodo(TodoWidget tobuyWidget) {
+    tobuyWidgets.removeAt(tobuyWidgets.indexOf(tobuyWidget));
   }
 
   void updateFilter() {
@@ -123,22 +123,22 @@ class TodoApp {
 
   void showAll() {
     setSelectedFilter(showAllElement);
-    for (var todoWidget in todoWidgets) {
-      todoWidget.visible = true;
+    for (var tobuyWidget in tobuyWidgets) {
+      tobuyWidget.visible = true;
     }
   }
 
   void showActive() {
     setSelectedFilter(showActiveElement);
-    for (var todoWidget in todoWidgets) {
-      todoWidget.visible = !todoWidget.todo.completed;
+    for (var tobuyWidget in tobuyWidgets) {
+      tobuyWidget.visible = !tobuyWidget.tobuy.completed;
     }
   }
 
   void showCompleted() {
     setSelectedFilter(showCompletedElement);
-    for (var todoWidget in todoWidgets) {
-      todoWidget.visible = todoWidget.todo.completed;
+    for (var tobuyWidget in tobuyWidgets) {
+      tobuyWidget.visible = tobuyWidget.tobuy.completed;
     }
   }
 
@@ -150,10 +150,10 @@ class TodoApp {
   }
 
   void save() {
-    var todos = new List<Todo>();
-    for (var todoWidget in todoWidgets) {
-      todos.add(todoWidget.todo);
+    var tobuys = new List<Todo>();
+    for (var tobuyWidget in tobuyWidgets) {
+      tobuys.add(tobuyWidget.tobuy);
     }
-    window.localStorage['todos-vanilladart'] = JSON.encode(todos);
+    window.localStorage['tobuys-vanilladart'] = JSON.encode(tobuys);
   }
 }

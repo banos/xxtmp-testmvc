@@ -11,7 +11,7 @@ powerful set of libraries for processing and querying asynchronous data-streams 
 
 The routing implementation in the example uses the HTML5 history and thus does
 not create valid URLs when run without a proper server configuration. This issue
-is tracked as [#1293](https://github.com/tastejs/todomvc/issues/1293).
+is tracked as [#1293](https://github.com/tastejs/tobuymvc/issues/1293).
 
 ## TodoMVC
 

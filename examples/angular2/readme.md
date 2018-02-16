@@ -1,4 +1,4 @@
-# Angular 2 • [TodoMVC](http://todomvc.com)
+# Angular 2 • [TodoMVC](http://tobuymvc.com)
 
 > Angular is a development platform for creating applications using modern web standards. Angular includes a wealth of essential features such as mobile gestures, animations, filtering, routing, data binding, security, internationalization, and beautiful UI components. It's extremely modular, lightweight, and easy to learn.
 
@@ -18,7 +18,7 @@
 - [Twitter](http://twitter.com/angularjs)
 - [Google+](https://plus.sandbox.google.com/+AngularJS/posts)
 
-*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/tastejs/tobuymvc/issues) if you discover anything worth sharing.*
 
 ## Implementation
 

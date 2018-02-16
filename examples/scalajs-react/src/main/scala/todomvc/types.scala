@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import java.util.UUID
 

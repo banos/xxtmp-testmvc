@@ -1,4 +1,4 @@
-goog.provide('todomvc.view.ToDoItemControl');
+goog.provide('tobuymvc.view.ToDoItemControl');
 
 goog.require('goog.dom');
 goog.require('goog.events');
@@ -7,10 +7,10 @@ goog.require('goog.string');
 goog.require('goog.ui.Component.State');
 goog.require('goog.ui.Control');
 
-goog.require('todomvc.view.ToDoItemControlRenderer');
+goog.require('tobuymvc.view.ToDoItemControlRenderer');
 
 /**
- * A control representing each item in the todo list. It makes use of the
+ * A control representing each item in the tobuy list. It makes use of the
  * CHECKED and SELECTED states to represent being done and being in edit mode.
  *
  * @param {goog.dom.DomHelper=} opt_domHelper Optional DOM helper,
@@ -18,8 +18,8 @@ goog.require('todomvc.view.ToDoItemControlRenderer');
  * @constructor
  * @extends {goog.ui.Control}
  */
-todomvc.view.ToDoItemControl = function(opt_domHelper) {
-    goog.ui.Control.call(this, '', todomvc.view.ToDoItemControlRenderer
+tobuymvc.view.ToDoItemControl = function(opt_domHelper) {
+    goog.ui.Control.call(this, '', tobuymvc.view.ToDoItemControlRenderer
             .getInstance(), opt_domHelper);
 
     // enable CHECKED and SELECTED states
@@ -33,12 +33,12 @@ todomvc.view.ToDoItemControl = function(opt_domHelper) {
     // allow text selection
     this.setAllowTextSelection(true);
 };
-goog.inherits(todomvc.view.ToDoItemControl, goog.ui.Control);
+goog.inherits(tobuymvc.view.ToDoItemControl, goog.ui.Control);
 
 /**
  * The event types this control dispatches.
  */
-todomvc.view.ToDoItemControl.EventType = {
+tobuymvc.view.ToDoItemControl.EventType = {
     EDIT: 'edit',
     DESTROY: 'destroy'
 };
@@ -50,8 +50,8 @@ todomvc.view.ToDoItemControl.EventType = {
  *
  * @override
  */
-todomvc.view.ToDoItemControl.prototype.enterDocument = function() {
-    todomvc.view.ToDoItemControl.superClass_.enterDocument.call(this);
+tobuymvc.view.ToDoItemControl.prototype.enterDocument = function() {
+    tobuymvc.view.ToDoItemControl.superClass_.enterDocument.call(this);
     // prevent clicking the checkbox (or anything within the root element)
     // from having any default behaviour. This stops the checkbox being set
     // by the browser.
@@ -92,11 +92,11 @@ todomvc.view.ToDoItemControl.prototype.enterDocument = function() {
  * Returns the renderer used by this component to render itself or to decorate
  * an existing element.
  *
- * @return {todomvc.view.ToDoItemControlRenderer} Renderer used by the
+ * @return {tobuymvc.view.ToDoItemControlRenderer} Renderer used by the
  * component.
  */
-todomvc.view.ToDoItemControl.prototype.getRenderer = function() {
-    return /**@type {todomvc.view.ToDoItemControlRenderer}*/ (
+tobuymvc.view.ToDoItemControl.prototype.getRenderer = function() {
+    return /**@type {tobuymvc.view.ToDoItemControlRenderer}*/ (
         this.getRenderer());
 };
 
@@ -106,16 +106,16 @@ todomvc.view.ToDoItemControl.prototype.getRenderer = function() {
  *
  * @param {goog.events.Event} e Mouse event to handle.
  */
-todomvc.view.ToDoItemControl.prototype.handleMouseUp = function(e) {
-    todomvc.view.ToDoItemControl.superClass_.handleMouseUp.call(this, e);
+tobuymvc.view.ToDoItemControl.prototype.handleMouseUp = function(e) {
+    tobuymvc.view.ToDoItemControl.superClass_.handleMouseUp.call(this, e);
     if (this.isEnabled()) {
         if (e.target === this.getRenderer().getCheckboxElement(
                 this.getElement())) {
             this.setChecked(!this.isChecked());
-            this.dispatchEvent(todomvc.view.ToDoItemControl.EventType.EDIT);
+            this.dispatchEvent(tobuymvc.view.ToDoItemControl.EventType.EDIT);
         } else if (e.target === this.getRenderer().getDestroyElement(
                 this.getElement())) {
-            this.dispatchEvent(todomvc.view.ToDoItemControl.EventType.DESTROY);
+            this.dispatchEvent(tobuymvc.view.ToDoItemControl.EventType.DESTROY);
         }
     }
 };
@@ -124,8 +124,8 @@ todomvc.view.ToDoItemControl.prototype.handleMouseUp = function(e) {
  * Override the behaviour when the control is unfocused.
  * @param {boolean} focused is focused?
  */
-todomvc.view.ToDoItemControl.prototype.setFocused = function(focused) {
-    todomvc.view.ToDoItemControl.superClass_.setFocused.call(this, focused);
+tobuymvc.view.ToDoItemControl.prototype.setFocused = function(focused) {
+    tobuymvc.view.ToDoItemControl.superClass_.setFocused.call(this, focused);
     if (!focused && this.isSelected()) {
         /**
          * @type {Element}
@@ -134,11 +134,11 @@ todomvc.view.ToDoItemControl.prototype.setFocused = function(focused) {
                 this.getElement());
         var value = goog.string.trim(inputElement.value);
         if (value === '') {
-            this.dispatchEvent(todomvc.view.ToDoItemControl.EventType.DESTROY);
+            this.dispatchEvent(tobuymvc.view.ToDoItemControl.EventType.DESTROY);
         } else {
             this.setContent(value);
             this.setSelected(false);
-            this.dispatchEvent(todomvc.view.ToDoItemControl.EventType.EDIT);
+            this.dispatchEvent(tobuymvc.view.ToDoItemControl.EventType.EDIT);
         }
     }
 };
@@ -147,8 +147,8 @@ todomvc.view.ToDoItemControl.prototype.setFocused = function(focused) {
  * Override the behaviour to switch to editing mode when the control is selected
  * @param {boolean} selected is selected?
  */
-todomvc.view.ToDoItemControl.prototype.setSelected = function(selected) {
-    todomvc.view.ToDoItemControl.superClass_.setSelected.call(this, selected);
+tobuymvc.view.ToDoItemControl.prototype.setSelected = function(selected) {
+    tobuymvc.view.ToDoItemControl.superClass_.setSelected.call(this, selected);
     // populate the input box when selected
     if (selected) {
         /**

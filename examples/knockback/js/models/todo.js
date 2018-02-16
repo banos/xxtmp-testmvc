@@ -9,7 +9,7 @@ var app = app || {};
 
 	// Our basic **Todo** model has `title` and `completed` attributes.
 	app.Todo = Backbone.Model.extend({
-		// Default attributes for the todo
+		// Default attributes for the tobuy
 		defaults: {
 			title: '',
 			completed: false

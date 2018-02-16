@@ -8,15 +8,15 @@ enyo.kind({
 	controller: 'ToDo.notepadcontroller',
 	components: [{
 		tag: 'h1',
-		content: 'todos'
+		content: 'tobuys'
 	}, {
 		tag: 'form',
-		id: 'todo-form',
+		id: 'tobuy-form',
 		components: [{
 			// instead of letting the event bubble up the DOM, let's stop it here and send a custom event name
 			// up the enyo object hierarchy to our controller
 			kind: 'enyo.Input',
-			id: 'new-todo',
+			id: 'new-tobuy',
 			placeholder: 'What needs to be done?',
 			attributes: {
 				autofocus: 'autofocus'

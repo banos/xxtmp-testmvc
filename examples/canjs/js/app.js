@@ -7,7 +7,7 @@
 		can.route(':filter');
 
 		// Render #app-template
-		$('#todoapp').html(can.view('app-template', {}));
+		$('#tobuyapp').html(can.view('app-template', {}));
 
 		// Start the router
 		can.route.ready();

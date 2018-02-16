@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { TodoStoreService } from './services/todo-store.service';
+import { TodoStoreService } from './services/tobuy-store.service';
 import {
 	AppComponent,
 	TodoListComponent,

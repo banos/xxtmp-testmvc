@@ -28,7 +28,7 @@
 	requirejs([
 		'soma',
 		'template',
-		'models/todos',
+		'models/tobuys',
 		'models/router',
 		'views/header',
 		'views/main',

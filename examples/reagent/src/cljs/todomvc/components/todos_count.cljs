@@ -1,13 +1,13 @@
-(ns todomvc.components.todos-count
-  (:require [todomvc.session :as session]
-            [todomvc.helpers :as helpers]))
+(ns tobuymvc.components.tobuys-count
+  (:require [tobuymvc.session :as session]
+            [tobuymvc.helpers :as helpers]))
 
-(defn items-left [todos]
-  (let [active-count (count (helpers/todos-active todos))]
+(defn items-left [tobuys]
+  (let [active-count (count (helpers/tobuys-active tobuys))]
     (str (if (= 1 active-count) " item " " items ")
          "left")))
 
 (defn component []
-  [:span#todo-count
-   [:strong (count (helpers/todos-active @session/todos))] 
-   (items-left @session/todos)])
+  [:span#tobuy-count
+   [:strong (count (helpers/tobuys-active @session/tobuys))] 
+   (items-left @session/tobuys)])

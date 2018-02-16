@@ -1,5 +1,5 @@
 {
-  "name": "todomvc-browser-tests",
+  "name": "tobuymvc-browser-tests",
   "description": "An automated test suite for TodoMVC",
   "private": true,
   "devDependencies": {

@@ -1,8 +1,8 @@
 import {ObserverLocator} from 'aurelia-binding';
-import {TodoItem} from './todo-item';
+import {TodoItem} from './tobuy-item';
 import _ from 'underscore';
 
-const STORAGE_NAME = 'todomvc-aurelia';
+const STORAGE_NAME = 'tobuymvc-aurelia';
 const ENTER_KEY = 13;
 
 export class Todos {
@@ -44,19 +44,19 @@ export class Todos {
 		this.save();
 	}
 
-	observeItem(todoItem) {
+	observeItem(tobuyItem) {
 		this.observerLocator
-			.getObserver(todoItem, 'title')
-			.subscribe((o, n) => this.onTitleChanged(todoItem));
+			.getObserver(tobuyItem, 'title')
+			.subscribe((o, n) => this.onTitleChanged(tobuyItem));
 
 		this.observerLocator
-			.getObserver(todoItem, 'isCompleted')
+			.getObserver(tobuyItem, 'isCompleted')
 			.subscribe(() => this.onIsCompletedChanged());
 	}
 
-	onTitleChanged(todoItem) {
-		if (todoItem.title === '') {
-			this.deleteTodo(todoItem);
+	onTitleChanged(tobuyItem) {
+		if (tobuyItem.title === '') {
+			this.deleteTodo(tobuyItem);
 			this.updateAreAllCheckedState();
 		}
 
@@ -70,8 +70,8 @@ export class Todos {
 		this.save();
 	}
 
-	deleteTodo(todoItem) {
-		this.items = _(this.items).without(todoItem);
+	deleteTodo(tobuyItem) {
+		this.items = _(this.items).without(tobuyItem);
 		this.updateAreAllCheckedState();
 		this.updateFilteredItems(this.filter);
 		this.save();
@@ -123,12 +123,12 @@ export class Todos {
 
 		const simpleItems = JSON.parse(storageContent);
 		this.items = _.map(simpleItems, item => {
-			const todoItem = new TodoItem(item.title);
-			todoItem.isCompleted = item.completed;
+			const tobuyItem = new TodoItem(item.title);
+			tobuyItem.isCompleted = item.completed;
 
-			this.observeItem(todoItem);
+			this.observeItem(tobuyItem);
 
-			return todoItem;
+			return tobuyItem;
 		});
 		this.updateAreAllCheckedState();
 	}

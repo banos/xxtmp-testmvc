@@ -1,4 +1,4 @@
-package com.todo.client;
+package com.tobuy.client;
 
 import com.google.gwt.user.client.ui.TextBox;
 

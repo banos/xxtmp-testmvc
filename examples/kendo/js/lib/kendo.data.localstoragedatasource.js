@@ -35,17 +35,17 @@
 	// Fetches an array of objects from localStorage
 	var getFromLocalStorage = function () {
 		var keys = getKeys(),
-			todos = [];
+			tobuys = [];
 
 		$.each(keys, function (index, value) {
 			var item = localStorage.getItem(itemBase + separator + value);
 
 			if (item) {
-				todos.push(JSON.parse(item));
+				tobuys.push(JSON.parse(item));
 			}
 		});
 
-		return todos;
+		return tobuys;
 	};
 
 	// Saves the current item to localStorage
@@ -75,9 +75,9 @@
 	// Specify a CRUD transport object for our custom Kendo DataSource
 	var localTransports = {
 		read: function (options) {
-			var todos = getFromLocalStorage();
+			var tobuys = getFromLocalStorage();
 
-			options.success(todos);
+			options.success(tobuys);
 		},
 		create: function (options) {
 			saveToLocalStorage(options.data);

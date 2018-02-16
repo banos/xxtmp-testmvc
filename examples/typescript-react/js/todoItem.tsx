@@ -15,7 +15,7 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
 
   constructor(props : ITodoItemProps){
     super(props);
-    this.state = { editText: this.props.todo.title };
+    this.state = { editText: this.props.tobuy.title };
   }
 
   public handleSubmit(event : __React.FormEvent) {
@@ -30,12 +30,12 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
 
   public handleEdit() {
     this.props.onEdit();
-    this.setState({editText: this.props.todo.title});
+    this.setState({editText: this.props.tobuy.title});
   }
 
   public handleKeyDown(event : __React.KeyboardEvent) {
     if (event.keyCode === ESCAPE_KEY) {
-      this.setState({editText: this.props.todo.title});
+      this.setState({editText: this.props.tobuy.title});
       this.props.onCancel(event);
     } else if (event.keyCode === ENTER_KEY) {
       this.handleSubmit(event);
@@ -56,7 +56,7 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
    */
   public shouldComponentUpdate(nextProps : ITodoItemProps, nextState : ITodoItemState) {
     return (
-      nextProps.todo !== this.props.todo ||
+      nextProps.tobuy !== this.props.tobuy ||
       nextProps.editing !== this.props.editing ||
       nextState.editText !== this.state.editText
     );
@@ -79,18 +79,18 @@ class TodoItem extends React.Component<ITodoItemProps, ITodoItemState> {
   public render() {
     return (
       <li className={classNames({
-        completed: this.props.todo.completed,
+        completed: this.props.tobuy.completed,
         editing: this.props.editing
       })}>
         <div className="view">
           <input
             className="toggle"
             type="checkbox"
-            checked={this.props.todo.completed}
+            checked={this.props.tobuy.completed}
             onChange={this.props.onToggle}
           />
           <label onDoubleClick={ e => this.handleEdit() }>
-            {this.props.todo.title}
+            {this.props.tobuy.title}
           </label>
           <button className="destroy" onClick={this.props.onDestroy} />
         </div>

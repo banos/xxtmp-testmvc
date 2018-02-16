@@ -25,7 +25,7 @@ Ext.define('TodoDeftJS.Application', {
 		var config;
 		config = {
 			templateLoader: 'TodoDeftJS.util.TemplateLoader',
-			todoStore: 'TodoDeftJS.store.TodoStore'
+			tobuyStore: 'TodoDeftJS.store.TodoStore'
 		};
 		return config;
 	},

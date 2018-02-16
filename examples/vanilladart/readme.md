@@ -92,9 +92,9 @@ Follow the Dart project:
 * [Dart on Google +](https://plus.google.com/+dartlang/posts)
 
 _If you have other helpful links to share, or find any of the links above no
-longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
-[![Build Status](https://drone.io/mlorber/todomvc-dart/status.png)][buildstatus]
+[![Build Status](https://drone.io/mlorber/tobuymvc-dart/status.png)][buildstatus]
 
 Build history can be seen [here][builds].
 
@@ -105,8 +105,8 @@ This TodoMVC application was created by [Mathieu Lorber](http://mlorber.net).
 
 [langtour]: http://www.dartlang.org/docs/dart-up-and-running/contents/ch02.html
 [dart]: https://www.dartlang.org
-[builds]: https://drone.io/mlorber/todomvc-dart
-[buildstatus]: https://drone.io/mlorber/todomvc-dart/latest
+[builds]: https://drone.io/mlorber/tobuymvc-dart
+[buildstatus]: https://drone.io/mlorber/tobuymvc-dart/latest
 [sdk]: https://www.dartlang.org/tools/sdk/
 [pub]: http://pub.dartlang.org
 [pkglayout]: http://pub.dartlang.org/doc/package-layout.html

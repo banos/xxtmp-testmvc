@@ -46,7 +46,7 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.TodoList = Backbone.Collection.extend({
 		model: TodoMVC.Todo,
 
-		localStorage: new Backbone.LocalStorage('todos-backbone-marionette'),
+		localStorage: new Backbone.LocalStorage('tobuys-backbone-marionette'),
 
 		comparator: 'created',
 
@@ -58,8 +58,8 @@ var TodoMVC = TodoMVC || {};
 			return this.reject(this._isCompleted);
 		},
 
-		_isCompleted: function (todo) {
-			return todo.isCompleted();
+		_isCompleted: function (tobuy) {
+			return tobuy.isCompleted();
 		}
 	});
 })();

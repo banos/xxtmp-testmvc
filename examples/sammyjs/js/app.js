@@ -3,7 +3,7 @@
 (function (window, $) {
 	'use strict';
 
-	window.TodoApp = Sammy('#todoapp').use('Template');
+	window.TodoApp = Sammy('#tobuyapp').use('Template');
 
 	TodoApp.notFound = function () {
 		this.runRoute('get', '#/');

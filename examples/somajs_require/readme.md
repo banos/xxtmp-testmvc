@@ -1,6 +1,6 @@
 # soma.js TodoMVC App
 
-This is a todo app built using [soma.js](http://somajs.github.io/somajs/).
+This is a tobuy app built using [soma.js](http://somajs.github.io/somajs/).
 
 ## Framework
 
@@ -21,12 +21,12 @@ The application starts by instantiating the application main entry point (/js/ap
 The application contains two models:
 
 * A router model ([Director](https://github.com/flatiron/director)) to handle the routes: all/active/completed.
-* A todo model saving the todo items to the local storage.
+* A tobuy model saving the tobuy items to the local storage.
 
-The todo app DOM element has been cut into 3 views:
+The tobuy app DOM element has been cut into 3 views:
 
-* A header view handling the input that creates todo items.
-* A main view displaying the list of todo items and the buttons to manage them.
+* A header view handling the input that creates tobuy items.
+* A main view displaying the list of tobuy items and the buttons to manage them.
 * A footer view displaying information, the filters and the clear completed button.
 
 The application instance creates 2 mapping rules: "router" and "model", so the two models can be injected in the templates seamlessly using their injection names.

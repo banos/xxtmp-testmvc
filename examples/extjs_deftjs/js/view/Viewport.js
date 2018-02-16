@@ -9,9 +9,9 @@ Ext.define('TodoDeftJS.view.Viewport', {
 		Ext.applyIf(this, {
 			items: [
 				{
-					id: 'todoView'
+					id: 'tobuyView'
 				}, {
-					xtype: 'todoDeftJS-view-todoView'
+					xtype: 'tobuyDeftJS-view-tobuyView'
 				}
 			]
 		});

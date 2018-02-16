@@ -1,4 +1,4 @@
-package com.todo.client;
+package com.tobuy.client;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,11 +16,11 @@ import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.History;
 import com.google.gwt.view.client.AbstractDataProvider;
 import com.google.gwt.view.client.ListDataProvider;
-import com.todo.client.ToDoItem;
-import com.todo.client.ToDoRouting;
-import com.todo.client.events.ToDoEvent;
-import com.todo.client.events.ToDoRemovedEvent;
-import com.todo.client.events.ToDoUpdatedEvent;
+import com.tobuy.client.ToDoItem;
+import com.tobuy.client.ToDoRouting;
+import com.tobuy.client.events.ToDoEvent;
+import com.tobuy.client.events.ToDoRemovedEvent;
+import com.tobuy.client.events.ToDoUpdatedEvent;
 
 /**
  * The presenter for the ToDo application. This class is responsible for the lifecycle of the
@@ -32,7 +32,7 @@ import com.todo.client.events.ToDoUpdatedEvent;
  */
 public class ToDoPresenter {
 
-	private static final String STORAGE_KEY = "todo-gwt";
+	private static final String STORAGE_KEY = "tobuy-gwt";
 
 	/**
 	 * The interface that a view for this presenter must implement.
@@ -110,7 +110,7 @@ public class ToDoPresenter {
 		}
 	};
 
-	private final List<ToDoItem> todos = new ArrayList<ToDoItem>();
+	private final List<ToDoItem> tobuys = new ArrayList<ToDoItem>();
 
 	private final ListDataProvider<ToDoItem> filteredTodos = new ListDataProvider<ToDoItem>();
 
@@ -187,7 +187,7 @@ public class ToDoPresenter {
 	 */
 	private void updateFilteredList() {
 		filteredTodos.getList().clear();
-		for (ToDoItem task : todos) {
+		for (ToDoItem task : tobuys) {
 			if (routing.getMatcher().matches(task)) {
 				filteredTodos.getList().add(task);
 			}
@@ -198,10 +198,10 @@ public class ToDoPresenter {
 	 * Computes the tasks statistics and updates the view.
 	 */
 	private void updateTaskStatistics() {
-		int totalTasks = todos.size();
+		int totalTasks = tobuys.size();
 
 		int completeTask = 0;
-		for (ToDoItem task : todos) {
+		for (ToDoItem task : tobuys) {
 			if (task.isCompleted()) {
 				completeTask++;
 			}
@@ -214,7 +214,7 @@ public class ToDoPresenter {
 	 * Deletes the given task and updates statistics.
 	 */
 	protected void deleteTask(ToDoItem toDoItem) {
-		todos.remove(toDoItem);
+		tobuys.remove(toDoItem);
 		taskStateChanged();
 	}
 
@@ -226,7 +226,7 @@ public class ToDoPresenter {
 		toDoItem.setTitle(toDoItem.getTitle().trim());
 
 		if (toDoItem.getTitle().isEmpty()) {
-			todos.remove(toDoItem);
+			tobuys.remove(toDoItem);
 		}
 
 		taskStateChanged();
@@ -246,7 +246,7 @@ public class ToDoPresenter {
 	 */
 	private void markAllCompleted(boolean completed) {
 
-		for (ToDoItem task : todos) {
+		for (ToDoItem task : tobuys) {
 			task.setCompleted(completed);
 		}
 
@@ -259,13 +259,13 @@ public class ToDoPresenter {
 	private void addTask() {
 		String taskTitle = view.getTaskText().trim();
 
-		// if white-space only, do not add a todo
+		// if white-space only, do not add a tobuy
 		if (taskTitle.equals(""))
 			return;
 
 		ToDoItem toDoItem = new ToDoItem(taskTitle);
 		view.clearTaskText();
-		todos.add(toDoItem);
+		tobuys.add(toDoItem);
 
 		taskStateChanged();
 	}
@@ -274,7 +274,7 @@ public class ToDoPresenter {
 	 * Clears completed tasks and updates the view.
 	 */
 	private void clearCompletedTasks() {
-		Iterator<ToDoItem> iterator = todos.iterator();
+		Iterator<ToDoItem> iterator = tobuys.iterator();
 		while (iterator.hasNext()) {
 			ToDoItem item = iterator.next();
 			if (item.isCompleted()) {
@@ -293,17 +293,17 @@ public class ToDoPresenter {
 		if (storage != null) {
 
 			// JSON encode the items
-			JSONArray todoItems = new JSONArray();
-			for (int i = 0; i < todos.size(); i++) {
-				ToDoItem toDoItem = todos.get(i);
+			JSONArray tobuyItems = new JSONArray();
+			for (int i = 0; i < tobuys.size(); i++) {
+				ToDoItem toDoItem = tobuys.get(i);
 				JSONObject jsonObject = new JSONObject();
 				jsonObject.put("task", new JSONString(toDoItem.getTitle()));
 				jsonObject.put("complete", JSONBoolean.getInstance(toDoItem.isCompleted()));
-				todoItems.set(i, jsonObject);
+				tobuyItems.set(i, jsonObject);
 			}
 
 			// save to local storage
-			storage.setItem(STORAGE_KEY, todoItems.toString());
+			storage.setItem(STORAGE_KEY, tobuyItems.toString());
 		}
 	}
 
@@ -315,14 +315,14 @@ public class ToDoPresenter {
 				String state = storage.getItem(STORAGE_KEY);
 
 				// parse the JSON array
-				JSONArray todoItems = JSONParser.parseStrict(state).isArray();
-				for (int i = 0; i < todoItems.size(); i++) {
+				JSONArray tobuyItems = JSONParser.parseStrict(state).isArray();
+				for (int i = 0; i < tobuyItems.size(); i++) {
 					// extract the to-do item values
-					JSONObject jsonObject = todoItems.get(i).isObject();
+					JSONObject jsonObject = tobuyItems.get(i).isObject();
 					String task = jsonObject.get("task").isString().stringValue();
 					boolean completed = jsonObject.get("complete").isBoolean().booleanValue();
 					// add a new item to our list
-					todos.add(new ToDoItem(task, completed));
+					tobuys.add(new ToDoItem(task, completed));
 				}
 			} catch (Exception e) {
 

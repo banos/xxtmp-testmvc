@@ -7,23 +7,23 @@
  *
  * @type {angular.Module}
  */
-var todomvc = angular.module('todomvc', ['firebase']);
+var tobuymvc = angular.module('tobuymvc', ['firebase']);
 
-todomvc.filter('todoFilter', function ($location) {
+tobuymvc.filter('tobuyFilter', function ($location) {
 	return function (input) {
 		var filtered = {};
-		angular.forEach(input, function (todo, id) {
+		angular.forEach(input, function (tobuy, id) {
 			var path = $location.path();
 			if (path === '/active') {
-				if (!todo.completed) {
-					filtered[id] = todo;
+				if (!tobuy.completed) {
+					filtered[id] = tobuy;
 				}
 			} else if (path === '/completed') {
-				if (todo.completed) {
-					filtered[id] = todo;
+				if (tobuy.completed) {
+					filtered[id] = tobuy;
 				}
 			} else {
-				filtered[id] = todo;
+				filtered[id] = tobuy;
 			}
 		});
 		return filtered;

@@ -3,16 +3,16 @@ define([
 	'intern/chai!expect',
 	'dojo/json',
 	'dojo/when',
-	'todo/store/TodoLocalStorage',
+	'tobuy/store/TodoLocalStorage',
 	'../../handleCleaner'
 ], function (bdd, expect, json, when, TodoLocalStorage, handleCleaner) {
 	'use strict';
 
-	var STORAGE_ID = 'todos-dojo-test';
+	var STORAGE_ID = 'tobuys-dojo-test';
 
 	// For supporting Intern's true/false check
 	/*jshint -W030*/
-	bdd.describe('Test todo/TodoLocalStorage', function () {
+	bdd.describe('Test tobuy/TodoLocalStorage', function () {
 		var handles = [];
 		bdd.beforeEach(function () {
 			localStorage.setItem(STORAGE_ID, json.stringify([

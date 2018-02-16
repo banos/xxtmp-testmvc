@@ -7,7 +7,7 @@ ss.client.define('main', {
 	view: 'app.html',
 	css: ['base.css'],
 	code: [
-		'libs/todomvc-common/base.js',
+		'libs/tobuymvc-common/base.js',
 		'libs/jquery/jquery.js',
 		'libs/director/build/director.js',
 		'app'

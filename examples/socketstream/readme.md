@@ -23,7 +23,7 @@ Get help from other SocketStream users:
 * [SocketStream on StackOverflow](http://stackoverflow.com/questions/tagged/socketstream)
 * [SocketStream on Twitter](http://twitter.com/socketstream)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Running
@@ -34,12 +34,12 @@ Running this app requires [Node.js](http://nodejs.org).
 	npm install
 	npm start
 
-Open http://localhost:3000 in two side-by-side browser windows, add a todo, and see the magic.
+Open http://localhost:3000 in two side-by-side browser windows, add a tobuy, and see the magic.
 
 
 ## Internal
 
 How to publish to our Heroku remote:
 
-- `git remote add heroku-todomvc-socketstream master` *(first time only)*
-- `git subtree push --prefix examples/socketstream heroku-todomvc-socketstream master`
+- `git remote add heroku-tobuymvc-socketstream master` *(first time only)*
+- `git subtree push --prefix examples/socketstream heroku-tobuymvc-socketstream master`

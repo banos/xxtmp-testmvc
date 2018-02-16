@@ -11,7 +11,7 @@ require([
 	'jquery',
 	'can/view',
 	'can/route',
-	'./components/todo-app'
+	'./components/tobuy-app'
 ], function ($, can, route) {
 	'use strict';
 
@@ -20,7 +20,7 @@ require([
 		route(':filter');
 
 		// Render #app-template
-		$('#todoapp').html(can.view('app-template', {}));
+		$('#tobuyapp').html(can.view('app-template', {}));
 
 		// Start the router
 		route.ready();

@@ -31,7 +31,7 @@ Get help from other Meteor users:
 * [Mailing list on Google Groups](https://groups.google.com/forum/?fromgroups#!forum/meteor-core)
 * [Meteor on Twitter](http://twitter.com/meteorjs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Running

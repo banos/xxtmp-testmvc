@@ -2,7 +2,7 @@
 define([
 	'can/util/library',
 	'can/component',
-	'../models/todo',
+	'../models/tobuy',
 	'can/route'
 ], function (can, Component, Todo, route) {
 	'use strict';
@@ -10,46 +10,46 @@ define([
 	var ESCAPE_KEY = 27;
 
 	return Component.extend({
-		// Create this component on a tag  like `<todo-app>`
-		tag: 'todo-app',
+		// Create this component on a tag  like `<tobuy-app>`
+		tag: 'tobuy-app',
 		scope: {
 			// Store the Todo model in the scope
 			Todo: Todo,
 			// A list of all Todos retrieved from LocalStorage
-			todos: new Todo.List({}),
+			tobuys: new Todo.List({}),
 			// Edit a Todo
-			edit: function (todo, el) {
-				todo.attr('editing', true);
-				el.parents('.todo').find('.edit').focus();
+			edit: function (tobuy, el) {
+				tobuy.attr('editing', true);
+				el.parents('.tobuy').find('.edit').focus();
 			},
-			cancelEditing: function (todo, el, e) {
+			cancelEditing: function (tobuy, el, e) {
 				if (e.which === ESCAPE_KEY) {
-					el.val(todo.attr('text'));
-					todo.attr('editing', false);
+					el.val(tobuy.attr('text'));
+					tobuy.attr('editing', false);
 				}
 			},
 			// Returns a list of Todos filtered based on the route
 			displayList: function () {
 				var filter = route.attr('filter');
-				return this.todos.filter(function (todo) {
+				return this.tobuys.filter(function (tobuy) {
 					if (filter === 'completed') {
-						return todo.attr('complete');
+						return tobuy.attr('complete');
 					}
 
 					if (filter === 'active') {
-						return !todo.attr('complete');
+						return !tobuy.attr('complete');
 					}
 
 					return true;
 				});
 			},
-			updateTodo: function (todo, el) {
+			updateTodo: function (tobuy, el) {
 				var value = can.trim(el.val());
 
 				if (value === '') {
-					todo.destroy();
+					tobuy.destroy();
 				} else {
-					todo.attr({
+					tobuy.attr({
 						editing: false,
 						text: value
 					});
@@ -71,20 +71,20 @@ define([
 			},
 			toggleAll: function (scope, el) {
 				var toggle = el.prop('checked');
-				this.attr('todos').each(function (todo) {
-					todo.attr('complete', toggle);
+				this.attr('tobuys').each(function (tobuy) {
+					tobuy.attr('complete', toggle);
 				});
 			},
 			clearCompleted: function () {
-				this.attr('todos').completed().forEach(function (todo) {
-					todo.destroy();
+				this.attr('tobuys').completed().forEach(function (tobuy) {
+					tobuy.destroy();
 				});
 			}
 		},
 		events: {
-			// When a new Todo has been created, add it to the todo list
-			'{Todo} created': function (Construct, ev, todo) {
-				this.scope.attr('todos').push(todo);
+			// When a new Todo has been created, add it to the tobuy list
+			'{Todo} created': function (Construct, ev, tobuy) {
+				this.scope.attr('tobuys').push(tobuy);
 			}
 		},
 		helpers: {

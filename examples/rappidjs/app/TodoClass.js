@@ -13,7 +13,7 @@ define([
 		 * In this method we set the initial models
 		 */
 		initialize: function () {
-			this.set('todoList', null);
+			this.set('tobuyList', null);
 			this.set('filterList', null);
 			this.callBase();
 		},
@@ -49,7 +49,7 @@ define([
 						completed: false
 					});
 
-					this.get('todoList').add(newTodo);
+					this.get('tobuyList').add(newTodo);
 
 					// save the new item
 					newTodo.save();
@@ -59,19 +59,19 @@ define([
 		},
 
 		markAllComplete: function (e) {
-			this.get('todoList').markAll(e.target.$el.checked);
+			this.get('tobuyList').markAll(e.target.$el.checked);
 		},
 
 		clearCompleted: function () {
-			this.get('todoList').clearCompleted();
+			this.get('tobuyList').clearCompleted();
 		},
 
 		removeTodo: function (e) {
-			var todo = e.$;
+			var tobuy = e.$;
 
-			todo.remove(null, function (err) {
+			tobuy.remove(null, function (err) {
 				if (!err) {
-					this.get('todoList').remove(todo);
+					this.get('tobuyList').remove(tobuy);
 				}
 			}.bind(this));
 		},
@@ -80,13 +80,13 @@ define([
 		 * Start the application and render it to the body ...
 		 */
 		start: function (parameter, callback) {
-			this.set('todoList', this.$.dataSource.createCollection(TodoList));
+			this.set('tobuyList', this.$.dataSource.createCollection(TodoList));
 
-			// fetch all todos, can be done sync because we use localStorage
-			this.$.todoList.fetch();
+			// fetch all tobuys, can be done sync because we use localStorage
+			this.$.tobuyList.fetch();
 
 			this.set('filterList', new FilterDataView({
-				baseList: this.get('todoList'),
+				baseList: this.get('tobuyList'),
 				filter: 'all',
 				filterFnc: function (item) {
 					var filter = this.$.filter;

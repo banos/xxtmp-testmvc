@@ -1,4 +1,4 @@
-# TroopJS • [TodoMVC](http://todomvc.com)
+# TroopJS • [TodoMVC](http://tobuymvc.com)
 
 > The minimalist anti-framework that does as little as possible, then stays out of the way.
 
@@ -13,7 +13,7 @@
 
  - [Issues](http:/github.com/troopjs/troopjs/issues)
 
-*Let us [know](https://github.com/tastejs/todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/tastejs/tobuymvc/issues) if you discover anything worth sharing.*
 
 
 ## Credit

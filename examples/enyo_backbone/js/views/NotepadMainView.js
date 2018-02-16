@@ -34,12 +34,12 @@ enyo.kind({
 	}, {
 		// the collection repeater automatically creates rows for us based on the tasks in the controller's collection
 		// each row is given its own controller directly linked to its specific model
-		// name: todo-list gives us a top level enyo object shortcut to grab the table
+		// name: tobuy-list gives us a top level enyo object shortcut to grab the table
 		kind: 'enyo.CollectionRepeater',
 		controller: 'ToDo.notepadcontroller',
 		tag: 'ul',
-		name: 'todo-list',
-		id: 'todo-list',
+		name: 'tobuy-list',
+		id: 'tobuy-list',
 		// what the table is made of
 		components: [{
 			tag: 'li',

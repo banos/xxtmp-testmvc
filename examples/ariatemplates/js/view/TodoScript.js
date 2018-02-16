@@ -10,13 +10,13 @@ Aria.tplScriptDefinition({
 			this.getRoute();
 			this.data.editedTask = null;
 			this.pauselistener = false;
-			this.todolistUpdateHandler();
-			this.$json.addListener(this.data, 'todolist', {fn: this.todolistUpdateHandler, scope: this}, false, true);
+			this.tobuylistUpdateHandler();
+			this.$json.addListener(this.data, 'tobuylist', {fn: this.tobuylistUpdateHandler, scope: this}, false, true);
 			aria.utils.HashManager.addCallback({fn: 'routeManager', scope: this});
 		},
 
 		$viewReady: function () {
-			document.getElementById('new-todo').focus();
+			document.getElementById('new-tobuy').focus();
 		},
 
 		getRoute: function () {
@@ -27,7 +27,7 @@ Aria.tplScriptDefinition({
 		routeManager: function () {
 			var el = this.$getElementById('tasklist');
 			this.getRoute();
-			el.classList.setClassName('todo-list' + (this.data.route.length > 0 ? ' filter-' + this.data.route : ''));
+			el.classList.setClassName('tobuy-list' + (this.data.route.length > 0 ? ' filter-' + this.data.route : ''));
 		},
 
 		changeTaskStyle: function (val, where) {
@@ -54,11 +54,11 @@ Aria.tplScriptDefinition({
 		toggleAll: function (val) {
 			var i;
 			this.pauselistener = true;
-			for (i = 0; i < this.data.todolist.length; i++) {
-				this.$json.setValue(this.data.todolist[i], 'completed', val);
+			for (i = 0; i < this.data.tobuylist.length; i++) {
+				this.$json.setValue(this.data.tobuylist[i], 'completed', val);
 			}
 			this.pauselistener = false;
-			this.todolistUpdateHandler();
+			this.tobuylistUpdateHandler();
 			return val;
 		},
 
@@ -66,11 +66,11 @@ Aria.tplScriptDefinition({
 			var i;
 			aria.templates.RefreshManager.stop();
 			this.pauselistener = true;
-			for (i = this.data.todolist.length - 1; i >= 0; i--) {
-				if (this.data.todolist[i].completed) { this.deleteTask(null, {index: i}); }
+			for (i = this.data.tobuylist.length - 1; i >= 0; i--) {
+				if (this.data.tobuylist[i].completed) { this.deleteTask(null, {index: i}); }
 			}
 			this.pauselistener = false;
-			this.todolistUpdateHandler();
+			this.tobuylistUpdateHandler();
 			aria.templates.RefreshManager.resume();
 		},
 
@@ -116,13 +116,13 @@ Aria.tplScriptDefinition({
 			this.$json.setValue(e.item, 'title', e.item.title);
 		},
 
-		todolistUpdateHandler: function () {
+		tobuylistUpdateHandler: function () {
 			var size;
 			if (this.pauselistener) { return; }
 			aria.templates.RefreshManager.stop();
-			size = this.data.todolist.length;
+			size = this.data.tobuylist.length;
 			this.$json.setValue(this.data, 'emptylist', size === 0);
-			this.$json.setValue(this.data, 'itemsleft', this.data.todolist.filter(function (e) { return !(e.completed); }).length);
+			this.$json.setValue(this.data, 'itemsleft', this.data.tobuylist.filter(function (e) { return !(e.completed); }).length);
 			this.$json.setValue(this.data, 'itemscompleted', size - this.data.itemsleft);
 			this.$json.setValue(this.data, 'toggleall', size === this.data.itemscompleted);
 			aria.templates.RefreshManager.resume();

@@ -26,7 +26,7 @@ define([
 
 	/**
 	 * Dojo Object Store ({@link http://dojotoolkit.org/reference-guide/dojo/store.html})
-	 * implementation of local storage for todo.
+	 * implementation of local storage for tobuy.
 	 * @class TodoLocalStorage
 	 */
 	return declare(null, /** @lends TodoLocalStorage# */ {
@@ -34,7 +34,7 @@ define([
 		 * The ID of local storage.
 		 * @type {string}
 		 */
-		storageId: 'todos-dojo',
+		storageId: 'tobuys-dojo',
 
 		/**
 		 * If the store has a single primary key, this indicates the property to use as the identity property.

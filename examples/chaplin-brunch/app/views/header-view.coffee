@@ -4,7 +4,7 @@ module.exports = class HeaderView extends View
   autoRender: true
   el: '#header'
   events:
-    'keypress #new-todo': 'createOnEnter'
+    'keypress #new-tobuy': 'createOnEnter'
   template: require './templates/header'
 
   createOnEnter: (event) ->
@@ -12,4 +12,4 @@ module.exports = class HeaderView extends View
     title = event.delegateTarget.value.trim()
     return if event.keyCode isnt ENTER_KEY or not title
     @collection.create {title}
-    @find('#new-todo').value = ''
+    @find('#new-tobuy').value = ''

@@ -1,4 +1,4 @@
-package com.todo.client;
+package com.tobuy.client;
 
 /**
  * An individual ToDo item.

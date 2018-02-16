@@ -7,7 +7,7 @@ var Page = require('./page');
 var PageLaxMode = require('./pageLaxMode');
 var TestOperations = require('./testOperations');
 
-module.exports.todoMVCTest = function (frameworkName, baseUrl, speedMode, laxMode, browserName) {
+module.exports.tobuyMVCTest = function (frameworkName, baseUrl, speedMode, laxMode, browserName) {
 
 	test.describe('TodoMVC - ' + frameworkName, function () {
 
@@ -92,7 +92,7 @@ module.exports.todoMVCTest = function (frameworkName, baseUrl, speedMode, laxMod
 
 		test.describe('When page is initially opened', function () {
 
-			test.it('should focus on the todo input field', function (done) {
+			test.it('should focus on the tobuy input field', function (done) {
 				testOps.assertNewInputFocused()
 					.then(function () { done(); });
 			});
@@ -112,7 +112,7 @@ module.exports.todoMVCTest = function (frameworkName, baseUrl, speedMode, laxMod
 
 		test.describe('New Todo', function () {
 
-			test.it('should allow me to add todo items', function (done) {
+			test.it('should allow me to add tobuy items', function (done) {
 				page.enterItem(TODO_ITEM_ONE);
 				testOps.assertItems([TODO_ITEM_ONE]);
 				page.enterItem(TODO_ITEM_TWO);
@@ -279,7 +279,7 @@ module.exports.todoMVCTest = function (frameworkName, baseUrl, speedMode, laxMod
 
 		test.describe('Counter', function () {
 
-			test.it('should display the current number of todo items', function (done) {
+			test.it('should display the current number of tobuy items', function (done) {
 				page.enterItem(TODO_ITEM_ONE);
 				testOps.assertItemCountText('1 item left');
 				page.enterItem(TODO_ITEM_TWO);

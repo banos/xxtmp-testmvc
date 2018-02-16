@@ -1,29 +1,29 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:cv="urn:import:com.google.gwt.user.cellview.client"
-	xmlns:todo="urn:import:com.todo.client">
+	xmlns:tobuy="urn:import:com.tobuy.client">
 	<ui:style>
 		.inline { display:inline; }
 	</ui:style>
 	<g:HTMLPanel>
-		<section id="todoapp">
+		<section id="tobuyapp">
 			<header id="header">
-				<h1>todos</h1>
-				<todo:TextBoxWithPlaceholder
+				<h1>tobuys</h1>
+				<tobuy:TextBoxWithPlaceholder
 					placeholder="What needs to be done?" ui:field="taskText">
-				</todo:TextBoxWithPlaceholder>
+				</tobuy:TextBoxWithPlaceholder>
 			</header>
 
 			<section ui:field="mainSection">
 				<input ui:field="toggleAll" type="checkbox"></input>
 				<label for="toggle-all">Mark all as complete</label>
-				<div id="todo-list">
-					<cv:CellList ui:field="todoTable"></cv:CellList>
+				<div id="tobuy-list">
+					<cv:CellList ui:field="tobuyTable"></cv:CellList>
 				</div>
 			</section>
 
-			<footer ui:field="todoStatsContainer">
-				<span id="todo-count">
+			<footer ui:field="tobuyStatsContainer">
+				<span id="tobuy-count">
 					<strong class="number" ui:field="remainingTasksCount"></strong>
 					<span class="word" ui:field="remainingTasksLabel"></span>
 					left
@@ -44,9 +44,9 @@
 		</section>
 
 		<footer id="info">
-			<p>Double-click to edit a todo</p>
+			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://www.scottlogic.co.uk/blog/colin/">Colin Eberhardt</a></p>
-			<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 		</footer>
 	</g:HTMLPanel>
 </ui:UiBinder>

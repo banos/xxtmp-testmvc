@@ -22,7 +22,7 @@ Get help from other CanJS users:
 * [CanJS on Twitter](http://twitter.com/canjs)
 * [#canjs](http://webchat.freenode.net/?channels=canjs) IRC channel on Freenode
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation
@@ -31,7 +31,7 @@ The CanJS TodoMVC example uses [can.Component](http://canjs.com/guides/Component
 can.Component supports declarative view bindings using Mustache/Handlebars as the template syntax.
 
 Version 2 is mostly backwards compatible with previous 1.1.x version. For alternative architecture examples have a look at
-the [TodoMVC 1.2.0 CanJS example](https://github.com/tastejs/todomvc/tree/1.2.0/architecture-examples/canjs).
+the [TodoMVC 1.2.0 CanJS example](https://github.com/tastejs/tobuymvc/tree/1.2.0/architecture-examples/canjs).
 
 ### CanJS and JavaScriptMVC
 

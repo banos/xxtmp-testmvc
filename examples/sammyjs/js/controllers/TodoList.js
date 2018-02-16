@@ -40,11 +40,11 @@
 		init: function () {
 			// The TodoApp has launched, let's bind our events.
 
-			$('#new-todo').on('keydown', TodoList.newKeydown);
+			$('#new-tobuy').on('keydown', TodoList.newKeydown);
 			$('#toggle-all').on('click', TodoList.toggleAllClick);
 			$('#footer').on('click', '#clear-completed', TodoList.removeCompletedClick);
 		}
 	};
 
-	TodoApp.bind('todoListRendered', TodoList.init);
+	TodoApp.bind('tobuyListRendered', TodoList.init);
 })(jQuery);

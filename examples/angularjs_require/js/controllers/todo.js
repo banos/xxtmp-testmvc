@@ -3,25 +3,25 @@
 
 /**
  * The main controller for the app. The controller:
- * - retrieves and persist the model via the todoStorage service
+ * - retrieves and persist the model via the tobuyStorage service
  * - exposes the model to the template and provides event handlers
  */
 
 define([
 	'angular'
 ], function (angular) {
-	return ['$scope', '$location', 'todoStorage', 'filterFilter',
-		function ($scope, $location, todoStorage, filterFilter) {
-			var todos = $scope.todos = todoStorage.get();
+	return ['$scope', '$location', 'tobuyStorage', 'filterFilter',
+		function ($scope, $location, tobuyStorage, filterFilter) {
+			var tobuys = $scope.tobuys = tobuyStorage.get();
 
 			$scope.newTodo = '';
 			$scope.editedTodo = null;
 
-			$scope.$watch('todos', function () {
-				$scope.remainingCount = filterFilter(todos, { completed: false }).length;
-				$scope.doneCount = todos.length - $scope.remainingCount;
+			$scope.$watch('tobuys', function () {
+				$scope.remainingCount = filterFilter(tobuys, { completed: false }).length;
+				$scope.doneCount = tobuys.length - $scope.remainingCount;
 				$scope.allChecked = !$scope.remainingCount;
-				todoStorage.put(todos);
+				tobuyStorage.put(tobuys);
 			}, true);
 
 			if ($location.path() === '') {
@@ -43,7 +43,7 @@ define([
 					return;
 				}
 
-				todos.push({
+				tobuys.push({
 					title: newTodo,
 					completed: false
 				});
@@ -52,42 +52,42 @@ define([
 			};
 
 
-			$scope.editTodo = function (todo) {
-				$scope.editedTodo = todo;
-				// Clone the original todo to restore it on demand.
-				$scope.originalTodo = angular.copy(todo);
+			$scope.editTodo = function (tobuy) {
+				$scope.editedTodo = tobuy;
+				// Clone the original tobuy to restore it on demand.
+				$scope.originalTodo = angular.copy(tobuy);
 			};
 
 
-			$scope.doneEditing = function (todo) {
+			$scope.doneEditing = function (tobuy) {
 				$scope.editedTodo = null;
-				todo.title = todo.title.trim();
+				tobuy.title = tobuy.title.trim();
 
-				if (!todo.title) {
-					$scope.removeTodo(todo);
+				if (!tobuy.title) {
+					$scope.removeTodo(tobuy);
 				}
 			};
 
-			$scope.revertEditing = function (todo) {
-				todos[todos.indexOf(todo)] = $scope.originalTodo;
+			$scope.revertEditing = function (tobuy) {
+				tobuys[tobuys.indexOf(tobuy)] = $scope.originalTodo;
 				$scope.doneEditing($scope.originalTodo);
 			};
 
-			$scope.removeTodo = function (todo) {
-				todos.splice(todos.indexOf(todo), 1);
+			$scope.removeTodo = function (tobuy) {
+				tobuys.splice(tobuys.indexOf(tobuy), 1);
 			};
 
 
 			$scope.clearDoneTodos = function () {
-				$scope.todos = todos = todos.filter(function (val) {
+				$scope.tobuys = tobuys = tobuys.filter(function (val) {
 					return !val.completed;
 				});
 			};
 
 
 			$scope.markAll = function (done) {
-				todos.forEach(function (todo) {
-					todo.completed = done;
+				tobuys.forEach(function (tobuy) {
+					tobuy.completed = done;
 				});
 			};
 		}

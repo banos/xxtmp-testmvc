@@ -16,7 +16,7 @@ var app = app || {};
 
 	app.TodoItem = React.createClass({
 		getInitialState: function () {
-			return {editText: this.props.todo.get('title')};
+			return {editText: this.props.tobuy.get('title')};
 		},
 
 		handleSubmit: function () {
@@ -40,12 +40,12 @@ var app = app || {};
 				node.focus();
 				node.setSelectionRange(node.value.length, node.value.length);
 			}.bind(this));
-			this.setState({editText: this.props.todo.get('title')});
+			this.setState({editText: this.props.tobuy.get('title')});
 		},
 
 		handleKeyDown: function (event) {
 			if (event.which === ESCAPE_KEY) {
-				this.setState({editText: this.props.todo.get('title')});
+				this.setState({editText: this.props.tobuy.get('title')});
 				this.props.onCancel();
 			} else if (event.which === ENTER_KEY) {
 				this.handleSubmit();
@@ -59,18 +59,18 @@ var app = app || {};
 		render: function () {
 			return (
 				<li className={classNames({
-					completed: this.props.todo.get('completed'),
+					completed: this.props.tobuy.get('completed'),
 					editing: this.props.editing
 				})}>
 					<div className="view">
 						<input
 							className="toggle"
 							type="checkbox"
-							checked={this.props.todo.get('completed')}
+							checked={this.props.tobuy.get('completed')}
 							onChange={this.props.onToggle}
 						/>
 						<label onDoubleClick={this.handleEdit}>
-							{this.props.todo.get('title')}
+							{this.props.tobuy.get('title')}
 						</label>
 						<button className="destroy" onClick={this.props.onDestroy} />
 					</div>

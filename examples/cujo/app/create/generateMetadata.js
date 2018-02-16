@@ -16,7 +16,7 @@ define(function () {
 	/**
 	 * Since we're using a datastore (localStorage) that doesn't generate ids and
 	 * such for us, this transform generates a GUID id and a dateCreated.  It can
-	 * be injected into a pipeline for creating new todos.
+	 * be injected into a pipeline for creating new tobuys.
 	 */
 	return function generateMetadata(item) {
 		item.id = guidLike();

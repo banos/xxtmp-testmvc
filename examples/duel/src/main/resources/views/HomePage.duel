@@ -8,9 +8,9 @@
 </head>
 <body>
 	<footer class="info">
-		<p>Double-click to edit a todo</p>
+		<p>Double-click to edit a tobuy</p>
 		<p>Ported to <a href="http://duelengine.org">DUEL</a> by <a href="http://mck.me">Stephen McKamey</a></p>
-		<p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+		<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
 	</footer>
 	<script src="/js/scripts.merge"></script>
 </body>

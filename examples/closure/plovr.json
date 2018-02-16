@@ -1,5 +1,5 @@
 {
-  "id" :                "todomvc",
+  "id" :                "tobuymvc",
   "inputs" :            "js/app.js",
   "paths" :             "js/",
   "output-wrapper" :    "(function(){%output%})();",

@@ -3,11 +3,11 @@ define(function () {
 	'use strict';
 
 	/**
-	 * Validate a todo
+	 * Validate a tobuy
 	 */
-	return function validateTodo(todo) {
+	return function validateTodo(tobuy) {
 		// Must be a valid object, and have a text property that is non-empty
-		var valid = todo && 'text' in todo && todo.text.trim();
+		var valid = tobuy && 'text' in tobuy && tobuy.text.trim();
 		var result = { valid: !!valid };
 
 		if (!valid) {

@@ -7,7 +7,7 @@ The TodoMVC project has a great many implementations of exactly the same app usi
 
 - [ ] Complete the test implementation (27 out of 28 are now complete). The only test that I am struggling with is to test that the delete button becomes visible on hover.
 - [ ] Make it work with PhantomJS. In practice, Phantom is only a little bit faster, but it should work. Currently there are a few Phantom specific failures.
-- [ ] Allow testing of apps that require a server (see: https://github.com/tastejs/todomvc/pull/821/files#r9377070)
+- [ ] Allow testing of apps that require a server (see: https://github.com/tastejs/tobuymvc/pull/821/files#r9377070)
 
 
 ## Running the tests
@@ -86,7 +86,7 @@ Running "simplemocha:files" (simplemocha) task
 [...]
 (17 of 27) pass: TodoMVC - jquery, Editing, should remove the item if an empty text string was entered
 (18 of 27) known issue: TodoMVC - jquery, Editing, should cancel edits on escape -- error: undefined
-(19 of 27) pass: TodoMVC - jquery, Counter, should display the current number of todo items
+(19 of 27) pass: TodoMVC - jquery, Counter, should display the current number of tobuy items
 (20 of 27) pass: TodoMVC - jquery, Clear completed button, should display the number of completed items
 (21 of 27) pass: TodoMVC - jquery, Clear completed button, should remove completed items when clicked
 (22 of 27) pass: TodoMVC - jquery, Clear completed button, should be hidden when there are no items that are completed
@@ -116,7 +116,7 @@ $ npm run test -- --framework=angularjs
       No Todos
         ✓ should hide #main and #footer (201ms)
       New Todo
-        ✓ should allow me to add todo items (548ms)
+        ✓ should allow me to add tobuy items (548ms)
         ✓ should clear text input field when an item is added (306ms)
         ✓ should trim text input (569ms)
         ✓ should show #main and #footer when items added (405ms)
@@ -137,7 +137,7 @@ $ npm run test -- --framework=angularjs
         ✓ should remove the item if an empty text string was entered (1033ms)
         ✓ should cancel edits on escape (1115ms)
       Counter
-        ✓ should display the current number of todo items (462ms)
+        ✓ should display the current number of tobuy items (462ms)
       Clear completed button
         ✓ should display the number of completed items (873ms)
         ✓ should remove completed items when clicked (898ms)
@@ -163,7 +163,7 @@ In order to keep each test case fully isolated, the browser is closed then re-op
 $ npm run test -- --speedMode
 ```
 
-Before each test, all the todo items are checked as completed and the 'clear complete' button pressed. This makes the tests run in around half the time, but with the obvious risk that the tear-down code may fail.
+Before each test, all the tobuy items are checked as completed and the 'clear complete' button pressed. This makes the tests run in around half the time, but with the obvious risk that the tear-down code may fail.
 
 
 ## Lax mode

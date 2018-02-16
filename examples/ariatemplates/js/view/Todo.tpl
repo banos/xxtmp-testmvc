@@ -8,8 +8,8 @@
 }}
 	{macro main()}
 		<header id="header">
-			<h1>todos</h1>
-			<input id="new-todo" placeholder="What needs to be done?" {on keydown {fn: "newTaskOnEnter", scope: this}/}>
+			<h1>tobuys</h1>
+			<input id="new-tobuy" placeholder="What needs to be done?" {on keydown {fn: "newTaskOnEnter", scope: this}/}>
 		</header>
 		{section {
 			macro: "mainDisplay",
@@ -38,10 +38,10 @@
 				<label id="label-toggle-all">Mark all as complete</label>
 				{repeater {
 					id: "tasklist",
-					content: data.todolist,
+					content: data.tobuylist,
 					type: "ul",
 					attributes: {
-						classList: (data.route.length > 0 ? ["todo-list", "filter-" + data.route] : ["todo-list"])
+						classList: (data.route.length > 0 ? ["tobuy-list", "filter-" + data.route] : ["tobuy-list"])
 					},
 					childSections: {
 						id: "task",
@@ -58,7 +58,7 @@
 				{section {
 					type: "span",
 					attributes: {
-						classList: ["todo-count"]
+						classList: ["tobuy-count"]
 					},
 					macro: "itemsleft",
 					bindRefreshTo: [{to: "itemsleft", inside: data}]

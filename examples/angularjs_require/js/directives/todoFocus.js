@@ -11,9 +11,9 @@ define([
 	var moduleName = 'TodoFocusDirective';
 	angular
 		.module(moduleName, [])
-		.directive('todoFocus', ['$timeout', function ($timeout) {
+		.directive('tobuyFocus', ['$timeout', function ($timeout) {
 			return function (scope, elem, attrs) {
-				scope.$watch(attrs.todoFocus, function (newval) {
+				scope.$watch(attrs.tobuyFocus, function (newval) {
 					if (newval) {
 						$timeout(function () {
 							elem[0].focus();

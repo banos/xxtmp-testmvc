@@ -17,4 +17,4 @@ Here are some links you may find helpful:
 * [Knockback.js Reference App](http://kmalakoff.github.io/knockback/app_knockback_reference.html)
 * [Knockback.js on Twitter](http://twitter.com/knockbackjs)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._

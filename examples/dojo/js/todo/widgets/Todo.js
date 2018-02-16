@@ -39,17 +39,17 @@ define([
 	return declare([_WidgetBase, _TemplatedMixin, _WidgetsInTemplateMixin, _InlineTemplateMixin], {
 		startup: function () {
 			this.inherited(arguments);
-			if (!this.todosWidget) {
-				throw new Error('this.todosWidget property should be there before this widgets starts up: ' + this);
+			if (!this.tobuysWidget) {
+				throw new Error('this.tobuysWidget property should be there before this widgets starts up: ' + this);
 			}
 			this.own(computed(this, 'isEditing', function (editedTodo) {
 				return editedTodo === this.target;
-			}, at(this.todosWidget, 'editedTodo')));
+			}, at(this.tobuysWidget, 'editedTodo')));
 		},
 
 		editTodo: function () {
 			this.set('originalTitle', this.target.get('title'));
-			this.todosWidget.set('editedTodo', this.target);
+			this.tobuysWidget.set('editedTodo', this.target);
 		},
 
 		invokeSaveEdits: function () {
@@ -76,16 +76,16 @@ define([
 			}
 			if (goAhead) {
 				if (newTitle) {
-					progress = this.todosWidget.saveTodo(this.target, originalTitle, this.target.get('completed'));
+					progress = this.tobuysWidget.saveTodo(this.target, originalTitle, this.target.get('completed'));
 				} else {
 					progress = this.removeTodo();
 				}
 			}
 			if (blur || goAhead) {
 				progress = when(progress, lang.hitch(this, function () {
-					this.todosWidget.set('editedTodo', null);
+					this.tobuysWidget.set('editedTodo', null);
 				}), lang.hitch(this, function (e) {
-					this.todosWidget.set('editedTodo', null);
+					this.tobuysWidget.set('editedTodo', null);
 					throw e;
 				}));
 			}
@@ -97,8 +97,8 @@ define([
 
 		revertEdits: function () {
 			if (this.get('isEditing')) {
-				this.todosWidget.set('editedTodo', null);
-				this.todosWidget.replaceTodo(this.target, new Stateful({
+				this.tobuysWidget.set('editedTodo', null);
+				this.tobuysWidget.replaceTodo(this.target, new Stateful({
 					id: this.target.get('id'),
 					title: this.get('originalTitle'),
 					completed: this.target.get('completed')
@@ -108,11 +108,11 @@ define([
 		},
 
 		toggleCompleted: function () {
-			this.todosWidget.saveTodo(this.target, this.target.get('title'), !this.target.get('completed'));
+			this.tobuysWidget.saveTodo(this.target, this.target.get('title'), !this.target.get('completed'));
 		},
 
 		removeTodo: function () {
-			return when(this.todosWidget.removeTodo(this.target), lang.hitch(this, this.destroyRecursive));
+			return when(this.tobuysWidget.removeTodo(this.target), lang.hitch(this, this.destroyRecursive));
 		}
 	});
 });

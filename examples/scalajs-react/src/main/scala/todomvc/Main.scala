@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.router._
@@ -26,9 +26,9 @@ object Main extends JSApp {
       filterRoutes.notFound(redirectToPage(TodoFilter.All)(Redirect.Replace))
     }
 
-  /* instantiate model and restore todos */
+  /* instantiate model and restore tobuys */
   val model: TodoModel =
-    new TodoModel(Storage(dom.ext.LocalStorage, "todos-scalajs-react"))
+    new TodoModel(Storage(dom.ext.LocalStorage, "tobuys-scalajs-react"))
 
   model.restorePersisted.foreach(_.runNow())
 
@@ -40,10 +40,10 @@ object Main extends JSApp {
    * Main entry point, which the sbt plugin finds and makes the browser run.
    *
    * Takes the unmounted router component and gives to React,
-   *  will render into the first element with `todoapp` class
+   *  will render into the first element with `tobuyapp` class
    */
   @JSExport
   override def main(): Unit = {
-    val mounted = ReactDOM.render(router, dom.document.getElementsByClassName("todoapp")(0))
+    val mounted = ReactDOM.render(router, dom.document.getElementsByClassName("tobuyapp")(0))
   }
 }

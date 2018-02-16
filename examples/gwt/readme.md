@@ -24,24 +24,24 @@ Get help from other Google Web Toolkit users:
 * [Mailing list on Google Groups](http://groups.google.com/group/Google-Web-Toolkit)
 * [Google Web Toolkit on Twitter](http://twitter.com/googledevtools)
 
-_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
+_If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 
 ## Implementation
 
-This application is rather different than most of the other TodoMVC versions in that it is written in Java which is compiled to JavaScript. The files within the `gwttodo` folder are the result of running the GWT compilation process on the Java files found within the src folder. The UI pattern used by this application is Model-View-Presenter.
+This application is rather different than most of the other TodoMVC versions in that it is written in Java which is compiled to JavaScript. The files within the `gwttobuy` folder are the result of running the GWT compilation process on the Java files found within the src folder. The UI pattern used by this application is Model-View-Presenter.
 
 Whilst this application is very different to the other implementations, it still makes for an interesting comparison. Large-scale JavaScript applications are often written with GWT or Closure, with the resulting JavaScript code delivered to the client being compiled.
 
-You can read more about the implementation on [my blog](http://www.scottlogic.co.uk/blog/colin/2012/03/developing-a-gwt-todomvc-application).
+You can read more about the implementation on [my blog](http://www.scottlogic.co.uk/blog/colin/2012/03/developing-a-gwt-tobuymvc-application).
 
 
 ## Folder Structure
 
 - `css` - includes GWT specific `app.css`, most styling is taken from the base CSS file
-- `gwttodo` - the GWT compiled output, this includes various HTML files, which contain the JavaScript
+- `gwttobuy` - the GWT compiled output, this includes various HTML files, which contain the JavaScript
 code for each <a href "http://code.google.com/webtoolkit/doc/latest/tutorial/compile.html">GWT permutation</a>. This
-folder also includes some redundant files, see the issue <a href="https://github.com/ColinEberhardt/todomvc/issues/9">
+folder also includes some redundant files, see the issue <a href="https://github.com/ColinEberhardt/tobuymvc/issues/9">
 Remove redundant compiler output</a>.
 - `src` - the Java source for this application
 

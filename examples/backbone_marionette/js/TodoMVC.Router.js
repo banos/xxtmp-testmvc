@@ -11,7 +11,7 @@ var TodoMVC = TodoMVC || {};
 	// ---------------
 	//
 	// Handles a single dynamic route to show
-	// the active vs complete todo items
+	// the active vs complete tobuy items
 	TodoMVC.Router = Mn.AppRouter.extend({
 		appRoutes: {
 			'*filter': 'filterItems'
@@ -26,40 +26,40 @@ var TodoMVC = TodoMVC || {};
 	TodoMVC.Controller = Mn.Object.extend({
 
 		initialize: function () {
-			this.todoList = new TodoMVC.TodoList();
+			this.tobuyList = new TodoMVC.TodoList();
 		},
 
 		// Start the app by showing the appropriate views
-		// and fetching the list of todo items, if there are any
+		// and fetching the list of tobuy items, if there are any
 		start: function () {
-			this.showHeader(this.todoList);
-			this.showFooter(this.todoList);
-			this.showTodoList(this.todoList);
-			this.todoList.on('all', this.updateHiddenElements, this);
-			this.todoList.fetch();
+			this.showHeader(this.tobuyList);
+			this.showFooter(this.tobuyList);
+			this.showTodoList(this.tobuyList);
+			this.tobuyList.on('all', this.updateHiddenElements, this);
+			this.tobuyList.fetch();
 		},
 
 		updateHiddenElements: function () {
-			$('#main, #footer').toggle(!!this.todoList.length);
+			$('#main, #footer').toggle(!!this.tobuyList.length);
 		},
 
-		showHeader: function (todoList) {
+		showHeader: function (tobuyList) {
 			var header = new TodoMVC.HeaderLayout({
-				collection: todoList
+				collection: tobuyList
 			});
 			TodoMVC.App.root.showChildView('header', header);
 		},
 
-		showFooter: function (todoList) {
+		showFooter: function (tobuyList) {
 			var footer = new TodoMVC.FooterLayout({
-				collection: todoList
+				collection: tobuyList
 			});
 			TodoMVC.App.root.showChildView('footer', footer);
 		},
 
-		showTodoList: function (todoList) {
+		showTodoList: function (tobuyList) {
 			TodoMVC.App.root.showChildView('main', new TodoMVC.ListView({
-				collection: todoList
+				collection: tobuyList
 			}));
 		},
 

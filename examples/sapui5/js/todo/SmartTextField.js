@@ -7,11 +7,11 @@
 (function () {
 	'use strict';
 
-	jQuery.sap.declare('todo.SmartTextField');
+	jQuery.sap.declare('tobuy.SmartTextField');
 
 	jQuery.sap.require('sap.ui.core.Core', 'sap.ui.commons.TextField');
 
-	sap.ui.commons.TextField.extend('todo.SmartTextField', {
+	sap.ui.commons.TextField.extend('tobuy.SmartTextField', {
 		metadata: {
 			properties: {
 				placeholder: 'string',

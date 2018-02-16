@@ -25,7 +25,7 @@ API, you should probably wait a bit longer before submitting your example.
 
 ## Code Style
 
-We think it's best for the project if the code you write looks like the code the last developer wrote, so we've put together [some guidelines we ask that you follow](https://github.com/tastejs/todomvc/blob/master/codestyle.md). We greatly appreciate your cooperation and contribution.
+We think it's best for the project if the code you write looks like the code the last developer wrote, so we've put together [some guidelines we ask that you follow](https://github.com/tastejs/tobuymvc/blob/master/codestyle.md). We greatly appreciate your cooperation and contribution.
 
 
 ## Pull Request Guidelines
@@ -40,7 +40,7 @@ We think it's best for the project if the code you write looks like the code the
 - **Read the [App Specification](app-spec.md) thoroughly**
 - Use the [automated browser tests](/tests) to ensure that your app meets the app specification requirements. For bonus points add the test output to your pull request!
 - Make sure it hasn't already been submitted or declined by searching the issue tracker
-- Looking at our most recent [reference app](https://github.com/tastejs/todomvc/tree/master/examples/backbone)
+- Looking at our most recent [reference app](https://github.com/tastejs/tobuymvc/tree/master/examples/backbone)
 
 One of us will be happy to review your submission and discuss any changes that may be required before it can be included.
 
@@ -65,4 +65,4 @@ If you are a library author or contributor wishing to start work on writing test
 
 Note that due to the current number of MVC/MVVM/MV* frameworks in circulation, it's not always possible to include each one in TodoMVC, but we'll definitely discuss the merits of any framework prior to making a decision. :)
 
-For applications that we feel don't quite match the goals of the project, but which we feel still offer value, we're happy to include references to them in our official [wiki](https://github.com/tastejs/todomvc/wiki/Other-implementations).
+For applications that we feel don't quite match the goals of the project, but which we feel still offer value, we're happy to include references to them in our official [wiki](https://github.com/tastejs/tobuymvc/wiki/Other-implementations).

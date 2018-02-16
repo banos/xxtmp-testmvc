@@ -1,5 +1,5 @@
-// Collection to keep the todos
-Todos = new Meteor.Collection('todos');
+// Collection to keep the tobuys
+Todos = new Meteor.Collection('tobuys');
 
 // JS code for the client (browser)
 if (Meteor.isClient) {
@@ -7,8 +7,8 @@ if (Meteor.isClient) {
 	// Session var to keep current filter type ("all", "active", "completed")
 	Session.set('filter', 'all');
 
-	// Session var to keep todo which is currently in editing mode, if any
-	Session.set('editing_todo', null);
+	// Session var to keep tobuy which is currently in editing mode, if any
+	Session.set('editing_tobuy', null);
 
 	// Set up filter types and their mongo db selectors
 	var filter_selections = {
@@ -70,29 +70,29 @@ if (Meteor.isClient) {
 
 	// Some helpers
 
-	// Get the number of todos completed
-	var todos_completed_helper = function() {
+	// Get the number of tobuys completed
+	var tobuys_completed_helper = function() {
 		return Todos.find({completed: true}).count();
 	};
 
-	// Get the number of todos not completed
-	var todos_not_completed_helper = function() {
+	// Get the number of tobuys not completed
+	var tobuys_not_completed_helper = function() {
 		return Todos.find({completed: false}).count();
 	};
 
 	////
-	// Logic for the 'todoapp' partial which represents the whole app
+	// Logic for the 'tobuyapp' partial which represents the whole app
 	////
 
-	// Helper to get the number of todos
-	Template.todoapp.todos = function() {
+	// Helper to get the number of tobuys
+	Template.tobuyapp.tobuys = function() {
 		return Todos.find().count();
 	};
 
-	Template.todoapp.events = {};
+	Template.tobuyapp.events = {};
 
-	// Register key events for adding new todo
-	Template.todoapp.events[okcancel_events('#new-todo')] =
+	// Register key events for adding new tobuy
+	Template.tobuyapp.events[okcancel_events('#new-tobuy')] =
 		make_okcancel_handler({
 			ok: function (title, evt) {
 				Todos.insert({title: $.trim(title), completed: false,
@@ -102,15 +102,15 @@ if (Meteor.isClient) {
 		});
 
 	////
-	// Logic for the 'main' partial which wraps the actual todo list
+	// Logic for the 'main' partial which wraps the actual tobuy list
 	////
 
-	// Get the todos considering the current filter type
-	Template.main.todos = function() {
+	// Get the tobuys considering the current filter type
+	Template.main.tobuys = function() {
 		return Todos.find(filter_selections[Session.get('filter')], {sort: {created_at: 1}});
 	};
 
-	Template.main.todos_not_completed = todos_not_completed_helper;
+	Template.main.tobuys_not_completed = tobuys_not_completed_helper;
 
 	// Register click event for toggling complete/not complete button
 	Template.main.events = {
@@ -119,48 +119,48 @@ if (Meteor.isClient) {
 			if (!Todos.find({completed: false}).count()) {
 				completed = false;
 			}
-			Todos.find({}).forEach(function(todo) {
-				Todos.update({'_id': todo._id}, {$set: {completed: completed}});
+			Todos.find({}).forEach(function(tobuy) {
+				Todos.update({'_id': tobuy._id}, {$set: {completed: completed}});
 			});
 		}
 	};
 
 	////
-	// Logic for the 'todo' partial representing a todo
+	// Logic for the 'tobuy' partial representing a tobuy
 	////
 
-	// True of current todo is completed, false otherwise
-	Template.todo.todo_completed = function() {
+	// True of current tobuy is completed, false otherwise
+	Template.tobuy.tobuy_completed = function() {
 		return this.completed;
 	};
 
-	// Get the current todo which is in editing mode, if any
-	Template.todo.todo_editing = function() {
-		return Session.equals('editing_todo', this._id);
+	// Get the current tobuy which is in editing mode, if any
+	Template.tobuy.tobuy_editing = function() {
+		return Session.equals('editing_tobuy', this._id);
 	};
 
-	// Register events for toggling todo's state, editing mode and destroying a todo
-	Template.todo.events = {
+	// Register events for toggling tobuy's state, editing mode and destroying a tobuy
+	Template.tobuy.events = {
 		'click input.toggle': function() {
 			Todos.update(this._id, {$set: {completed: !this.completed}});
 		},
 		'dblclick label': function() {
-			Session.set('editing_todo', this._id);
+			Session.set('editing_tobuy', this._id);
 		},
 		'click button.destroy': function() {
 			Todos.remove(this._id);
 		}
 	};
 
-	// Register key events for updating title of an existing todo
-	Template.todo.events[okcancel_events('li.editing input.edit')] =
+	// Register key events for updating title of an existing tobuy
+	Template.tobuy.events[okcancel_events('li.editing input.edit')] =
 		make_okcancel_handler({
 			ok: function (value) {
-				Session.set('editing_todo', null);
+				Session.set('editing_tobuy', null);
 				Todos.update(this._id, {$set: {title: $.trim(value)}});
 			},
 			cancel: function () {
-				Session.set('editing_todo', null);
+				Session.set('editing_tobuy', null);
 				Todos.remove(this._id);
 			}
 		});
@@ -169,13 +169,13 @@ if (Meteor.isClient) {
 	// Logic for the 'footer' partial
 	////
 
-	Template.footer.todos_completed = todos_completed_helper;
+	Template.footer.tobuys_completed = tobuys_completed_helper;
 
-	Template.footer.todos_not_completed = todos_not_completed_helper;
+	Template.footer.tobuys_not_completed = tobuys_not_completed_helper;
 
-	// True if exactly one todo is not completed, false otherwise
+	// True if exactly one tobuy is not completed, false otherwise
 	// Used for handling pluralization of "item"/"items" word
-	Template.footer.todos_one_not_completed = function() {
+	Template.footer.tobuys_one_not_completed = function() {
 		return Todos.find({completed: false}).count() == 1;
 	};
 
@@ -188,7 +188,7 @@ if (Meteor.isClient) {
 		return Session.equals('filter', type);
 	};
 
-	// Register click events for clearing completed todos
+	// Register click events for clearing completed tobuys
 	Template.footer.events = {
 		'click button#clear-completed': function() {
 			Meteor.call('clearCompleted');
@@ -198,13 +198,13 @@ if (Meteor.isClient) {
 
 //Publish and subscribe setting
 if (Meteor.isServer) {
-	Meteor.publish('todos', function () {
+	Meteor.publish('tobuys', function () {
 		return Todos.find();
 	});
 }
 
 if (Meteor.isClient) {
-	Meteor.subscribe('todos');
+	Meteor.subscribe('tobuys');
 }
 
 //Allow users to write directly to this collection from client code, subject to limitations you define.

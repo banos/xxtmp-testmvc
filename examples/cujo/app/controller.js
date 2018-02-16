@@ -24,80 +24,80 @@ define(function () {
 
 	return {
 		/**
-		 * Create a new todo
+		 * Create a new tobuy
 		 * @injected
-		 * @param todo {Object} data used to create new todo
-		 * @param todo.text {String} text of the todo
+		 * @param tobuy {Object} data used to create new tobuy
+		 * @param tobuy.text {String} text of the tobuy
 		 */
 		createTodo: function () {},
 
 		/**
-		 * Remove an existing todo
+		 * Remove an existing tobuy
 		 * @injected
-		 * @param todo {Object} existing todo, or object with same identifier, to remove
+		 * @param tobuy {Object} existing tobuy, or object with same identifier, to remove
 		 */
 		removeTodo: function () {},
 
 		/**
-		 * Update an existing todo
+		 * Update an existing tobuy
 		 * @injected
-		 * @param todo {Object} updated todo
+		 * @param tobuy {Object} updated tobuy
 		 */
 		updateTodo: function () {},
 
 		/**
-		 * Start inline editing a todo
-		 * @param node {Node} Dom node of the todo
+		 * Start inline editing a tobuy
+		 * @param node {Node} Dom node of the tobuy
 		 */
 		beginEditTodo: function (node) {
 			this.querySelector('.edit', node).focus();
 		},
 
 		/**
-		 * Finish editing a todo
-		 * @param todo {Object} todo to finish editing and save changes
+		 * Finish editing a tobuy
+		 * @param tobuy {Object} tobuy to finish editing and save changes
 		 */
-		endEditTodo: function (todo) {
-			// As per application spec, todos edited to have empty
+		endEditTodo: function (tobuy) {
+			// As per application spec, tobuys edited to have empty
 			// text should be removed.
-			if (/\S/.test(todo.text)) {
-				this.updateTodo(todo);
+			if (/\S/.test(tobuy.text)) {
+				this.updateTodo(tobuy);
 			} else {
-				this.removeTodo(todo);
+				this.removeTodo(tobuy);
 			}
 		},
 
 		/**
-		 * Remove all completed todos
+		 * Remove all completed tobuys
 		 */
 		removeCompleted: function () {
-			var todos = this.todos;
+			var tobuys = this.tobuys;
 
-			todos.forEach(function (todo) {
-				if (todo.complete) {
-					todos.remove(todo);
+			tobuys.forEach(function (tobuy) {
+				if (tobuy.complete) {
+					tobuys.remove(tobuy);
 				}
 			});
 		},
 
 		/**
-		 * Check/uncheck all todos
+		 * Check/uncheck all tobuys
 		 */
 		toggleAll: function () {
-			var todos, complete;
+			var tobuys, complete;
 
-			todos = this.todos;
+			tobuys = this.tobuys;
 			complete = this.masterCheckbox.checked;
 
-			todos.forEach(function (todo) {
-				todo.complete = complete;
-				todos.update(todo);
+			tobuys.forEach(function (tobuy) {
+				tobuy.complete = complete;
+				tobuys.update(tobuy);
 			});
 		},
 
 		/**
 		 * Update the remaining and completed counts, and update
-		 * the check/uncheck all checkbox if all todos have become
+		 * the check/uncheck all checkbox if all tobuys have become
 		 * checked or unchecked.
 		 */
 		updateCount: function () {
@@ -106,10 +106,10 @@ define(function () {
 			total = 0;
 			checked = 0;
 
-			this.todos.forEach(function (todo) {
+			this.tobuys.forEach(function (tobuy) {
 				total++;
 
-				if (todo.complete) {
+				if (tobuy.complete) {
 					checked++;
 				}
 			});

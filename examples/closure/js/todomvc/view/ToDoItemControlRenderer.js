@@ -1,4 +1,4 @@
-goog.provide('todomvc.view.ToDoItemControlRenderer');
+goog.provide('tobuymvc.view.ToDoItemControlRenderer');
 
 goog.require('goog.ui.Component.State');
 goog.require('goog.ui.ControlRenderer');
@@ -10,20 +10,20 @@ goog.require('goog.ui.ControlRenderer');
  * @constructor
  * @extends {goog.ui.ControlRenderer}
  */
-todomvc.view.ToDoItemControlRenderer = function() {
+tobuymvc.view.ToDoItemControlRenderer = function() {
     goog.ui.ControlRenderer.call(this);
 };
-goog.inherits(todomvc.view.ToDoItemControlRenderer, goog.ui.ControlRenderer);
+goog.inherits(tobuymvc.view.ToDoItemControlRenderer, goog.ui.ControlRenderer);
 
-// add getInstance method to todomvc.view.ToDoItemControlRenderer
-goog.addSingletonGetter(todomvc.view.ToDoItemControlRenderer);
+// add getInstance method to tobuymvc.view.ToDoItemControlRenderer
+goog.addSingletonGetter(tobuymvc.view.ToDoItemControlRenderer);
 
 /**
  * @param {goog.ui.Control} control Control to render.
  * @return {Element} Root element for the control.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.createDom = function(control) {
-    var sanitizedHtml = todomvc.view.toDoItem({
+tobuymvc.view.ToDoItemControlRenderer.prototype.createDom = function(control) {
+    var sanitizedHtml = tobuymvc.view.toDoItem({
         content: control.getContent(),
         checked: control.isChecked()
     });
@@ -42,7 +42,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.createDom = function(control) {
  * @param {goog.ui.Component.State} state State to enable or disable.
  * @param {boolean} enable Whether the control is entering or exiting the state.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.setState =
+tobuymvc.view.ToDoItemControlRenderer.prototype.setState =
     function(control, state, enable) {
     var element = control.getElement();
     if (element) {
@@ -67,7 +67,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.setState =
  *     returned.
  * @return {Element} The key event target.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getKeyEventTarget =
+tobuymvc.view.ToDoItemControlRenderer.prototype.getKeyEventTarget =
     function(control) {
   return this.getInputElement(control.getElement());
 };
@@ -79,7 +79,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.getKeyEventTarget =
  *            to be returned.
  * @return {Element} The control's display element.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getDisplayElement = function(
+tobuymvc.view.ToDoItemControlRenderer.prototype.getDisplayElement = function(
         element) {
     return element ? element.childNodes[0] : null;
 };
@@ -92,7 +92,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.getDisplayElement = function(
  *            to be returned.
  * @return {Element} The control's content element.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getContentElement = function(
+tobuymvc.view.ToDoItemControlRenderer.prototype.getContentElement = function(
         element) {
     return element ? this.getDisplayElement(element).childNodes[1] : null;
 };
@@ -104,7 +104,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.getContentElement = function(
  *            is to be returned.
  * @return {Element} The control's checkbox element.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getCheckboxElement = function(
+tobuymvc.view.ToDoItemControlRenderer.prototype.getCheckboxElement = function(
         element) {
     return element ? this.getDisplayElement(element).childNodes[0] : null;
 };
@@ -116,7 +116,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.getCheckboxElement = function(
  *            to be returned.
  * @return {Element} The control's destroy element.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getDestroyElement = function(
+tobuymvc.view.ToDoItemControlRenderer.prototype.getDestroyElement = function(
         element) {
     return element ? this.getDisplayElement(element).childNodes[2] : null;
 };
@@ -128,7 +128,7 @@ todomvc.view.ToDoItemControlRenderer.prototype.getDestroyElement = function(
  *            to be returned.
  * @return {Element} The control's input element.
  */
-todomvc.view.ToDoItemControlRenderer.prototype.getInputElement = function(
+tobuymvc.view.ToDoItemControlRenderer.prototype.getInputElement = function(
         element) {
     return element ? element.childNodes[1] : null;
 };

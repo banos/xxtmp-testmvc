@@ -6,8 +6,8 @@
     "backbone.marionette": "^3.0.0",
     "backbone.radio": "^2.0.0",
     "jquery": "^1.11.2",
-    "todomvc-app-css": "^1.0.1",
-    "todomvc-common": "^1.0.1",
+    "tobuymvc-app-css": "^1.0.1",
+    "tobuymvc-common": "^1.0.1",
     "underscore": "^1.6.0"
   }
 }

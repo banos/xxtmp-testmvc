@@ -26,7 +26,7 @@ var dijondemo = {};
 				this.system.mapValue( 'pluralizeUtil', ns.utils.Utils );
 
 				// Models
-				this.system.mapSingleton( 'todosModel', ns.models.TodosModel );
+				this.system.mapSingleton( 'tobuysModel', ns.models.TodosModel );
 
 				// Services
 				this.system.mapSingleton( 'storageService', ns.services.LocalStorageService );
@@ -39,16 +39,16 @@ var dijondemo = {};
 				this.system.mapSingleton( 'listView', ns.views.TodoListView );
 
 				//Handlers
-				this.system.mapHandler( 'TodoFormView:addTodo', 'todosModel', 'add' );
-				this.system.mapHandler( 'TodoListView:toggleDoneOfTodo', 'todosModel', 'toggleDone' );
-				this.system.mapHandler( 'TodoListView:setTitleOfTodo', 'todosModel', 'setTitle' );
-				this.system.mapHandler( 'TodoListView:removeTodo', 'todosModel', 'remove' );
-				this.system.mapHandler( 'TodoListView:setDoneForAllTodos', 'todosModel', 'setDoneForAll' );
-				this.system.mapHandler( 'TodoListView:removeAllDoneTodos', 'todosModel', 'removeAllDone' );
-				this.system.mapHandler( 'StorageService:retrieveCompleted', 'todosModel', 'setList' );
-				this.system.mapHandler( 'TodosModel:todosListUpdated', 'listView', 'render' );
-				this.system.mapHandler( 'TodosModel:todosListUpdated', 'footerView', 'render' );
-				this.system.mapHandler( 'TodosModel:todosListUpdated', 'storageService', 'store' );
+				this.system.mapHandler( 'TodoFormView:addTodo', 'tobuysModel', 'add' );
+				this.system.mapHandler( 'TodoListView:toggleDoneOfTodo', 'tobuysModel', 'toggleDone' );
+				this.system.mapHandler( 'TodoListView:setTitleOfTodo', 'tobuysModel', 'setTitle' );
+				this.system.mapHandler( 'TodoListView:removeTodo', 'tobuysModel', 'remove' );
+				this.system.mapHandler( 'TodoListView:setDoneForAllTodos', 'tobuysModel', 'setDoneForAll' );
+				this.system.mapHandler( 'TodoListView:removeAllDoneTodos', 'tobuysModel', 'removeAllDone' );
+				this.system.mapHandler( 'StorageService:retrieveCompleted', 'tobuysModel', 'setList' );
+				this.system.mapHandler( 'TodosModel:tobuysListUpdated', 'listView', 'render' );
+				this.system.mapHandler( 'TodosModel:tobuysListUpdated', 'footerView', 'render' );
+				this.system.mapHandler( 'TodosModel:tobuysListUpdated', 'storageService', 'store' );
 				this.system.mapHandler( 'App:startup', 'storageService', 'retrieve' );
 				this.system.mapHandler( 'App:startupComplete', 'formView', 'render' );
 				this.system.mapHandler( 'App:startupComplete', 'storageService', 'retrieve' );

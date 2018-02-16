@@ -4,10 +4,10 @@ import {escapeForHTML} from './helpers';
 
 export default class Template {
 	/**
-	 * Format the contents of a todo list.
+	 * Format the contents of a tobuy list.
 	 *
 	 * @param {ItemList} items Object containing keys you want to find in the template to replace.
-	 * @returns {!string} Contents for a todo list
+	 * @returns {!string} Contents for a tobuy list
 	 *
 	 * @example
 	 * view.show({
@@ -28,7 +28,7 @@ export default class Template {
 	/**
 	 * Format the contents of an "items left" indicator.
 	 *
-	 * @param {number} activeTodos Number of active todos
+	 * @param {number} activeTodos Number of active tobuys
 	 *
 	 * @returns {!string} Contents for an "items left" indicator
 	 */

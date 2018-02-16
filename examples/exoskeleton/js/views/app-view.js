@@ -22,47 +22,47 @@ var app = app || {};
 
 		// Instead of generating a new element, bind to the existing skeleton of
 		// the App already present in the HTML.
-		el: '#todoapp',
+		el: '#tobuyapp',
 
 		// Our template for the line of statistics at the bottom of the app.
 		statsTemplate: microtemplate(document.querySelector('#stats-template').innerHTML),
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
-			'keypress #new-todo': 'createOnEnter',
+			'keypress #new-tobuy': 'createOnEnter',
 			'click #clear-completed': 'clearCompleted',
 			'click #toggle-all': 'toggleAllComplete'
 		},
 
 		// At initialization we bind to the relevant events on the `Todos`
 		// collection, when items are added or changed. Kick things off by
-		// loading any preexisting todos that might be saved in *localStorage*.
+		// loading any preexisting tobuys that might be saved in *localStorage*.
 		initialize: function () {
 			this.allCheckbox = this.$('#toggle-all').item(0);
-			this.input = this.$('#new-todo').item(0);
+			this.input = this.$('#new-tobuy').item(0);
 			this.footer = this.$('#footer').item(0);
 			this.main = this.$('#main').item(0);
 
-			this.listenTo(app.todos, 'add', this.addOne);
-			this.listenTo(app.todos, 'reset', this.addAll);
-			this.listenTo(app.todos, 'change:completed', this.filterOne);
-			this.listenTo(app.todos, 'filter', this.filterAll);
-			this.listenTo(app.todos, 'all', this.render);
+			this.listenTo(app.tobuys, 'add', this.addOne);
+			this.listenTo(app.tobuys, 'reset', this.addAll);
+			this.listenTo(app.tobuys, 'change:completed', this.filterOne);
+			this.listenTo(app.tobuys, 'filter', this.filterAll);
+			this.listenTo(app.tobuys, 'all', this.render);
 
 			// Suppresses 'add' events with {reset: true} and prevents the app view
 			// from being re-rendered for every model. Only renders when the 'reset'
 			// event is triggered at the end of the fetch.
-			app.todos.fetch({reset: true});
+			app.tobuys.fetch({reset: true});
 		},
 
 		// Re-rendering the App just means refreshing the statistics -- the rest
 		// of the app doesn't change.
 		render: function () {
-			var completed = app.todos.completed().length;
-			var remaining = app.todos.remaining().length;
+			var completed = app.tobuys.completed().length;
+			var remaining = app.tobuys.remaining().length;
 			var selector = '[href="#/' + (app.TodoFilter || '') + '"]';
 
-			if (app.todos.length) {
+			if (app.tobuys.length) {
 				// TODO
 				toggleEl(this.main, true);
 				toggleEl(this.footer, true);
@@ -87,32 +87,32 @@ var app = app || {};
 			this.allCheckbox.checked = !remaining;
 		},
 
-		// Add a single todo item to the list by creating a view for it, and
+		// Add a single tobuy item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
-		addOne: function (todo) {
-			var view = new app.TodoView({ model: todo });
-			document.querySelector('#todo-list').appendChild(view.render().el);
+		addOne: function (tobuy) {
+			var view = new app.TodoView({ model: tobuy });
+			document.querySelector('#tobuy-list').appendChild(view.render().el);
 		},
 
 		// Add all items in the **Todos** collection at once.
 		addAll: function () {
-			this.$('#todo-list').item(0).innerHTML = '';
-			app.todos.forEach(this.addOne, this);
+			this.$('#tobuy-list').item(0).innerHTML = '';
+			app.tobuys.forEach(this.addOne, this);
 		},
 
-		filterOne: function (todo) {
-			todo.trigger('visible');
+		filterOne: function (tobuy) {
+			tobuy.trigger('visible');
 		},
 
 		filterAll: function () {
-			app.todos.forEach(this.filterOne, this);
+			app.tobuys.forEach(this.filterOne, this);
 		},
 
 		// Generate the attributes for a new Todo item.
 		newAttributes: function () {
 			return {
 				title: this.input.value.trim(),
-				order: app.todos.nextOrder(),
+				order: app.tobuys.nextOrder(),
 				completed: false
 			};
 		},
@@ -124,14 +124,14 @@ var app = app || {};
 				return;
 			}
 
-			app.todos.create(this.newAttributes());
+			app.tobuys.create(this.newAttributes());
 			this.input.value = '';
 		},
 
-		// Clear all completed todo items, destroying their models.
+		// Clear all completed tobuy items, destroying their models.
 		clearCompleted: function () {
-			app.todos.completed().forEach(function (todo) {
-				todo.destroy();
+			app.tobuys.completed().forEach(function (tobuy) {
+				tobuy.destroy();
 			});
 			return false;
 		},
@@ -139,8 +139,8 @@ var app = app || {};
 		toggleAllComplete: function () {
 			var completed = this.allCheckbox.checked;
 
-			app.todos.forEach(function (todo) {
-				todo.save({
+			app.tobuys.forEach(function (tobuy) {
+				tobuy.save({
 					'completed': completed
 				});
 			});

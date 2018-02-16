@@ -85,7 +85,7 @@
 	/**
 	 * Displays a counter of how many to dos are left to complete
 	 *
-	 * @param {number} activeTodos The number of active todos.
+	 * @param {number} activeTodos The number of active tobuys.
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.itemCounter = function (activeTodos) {
@@ -97,7 +97,7 @@
 	/**
 	 * Updates the text within the "Clear completed" button
 	 *
-	 * @param  {[type]} completedTodos The number of completed todos.
+	 * @param  {[type]} completedTodos The number of completed tobuys.
 	 * @returns {string} String containing the count
 	 */
 	Template.prototype.clearCompletedButton = function (completedTodos) {

@@ -1,4 +1,4 @@
-# Humble + GopherJS • [TodoMVC](http://todomvc.com)
+# Humble + GopherJS • [TodoMVC](http://tobuymvc.com)
 
 > Humble is a collection of loosely-coupled tools designed to build client-side
 > and hybrid web applications using GopherJS, which compiles Go code to
@@ -36,7 +36,7 @@ The following Humble packages are used:
 
 - [router](https://github.com/go-humble/router) for handling the `/active` and
 	`/completed` routes.
-- [locstor](https://github.com/go-humble/locstor) for saving todos to
+- [locstor](https://github.com/go-humble/locstor) for saving tobuys to
 	localStorage.
 - [temple](https://github.com/go-humble/temple) for managing Go templates and
 	packaging them so they can run in the browser.

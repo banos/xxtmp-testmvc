@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 	repo: Ember.inject.service(),
 	tagName: 'li',
 	editing: false,
-	classNameBindings: ['todo.completed', 'editing'],
+	classNameBindings: ['tobuy.completed', 'editing'],
 
 	actions: {
 		startEditing() {
@@ -13,12 +13,12 @@ export default Ember.Component.extend({
 			Ember.run.scheduleOnce('afterRender', this, 'focusInput');
 		},
 
-		doneEditing(todoTitle) {
+		doneEditing(tobuyTitle) {
 			if (!this.get('editing')) { return; }
-			if (Ember.isBlank(todoTitle)) {
+			if (Ember.isBlank(tobuyTitle)) {
 				this.send('removeTodo');
 			} else {
-				this.set('todo.title', todoTitle.trim());
+				this.set('tobuy.title', tobuyTitle.trim());
 				this.set('editing', false);
 				this.get('onEndEdit')();
 			}
@@ -33,13 +33,13 @@ export default Ember.Component.extend({
 		},
 
 		toggleCompleted(e) {
-			let todo = this.get('todo');
-			Ember.set(todo, 'completed', e.target.checked);
+			let tobuy = this.get('tobuy');
+			Ember.set(tobuy, 'completed', e.target.checked);
 			this.get('repo').persist();
 		},
 
 		removeTodo() {
-			this.get('repo').delete(this.get('todo'));
+			this.get('repo').delete(this.get('tobuy'));
 		}
 	},
 

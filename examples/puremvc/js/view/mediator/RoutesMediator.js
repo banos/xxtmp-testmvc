@@ -2,10 +2,10 @@
  * @author Cliff Hall
  *
  * @class RoutesMediator
- * @link https://github.com/PureMVC/puremvc-js-demo-todomvc.git
+ * @link https://github.com/PureMVC/puremvc-js-demo-tobuymvc.git
  */
 puremvc.define({
-		name: 'todomvc.view.mediator.RoutesMediator',
+		name: 'tobuymvc.view.mediator.RoutesMediator',
 		parent: puremvc.Mediator
 	},
 
@@ -17,8 +17,8 @@ puremvc.define({
 		// setup the routes when mediator is registered
 		onRegister: function() {
 
-			var todoProxy    = this.facade.retrieveProxy( todomvc.model.proxy.TodoProxy.NAME ),
-				defaultRoute = this.getRouteForFilter( todoProxy.filter ),
+			var tobuyProxy    = this.facade.retrieveProxy( tobuymvc.model.proxy.TodoProxy.NAME ),
+				defaultRoute = this.getRouteForFilter( tobuyProxy.filter ),
 				options      = { resource:this, notfound:this.handleFilterAll },
 				routes       = {
 					'/':            this.handleFilterAll,
@@ -33,15 +33,15 @@ puremvc.define({
 		getRouteForFilter: function( filter ) {
 			var route;
 			switch (filter) {
-				case todomvc.AppConstants.FILTER_ALL:
+				case tobuymvc.AppConstants.FILTER_ALL:
 					route = '/';
 					break;
 
-				case todomvc.AppConstants.FILTER_ACTIVE:
+				case tobuymvc.AppConstants.FILTER_ACTIVE:
 					route = '/active';
 					break;
 
-				case todomvc.AppConstants.FILTER_COMPLETED:
+				case tobuymvc.AppConstants.FILTER_COMPLETED:
 					route = '/completed';
 					break;
 			}
@@ -50,15 +50,15 @@ puremvc.define({
 
 		// route handlers
 		handleFilterAll: function () {
-			this.resource.facade.sendNotification( todomvc.AppConstants.FILTER_TODOS, todomvc.AppConstants.FILTER_ALL );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_ALL );
 		},
 
 		handleFilterActive: function () {
-			this.resource.facade.sendNotification( todomvc.AppConstants.FILTER_TODOS, todomvc.AppConstants.FILTER_ACTIVE );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_ACTIVE );
 		},
 
 		handleFilterCompleted: function () {
-			this.resource.facade.sendNotification( todomvc.AppConstants.FILTER_TODOS, todomvc.AppConstants.FILTER_COMPLETED );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_COMPLETED );
 		},
 
 	 },

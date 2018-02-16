@@ -1,23 +1,23 @@
-<section class="todoapp">
+<section class="tobuyapp">
 	<header class="header">
-		<h1>todos</h1>
-		<input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()">
+		<h1>tobuys</h1>
+		<input class="new-tobuy" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()">
 	</header>
-	<section class="main" *ngIf="todoStore.todos.length > 0">
-		<input class="toggle-all" type="checkbox" *ngIf="todoStore.todos.length" #toggleall [checked]="todoStore.allCompleted()" (click)="todoStore.setAllTo(toggleall.checked)">
-		<ul class="todo-list">
-			<li *ngFor="#todo of todoStore.todos" [class.completed]="todo.completed" [class.editing]="todo.editing">
+	<section class="main" *ngIf="tobuyStore.tobuys.length > 0">
+		<input class="toggle-all" type="checkbox" *ngIf="tobuyStore.tobuys.length" #toggleall [checked]="tobuyStore.allCompleted()" (click)="tobuyStore.setAllTo(toggleall.checked)">
+		<ul class="tobuy-list">
+			<li *ngFor="#tobuy of tobuyStore.tobuys" [class.completed]="tobuy.completed" [class.editing]="tobuy.editing">
 				<div class="view">
-					<input class="toggle" type="checkbox" (click)="toggleCompletion(todo)" [checked]="todo.completed">
-					<label (dblclick)="editTodo(todo)">{{todo.title}}</label>
-					<button class="destroy" (click)="remove(todo)"></button>
+					<input class="toggle" type="checkbox" (click)="toggleCompletion(tobuy)" [checked]="tobuy.completed">
+					<label (dblclick)="editTodo(tobuy)">{{tobuy.title}}</label>
+					<button class="destroy" (click)="remove(tobuy)"></button>
 				</div>
-				<input class="edit" *ngIf="todo.editing" [value]="todo.title" #editedtodo (blur)="stopEditing(todo, editedtodo.value)" (keyup.enter)="updateEditingTodo(todo, editedtodo.value)" (keyup.escape)="cancelEditingTodo(todo)">
+				<input class="edit" *ngIf="tobuy.editing" [value]="tobuy.title" #editedtobuy (blur)="stopEditing(tobuy, editedtobuy.value)" (keyup.enter)="updateEditingTodo(tobuy, editedtobuy.value)" (keyup.escape)="cancelEditingTodo(tobuy)">
 			</li>
 		</ul>
 	</section>
-	<footer class="footer" *ngIf="todoStore.todos.length > 0">
-		<span class="todo-count"><strong>{{todoStore.getRemaining().length}}</strong> {{todoStore.getRemaining().length == 1 ? 'item' : 'items'}} left</span>
-		<button class="clear-completed" *ngIf="todoStore.getCompleted().length > 0" (click)="removeCompleted()">Clear completed</button>
+	<footer class="footer" *ngIf="tobuyStore.tobuys.length > 0">
+		<span class="tobuy-count"><strong>{{tobuyStore.getRemaining().length}}</strong> {{tobuyStore.getRemaining().length == 1 ? 'item' : 'items'}} left</span>
+		<button class="clear-completed" *ngIf="tobuyStore.getCompleted().length > 0" (click)="removeCompleted()">Clear completed</button>
 	</footer>
 </section>

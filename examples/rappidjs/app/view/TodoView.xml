@@ -1,5 +1,5 @@
 <ui:View xmlns="http://www.w3.org/1999/xhtml"
-		 xmlns:js="js.core" xmlns:ui="js.ui" componentClass="{todo.status()}">
+		 xmlns:js="js.core" xmlns:ui="js.ui" componentClass="{tobuy.status()}">
 	<js:Script>
 		<![CDATA[
 		(function () {
@@ -12,7 +12,7 @@
 					editing: false
 				},
 
-				$classAttributes: ['todo', 'inputElement'],
+				$classAttributes: ['tobuy', 'inputElement'],
 
 				events: ['remove'],
 
@@ -26,10 +26,10 @@
 				},
 
 				checkTodo: function () {
-					var todo = this.get('todo');
+					var tobuy = this.get('tobuy');
 
-					todo.setCompleted(!todo.isCompleted());
-					todo.save();
+					tobuy.setCompleted(!tobuy.isCompleted());
+					tobuy.save();
 				},
 
 				preventEditing: function (e) {
@@ -37,22 +37,22 @@
 				},
 
 				updateTodo: function (e) {
-					var todo;
+					var tobuy;
 
 					if (e.domEvent.keyCode === ENTER_KEY || e.domEvent.type === 'blur') {
-						todo = this.get('todo');
+						tobuy = this.get('tobuy');
 
-						if (todo.hasTitle()) {
+						if (tobuy.hasTitle()) {
 							this.set('editing', false);
-							todo.save();
+							tobuy.save();
 						} else {
-							this.trigger('remove', todo);
+							this.trigger('remove', tobuy);
 						}
 					}
 				},
 
 				triggerOnRemove: function () {
-					this.trigger('remove', this.get('todo'));
+					this.trigger('remove', this.get('tobuy'));
 				},
 
 				_renderEditing: function (editing) {
@@ -77,11 +77,11 @@
 	<js:Template name="layout">
 			<div class="view">
 				<input class="toggle" type="checkbox" onclick="checkTodo" ondblclick="preventEditing"
-					   checked="{todo.completed}"/>
-				<label ondblclick="editTodo">{todo.title}</label>
+					   checked="{tobuy.completed}"/>
+				<label ondblclick="editTodo">{tobuy.title}</label>
 				<button class="destroy" onclick="triggerOnRemove"/>
 			</div>
-			<input class="edit" cid="inputElement" type="text" value="{{todo.title|trim()}}"
+			<input class="edit" cid="inputElement" type="text" value="{{tobuy.title|trim()}}"
 				   onkeyup="updateTodo" onblur="updateTodo" updateOnEvent="change"/>
 	</js:Template>
 </ui:View>

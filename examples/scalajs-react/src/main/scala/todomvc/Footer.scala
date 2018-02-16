@@ -1,4 +1,4 @@
-package todomvc
+package tobuymvc
 
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.prefix_<^._
@@ -35,7 +35,7 @@ object Footer {
       <.footer(
         ^.className := "footer",
         <.span(
-          ^.className := "todo-count",
+          ^.className := "tobuy-count",
           <.strong(P.activeCount),
           s" ${if (P.activeCount == 1) "item" else "items"} left"
         ),

@@ -2,21 +2,21 @@
 
 /**
  * The main controller for the app. The controller:
- * - retrieves and persists the model via the todoStorage service
+ * - retrieves and persists the model via the tobuyStorage service
  * - exposes the model to the template and provides event handlers
  */
-angular.module('todomvc')
+angular.module('tobuymvc')
 	.controller('TodoCtrl', function TodoCtrl($scope, $routeParams, $filter, store) {
 		'use strict';
 
-		var todos = $scope.todos = store.todos;
+		var tobuys = $scope.tobuys = store.tobuys;
 
 		$scope.newTodo = '';
 		$scope.editedTodo = null;
 
-		$scope.$watch('todos', function () {
-			$scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
-			$scope.completedCount = todos.length - $scope.remainingCount;
+		$scope.$watch('tobuys', function () {
+			$scope.remainingCount = $filter('filter')(tobuys, { completed: false }).length;
+			$scope.completedCount = tobuys.length - $scope.remainingCount;
 			$scope.allChecked = !$scope.remainingCount;
 		}, true);
 
@@ -48,13 +48,13 @@ angular.module('todomvc')
 				});
 		};
 
-		$scope.editTodo = function (todo) {
-			$scope.editedTodo = todo;
-			// Clone the original todo to restore it on demand.
-			$scope.originalTodo = angular.extend({}, todo);
+		$scope.editTodo = function (tobuy) {
+			$scope.editedTodo = tobuy;
+			// Clone the original tobuy to restore it on demand.
+			$scope.originalTodo = angular.extend({}, tobuy);
 		};
 
-		$scope.saveEdits = function (todo, event) {
+		$scope.saveEdits = function (tobuy, event) {
 			// Blur events are automatically triggered after the form submit event.
 			// This does some unfortunate logic handling to prevent saving twice.
 			if (event === 'blur' && $scope.saveEvent === 'submit') {
@@ -70,44 +70,44 @@ angular.module('todomvc')
 				return;
 			}
 
-			todo.title = todo.title.trim();
+			tobuy.title = tobuy.title.trim();
 
-			if (todo.title === $scope.originalTodo.title) {
+			if (tobuy.title === $scope.originalTodo.title) {
 				$scope.editedTodo = null;
 				return;
 			}
 
-			store[todo.title ? 'put' : 'delete'](todo)
+			store[tobuy.title ? 'put' : 'delete'](tobuy)
 				.then(function success() {}, function error() {
-					todo.title = $scope.originalTodo.title;
+					tobuy.title = $scope.originalTodo.title;
 				})
 				.finally(function () {
 					$scope.editedTodo = null;
 				});
 		};
 
-		$scope.revertEdits = function (todo) {
-			todos[todos.indexOf(todo)] = $scope.originalTodo;
+		$scope.revertEdits = function (tobuy) {
+			tobuys[tobuys.indexOf(tobuy)] = $scope.originalTodo;
 			$scope.editedTodo = null;
 			$scope.originalTodo = null;
 			$scope.reverted = true;
 		};
 
-		$scope.removeTodo = function (todo) {
-			store.delete(todo);
+		$scope.removeTodo = function (tobuy) {
+			store.delete(tobuy);
 		};
 
-		$scope.saveTodo = function (todo) {
-			store.put(todo);
+		$scope.saveTodo = function (tobuy) {
+			store.put(tobuy);
 		};
 
-		$scope.toggleCompleted = function (todo, completed) {
+		$scope.toggleCompleted = function (tobuy, completed) {
 			if (angular.isDefined(completed)) {
-				todo.completed = completed;
+				tobuy.completed = completed;
 			}
-			store.put(todo, todos.indexOf(todo))
+			store.put(tobuy, tobuys.indexOf(tobuy))
 				.then(function success() {}, function error() {
-					todo.completed = !todo.completed;
+					tobuy.completed = !tobuy.completed;
 				});
 		};
 
@@ -116,9 +116,9 @@ angular.module('todomvc')
 		};
 
 		$scope.markAll = function (completed) {
-			todos.forEach(function (todo) {
-				if (todo.completed !== completed) {
-					$scope.toggleCompleted(todo, completed);
+			tobuys.forEach(function (tobuy) {
+				if (tobuy.completed !== completed) {
+					$scope.toggleCompleted(tobuy, completed);
 				}
 			});
 		};

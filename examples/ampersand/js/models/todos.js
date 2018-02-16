@@ -3,8 +3,8 @@
 var Collection = require('ampersand-collection');
 var SubCollection = require('ampersand-subcollection');
 var debounce = require('debounce');
-var Todo = require('./todo');
-var STORAGE_KEY = 'todos-ampersand';
+var Todo = require('./tobuy');
+var STORAGE_KEY = 'tobuys-ampersand';
 
 
 module.exports = Collection.extend({
@@ -14,7 +14,7 @@ module.exports = Collection.extend({
 		this.readFromLocalStorage();
 
 		// This is what we'll actually render
-		// it's a subcollection of the whole todo collection
+		// it's a subcollection of the whole tobuy collection
 		// that we'll add/remove filters to accordingly.
 		this.subset = new SubCollection(this);
 
@@ -31,14 +31,14 @@ module.exports = Collection.extend({
 		this.on('all', this.writeToLocalStorage, this);
 	},
 	getCompletedCount: function () {
-		return this.reduce(function (total, todo) {
-			return todo.completed ? ++total : total;
+		return this.reduce(function (total, tobuy) {
+			return tobuy.completed ? ++total : total;
 		}, 0);
 	},
 	// Helper for removing all completed items
 	clearCompleted: function () {
-		var toRemove = this.filter(function (todo) {
-			return todo.completed;
+		var toRemove = this.filter(function (tobuy) {
+			return tobuy.completed;
 		});
 		this.remove(toRemove);
 	},

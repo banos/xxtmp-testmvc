@@ -14,8 +14,8 @@
 			"url": "examples/typescript-angular"
 		}, {
 			"name": "Google Cloud Platform + Express",
-			"url": "http://gcloud-todos.appspot.com",
-			"source_url": "https://github.com/GoogleCloudPlatform/gcloud-node-todos",
+			"url": "http://gcloud-tobuys.appspot.com",
+			"source_url": "https://github.com/GoogleCloudPlatform/gcloud-node-tobuys",
 			"type": "backend"
 		}, {
 			"name": "Angular2",
@@ -187,7 +187,7 @@
 			"heading": "Overview",
 			"links": [{
 				"name": "Libraries",
-				"url": "https://github.com/tastejs/todomvc/blob/gh-pages/examples/atmajs/readme.md"
+				"url": "https://github.com/tastejs/tobuymvc/blob/gh-pages/examples/atmajs/readme.md"
 			}]
 		}, {
 			"heading": "Community",
@@ -1122,7 +1122,7 @@
 			"heading": "Articles and Guides",
 			"links": [{
 				"name": "TodoMVC: a reactive version",
-				"url": "https://ocsigen.github.io/blog/2015/10/07/react-example-todomvc/"
+				"url": "https://ocsigen.github.io/blog/2015/10/07/react-example-tobuymvc/"
 			}]
 		}]
 	},
@@ -1390,7 +1390,7 @@
 		"homepage": "meteor.com",
 		"examples": [{
 			"name": "Real-time Example",
-			"url": "http://todomvcapp.meteor.com",
+			"url": "http://tobuymvcapp.meteor.com",
 			"source_url": "examples/meteor"
 		}],
 		"link_groups": [{
@@ -1695,7 +1695,7 @@
 				"url": "http://facebook.github.io/react/support.html"
 			}, {
 				"name": "Flux architecture example",
-				"url": "https://github.com/facebook/flux/tree/master/examples/flux-todomvc"
+				"url": "https://github.com/facebook/flux/tree/master/examples/flux-tobuymvc"
 			}]
 		}, {
 			"heading": "Community",
@@ -1898,7 +1898,7 @@
 			"type": "backend",
 			"name": "This TodoMVC application",
 			"url": "examples/binding-scala",
-			"source_url": "https://github.com/ThoughtWorksInc/todo"
+			"source_url": "https://github.com/ThoughtWorksInc/tobuy"
 		}, {
 			"type": "backend",
 			"name": "Other live DEMOs",
@@ -2077,7 +2077,7 @@
 			"heading": "Official Resources",
 			"links": [{
 				"name": "TODOs Application (latest)",
-				"url": "https://github.com/troopjs/troopjs-todos"
+				"url": "https://github.com/troopjs/troopjs-tobuys"
 			}, {
 				"name": "TroopJS on GitHub",
 				"url": "https://github.com/troopjs"
@@ -2267,6 +2267,6 @@
 		}]
 	},
 	"templates": {
-		"todomvc": "<header> <h3><%= name %></h3> <span class=\"source-links\"> <% if (typeof examples !== 'undefined') { %> <% examples.forEach(function (example) { %> <h5><%= example.name %></h5> <% if (!location.href.match(example.url + '/')) { %> <a class=\"demo-link\" data-type=\"<%= example.type === 'backend' ? 'external' : 'local' %>\" href=\"<%= example.url %>\">Demo</a>, <% } if (example.type === 'backend') { %><a href=\"<%= example.source_url %>\"><% } else { %><a href=\"https://github.com/tastejs/todomvc/tree/gh-pages/<%= example.source_url ? example.source_url : example.url %>\"><% } %>Source</a> <% }); %> <% } %> </span> </header> <hr> <blockquote class=\"quote speech-bubble\"> <p><%= description %></p> <footer> <a href=\"http://<%= homepage %>\"><%= name %></a> </footer> </blockquote> <% if (typeof link_groups !== 'undefined') { %> <hr> <% link_groups.forEach(function (link_group) { %> <h4><%= link_group.heading %></h4> <ul> <% link_group.links.forEach(function (link) { %> <li> <a href=\"<%= link.url %>\"><%= link.name %></a> </li> <% }); %> </ul> <% }); %> <% } %> <footer> <hr> <em>If you have other helpful links to share, or find any of the links above no longer work, please <a href=\"https://github.com/tastejs/todomvc/issues\">let us know</a>.</em> </footer>"
+		"tobuymvc": "<header> <h3><%= name %></h3> <span class=\"source-links\"> <% if (typeof examples !== 'undefined') { %> <% examples.forEach(function (example) { %> <h5><%= example.name %></h5> <% if (!location.href.match(example.url + '/')) { %> <a class=\"demo-link\" data-type=\"<%= example.type === 'backend' ? 'external' : 'local' %>\" href=\"<%= example.url %>\">Demo</a>, <% } if (example.type === 'backend') { %><a href=\"<%= example.source_url %>\"><% } else { %><a href=\"https://github.com/tastejs/tobuymvc/tree/gh-pages/<%= example.source_url ? example.source_url : example.url %>\"><% } %>Source</a> <% }); %> <% } %> </span> </header> <hr> <blockquote class=\"quote speech-bubble\"> <p><%= description %></p> <footer> <a href=\"http://<%= homepage %>\"><%= name %></a> </footer> </blockquote> <% if (typeof link_groups !== 'undefined') { %> <hr> <% link_groups.forEach(function (link_group) { %> <h4><%= link_group.heading %></h4> <ul> <% link_group.links.forEach(function (link) { %> <li> <a href=\"<%= link.url %>\"><%= link.name %></a> </li> <% }); %> </ul> <% }); %> <% } %> <footer> <hr> <em>If you have other helpful links to share, or find any of the links above no longer work, please <a href=\"https://github.com/tastejs/tobuymvc/issues\">let us know</a>.</em> </footer>"
 	}
 }

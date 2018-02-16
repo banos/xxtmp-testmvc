@@ -1,4 +1,4 @@
-package com.todo.client;
+package com.tobuy.client;
 
 import java.util.Date;
 
@@ -16,9 +16,9 @@ import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
-import com.todo.client.events.ToDoEvent;
-import com.todo.client.events.ToDoRemovedEvent;
-import com.todo.client.events.ToDoUpdatedEvent;
+import com.tobuy.client.events.ToDoEvent;
+import com.tobuy.client.events.ToDoRemovedEvent;
+import com.tobuy.client.events.ToDoUpdatedEvent;
 
 /**
  * A cell that renders {@link ToDoItem} instances. This cell is rendered in both view and edit modes
