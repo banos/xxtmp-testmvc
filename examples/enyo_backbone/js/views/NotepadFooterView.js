@@ -1,7 +1,7 @@
 ﻿/*jshint strict:false */
 /*global enyo:false */
 enyo.kind({
-	name: 'ToDo.NotepadFooterView',
+	name: 'ToBuy.NotepadFooterView',
 	tag: 'footer',
 	id: 'footer',
 	showing: false,
@@ -56,7 +56,7 @@ enyo.kind({
 		kind: 'enyo.Button',
 		name: 'clear-completed',
 		id: 'clear-completed',
-		controller: 'ToDo.notepadcontroller',
+		controller: 'ToBuy.notepadcontroller',
 		showing: false,
 		handlers: {
 			ontap: 'clearCompleted'

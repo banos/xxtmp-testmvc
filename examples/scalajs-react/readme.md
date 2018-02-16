@@ -1,4 +1,4 @@
-# Scalajs-React TodoMVC Example
+# Scalajs-React TobuyMVC Example
 
 > Lifts Facebook's [React](https://facebook.github.io/react/) library into 
 > [Scala.js](http://www.scala-js.org/) and endeavours to make it as type-safe 
@@ -38,7 +38,7 @@ Here are some links you may find helpful:
 * [React on GitHub](https://github.com/facebook/react)
 * [Support](http://facebook.github.io/react/support.html)
 
-More links under the other React TodoMVC examples: [React example](../react) 
+More links under the other React TobuyMVC examples: [React example](../react) 
 and [React-Backbone example](../react-backbone)
 
 

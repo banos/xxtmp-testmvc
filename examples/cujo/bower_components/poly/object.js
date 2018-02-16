@@ -52,7 +52,7 @@
  * IE missing enum properties fixes copied from kangax:
  * https://github.com/kangax/protolicious/blob/master/experimental/object.for_in.js
  *
- * TODO: fix Object#propertyIsEnumerable for IE's non-enumerable props to match Object.keys()
+ * TOBUY: fix Object#propertyIsEnumerable for IE's non-enumerable props to match Object.keys()
  */
 define(['./lib/_base'], function (base) {
 "use strict";
@@ -80,7 +80,7 @@ define(['./lib/_base'], function (base) {
 		return true;
 	}());
 
-	// TODO: this still doesn't work for IE6-8 since object.constructor && object.constructor.prototype are clobbered/replaced when using `new` on a constructor that has a prototype. srsly.
+	// TOBUY: this still doesn't work for IE6-8 since object.constructor && object.constructor.prototype are clobbered/replaced when using `new` on a constructor that has a prototype. srsly.
 	// devs will have to do the following if they want this to work in IE6-8:
 	// Ctor.prototype.constructor = Ctor
 	getPrototypeOf = has__proto__

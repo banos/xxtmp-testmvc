@@ -29,27 +29,27 @@ define(function () {
 		 * @param tobuy {Object} data used to create new tobuy
 		 * @param tobuy.text {String} text of the tobuy
 		 */
-		createTodo: function () {},
+		createTobuy: function () {},
 
 		/**
 		 * Remove an existing tobuy
 		 * @injected
 		 * @param tobuy {Object} existing tobuy, or object with same identifier, to remove
 		 */
-		removeTodo: function () {},
+		removeTobuy: function () {},
 
 		/**
 		 * Update an existing tobuy
 		 * @injected
 		 * @param tobuy {Object} updated tobuy
 		 */
-		updateTodo: function () {},
+		updateTobuy: function () {},
 
 		/**
 		 * Start inline editing a tobuy
 		 * @param node {Node} Dom node of the tobuy
 		 */
-		beginEditTodo: function (node) {
+		beginEditTobuy: function (node) {
 			this.querySelector('.edit', node).focus();
 		},
 
@@ -57,13 +57,13 @@ define(function () {
 		 * Finish editing a tobuy
 		 * @param tobuy {Object} tobuy to finish editing and save changes
 		 */
-		endEditTodo: function (tobuy) {
+		endEditTobuy: function (tobuy) {
 			// As per application spec, tobuys edited to have empty
 			// text should be removed.
 			if (/\S/.test(tobuy.text)) {
-				this.updateTodo(tobuy);
+				this.updateTobuy(tobuy);
 			} else {
-				this.removeTodo(tobuy);
+				this.removeTobuy(tobuy);
 			}
 		},
 

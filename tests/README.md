@@ -1,9 +1,9 @@
-# TodoMVC Browser Tests
+# TobuyMVC Browser Tests
 
-The TodoMVC project has a great many implementations of exactly the same app using different MV* frameworks. Each app should be functionally identical. The goal of these tests is to provide a fully automated browser-based test that can be used to ensure that the specification is being followed by each and every TodoMVC app.
+The TobuyMVC project has a great many implementations of exactly the same app using different MV* frameworks. Each app should be functionally identical. The goal of these tests is to provide a fully automated browser-based test that can be used to ensure that the specification is being followed by each and every TobuyMVC app.
 
 
-## Todo
+## Tobuy
 
 - [ ] Complete the test implementation (27 out of 28 are now complete). The only test that I am struggling with is to test that the delete button becomes visible on hover.
 - [ ] Make it work with PhantomJS. In practice, Phantom is only a little bit faster, but it should work. Currently there are a few Phantom specific failures.
@@ -26,13 +26,13 @@ You need to run a local server for the tests. Start the test server using:
 $ gulp test-server
 ```
 
-To run the tests for all TodoMVC implementations, run the following:
+To run the tests for all TobuyMVC implementations, run the following:
 
 ```sh
 $ npm run test
 ```
 
-In order to run tests for a single TodoMVC implementation, supply a framework argument as follows:
+In order to run tests for a single TobuyMVC implementation, supply a framework argument as follows:
 
 ```sh
 $ npm run test -- --framework=angularjs
@@ -45,7 +45,7 @@ In order to run a specific test, use the mocha 'grep' function. For example:
 ```
 $ npm run test -- --framework=jquery --grep 'should trim entered text'
 
-  TodoMVC - jquery
+  TobuyMVC - jquery
     Editing
       ✓ should trim entered text (1115ms)
 
@@ -68,7 +68,7 @@ Valid browser names can be found within webdriver via the `webdriver.Browser` en
 
 ## Reporting against known issues
 
-The `knownIssues.js` file details the currently known issues with the TodoMVC implementations. You can run the tests and compare against these issues using the `mocha-known-issues-reporter`:
+The `knownIssues.js` file details the currently known issues with the TobuyMVC implementations. You can run the tests and compare against these issues using the `mocha-known-issues-reporter`:
 
 ```sh
 $ npm run test -- --reporter=mocha-known-issues-reporter
@@ -82,19 +82,19 @@ An example output with the known issues reporter is shown below:
 $ npm run test -- --reporter=mocha-known-issues-reporter --framework=jquery
 ...
 Running "simplemocha:files" (simplemocha) task
-(1 of 27) pass: TodoMVC - jquery, No Todos, should hide #main and #footer
+(1 of 27) pass: TobuyMVC - jquery, No Tobuys, should hide #main and #footer
 [...]
-(17 of 27) pass: TodoMVC - jquery, Editing, should remove the item if an empty text string was entered
-(18 of 27) known issue: TodoMVC - jquery, Editing, should cancel edits on escape -- error: undefined
-(19 of 27) pass: TodoMVC - jquery, Counter, should display the current number of tobuy items
-(20 of 27) pass: TodoMVC - jquery, Clear completed button, should display the number of completed items
-(21 of 27) pass: TodoMVC - jquery, Clear completed button, should remove completed items when clicked
-(22 of 27) pass: TodoMVC - jquery, Clear completed button, should be hidden when there are no items that are completed
-(23 of 27) pass: TodoMVC - jquery, Persistence, should persist its data
-(24 of 27) known issue: TodoMVC - jquery, Routing, should allow me to display active items -- error: Cannot call method 'click' of undefined
-(25 of 27) known issue: TodoMVC - jquery, Routing, should allow me to display completed items -- error: Cannot call method 'click' of undefined
-(26 of 27) known issue: TodoMVC - jquery, Routing, should allow me to display all items -- error: Cannot call method 'click' of undefined
-(27 of 27) known issue: TodoMVC - jquery, Routing, should highlight the currently applied filter -- error: Cannot call method 'getAttribute' of undefined
+(17 of 27) pass: TobuyMVC - jquery, Editing, should remove the item if an empty text string was entered
+(18 of 27) known issue: TobuyMVC - jquery, Editing, should cancel edits on escape -- error: undefined
+(19 of 27) pass: TobuyMVC - jquery, Counter, should display the current number of tobuy items
+(20 of 27) pass: TobuyMVC - jquery, Clear completed button, should display the number of completed items
+(21 of 27) pass: TobuyMVC - jquery, Clear completed button, should remove completed items when clicked
+(22 of 27) pass: TobuyMVC - jquery, Clear completed button, should be hidden when there are no items that are completed
+(23 of 27) pass: TobuyMVC - jquery, Persistence, should persist its data
+(24 of 27) known issue: TobuyMVC - jquery, Routing, should allow me to display active items -- error: Cannot call method 'click' of undefined
+(25 of 27) known issue: TobuyMVC - jquery, Routing, should allow me to display completed items -- error: Cannot call method 'click' of undefined
+(26 of 27) known issue: TobuyMVC - jquery, Routing, should allow me to display all items -- error: Cannot call method 'click' of undefined
+(27 of 27) known issue: TobuyMVC - jquery, Routing, should highlight the currently applied filter -- error: Cannot call method 'getAttribute' of undefined
 
 passed: 22/27
 failed: 5/27
@@ -112,10 +112,10 @@ A test run with the 'spec' reporter looks something like the following:
 $ npm run test -- --framework=angularjs
 
   angularjs
-    TodoMVC
-      No Todos
+    TobuyMVC
+      No Tobuys
         ✓ should hide #main and #footer (201ms)
-      New Todo
+      New Tobuy
         ✓ should allow me to add tobuy items (548ms)
         ✓ should clear text input field when an item is added (306ms)
         ✓ should trim text input (569ms)
@@ -168,7 +168,7 @@ Before each test, all the tobuy items are checked as completed and the 'clear co
 
 ## Lax mode
 
-There are certain implementations (e.g. GWT and Dojo) where the constraints of the framework mean that it is not possible to match exactly the HTML specification for TodoMVC. In these cases, the tests can be run in a 'lax' mode where the XPath queries used to locate DOM elements are more general. For example, rather than looking for a checkbox `input` element with a class of `toggle`, in lax mode it simply looks for any `input` elements of type `checkbox`. To run the tests in lax mode, simply use the `--laxMode` argument:
+There are certain implementations (e.g. GWT and Dojo) where the constraints of the framework mean that it is not possible to match exactly the HTML specification for TobuyMVC. In these cases, the tests can be run in a 'lax' mode where the XPath queries used to locate DOM elements are more general. For example, rather than looking for a checkbox `input` element with a class of `toggle`, in lax mode it simply looks for any `input` elements of type `checkbox`. To run the tests in lax mode, simply use the `--laxMode` argument:
 
 
 ```sh
@@ -180,10 +180,10 @@ $ npm run test -- --laxMode
 
 Very briefly, the tests are designed as follows:
 
-- `page.js` - provides an abstraction layer for the HTML template. All the code required to access elements from the DOM is found within this file. The XPaths used to locate elements are based on the TodoMVC specification, using the required element classes / ids.
+- `page.js` - provides an abstraction layer for the HTML template. All the code required to access elements from the DOM is found within this file. The XPaths used to locate elements are based on the TobuyMVC specification, using the required element classes / ids.
 - `pageLaxMode.js` - extends the above in order to relax the XPath constraints.
 - `testOperations.js` - provides common assertions and operations.
-- `test.js` - Erm … the tests! These are written to closely match the TodoMVC spec.
+- `test.js` - Erm … the tests! These are written to closely match the TobuyMVC spec.
 - `allTest.js` - A simple file that locates all of the framework examples, and runs the tests for each.
 
 **NOTE:** All of the WebdriverJS methods return promises and are executed asynchronously. However, you do not have to 'chain' them using `then`, they are instead automagically added to a queue, then executed. This means that if you add non-WebdriverJS operations (asserts, log messages) these will not be executed at the point you might expect. This is why `TestOperations.js` uses an explicit `then` each time it asserts.

@@ -14,7 +14,7 @@ export default class Store {
 		/**
 		 * @type {ItemList}
 		 */
-		let liveTodos;
+		let liveTobuys;
 
 		/**
 		 * Read the local ItemList from localStorage.
@@ -22,7 +22,7 @@ export default class Store {
 		 * @returns {ItemList} Current array of tobuys
 		 */
 		this.getLocalStorage = () => {
-			return liveTodos || JSON.parse(localStorage.getItem(name) || '[]');
+			return liveTobuys || JSON.parse(localStorage.getItem(name) || '[]');
 		};
 
 		/**
@@ -31,7 +31,7 @@ export default class Store {
 		 * @param {ItemList} tobuys Array of tobuys to write
 		 */
 		this.setLocalStorage = (tobuys) => {
-			localStorage.setItem(name, JSON.stringify(liveTodos = tobuys));
+			localStorage.setItem(name, JSON.stringify(liveTobuys = tobuys));
 		};
 
 		if (callback) {

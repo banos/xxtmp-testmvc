@@ -41,7 +41,7 @@ function(when, propertiesKey, byProperty) {
 			options.on = defaultOn;
 		}
 
-		// TODO: Extend syntax for identifier and comparator
+		// TOBUY: Extend syntax for identifier and comparator
 		// to allow more fields, and more complex expressions
 		identifier = options.identifier;
 		options.identifier = typeof identifier == 'string' || Array.isArray(identifier)

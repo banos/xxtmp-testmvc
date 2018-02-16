@@ -1,7 +1,7 @@
 (function (define) {
 define(function (require, exports) {
 
-	// TODO: use has() to select code to use node.classList / DOMSettableTokenList
+	// TOBUY: use has() to select code to use node.classList / DOMSettableTokenList
 
 	var splitClassNameRx = /\s+/;
 

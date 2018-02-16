@@ -1,4 +1,4 @@
-# Elm TodoMVC Example
+# Elm TobuyMVC Example
 
 > A functional language for interactive applications
 
@@ -28,7 +28,7 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Project Structure
 
-All of the Elm code lives in `Todo.elm` and `Todo/Task.elm` and relies
+All of the Elm code lives in `Tobuy.elm` and `Tobuy/Task.elm` and relies
 on the [elm-html][] and [elm-navigation][] packages.
 
 [elm-html]: http://package.elm-lang.org/packages/elm-lang/html/latest/
@@ -46,11 +46,11 @@ Run the following commands from the root of this project:
 
 ```bash
 elm-package install -y
-elm-make Todo.elm --output build/elm.js
+elm-make Tobuy.elm --output build/elm.js
 ```
 
 Then open `index.html` in your browser!
 
 ## Credit
 
-This TodoMVC application was created by [@evancz](https://github.com/evancz), and imported into TasteJS by [@passy](https://twitter.com/passy).
+This TobuyMVC application was created by [@evancz](https://github.com/evancz), and imported into TasteJS by [@passy](https://twitter.com/passy).

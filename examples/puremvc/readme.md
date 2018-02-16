@@ -1,4 +1,4 @@
-# PureMVC TodoMVC Example
+# PureMVC TobuyMVC Example
 
 > PureMVC is a lightweight framework for creating applications based upon the classic Model, View and Controller concept.
 
@@ -36,4 +36,4 @@ The pseudo-classes are written in PureMVC's optional built-in style.
 
 ## Credit
 
-This TodoMVC application was created by Mike Britton and Cliff Hall.
+This TobuyMVC application was created by Mike Britton and Cliff Hall.

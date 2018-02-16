@@ -1,4 +1,4 @@
-# soma.js TodoMVC App
+# soma.js TobuyMVC App
 
 This is a tobuy app built using [soma.js](http://somajs.github.io/somajs/).
 

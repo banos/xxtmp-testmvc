@@ -9,12 +9,12 @@ import 'package:angular/angular.dart';
 	selector: '[tobuy-focus]',
 	map: const {'tobuy-focus': '@tobuyFocus'}
 )
-class TodoDOMEventDirective {
+class TobuyDOMEventDirective {
 	final Map<int, Function> listeners = {};
 	final dom.Element element;
 	final Scope scope;
 
-	TodoDOMEventDirective(this.element, this.scope);
+	TobuyDOMEventDirective(this.element, this.scope);
 
 	void initHandler(stream, value, [bool predicate(event)]) {
 		final int key = stream.hashCode;

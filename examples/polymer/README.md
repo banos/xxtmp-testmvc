@@ -1,4 +1,4 @@
-# Polymer TodoMVC Example
+# Polymer TobuyMVC Example
 
 > Polymer is a new type of library for the web, built on top of Web Components, and designed to leverage the evolving web platform on modern browsers.
 
@@ -21,7 +21,7 @@ Get help from Polymer devs and users:
 
 ## Implementation
 
-The Polymer implementation of TodoMVC has a few key differences with other implementations:
+The Polymer implementation of TobuyMVC has a few key differences with other implementations:
 
 * [Web Components](http://w3c.github.io/webcomponents/explainer/) allow you to create new HTML elements that are reusable, composable, and encapsulated.
 * Non-visual elements such as the router and the model are also implemented as custom elements and appear in the DOM. Implementing them as custom elements instead of plain objects allows you to take advantage of Polymer's data binding and event handling throughout the app.

@@ -1,4 +1,4 @@
-# CanJS TodoMVC Example
+# CanJS TobuyMVC Example
 
 > CanJS is a MIT-licensed, client-side, JavaScript framework that makes building rich web applications easy.
 
@@ -27,17 +27,17 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Implementation
 
-The CanJS TodoMVC example uses [can.Component](http://canjs.com/guides/Components.html) introduced in CanJS 2.0.
+The CanJS TobuyMVC example uses [can.Component](http://canjs.com/guides/Components.html) introduced in CanJS 2.0.
 can.Component supports declarative view bindings using Mustache/Handlebars as the template syntax.
 
 Version 2 is mostly backwards compatible with previous 1.1.x version. For alternative architecture examples have a look at
-the [TodoMVC 1.2.0 CanJS example](https://github.com/tastejs/tobuymvc/tree/1.2.0/architecture-examples/canjs).
+the [TobuyMVC 1.2.0 CanJS example](https://github.com/tastejs/tobuymvc/tree/1.2.0/architecture-examples/canjs).
 
 ### CanJS and JavaScriptMVC
 
 CanJS is the extracted, more modern and more library-like MVC parts of [JavaScriptMVC](http://javascriptmvc.com), formerly known as jQueryMX.
 
-JavaScriptMVC 3.3 uses CanJS for the MVC structure so this TodoMVC example applies to JavaScriptMVC as well.
+JavaScriptMVC 3.3 uses CanJS for the MVC structure so this TobuyMVC example applies to JavaScriptMVC as well.
 
 Additionally, JavaScriptMVC contains:
 

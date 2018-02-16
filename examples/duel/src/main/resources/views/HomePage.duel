@@ -3,14 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>DUEL • TodoMVC</title>
+	<title>DUEL • TobuyMVC</title>
 	<link rel="stylesheet" href="/css/styles.merge">
 </head>
 <body>
 	<footer class="info">
 		<p>Double-click to edit a tobuy</p>
 		<p>Ported to <a href="http://duelengine.org">DUEL</a> by <a href="http://mck.me">Stephen McKamey</a></p>
-		<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+		<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 	</footer>
 	<script src="/js/scripts.merge"></script>
 </body>

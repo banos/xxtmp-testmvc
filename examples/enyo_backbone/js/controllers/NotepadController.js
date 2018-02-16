@@ -6,11 +6,11 @@ var ENTER_KEY = 13;
 var ESC_KEY = 27;
 // The global controller for this app.
 enyo.kind({
-	name: 'ToDo.NotepadController',
+	name: 'ToBuy.NotepadController',
 	// Tells enyo this is a subclass of CollectionController and should inherit it's properties/methods
 	kind: 'enyo.CollectionController',
 	// Bind to this collection
-	collection: 'ToDo.TaskCollection',
+	collection: 'ToBuy.TaskCollection',
 	// Automatically load the collection into the controller without a custom load function
 	autoLoad: true,
 	// Enyo automatically creates get/set and an event listener for published properties

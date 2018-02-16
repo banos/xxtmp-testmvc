@@ -44,7 +44,7 @@ define(function () {
 				if (api.isBefore()) {
 					// cancel if we get another "collect" event
 					if ('collect' == type) {
-						// TODO: how do we notify the system why we canceled?
+						// TOBUY: how do we notify the system why we canceled?
 						// queue an "error" event?
 						api.cancel();
 					}

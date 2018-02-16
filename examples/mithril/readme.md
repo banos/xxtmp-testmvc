@@ -1,4 +1,4 @@
-# Mithril TodoMVC Example
+# Mithril TobuyMVC Example
 
 > [Mithril](https://mithril.js.org/) is a modern client-side Javascript framework for building Single Page Applications. It's small (< 8kb gzip), fast and provides routing and XHR utilities out of the box.
 
@@ -15,4 +15,4 @@ Here are some links you may find helpful:
 _If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/tobuymvc/issues)._
 
 ## Credit
-This TodoMVC application was created by [taylorhakes](https://github.com/taylorhakes).
+This TobuyMVC application was created by [taylorhakes](https://github.com/taylorhakes).

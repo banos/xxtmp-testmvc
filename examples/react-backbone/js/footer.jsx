@@ -11,9 +11,9 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	app.TodoFooter = React.createClass({
+	app.TobuyFooter = React.createClass({
 		render: function () {
-			var activeTodoWord = this.props.count === 1 ? 'item' : 'items';
+			var activeTobuyWord = this.props.count === 1 ? 'item' : 'items';
 			var clearButton = null;
 
 			if (this.props.completedCount > 0) {
@@ -30,13 +30,13 @@ var app = app || {};
 			return (
 				<footer className="footer">
 					<span className="tobuy-count">
-						<strong>{this.props.count}</strong> {activeTodoWord} left
+						<strong>{this.props.count}</strong> {activeTobuyWord} left
 					</span>
 					<ul className="filters">
 						<li>
 							<a
 								href="#/"
-								className={classNames({selected: nowShowing === app.ALL_TODOS})}>
+								className={classNames({selected: nowShowing === app.ALL_TOBUYS})}>
 									All
 							</a>
 						</li>
@@ -44,7 +44,7 @@ var app = app || {};
 						<li>
 							<a
 								href="#/active"
-								className={classNames({selected: nowShowing === app.ACTIVE_TODOS})}>
+								className={classNames({selected: nowShowing === app.ACTIVE_TOBUYS})}>
 									Active
 							</a>
 						</li>
@@ -52,7 +52,7 @@ var app = app || {};
 						<li>
 							<a
 								href="#/completed"
-								className={classNames({selected: nowShowing === app.COMPLETED_TODOS})}>
+								className={classNames({selected: nowShowing === app.COMPLETED_TOBUYS})}>
 									Completed
 							</a>
 						</li>

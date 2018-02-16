@@ -7,22 +7,22 @@
 'use strict';
 
 var State = require('ampersand-state');
-var Todos = require('./tobuys');
+var Tobuys = require('./tobuys');
 
 
 module.exports = State.extend({
 	initialize: function () {
 		// Listen to changes to the tobuys collection that will
 		// affect lengths we want to calculate.
-		this.listenTo(this.tobuys, 'change:completed add remove', this.handleTodosUpdate);
+		this.listenTo(this.tobuys, 'change:completed add remove', this.handleTobuysUpdate);
 		// We also want to calculate these values once on init
-		this.handleTodosUpdate();
+		this.handleTobuysUpdate();
 		// Listen for changes to `mode` so we can update
 		// the collection mode.
 		this.listenTo(this, 'change:mode', this.handleModeChange);
 	},
 	collections: {
-		tobuys: Todos
+		tobuys: Tobuys
 	},
 	// We used only session properties here because there's
 	// no API or persistance layer for these in this app.
@@ -69,7 +69,7 @@ module.exports = State.extend({
 	// tracking. We set them as session properties
 	// so they're easy to listen to and bind to DOM
 	// where needed.
-	handleTodosUpdate: function () {
+	handleTobuysUpdate: function () {
 		var total = this.tobuys.length;
 		// use a method we defined on the collection itself
 		// to count how many tobuys are completed

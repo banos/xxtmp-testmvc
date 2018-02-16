@@ -4,13 +4,13 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
-import { TodoStoreService } from './services/tobuy-store.service';
+import { TobuyStoreService } from './services/tobuy-store.service';
 import {
 	AppComponent,
-	TodoListComponent,
-	TodoFooterComponent,
-	TodoHeaderComponent,
-	TodoItemComponent
+	TobuyListComponent,
+	TobuyFooterComponent,
+	TobuyHeaderComponent,
+	TobuyItemComponent
 } from './components';
 import { TrimPipe } from './pipes';
 import { routes } from './routes';
@@ -19,10 +19,10 @@ import { routes } from './routes';
 	bootstrap: [AppComponent],
 	declarations: [
 		AppComponent,
-		TodoListComponent,
-		TodoFooterComponent,
-		TodoHeaderComponent,
-		TodoItemComponent,
+		TobuyListComponent,
+		TobuyFooterComponent,
+		TobuyHeaderComponent,
+		TobuyItemComponent,
 		TrimPipe
 	],
 	imports: [
@@ -34,7 +34,7 @@ import { routes } from './routes';
 		})
 	],
 	providers: [
-		TodoStoreService
+		TobuyStoreService
 	]
 })
 export class MainModule {}

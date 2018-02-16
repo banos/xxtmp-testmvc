@@ -396,8 +396,8 @@
 	 */
 	function errorWatcher (link, wait, eb) {
 		if (hasEvent['error']) return;
-		// TODO: figure out a method to test for stylesheet failure without risk of re-fetching
-		// TODO: timeout?
+		// TOBUY: figure out a method to test for stylesheet failure without risk of re-fetching
+		// TOBUY: timeout?
 	}
 
 	/**

@@ -1,4 +1,4 @@
-# Aria Templates TodoMVC Example
+# Aria Templates TobuyMVC Example
 
 > Aria Templates (aka AT) is an application framework written in JavaScript for building rich and large-scaled enterprise web applications.
 

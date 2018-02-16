@@ -12,7 +12,7 @@
 	oRootView = sap.ui.view({
 		type: sap.ui.core.mvc.ViewType.JS,
 		id: 'tobuyView',
-		viewName: 'tobuy.Todo'
+		viewName: 'tobuy.Tobuy'
 	});
 
 	oRootView.placeAt('main');

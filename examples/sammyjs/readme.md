@@ -1,4 +1,4 @@
-# Sammy.js TodoMVC Example
+# Sammy.js TobuyMVC Example
 
 > A small web framework with class.
 
@@ -31,4 +31,4 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Credit
 
-This TodoMVC application was created by [Stephen Sawchuk](https://github.com/stephenplusplus).
+This TobuyMVC application was created by [Stephen Sawchuk](https://github.com/stephenplusplus).

@@ -17,7 +17,7 @@ define(function(require) {
 		// the intended behavior.
 		add: 1, // data == item added
 		remove: 1, // data == item removed
-		target: 1, // data == item targeted TODO: rename this to "point"?
+		target: 1, // data == item targeted TOBUY: rename this to "point"?
 		// multi-item events
 		select: 1, // select an item (data == item)
 		unselect: 1, // deselect an item (data == item)

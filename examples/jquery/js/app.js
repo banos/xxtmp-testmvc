@@ -64,21 +64,21 @@ jQuery(function ($) {
 				.on('click', '.destroy', this.destroy.bind(this));
 		},
 		render: function () {
-			var tobuys = this.getFilteredTodos();
+			var tobuys = this.getFilteredTobuys();
 			$('#tobuy-list').html(this.tobuyTemplate(tobuys));
 			$('#main').toggle(tobuys.length > 0);
-			$('#toggle-all').prop('checked', this.getActiveTodos().length === 0);
+			$('#toggle-all').prop('checked', this.getActiveTobuys().length === 0);
 			this.renderFooter();
 			$('#new-tobuy').focus();
 			util.store('tobuys-jquery', this.tobuys);
 		},
 		renderFooter: function () {
 			var tobuyCount = this.tobuys.length;
-			var activeTodoCount = this.getActiveTodos().length;
+			var activeTobuyCount = this.getActiveTobuys().length;
 			var template = this.footerTemplate({
-				activeTodoCount: activeTodoCount,
-				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
-				completedTodos: tobuyCount - activeTodoCount,
+				activeTobuyCount: activeTobuyCount,
+				activeTobuyWord: util.pluralize(activeTobuyCount, 'item'),
+				completedTobuys: tobuyCount - activeTobuyCount,
 				filter: this.filter
 			});
 
@@ -93,29 +93,29 @@ jQuery(function ($) {
 
 			this.render();
 		},
-		getActiveTodos: function () {
+		getActiveTobuys: function () {
 			return this.tobuys.filter(function (tobuy) {
 				return !tobuy.completed;
 			});
 		},
-		getCompletedTodos: function () {
+		getCompletedTobuys: function () {
 			return this.tobuys.filter(function (tobuy) {
 				return tobuy.completed;
 			});
 		},
-		getFilteredTodos: function () {
+		getFilteredTobuys: function () {
 			if (this.filter === 'active') {
-				return this.getActiveTodos();
+				return this.getActiveTobuys();
 			}
 
 			if (this.filter === 'completed') {
-				return this.getCompletedTodos();
+				return this.getCompletedTobuys();
 			}
 
 			return this.tobuys;
 		},
 		destroyCompleted: function () {
-			this.tobuys = this.getActiveTodos();
+			this.tobuys = this.getActiveTobuys();
 			this.filter = 'all';
 			this.render();
 		},

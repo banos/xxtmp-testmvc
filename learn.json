@@ -1121,7 +1121,7 @@
 		}, {
 			"heading": "Articles and Guides",
 			"links": [{
-				"name": "TodoMVC: a reactive version",
+				"name": "TobuyMVC: a reactive version",
 				"url": "https://ocsigen.github.io/blog/2015/10/07/react-example-tobuymvc/"
 			}]
 		}]
@@ -1892,11 +1892,11 @@
 	},
 	"binding-scala": {
 		"name": "Binding.scala",
-		"description": "Binding.scala is a Reactive Web Frameworks that helps you create complicated interactive web pages with very simple code base. <br/>This Binding.scala's TodoMVC application has the least code size among all the TodoMVC implementations, only one source file, 154 lines of code!",
+		"description": "Binding.scala is a Reactive Web Frameworks that helps you create complicated interactive web pages with very simple code base. <br/>This Binding.scala's TobuyMVC application has the least code size among all the TobuyMVC implementations, only one source file, 154 lines of code!",
 		"homepage": "github.com/ThoughtWorksInc/Binding.scala",
 		"examples": [{
 			"type": "backend",
-			"name": "This TodoMVC application",
+			"name": "This TobuyMVC application",
 			"url": "examples/binding-scala",
 			"source_url": "https://github.com/ThoughtWorksInc/tobuy"
 		}, {
@@ -2076,7 +2076,7 @@
 		"link_groups": [{
 			"heading": "Official Resources",
 			"links": [{
-				"name": "TODOs Application (latest)",
+				"name": "TOBUYs Application (latest)",
 				"url": "https://github.com/troopjs/troopjs-tobuys"
 			}, {
 				"name": "TroopJS on GitHub",

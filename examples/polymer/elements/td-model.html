@@ -4,7 +4,7 @@
 <dom-module id="td-model">
 	<template strip-whitespace>
 		<iron-localstorage name="tobuys-polymer" value="{{items}}"
-				on-iron-localstorage-load-empty="_initializeDefaultTodos"></iron-localstorage>
+				on-iron-localstorage-load-empty="_initializeDefaultTobuys"></iron-localstorage>
 	</template>
 	<script>
 		(function () {
@@ -27,7 +27,7 @@
 					}
 				},
 
-				_initializeDefaultTodos: function () {
+				_initializeDefaultTobuys: function () {
 					this.items = [];
 				},
 

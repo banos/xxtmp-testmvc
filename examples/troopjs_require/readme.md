@@ -1,4 +1,4 @@
-# TroopJS • [TodoMVC](http://tobuymvc.com)
+# TroopJS • [TobuyMVC](http://tobuymvc.com)
 
 > The minimalist anti-framework that does as little as possible, then stays out of the way.
 

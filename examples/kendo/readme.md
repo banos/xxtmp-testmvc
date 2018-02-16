@@ -1,4 +1,4 @@
-# Kendo UI TodoMVC Example
+# Kendo UI TobuyMVC Example
 
 > Comprehensive HTML5/JavaScript framework for modern web and mobile app development.
 

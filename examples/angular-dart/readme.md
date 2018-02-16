@@ -1,4 +1,4 @@
-# AngularDart TodoMVC Example
+# AngularDart TobuyMVC Example
 
 > AngularDart is heavily inspired by AngularJS and is supercharged for Dart.
 > Core Angular features such as directives, data binding, and dependency

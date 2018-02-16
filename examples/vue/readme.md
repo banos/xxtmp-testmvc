@@ -1,4 +1,4 @@
-# Vue.js TodoMVC Example
+# Vue.js TobuyMVC Example
 
 > Vue.js is a library for building interactive web interfaces.
 It provides data-driven, nestable view components with a simple and flexible API.
@@ -26,4 +26,4 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Credit
 
-This TodoMVC application was created by [Evan You](http://evanyou.me).
+This TobuyMVC application was created by [Evan You](http://evanyou.me).

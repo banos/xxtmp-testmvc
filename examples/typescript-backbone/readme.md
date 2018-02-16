@@ -1,4 +1,4 @@
-# TypeScript & Backbone.js TodoMVC Example
+# TypeScript & Backbone.js TobuyMVC Example
 
 > TypeScript is a language for application-scale JavaScript development. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open Source.
 

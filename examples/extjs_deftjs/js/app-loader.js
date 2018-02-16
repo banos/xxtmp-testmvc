@@ -1,7 +1,7 @@
 Ext.Loader.setConfig({
 	enabled: true,
 	paths: {
-		'TodoDeftJS': 'js'
+		'TobuyDeftJS': 'js'
 	}
 });
 

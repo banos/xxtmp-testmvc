@@ -1,4 +1,4 @@
-# Spine.js TodoMVC Example
+# Spine.js TobuyMVC Example
 
 > Build Awesome JavaScript MVC Applications.
 
@@ -49,4 +49,4 @@ To compile on save
 
 ## Credit
 
-This TodoMVC application was created by [Sindre Sorhus](https://github.com/sindresorhus).
+This TobuyMVC application was created by [Sindre Sorhus](https://github.com/sindresorhus).

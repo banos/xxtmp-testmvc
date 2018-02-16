@@ -1,4 +1,4 @@
-/* The CSS that is common to all TodoMVC implementations, base.css, styles the selected routing filter using the
+/* The CSS that is common to all TobuyMVC implementations, base.css, styles the selected routing filter using the
    following selector:
 
    #filters li a.selected
@@ -15,10 +15,10 @@
 	font-weight: bold;
 }
 
-/* The GWT TodoMVC uses a CellList - a framework widget for rendering a list of cells - to
+/* The GWT TobuyMVC uses a CellList - a framework widget for rendering a list of cells - to
    render the list of tobuy items. Unfortunately the CellList uses a div as its root container
    and wraps each cell in a separate div. There are no extension points that allow you to change this.
-   As a result, this application deviates from the TodoMVC standard of ul / li for the to do list. The
+   As a result, this application deviates from the TobuyMVC standard of ul / li for the to do list. The
    styles applied to the li elements are duplicated here, matching a listItem class instead. */
 
 #tobuy-list .listItem {

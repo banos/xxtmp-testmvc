@@ -1,6 +1,6 @@
 <span class="tobuy-count">
-	<strong>{{ len .Todos.Remaining }}</strong>
-	item{{ if ne (len .Todos.Remaining) 1}}s{{end}} left
+	<strong>{{ len .Tobuys.Remaining }}</strong>
+	item{{ if ne (len .Tobuys.Remaining) 1}}s{{end}} left
 </span>
 <ul class="filters">
 	<li>
@@ -14,6 +14,6 @@
 	</li>
 </ul>
 
-<button class="clear-completed {{ if eq (len .Todos.Completed) 0}}hidden{{ end }}">
+<button class="clear-completed {{ if eq (len .Tobuys.Completed) 0}}hidden{{ end }}">
 	Clear completed
 </button>

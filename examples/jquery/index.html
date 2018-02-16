@@ -2,7 +2,7 @@
 <html lang="en" data-framework="jquery">
 	<head>
 		<meta charset="utf-8">
-		<title>jQuery • TodoMVC</title>
+		<title>jQuery • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 		<link rel="stylesheet" href="css/app.css">
@@ -23,7 +23,7 @@
 		<footer id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script id="tobuy-template" type="text/x-handlebars-template">
 			{{#this}}
@@ -38,7 +38,7 @@
 		{{/this}}
 		</script>
 		<script id="footer-template" type="text/x-handlebars-template">
-			<span id="tobuy-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
+			<span id="tobuy-count"><strong>{{activeTobuyCount}}</strong> {{activeTobuyWord}} left</span>
 			<ul id="filters">
 				<li>
 					<a {{#eq filter 'all'}}class="selected"{{/eq}} href="#/all">All</a>
@@ -50,7 +50,7 @@
 					<a {{#eq filter 'completed'}}class="selected"{{/eq}}href="#/completed">Completed</a>
 				</li>
 			</ul>
-			{{#if completedTodos}}<button id="clear-completed">Clear completed</button>{{/if}}
+			{{#if completedTobuys}}<button id="clear-completed">Clear completed</button>{{/if}}
 		</script>
 		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/jquery/dist/jquery.js"></script>

@@ -8,7 +8,7 @@
 	var displayModeCompleted = 'completed';
 
 	// represent a single tobuy item
-	function Todo(title, completed) {
+	function Tobuy(title, completed) {
 		this.title = wx.property(title);
 		this.completed = wx.property(completed);
 		this.editing = wx.property(false);
@@ -16,9 +16,9 @@
 
 	// our main view model
 	var ViewModel = function (tobuys) {
-		// map array of passed in tobuys to an observableArray of Todo objects
+		// map array of passed in tobuys to an observableArray of Tobuy objects
 		this.tobuys = wx.list(tobuys.map(function (tobuy) {
-			return new Todo(tobuy.title, tobuy.completed);
+			return new Tobuy(tobuy.title, tobuy.completed);
 		}));
 
 		// we want to get notified of changes to any of the tobuys contained in the list
@@ -31,7 +31,7 @@
 
 		// create a live-filtered projection of the tobuys collection that will update
 		// when its source (this.tobuys) or any of its items changes or when when "showMode" changes
-		this.filteredTodos = this.tobuys.project(function (tobuy) {
+		this.filteredTobuys = this.tobuys.project(function (tobuy) {
 			switch (this.showMode()) {
 				case displayModeActive:
 					return !tobuy.completed();
@@ -47,7 +47,7 @@
 			var current = this.current().trim();
 
 			if (current) {
-				this.tobuys.push(new Todo(current));
+				this.tobuys.push(new Tobuy(current));
 				this.current('');
 			}
 		}, this);

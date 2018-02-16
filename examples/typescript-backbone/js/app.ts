@@ -1,5 +1,5 @@
 /* ---------------------------------------------------------------------------------------
-Todos.ts
+Tobuys.ts
 Microsoft grants you the right to use these script files under the Apache 2.0 license.
 Microsoft reserves all other rights to the files not expressly granted by Microsoft,
 whether by implication, estoppel or otherwise. The copyright notices and MIT licenses
@@ -37,7 +37,7 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 --------------------------------------------------------------------------------------- */
-// Todos.js
+// Tobuys.js
 // https://github.com/documentcloud/backbone/blob/master/examples/tobuys/tobuys.js
 
 // An example Backbone application contributed by
@@ -47,7 +47,7 @@ DEALINGS IN THE SOFTWARE.
 
 declare var $: any;
 
-// TODO: Use DefinitelyTyped rather than ad-hoc definition here
+// TOBUY: Use DefinitelyTyped rather than ad-hoc definition here
 declare module Backbone {
 	export class Model {
 		constructor (attr? , opts? );
@@ -104,11 +104,11 @@ declare var _: any;
 declare var Store: any;
 
 
-// Todo Model
+// Tobuy Model
 // ----------
 
-// Our basic **Todo** model has `title`, `order`, and `completed` attributes.
-class Todo extends Backbone.Model {
+// Our basic **Tobuy** model has `title`, `order`, and `completed` attributes.
+class Tobuy extends Backbone.Model {
 
 	// Default attributes for the tobuy.
 	defaults() {
@@ -130,29 +130,29 @@ class Todo extends Backbone.Model {
 		this.save({ completed: !this.get('completed') });
 	}
 
-	// Remove this Todo from *localStorage* and delete its view.
+	// Remove this Tobuy from *localStorage* and delete its view.
 	clear() {
 		this.destroy();
 	}
 
 }
 
-// Todo Collection
+// Tobuy Collection
 // ---------------
 
 // The collection of tobuys is backed by *localStorage* instead of a remote
 // server.
-class TodoList extends Backbone.Collection {
+class TobuyList extends Backbone.Collection {
 
 	// Reference to this collection's model.
-	model = Todo;
+	model = Tobuy;
 
 	// Save all of the tobuy items under the `'tobuys'` namespace.
 	localStorage = new Store('tobuys-typescript-backbone');
 
 	// Filter down the list of all tobuy items that are completed.
 	completed() {
-		return this.filter((tobuy: Todo) => tobuy.get('completed'));
+		return this.filter((tobuy: Tobuy) => tobuy.get('completed'));
 	}
 
 	// Filter down the list to only tobuy items that are still not completed.
@@ -160,37 +160,37 @@ class TodoList extends Backbone.Collection {
 		return this.without.apply(this, this.completed());
 	}
 
-	// We keep the Todos in sequential order, despite being saved by unordered
+	// We keep the Tobuys in sequential order, despite being saved by unordered
 	// GUID in the database. This generates the next order number for new items.
 	nextOrder() {
 		if (!length) return 1;
 		return this.last().get('order') + 1;
 	}
 
-	// Todos are sorted by their original insertion order.
-	comparator(tobuy: Todo) {
+	// Tobuys are sorted by their original insertion order.
+	comparator(tobuy: Tobuy) {
 		return tobuy.get('order');
 	}
 
 }
 
-// Create our global collection of **Todos**.
-const Todos = new TodoList();
+// Create our global collection of **Tobuys**.
+const Tobuys = new TobuyList();
 var taskFilter;
 
-// Todo Item View
+// Tobuy Item View
 // --------------
 
 // The DOM element for a tobuy item...
-class TodoView extends Backbone.View {
+class TobuyView extends Backbone.View {
 
-	// The TodoView listens for changes to its model, re-rendering. Since there's
-	// a one-to-one correspondence between a **Todo** and a **TodoView** in this
+	// The TobuyView listens for changes to its model, re-rendering. Since there's
+	// a one-to-one correspondence between a **Tobuy** and a **TobuyView** in this
 	// app, we set a direct reference on the model for convenience.
 	template: (data: any) => string;
 
-	// A TodoView model must be a Todo, redeclare with specific type
-	model: Todo;
+	// A TobuyView model must be a Tobuy, redeclare with specific type
+	model: Tobuy;
 	input: any;
 
 	static ENTER_KEY:number = 13;
@@ -265,13 +265,13 @@ class TodoView extends Backbone.View {
 
 	// If you hit `enter`, we're through editing the item.
 	updateOnEnter(e) {
-		if (e.which === TodoView.ENTER_KEY) this.close();
+		if (e.which === TobuyView.ENTER_KEY) this.close();
 	}
 
 	// If you're pressing `escape` we revert your change by simply leaving
 	// the `editing` state.
 	revertOnEscape(e) {
-		if (e.which === TodoView.ESC_KEY) {
+		if (e.which === TobuyView.ESC_KEY) {
 			this.$el.removeClass('editing');
 			// Also reset the hidden input back to the original value.
 			this.input.val(this.model.get('title'));
@@ -285,10 +285,10 @@ class TodoView extends Backbone.View {
 
 }
 
-// Todo Router
+// Tobuy Router
 // -----------
 
-class TodoRouter extends Backbone.Router {
+class TobuyRouter extends Backbone.Router {
 
 	routes = {
 		'*filter': 'setFilter'
@@ -301,8 +301,8 @@ class TodoRouter extends Backbone.Router {
 
 	setFilter(param: string = '') {
 		// Trigger a collection filter event, causing hiding/unhiding
-		// of Todo view items
-		Todos.trigger('filter', param);
+		// of Tobuy view items
+		Tobuys.trigger('filter', param);
 	}
 }
 
@@ -332,7 +332,7 @@ class AppView extends Backbone.View {
 		// the App already present in the HTML.
 		this.setElement($('.tobuyapp'), true);
 
-		// At initialization we bind to the relevant events on the `Todos`
+		// At initialization we bind to the relevant events on the `Tobuys`
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting tobuys that might be saved in *localStorage*.
 		_.bindAll(this, 'addOne', 'addAll', 'render', 'toggleAllComplete', 'filter');
@@ -343,30 +343,30 @@ class AppView extends Backbone.View {
 		this.footerElement = this.$('.footer')[0];
 		this.statsTemplate = _.template($('#stats-template').html());
 
-		Todos.bind('add', this.addOne);
-		Todos.bind('reset', this.addAll);
-		Todos.bind('all', this.render);
-		Todos.bind('change:completed', this.filterOne);
-		Todos.bind('filter', this.filter);
-		Todos.fetch();
+		Tobuys.bind('add', this.addOne);
+		Tobuys.bind('reset', this.addAll);
+		Tobuys.bind('all', this.render);
+		Tobuys.bind('change:completed', this.filterOne);
+		Tobuys.bind('filter', this.filter);
+		Tobuys.fetch();
 
 		// Initialize the router, showing the selected view
-		const tobuyRouter = new TodoRouter();
+		const tobuyRouter = new TobuyRouter();
 		Backbone.history.start();
 	}
 
 	// Re-rendering the App just means refreshing the statistics -- the rest
 	// of the app doesn't change.
 	render() {
-		var completed = Todos.completed().length;
-		var remaining = Todos.remaining().length;
+		var completed = Tobuys.completed().length;
+		var remaining = Tobuys.remaining().length;
 
-		if (Todos.length) {
+		if (Tobuys.length) {
 			this.mainElement.style.display = 'block';
 			this.footerElement.style.display = 'block';
 
 			this.$('.tobuy-stats').html(this.statsTemplate({
-				total: Todos.length,
+				total: Tobuys.length,
 				completed: completed,
 				remaining: remaining
 			}));
@@ -386,14 +386,14 @@ class AppView extends Backbone.View {
 
 	// Add a single tobuy item to the list by creating a view for it, and
 	// appending its element to the `<ul>`.
-	addOne(tobuy: Todo) {
-		var view = new TodoView({ model: tobuy });
+	addOne(tobuy: Tobuy) {
+		var view = new TobuyView({ model: tobuy });
 		this.$('.tobuy-list').append(view.render().el);
 	}
 
-	// Add all items in the **Todos** collection at once.
+	// Add all items in the **Tobuys** collection at once.
 	addAll() {
-		Todos.each(this.addOne);
+		Tobuys.each(this.addOne);
 	}
 
 	// Filter out completed/remaining tasks
@@ -402,41 +402,41 @@ class AppView extends Backbone.View {
 		this.filterAll();
 	}
 
-	filterOne(tobuy: Todo) {
+	filterOne(tobuy: Tobuy) {
 		tobuy.trigger('visible');
 	}
 
 	filterAll() {
-		Todos.each(this.filterOne);
+		Tobuys.each(this.filterOne);
 	}
 
-	// Generate the attributes for a new Todo item.
+	// Generate the attributes for a new Tobuy item.
 	newAttributes() {
 		return {
 			title: this.input.val().trim(),
-			order: Todos.nextOrder(),
+			order: Tobuys.nextOrder(),
 			completed: false
 		};
 	}
 
-	// If you hit return in the main input field, create new **Todo** model,
+	// If you hit return in the main input field, create new **Tobuy** model,
 	// persisting it to *localStorage*.
 	createOnEnter(e) {
-		if (e.which === TodoView.ENTER_KEY && this.input.val().trim()) {
-			Todos.create(this.newAttributes());
+		if (e.which === TobuyView.ENTER_KEY && this.input.val().trim()) {
+			Tobuys.create(this.newAttributes());
 			this.input.val('');
 		}
 	}
 
 	// Clear all completed tobuy items, destroying their models.
 	clearCompleted() {
-		_.each(Todos.completed(), (tobuy: Todo) => tobuy.clear());
+		_.each(Tobuys.completed(), (tobuy: Tobuy) => tobuy.clear());
 		return false;
 	}
 
 	toggleAllComplete() {
 		var completed = this.allCheckbox.checked;
-		Todos.each((tobuy: Todo) => tobuy.save({ 'completed': completed }));
+		Tobuys.each((tobuy: Tobuy) => tobuy.save({ 'completed': completed }));
 	}
 
 }

@@ -1,4 +1,4 @@
-# Angular 2 • [TodoMVC](http://tobuymvc.com)
+# Angular 2 • [TobuyMVC](http://tobuymvc.com)
 
 > Angular is a development platform for creating applications using modern web standards. Angular includes a wealth of essential features such as mobile gestures, animations, filtering, routing, data binding, security, internationalization, and beautiful UI components. It's extremely modular, lightweight, and easy to learn.
 

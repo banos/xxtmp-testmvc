@@ -4,7 +4,7 @@ scalaVersion in Global := "2.11.8"
 
 lazy val js = project
 
-val indexHtml = taskKey[File]("Generate an index.html that follows TodoMVC's Application Specification")
+val indexHtml = taskKey[File]("Generate an index.html that follows TobuyMVC's Application Specification")
 
 indexHtml := {
   val linkedJs = (scalaJSLinkedFile in js in Compile).value.asInstanceOf[org.scalajs.core.tools.io.FileVirtualJSFile]
@@ -12,7 +12,7 @@ indexHtml := {
     <head>
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <title>Binding.scala • TodoMVC</title>
+      <title>Binding.scala • TobuyMVC</title>
       {
         for {
           file <- (JsEngineKeys.npmNodeModules in Assets).value

@@ -1,4 +1,4 @@
-# jsblocks TodoMVC Example
+# jsblocks TobuyMVC Example
 
  > From simple user interfaces to complex single-page applications using faster, server-side rendered and easy to learn framework
  >

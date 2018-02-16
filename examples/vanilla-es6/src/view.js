@@ -17,7 +17,7 @@ export default class View {
 		this.$clearCompleted = qs('.clear-completed');
 		this.$main = qs('.main');
 		this.$toggleAll = qs('.toggle-all');
-		this.$newTodo = qs('.new-tobuy');
+		this.$newTobuy = qs('.new-tobuy');
 		$delegate(this.$tobuyList, 'li label', 'dblclick', ({target}) => {
 			this.editItem(target);
 		});
@@ -113,8 +113,8 @@ export default class View {
 	/**
 	 * Clear the new tobuy input
 	 */
-	clearNewTodo() {
-		this.$newTodo.value = '';
+	clearNewTobuy() {
+		this.$newTobuy.value = '';
 	}
 
 	/**
@@ -157,7 +157,7 @@ export default class View {
 	 * @param {Function} handler Function called on synthetic event.
 	 */
 	bindAddItem(handler) {
-		$on(this.$newTodo, 'change', ({target}) => {
+		$on(this.$newTobuy, 'change', ({target}) => {
 			const title = target.value.trim();
 			if (title) {
 				handler(title);

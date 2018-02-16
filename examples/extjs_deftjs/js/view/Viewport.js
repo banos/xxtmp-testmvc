@@ -1,9 +1,9 @@
 /**
-* Viewport shell for the TodoDeftJS application.
+* Viewport shell for the TobuyDeftJS application.
 */
-Ext.define('TodoDeftJS.view.Viewport', {
+Ext.define('TobuyDeftJS.view.Viewport', {
 	extend: 'Ext.container.Viewport',
-	requires: ['TodoDeftJS.view.TodoView'],
+	requires: ['TobuyDeftJS.view.TobuyView'],
 
 	initComponent: function () {
 		Ext.applyIf(this, {

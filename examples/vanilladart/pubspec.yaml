@@ -1,5 +1,5 @@
 name: tobuymvc_vanilladart
 version: 1.0.1
-description: TodoMVC built with Dart. Simple, vanilla Dart.
+description: TobuyMVC built with Dart. Simple, vanilla Dart.
 dependencies:
   browser: any

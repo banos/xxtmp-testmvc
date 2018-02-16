@@ -99,7 +99,7 @@ function (when, apply, functional, connection) {
 						// If there's an explicit transform, compose a transform pipeline manually,
 						// Otherwise, let the connection lib do it's thing
 						if(transform) {
-							// TODO: Remove this long form?  It'd simplify the code a lot
+							// TOBUY: Remove this long form?  It'd simplify the code a lot
 							events = splitEventSelectorString(event, selector);
 							method = connections[event];
 							promises.push(createTransformedConnection(events, target[method], wire(transform)));

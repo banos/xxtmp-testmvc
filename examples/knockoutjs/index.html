@@ -2,7 +2,7 @@
 <html lang="en" data-framework="knockoutjs">
 	<head>
 		<meta charset="utf-8">
-		<title>Knockout.js • TodoMVC</title>
+		<title>Knockout.js • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
@@ -15,7 +15,7 @@
 			<section id="main" data-bind="visible: tobuys().length">
 				<input id="toggle-all" data-bind="checked: allCompleted" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
-				<ul id="tobuy-list" data-bind="foreach: filteredTodos">
+				<ul id="tobuy-list" data-bind="foreach: filteredTobuys">
 					<li data-bind="css: { completed: completed, editing: editing }">
 						<div class="view">
 							<input class="toggle" data-bind="checked: completed" type="checkbox">
@@ -48,7 +48,7 @@
 		<footer id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="https://github.com/ashish01/knockoutjs-tobuys">Ashish Sharma</a> and <a href="http://knockmeout.net">Ryan Niemeyer</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/knockout/build/output/knockout-latest.js"></script>

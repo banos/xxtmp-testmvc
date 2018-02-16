@@ -176,11 +176,11 @@ module.exports = function Page(browser) {
 		return this.waitForVisibility(false, this.getFooterSectionCss(), 'Footer is not hidden')
 			.then(this.waitForElement.bind(
 				this, '.new-tobuy, #new-tobuy', 'Could not find new tobuy input field', undefined))
-			.then(function (newTodoElement) {
-				return newTodoElement.getAttribute('id');
+			.then(function (newTobuyElement) {
+				return newTobuyElement.getAttribute('id');
 			})
-			.then(function (newTodoElementId) {
-				if (newTodoElementId === 'new-tobuy') { return; }
+			.then(function (newTobuyElementId) {
+				if (newTobuyElementId === 'new-tobuy') { return; }
 				idSelectors = false;
 				classOrId = idSelectors ? '#' : '.';
 			});

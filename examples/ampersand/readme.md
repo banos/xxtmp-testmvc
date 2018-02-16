@@ -1,4 +1,4 @@
-# Ampersand.js TodoMVC Example
+# Ampersand.js TobuyMVC Example
 
 > A highly modular, loosely coupled, non-frameworky framework for building advanced JavaScript apps.
 
@@ -35,4 +35,4 @@ The app spec says to use bower for dependency management unless it goes against 
 
 ## Credit
 
-This TodoMVC application was created by [@HenrikJoreteg](http://twitter.com/henrikjoreteg), [@LukeKarrys](http://twitter.com/lukekarrys), and [@philip_roberts](https://twitter.com/philip_roberts).
+This TobuyMVC application was created by [@HenrikJoreteg](http://twitter.com/henrikjoreteg), [@LukeKarrys](http://twitter.com/lukekarrys), and [@philip_roberts](https://twitter.com/philip_roberts).

@@ -1,4 +1,4 @@
-# Ractive.js TodoMVC app
+# Ractive.js TobuyMVC app
 
 > Ractive.js solves some of the biggest headaches in web development – data binding, efficient DOM updates, event handling – and does so with almost no learning curve.
 
@@ -27,4 +27,4 @@ It has a number of innovative features: animations, easier event handling, decla
 
 ## Credit
 
-This TodoMVC application was created by [Rich Harris](http://rich-harris.co.uk).
+This TobuyMVC application was created by [Rich Harris](http://rich-harris.co.uk).

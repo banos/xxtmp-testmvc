@@ -2,14 +2,14 @@
 var tobuys;
 (function (tobuys) {
     'use strict';
-    var TodoItem = (function () {
-        function TodoItem(title, completed) {
+    var TobuyItem = (function () {
+        function TobuyItem(title, completed) {
             this.title = title;
             this.completed = completed;
         }
-        return TodoItem;
+        return TobuyItem;
     })();
-    tobuys.TodoItem = TodoItem;
+    tobuys.TobuyItem = TobuyItem;
 })(tobuys || (tobuys = {}));
 /// <reference path='../_all.ts' />
 /// <reference path='../_all.ts' />
@@ -78,21 +78,21 @@ var tobuys;
 (function (tobuys_1) {
     'use strict';
     /**
-     * Services that persists and retrieves TODOs from localStorage.
+     * Services that persists and retrieves TOBUYs from localStorage.
      */
-    var TodoStorage = (function () {
-        function TodoStorage() {
+    var TobuyStorage = (function () {
+        function TobuyStorage() {
             this.STORAGE_ID = 'tobuys-angularjs-typescript';
         }
-        TodoStorage.prototype.get = function () {
+        TobuyStorage.prototype.get = function () {
             return JSON.parse(localStorage.getItem(this.STORAGE_ID) || '[]');
         };
-        TodoStorage.prototype.put = function (tobuys) {
+        TobuyStorage.prototype.put = function (tobuys) {
             localStorage.setItem(this.STORAGE_ID, JSON.stringify(tobuys));
         };
-        return TodoStorage;
+        return TobuyStorage;
     })();
-    tobuys_1.TodoStorage = TodoStorage;
+    tobuys_1.TobuyStorage = TobuyStorage;
 })(tobuys || (tobuys = {}));
 /// <reference path='../_all.ts' />
 var tobuys;
@@ -103,96 +103,96 @@ var tobuys;
      * - retrieves and persists the model via the tobuyStorage service
      * - exposes the model to the template and provides event handlers
      */
-    var TodoCtrl = (function () {
+    var TobuyCtrl = (function () {
         // dependencies are injected via AngularJS $injector
         // controller's name is registered in Application.ts and specified from ng-controller attribute in index.html
-        function TodoCtrl($scope, $location, tobuyStorage, filterFilter) {
+        function TobuyCtrl($scope, $location, tobuyStorage, filterFilter) {
             var _this = this;
             this.$scope = $scope;
             this.$location = $location;
             this.tobuyStorage = tobuyStorage;
             this.filterFilter = filterFilter;
             this.tobuys = $scope.tobuys = tobuyStorage.get();
-            $scope.newTodo = '';
-            $scope.editedTodo = null;
+            $scope.newTobuy = '';
+            $scope.editedTobuy = null;
             // 'vm' stands for 'view model'. We're adding a reference to the controller to the scope
             // for its methods to be accessible from view / HTML
             $scope.vm = this;
             // watching for events/changes in scope, which are caused by view/user input
             // if you subscribe to scope or event with lifetime longer than this controller, make sure you unsubscribe.
-            $scope.$watch('tobuys', function () { return _this.onTodos(); }, true);
+            $scope.$watch('tobuys', function () { return _this.onTobuys(); }, true);
             $scope.$watch('location.path()', function (path) { return _this.onPath(path); });
             if ($location.path() === '')
                 $location.path('/');
             $scope.location = $location;
         }
-        TodoCtrl.prototype.onPath = function (path) {
+        TobuyCtrl.prototype.onPath = function (path) {
             this.$scope.statusFilter = (path === '/active') ?
                 { completed: false } : (path === '/completed') ?
                 { completed: true } : {};
         };
-        TodoCtrl.prototype.onTodos = function () {
+        TobuyCtrl.prototype.onTobuys = function () {
             this.$scope.remainingCount = this.filterFilter(this.tobuys, { completed: false }).length;
             this.$scope.doneCount = this.tobuys.length - this.$scope.remainingCount;
             this.$scope.allChecked = !this.$scope.remainingCount;
             this.tobuyStorage.put(this.tobuys);
         };
-        TodoCtrl.prototype.addTodo = function () {
-            var newTodo = this.$scope.newTodo.trim();
-            if (!newTodo.length) {
+        TobuyCtrl.prototype.addTobuy = function () {
+            var newTobuy = this.$scope.newTobuy.trim();
+            if (!newTobuy.length) {
                 return;
             }
-            this.tobuys.push(new tobuys.TodoItem(newTodo, false));
-            this.$scope.newTodo = '';
+            this.tobuys.push(new tobuys.TobuyItem(newTobuy, false));
+            this.$scope.newTobuy = '';
         };
-        TodoCtrl.prototype.editTodo = function (tobuyItem) {
-            this.$scope.editedTodo = tobuyItem;
+        TobuyCtrl.prototype.editTobuy = function (tobuyItem) {
+            this.$scope.editedTobuy = tobuyItem;
             // Clone the original tobuy in case editing is cancelled.
-            this.$scope.originalTodo = angular.extend({}, tobuyItem);
+            this.$scope.originalTobuy = angular.extend({}, tobuyItem);
         };
-        TodoCtrl.prototype.revertEdits = function (tobuyItem) {
-            this.tobuys[this.tobuys.indexOf(tobuyItem)] = this.$scope.originalTodo;
+        TobuyCtrl.prototype.revertEdits = function (tobuyItem) {
+            this.tobuys[this.tobuys.indexOf(tobuyItem)] = this.$scope.originalTobuy;
             this.$scope.reverted = true;
         };
-        TodoCtrl.prototype.doneEditing = function (tobuyItem) {
-            this.$scope.editedTodo = null;
-            this.$scope.originalTodo = null;
+        TobuyCtrl.prototype.doneEditing = function (tobuyItem) {
+            this.$scope.editedTobuy = null;
+            this.$scope.originalTobuy = null;
             if (this.$scope.reverted) {
-                // Todo edits were reverted, don't save.
+                // Tobuy edits were reverted, don't save.
                 this.$scope.reverted = null;
                 return;
             }
             tobuyItem.title = tobuyItem.title.trim();
             if (!tobuyItem.title) {
-                this.removeTodo(tobuyItem);
+                this.removeTobuy(tobuyItem);
             }
         };
-        TodoCtrl.prototype.removeTodo = function (tobuyItem) {
+        TobuyCtrl.prototype.removeTobuy = function (tobuyItem) {
             this.tobuys.splice(this.tobuys.indexOf(tobuyItem), 1);
         };
-        TodoCtrl.prototype.clearDoneTodos = function () {
+        TobuyCtrl.prototype.clearDoneTobuys = function () {
             this.$scope.tobuys = this.tobuys = this.tobuys.filter(function (tobuyItem) { return !tobuyItem.completed; });
         };
-        TodoCtrl.prototype.markAll = function (completed) {
+        TobuyCtrl.prototype.markAll = function (completed) {
             this.tobuys.forEach(function (tobuyItem) { tobuyItem.completed = completed; });
         };
         // $inject annotation.
         // It provides $injector with information about dependencies to be injected into constructor
         // it is better to have it close to the constructor, because the parameters must match in count and type.
         // See http://docs.angularjs.org/guide/di
-        TodoCtrl.$inject = [
+        TobuyCtrl.$inject = [
             '$scope',
             '$location',
             'tobuyStorage',
             'filterFilter'
         ];
-        return TodoCtrl;
+        return TobuyCtrl;
     })();
-    tobuys.TodoCtrl = TodoCtrl;
+    tobuys.TobuyCtrl = TobuyCtrl;
 })(tobuys || (tobuys = {}));
 /// <reference path='_all.ts' />
 /**
- * The main TodoMVC app module.
+ * The main TobuyMVC app module.
  *
  * @type {angular.Module}
  */
@@ -200,21 +200,21 @@ var tobuys;
 (function (tobuys) {
     'use strict';
     var tobuymvc = angular.module('tobuymvc', [])
-        .controller('tobuyCtrl', tobuys.TodoCtrl)
+        .controller('tobuyCtrl', tobuys.TobuyCtrl)
         .directive('tobuyBlur', tobuys.tobuyBlur)
         .directive('tobuyFocus', tobuys.tobuyFocus)
         .directive('tobuyEscape', tobuys.tobuyEscape)
-        .service('tobuyStorage', tobuys.TodoStorage);
+        .service('tobuyStorage', tobuys.TobuyStorage);
 })(tobuys || (tobuys = {}));
 /// <reference path='libs/jquery/jquery.d.ts' />
 /// <reference path='libs/angular/angular.d.ts' />
-/// <reference path='models/TodoItem.ts' />
-/// <reference path='interfaces/ITodoScope.ts' />
-/// <reference path='interfaces/ITodoStorage.ts' />
-/// <reference path='directives/TodoFocus.ts' />
-/// <reference path='directives/TodoBlur.ts' />
-/// <reference path='directives/TodoEscape.ts' />
-/// <reference path='services/TodoStorage.ts' />
-/// <reference path='controllers/TodoCtrl.ts' />
+/// <reference path='models/TobuyItem.ts' />
+/// <reference path='interfaces/ITobuyScope.ts' />
+/// <reference path='interfaces/ITobuyStorage.ts' />
+/// <reference path='directives/TobuyFocus.ts' />
+/// <reference path='directives/TobuyBlur.ts' />
+/// <reference path='directives/TobuyEscape.ts' />
+/// <reference path='services/TobuyStorage.ts' />
+/// <reference path='controllers/TobuyCtrl.ts' />
 /// <reference path='Application.ts' />
 //# sourceMappingURL=Application.js.map

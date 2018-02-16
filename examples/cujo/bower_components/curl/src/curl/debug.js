@@ -14,10 +14,10 @@
  * 		// do stuff while logging debug messages
  * 	});
  *
- * TODO: warn when main module still has leading dots (normalizePackageDescriptor)
- * TODO: warn when a module id still has leading dots (toAbsId)
- * TODO: use curl/tdd/undefine module instead of quick-and-dirty method below
- * TODO: only add logging to some of the useful core functions
+ * TOBUY: warn when main module still has leading dots (normalizePackageDescriptor)
+ * TOBUY: warn when a module id still has leading dots (toAbsId)
+ * TOBUY: use curl/tdd/undefine module instead of quick-and-dirty method below
+ * TOBUY: only add logging to some of the useful core functions
  *
  */
 define(['require', 'curl/_privileged'], function (require, priv) {

@@ -2,7 +2,7 @@
 <html lang="en" data-framework="knockback">
 	<head>
 		<meta charset="utf-8">
-		<title>Knockback.js • TodoMVC</title>
+		<title>Knockback.js • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
@@ -10,7 +10,7 @@
 		<section class="tobuyapp" kb-inject="AppViewModel">
 			<header class="header">
 				<h1>tobuys</h1>
-				<input class="new-tobuy" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', event: {keyup: onAddTodo}" placeholder="What needs to be done?" autofocus>
+				<input class="new-tobuy" type="text" data-bind="value: title, valueUpdate: 'afterkeydown', event: {keyup: onAddTobuy}" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section class="main" data-bind="visible: tobuyStats().tasksExist">
 				<input class="toggle-all" type="checkbox" data-bind="checked: toggleCompleted">
@@ -51,7 +51,7 @@
 			Please try out the <a href="http://kmalakoff.github.com/knockback-tobuys-app/">enhanced version</a> <br/>
 			with localization, priority colors, and lazy loading <br/>
 			to see just how dynamic <a href="https://github.com/kmalakoff/knockback">Knockback.js</a> can be!</p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 
 		<!-- App Dependencies -->

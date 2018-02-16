@@ -2,31 +2,31 @@
 <html lang="en" data-framework="angularjs">
 	<head>
 		<meta charset="utf-8">
-		<title>AngularJS & RequireJS • TodoMVC</title>
+		<title>AngularJS & RequireJS • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 		<style>[ng-cloak] { display: none; }</style>
 	</head>
 	<body>
-		<section id="tobuyapp" ng-controller="TodoController">
+		<section id="tobuyapp" ng-controller="TobuyController">
 			<header id="header">
 				<h1>tobuys</h1>
-				<form id="tobuy-form" ng-submit="addTodo()">
-					<input id="new-tobuy" placeholder="What needs to be done?" ng-model="newTodo" autofocus>
+				<form id="tobuy-form" ng-submit="addTobuy()">
+					<input id="new-tobuy" placeholder="What needs to be done?" ng-model="newTobuy" autofocus>
 				</form>
 			</header>
 			<section id="main" ng-show="tobuys.length" ng-cloak>
 				<input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
 				<label for="toggle-all">Mark all as complete</label>
 				<ul id="tobuy-list">
-					<li ng-repeat="tobuy in tobuys | filter:statusFilter track by $index" ng-class="{completed: tobuy.completed, editing: tobuy == editedTodo}">
+					<li ng-repeat="tobuy in tobuys | filter:statusFilter track by $index" ng-class="{completed: tobuy.completed, editing: tobuy == editedTobuy}">
 						<div class="view">
 							<input class="toggle" type="checkbox" ng-model="tobuy.completed">
-							<label ng-dblclick="editTodo(tobuy)">{{tobuy.title}}</label>
-							<button class="destroy" ng-click="removeTodo(tobuy)"></button>
+							<label ng-dblclick="editTobuy(tobuy)">{{tobuy.title}}</label>
+							<button class="destroy" ng-click="removeTobuy(tobuy)"></button>
 						</div>
 						<form ng-submit="doneEditing(tobuy)">
-							<input class="edit" ng-trim="false" ng-model="tobuy.title" ng-blur="doneEditing(tobuy)" tobuy-escape="revertEditing(tobuy)" tobuy-focus="tobuy == editedTodo">
+							<input class="edit" ng-trim="false" ng-model="tobuy.title" ng-blur="doneEditing(tobuy)" tobuy-escape="revertEditing(tobuy)" tobuy-focus="tobuy == editedTobuy">
 						</form>
 					</li>
 				</ul>
@@ -46,7 +46,7 @@
 						<a ng-class="{selected: location.path() == '/completed'}" href="#/completed">Completed</a>
 					</li>
 				</ul>
-				<button id="clear-completed" ng-click="clearDoneTodos()" ng-show="remainingCount < tobuys.length">Clear completed</button>
+				<button id="clear-completed" ng-click="clearDoneTobuys()" ng-show="remainingCount < tobuys.length">Clear completed</button>
 			</footer>
 		</section>
 		<footer id="info">
@@ -58,7 +58,7 @@
 				<a href="http://blog.igorminar.com">Igor Minar</a> and
 				<a href="http://twitter.com/passy">Pascal Hartig</a>
 			</p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script data-main="js/main" src="node_modules/requirejs/require.js"></script>

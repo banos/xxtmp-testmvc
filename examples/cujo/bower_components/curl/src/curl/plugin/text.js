@@ -8,7 +8,7 @@
  */
 
 /**
- * TODO: load xdomain text, too, somehow
+ * TOBUY: load xdomain text, too, somehow
  *
  */
 

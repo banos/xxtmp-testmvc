@@ -1,5 +1,5 @@
 <span id="tobuy-count">
-	<strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left
+	<strong>{{activeTobuyCount}}</strong> {{activeTobuyWord}} left
 </span>
 <ul id="filters">
 	<li>
@@ -12,6 +12,6 @@
 		<a {{#filterCompleted}}class="selected"{{/filterCompleted}}href="#/completed">Completed</a>
 	</li>
 </ul>
-{{#completedTodos}}
+{{#completedTobuys}}
 <button id="clear-completed">Clear completed</button>
-{{/completedTodos}}
+{{/completedTobuys}}

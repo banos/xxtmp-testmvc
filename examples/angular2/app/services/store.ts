@@ -1,4 +1,4 @@
-export class Todo {
+export class Tobuy {
 	completed: Boolean;
 	editing: Boolean;
 
@@ -17,14 +17,14 @@ export class Todo {
 	}
 }
 
-export class TodoStore {
-	tobuys: Array<Todo>;
+export class TobuyStore {
+	tobuys: Array<Tobuy>;
 
 	constructor() {
-		let persistedTodos = JSON.parse(localStorage.getItem('angular2-tobuys') || '[]');
+		let persistedTobuys = JSON.parse(localStorage.getItem('angular2-tobuys') || '[]');
 		// Normalize back into classes
-		this.tobuys = persistedTodos.map( (tobuy: {_title: String, completed: Boolean}) => {
-			let ret = new Todo(tobuy._title);
+		this.tobuys = persistedTobuys.map( (tobuy: {_title: String, completed: Boolean}) => {
+			let ret = new Tobuy(tobuy._title);
 			ret.completed = tobuy.completed;
 			return ret;
 		});
@@ -35,7 +35,7 @@ export class TodoStore {
 	}
 
 	private getWithCompleted(completed: Boolean) {
-		return this.tobuys.filter((tobuy: Todo) => tobuy.completed === completed);
+		return this.tobuys.filter((tobuy: Tobuy) => tobuy.completed === completed);
 	}
 
 	allCompleted() {
@@ -43,7 +43,7 @@ export class TodoStore {
 	}
 
 	setAllTo(completed: Boolean) {
-		this.tobuys.forEach((t: Todo) => t.completed = completed);
+		this.tobuys.forEach((t: Tobuy) => t.completed = completed);
 		this.updateStore();
 	}
 
@@ -60,18 +60,18 @@ export class TodoStore {
 		return this.getWithCompleted(true);
 	}
 
-	toggleCompletion(tobuy: Todo) {
+	toggleCompletion(tobuy: Tobuy) {
 		tobuy.completed = !tobuy.completed;
 		this.updateStore();
 	}
 
-	remove(tobuy: Todo) {
+	remove(tobuy: Tobuy) {
 		this.tobuys.splice(this.tobuys.indexOf(tobuy), 1);
 		this.updateStore();
 	}
 
 	add(title: String) {
-		this.tobuys.push(new Todo(title));
+		this.tobuys.push(new Tobuy(title));
 		this.updateStore();
 	}
 }

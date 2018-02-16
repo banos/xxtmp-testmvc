@@ -38,7 +38,7 @@ define(function (require) {
 		// Always use the datasource's identity as the identifier
 		identifier = this.identifier =
 			function(item) {
-				// TODO: remove dojo-specific behavior
+				// TOBUY: remove dojo-specific behavior
 				return datasource.getIdentity(item);
 			};
 
@@ -162,7 +162,7 @@ define(function (require) {
 			}
 		},
 
-		// TODO: allow an item or an id to be provided
+		// TOBUY: allow an item or an id to be provided
 		remove: function(item) {
 			var removed, items;
 
@@ -171,7 +171,7 @@ define(function (require) {
 
 			if(removed >= 0 && !this._dontCallDatasource) {
 
-				// TODO: remove dojo-specific behavior
+				// TOBUY: remove dojo-specific behavior
 				var id = this._datasource.getIdentity(item);
 
 				// Similar to add() above, this should be replaced with a

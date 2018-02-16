@@ -9,19 +9,19 @@
 
 declare var Router;
 
-import { TodoModel } from "./tobuyModel";
-import { TodoFooter } from "./footer";
-import { TodoItem } from "./tobuyItem";
-import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS, ENTER_KEY } from "./constants";
+import { TobuyModel } from "./tobuyModel";
+import { TobuyFooter } from "./footer";
+import { TobuyItem } from "./tobuyItem";
+import { ALL_TOBUYS, ACTIVE_TOBUYS, COMPLETED_TOBUYS, ENTER_KEY } from "./constants";
 
-class TodoApp extends React.Component<IAppProps, IAppState> {
+class TobuyApp extends React.Component<IAppProps, IAppState> {
 
   public state : IAppState;
 
   constructor(props : IAppProps) {
     super(props);
     this.state = {
-      nowShowing: ALL_TODOS,
+      nowShowing: ALL_TOBUYS,
       editing: null
     };
   }
@@ -29,14 +29,14 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
   public componentDidMount() {
     var setState = this.setState;
     var router = Router({
-      '/': setState.bind(this, {nowShowing: ALL_TODOS}),
-      '/active': setState.bind(this, {nowShowing: ACTIVE_TODOS}),
-      '/completed': setState.bind(this, {nowShowing: COMPLETED_TODOS})
+      '/': setState.bind(this, {nowShowing: ALL_TOBUYS}),
+      '/active': setState.bind(this, {nowShowing: ACTIVE_TOBUYS}),
+      '/completed': setState.bind(this, {nowShowing: COMPLETED_TOBUYS})
     });
     router.init('/');
   }
 
-  public handleNewTodoKeyDown(event : __React.KeyboardEvent) {
+  public handleNewTobuyKeyDown(event : __React.KeyboardEvent) {
     if (event.keyCode !== ENTER_KEY) {
       return;
     }
@@ -46,7 +46,7 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     var val = React.findDOMNode<HTMLInputElement>(this.refs["newField"]).value.trim();
 
     if (val) {
-      this.props.model.addTodo(val);
+      this.props.model.addTobuy(val);
       React.findDOMNode<HTMLInputElement>(this.refs["newField"]).value = '';
     }
   }
@@ -57,19 +57,19 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     this.props.model.toggleAll(checked);
   }
 
-  public toggle(tobuyToToggle : ITodo) {
+  public toggle(tobuyToToggle : ITobuy) {
     this.props.model.toggle(tobuyToToggle);
   }
 
-  public destroy(tobuy : ITodo) {
+  public destroy(tobuy : ITobuy) {
     this.props.model.destroy(tobuy);
   }
 
-  public edit(tobuy : ITodo) {
+  public edit(tobuy : ITobuy) {
     this.setState({editing: tobuy.id});
   }
 
-  public save(tobuyToSave : ITodo, text : String) {
+  public save(tobuyToSave : ITobuy, text : String) {
     this.props.model.save(tobuyToSave, text);
     this.setState({editing: null});
   }
@@ -87,20 +87,20 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     var main;
     const tobuys = this.props.model.tobuys;
 
-    var shownTodos = tobuys.filter((tobuy) => {
+    var shownTobuys = tobuys.filter((tobuy) => {
       switch (this.state.nowShowing) {
-      case ACTIVE_TODOS:
+      case ACTIVE_TOBUYS:
         return !tobuy.completed;
-      case COMPLETED_TODOS:
+      case COMPLETED_TOBUYS:
         return tobuy.completed;
       default:
         return true;
       }
     });
 
-    var tobuyItems = shownTodos.map((tobuy) => {
+    var tobuyItems = shownTobuys.map((tobuy) => {
       return (
-        <TodoItem
+        <TobuyItem
           key={tobuy.id}
           tobuy={tobuy}
           onToggle={this.toggle.bind(this, tobuy)}
@@ -117,16 +117,16 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
     // easier to reason about and React works very well with them. That's why
     // we use map(), filter() and reduce() everywhere instead of mutating the
     // array or tobuy items themselves.
-    var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+    var activeTobuyCount = tobuys.reduce(function (accum, tobuy) {
       return tobuy.completed ? accum : accum + 1;
     }, 0);
 
-    var completedCount = tobuys.length - activeTodoCount;
+    var completedCount = tobuys.length - activeTobuyCount;
 
-    if (activeTodoCount || completedCount) {
+    if (activeTobuyCount || completedCount) {
       footer =
-        <TodoFooter
-          count={activeTodoCount}
+        <TobuyFooter
+          count={activeTobuyCount}
           completedCount={completedCount}
           nowShowing={this.state.nowShowing}
           onClearCompleted={ e=> this.clearCompleted() }
@@ -140,7 +140,7 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
             className="toggle-all"
             type="checkbox"
             onChange={ e => this.toggleAll(e) }
-            checked={activeTodoCount === 0}
+            checked={activeTobuyCount === 0}
           />
           <ul className="tobuy-list">
             {tobuyItems}
@@ -157,7 +157,7 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
             ref="newField"
             className="new-tobuy"
             placeholder="What needs to be done?"
-            onKeyDown={ e => this.handleNewTodoKeyDown(e) }
+            onKeyDown={ e => this.handleNewTobuyKeyDown(e) }
             autoFocus={true}
           />
         </header>
@@ -168,11 +168,11 @@ class TodoApp extends React.Component<IAppProps, IAppState> {
   }
 }
 
-var model = new TodoModel('react-tobuys');
+var model = new TobuyModel('react-tobuys');
 
 function render() {
   React.render(
-    <TodoApp model={model}/>,
+    <TobuyApp model={model}/>,
     document.getElementsByClassName('tobuyapp')[0]
   );
 }

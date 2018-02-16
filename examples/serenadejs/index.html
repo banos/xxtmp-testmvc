@@ -2,7 +2,7 @@
 <html lang="en" data-framework="serenadejs">
 	<head>
 		<meta charset="utf-8">
-		<title>Serenade.js • TodoMVC</title>
+		<title>Serenade.js • TobuyMVC</title>
 		<link href="node_modules/tobuymvc-common/base.css" rel="stylesheet">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
@@ -10,7 +10,7 @@
 		<script id="app" type="text/serenade">
 			section#tobuyapp
 				header#header
-					form[event:submit=newTodo!]
+					form[event:submit=newTobuy!]
 						h1 "tobuys"
 
 						input#new-tobuy[binding:change=@newTitle placeholder="What needs to be done?" autofocus="autofocus"]
@@ -51,13 +51,13 @@
 				- unless @edit
 					input.toggle[type="checkbox" binding:change=@completed]
 					label[event:dblclick=edit] @title
-					button.destroy[event:click=removeTodo]
+					button.destroy[event:click=removeTobuy]
 		</script>
 
 		<footer id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="http://elabs.se">Elabs</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 
 		<script src="node_modules/tobuymvc-common/base.js"></script>

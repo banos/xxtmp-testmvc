@@ -1,4 +1,4 @@
-# React + Alt TodoMVC Example
+# React + Alt TobuyMVC Example
 
 > React is a JavaScript library for creating user interfaces. Its core principles are declarative code, efficiency, and flexibility. Simply specify what your component looks like and React will keep it up-to-date when the underlying data changes. Alt is one of many implementations of Facebook's Flux architecture. Some of the reasons for using Alt is given by the author [here](https://github.com/goatslacker/alt#why-you-should-be-using-alt).
 

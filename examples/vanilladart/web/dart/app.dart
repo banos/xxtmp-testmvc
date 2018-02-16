@@ -6,9 +6,9 @@ import 'dart:convert' show HtmlEscape, JSON;
 import 'package:tobuymvc_vanilladart/models.dart';
 import 'package:tobuymvc_vanilladart/uuid.dart';
 
-part 'TodoWidget.dart';
-part 'TodoApp.dart';
+part 'TobuyWidget.dart';
+part 'TobuyApp.dart';
 
 void main() {
-  new TodoApp();
+  new TobuyApp();
 }

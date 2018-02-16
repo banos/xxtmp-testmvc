@@ -20,7 +20,7 @@ describeComponent('data/stats', function () {
 
 		it('should trigger dataStatsCounted when tobuys are loaded', function () {
 			spyOnEvent(document, 'dataStatsCounted');
-			$(document).trigger('dataTodosLoaded');
+			$(document).trigger('dataTobuysLoaded');
 			expect('dataStatsCounted').toHaveBeenTriggeredOn(document);
 		});
 

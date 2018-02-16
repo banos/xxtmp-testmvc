@@ -227,7 +227,7 @@ define(function () {
 				proceedCalled = 0;
 
 				// Joinpoint is immutable
-				// TODO: Use Object.freeze once v8 perf problem is fixed
+				// TOBUY: Use Object.freeze once v8 perf problem is fixed
 				joinpoint = pushJoinpoint({
 					target: context,
 					method: method,
@@ -402,7 +402,7 @@ define(function () {
 		var removers = [];
 		// Assume the pointcut is a an object with a .test() method
 		for (var p in target) {
-			// TODO: Decide whether hasOwnProperty is correct here
+			// TOBUY: Decide whether hasOwnProperty is correct here
 			// Only apply to own properties that are functions, and match the pointcut regexp
 			if (typeof target[p] == 'function' && pointcut.test(p)) {
 				// if(object.hasOwnProperty(p) && typeof object[p] === 'function' && pointcut.test(p)) {

@@ -46,7 +46,7 @@ jQuery(function ($) {
 			this.$header = this.$tobuyApp.find('#header');
 			this.$main = this.$tobuyApp.find('#main');
 			this.$footer = this.$tobuyApp.find('#footer');
-			this.$newTodo = this.$header.find('#new-tobuy');
+			this.$newTobuy = this.$header.find('#new-tobuy');
 			this.$toggleAll = this.$main.find('#toggle-all');
 			this.$tobuyList = this.$main.find('#tobuy-list');
 			this.$count = this.$footer.find('#tobuy-count');
@@ -54,7 +54,7 @@ jQuery(function ($) {
 		},
 		bindEvents: function () {
 			var list = this.$tobuyList;
-			this.$newTodo.on('keyup', this.create.bind(this));
+			this.$newTobuy.on('keyup', this.create.bind(this));
 			this.$toggleAll.on('change', this.toggleAll.bind(this));
 			this.$footer.on('click', '#clear-completed', this.destroyCompleted.bind(this));
 			list.on('change', '.toggle', this.toggle.bind(this));
@@ -63,22 +63,22 @@ jQuery(function ($) {
 			list.on('focusout', '.edit', this.update.bind(this));
 			list.on('click', '.destroy', this.destroy.bind(this));
 
-			ss.event.on('updateTodos', function (tobuys) {
+			ss.event.on('updateTobuys', function (tobuys) {
 				this.tobuys = tobuys;
 				this.render(true);
 			}.bind(this));
 		},
 		render: function (preventRpc) {
-			var tobuys = this.getFilteredTodos();
+			var tobuys = this.getFilteredTobuys();
 
 			this.$tobuyList.html(tobuys.map(function (el) {
 				return ss.tmpl.tobuy.render(el);
 			}).join(''));
 
 			this.$main.toggle(tobuys.length > 0);
-			this.$toggleAll.prop('checked', this.getActiveTodos().length === 0);
+			this.$toggleAll.prop('checked', this.getActiveTobuys().length === 0);
 			this.renderFooter();
-			this.$newTodo.focus();
+			this.$newTobuy.focus();
 
 			if (!preventRpc) {
 				ss.rpc('tobuys.update', this.tobuys);
@@ -86,11 +86,11 @@ jQuery(function ($) {
 		},
 		renderFooter: function () {
 			var tobuyCount = this.tobuys.length;
-			var activeTodoCount = this.getActiveTodos().length;
+			var activeTobuyCount = this.getActiveTobuys().length;
 			var footer = {
-				activeTodoCount: activeTodoCount,
-				activeTodoWord: util.pluralize(activeTodoCount, 'item'),
-				completedTodos: tobuyCount - activeTodoCount,
+				activeTobuyCount: activeTobuyCount,
+				activeTobuyWord: util.pluralize(activeTobuyCount, 'item'),
+				completedTobuys: tobuyCount - activeTobuyCount,
 				filterAll: this.filter === 'all',
 				filterActive: this.filter === 'active',
 				filterCompleted: this.filter === 'completed'
@@ -107,29 +107,29 @@ jQuery(function ($) {
 
 			this.render();
 		},
-		getActiveTodos: function () {
+		getActiveTobuys: function () {
 			return this.tobuys.filter(function (tobuy) {
 				return !tobuy.completed;
 			});
 		},
-		getCompletedTodos: function () {
+		getCompletedTobuys: function () {
 			return this.tobuys.filter(function (tobuy) {
 				return tobuy.completed;
 			});
 		},
-		getFilteredTodos: function () {
+		getFilteredTobuys: function () {
 			if (this.filter === 'active') {
-				return this.getActiveTodos();
+				return this.getActiveTobuys();
 			}
 
 			if (this.filter === 'completed') {
-				return this.getCompletedTodos();
+				return this.getCompletedTobuys();
 			}
 
 			return this.tobuys;
 		},
 		destroyCompleted: function () {
-			this.tobuys = this.getActiveTodos();
+			this.tobuys = this.getActiveTobuys();
 			this.filter = 'all';
 			this.render();
 		},

@@ -1,4 +1,4 @@
-# Knockout.js TodoMVC Example
+# Knockout.js TobuyMVC Example
 
 > Knockout.js helps you simplify dynamic JavaScript UIs using the Model-View-ViewModel (MVVM) pattern.
 
@@ -33,4 +33,4 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Credit
 
-This TodoMVC application was originally created by [ashish101](https://github.com/ashish01/knockoutjs-tobuys), then refactored by Addy Osmani and later rewritten by TodoMVC contributors.
+This TobuyMVC application was originally created by [ashish101](https://github.com/ashish01/knockoutjs-tobuys), then refactored by Addy Osmani and later rewritten by TobuyMVC contributors.

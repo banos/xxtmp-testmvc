@@ -13,7 +13,7 @@
 		self.model = model;
 		self.view = view;
 
-		self.view.bind('newTodo', function (title) {
+		self.view.bind('newTobuy', function (title) {
 			self.addItem(title);
 		});
 
@@ -100,7 +100,7 @@
 		}
 
 		self.model.create(title, function () {
-			self.view.render('clearNewTodo');
+			self.view.render('clearNewTobuy');
 			self._filter(true);
 		});
 	};

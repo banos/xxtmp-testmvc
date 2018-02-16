@@ -1,4 +1,4 @@
-# DUEL • [TodoMVC](http://tobuymvc.com)
+# DUEL • [TobuyMVC](http://tobuymvc.com)
 
 > DUEL is a dual-side templating engine using HTML for layout and 100% pure JavaScript as the binding language. The same views may be executed both directly in the browser (client-side template) and on the server (server-side template).
 

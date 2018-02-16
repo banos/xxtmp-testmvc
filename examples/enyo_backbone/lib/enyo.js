@@ -2569,7 +2569,7 @@ for (var e = 0, n; n = t[e]; e++) if (typeof document.body.style[n] != "undefine
 var t, n, r = "";
 for (t in e) n = e[t], n !== null && n !== undefined && n !== "" && (r += t + "(" + n + ") ");
 return r;
-}, enyo.dom.transformsToDom = function(e) {
+}, enyo.dom.transformsToBuym = function(e) {
 var t = this.domTransformsToCss(e.domTransforms), n = e.hasNode() ? e.node.style : null, r = e.domStyles, i = this.getStyleTransformProp(), s = this.getCssTransformProp();
 i && s && (r[s] = t, n ? n[i] = t : e.domStylesChanged());
 }, enyo.dom.canTransform = function() {
@@ -2578,10 +2578,10 @@ return Boolean(this.getStyleTransformProp());
 return this.accelerando !== undefined ? this.accelerando : document.body && (this.accelerando = this.calcCanAccelerate());
 }, enyo.dom.transform = function(e, t) {
 var n = e.domTransforms = e.domTransforms || {};
-enyo.mixin(n, t), this.transformsToDom(e);
+enyo.mixin(n, t), this.transformsToBuym(e);
 }, enyo.dom.transformValue = function(e, t, n) {
 var r = e.domTransforms = e.domTransforms || {};
-r[t] = n, this.transformsToDom(e);
+r[t] = n, this.transformsToBuym(e);
 }, enyo.dom.accelerate = function(e, t) {
 var n = t == "auto" ? this.canAccelerate() : t;
 this.transformValue(e, "translateZ", n ? 0 : null);
@@ -2697,7 +2697,7 @@ addRemoveClass: function(e, t) {
 this[t ? "addClass" : "removeClass"](e);
 },
 initStyles: function() {
-this.domStyles = this.domStyles || {}, enyo.Control.cssTextToDomStyles(this.kindStyle, this.domStyles), this.domCssText = enyo.Control.domStylesToCssText(this.domStyles);
+this.domStyles = this.domStyles || {}, enyo.Control.cssTextToBuymStyles(this.kindStyle, this.domStyles), this.domCssText = enyo.Control.domStylesToCssText(this.domStyles);
 },
 styleChanged: function() {
 this.invalidateTags(), this.renderStyles();
@@ -2706,7 +2706,7 @@ applyStyle: function(e, t) {
 this.domStyles[e] = t, this.domStylesChanged();
 },
 addStyles: function(e) {
-enyo.Control.cssTextToDomStyles(e, this.domStyles), this.domStylesChanged();
+enyo.Control.cssTextToBuymStyles(e, this.domStyles), this.domStylesChanged();
 },
 getComputedStyleValue: function(e, t) {
 return this.hasNode() ? enyo.dom.getComputedStyleValue(this.node, e) : t;
@@ -2901,7 +2901,7 @@ source: 1,
 track: 1,
 col: 1
 },
-cssTextToDomStyles: function(e, t) {
+cssTextToBuymStyles: function(e, t) {
 if (e) {
 var n = e.replace(/; /g, ";").split(";");
 for (var r = 0, i, s, o, u; u = n[r]; r++) i = u.split(":"), s = i.shift(), o = i.join(":"), t[s] = o;

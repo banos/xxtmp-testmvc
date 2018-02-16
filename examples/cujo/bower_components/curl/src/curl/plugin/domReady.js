@@ -17,7 +17,7 @@
  *
  * curl(["domReady!"]).then(doSomething);
  *
- * TODO: use "../domReady" instead of "curl/domReady" when curl's make.sh is updated to use cram
+ * TOBUY: use "../domReady" instead of "curl/domReady" when curl's make.sh is updated to use cram
  */
 
 define(/*=='curl/plugin/domReady',==*/ ['../domReady'], function (domReady) {

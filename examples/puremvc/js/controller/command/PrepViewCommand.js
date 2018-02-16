@@ -16,7 +16,7 @@ puremvc.define ({
 		 * @override
 		 */
 		execute: function (note) {
-			this.facade.registerMediator( new tobuymvc.view.mediator.TodoFormMediator() );
+			this.facade.registerMediator( new tobuymvc.view.mediator.TobuyFormMediator() );
 			this.facade.registerMediator( new tobuymvc.view.mediator.RoutesMediator() );
 		}
 	}

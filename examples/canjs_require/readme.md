@@ -1,4 +1,4 @@
-# CanJS & RequireJS TodoMVC Example
+# CanJS & RequireJS TobuyMVC Example
 
 > CanJS is a MIT-licensed, client-side, JavaScript framework that makes building rich web applications easy.
 
@@ -73,7 +73,7 @@ The available modules are
 
 CanJS is the extracted, more modern and more library-like MVC parts of [JavaScriptMVC](http://javascriptmvc.com), formerly known as jQueryMX.
 
-JavaScriptMVC 3.3 uses CanJS for the MVC structure so this TodoMVC example applies to JavaScriptMVC as well.
+JavaScriptMVC 3.3 uses CanJS for the MVC structure so this TobuyMVC example applies to JavaScriptMVC as well.
 
 Additionally, JavaScriptMVC contains:
 
@@ -91,8 +91,8 @@ templates. By default the Mustache view will be used but an EJS example is avail
 You can easily change it by modifying the `view` option in the `js/app.js` file:
 
 ```js
-Models.Todo.findAll({}, function (tobuys) {
-	new Todos('#tobuyapp', {
+Models.Tobuy.findAll({}, function (tobuys) {
+	new Tobuys('#tobuyapp', {
 		tobuys: tobuys,
 		state: can.route,
 		view: 'views/tobuys.ejs'

@@ -75,14 +75,14 @@ Example:
 
 ```js
 // Ok.
-var removeTodo = function (tobuyItem) {
+var removeTobuy = function (tobuyItem) {
 	var tobuyModel = tobuyItem.getModel(); // Grab the model from the tobuyItem.
 	tobuyItem.find('.destroy').click(); // Trigger a click to remove the element from the <ul>.
 	tobuyModel.remove(); // Removes the tobuy model from localStorage.
 };
 
 // Better.
-var removeTodo = function (tobuyItem) {
+var removeTobuy = function (tobuyItem) {
 	// Grab the model from the tobuyItem.
 	var tobuyModel = tobuyItem.getModel();
 

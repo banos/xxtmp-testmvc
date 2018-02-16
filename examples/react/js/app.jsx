@@ -8,49 +8,49 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	app.ALL_TODOS = 'all';
-	app.ACTIVE_TODOS = 'active';
-	app.COMPLETED_TODOS = 'completed';
-	var TodoFooter = app.TodoFooter;
-	var TodoItem = app.TodoItem;
+	app.ALL_TOBUYS = 'all';
+	app.ACTIVE_TOBUYS = 'active';
+	app.COMPLETED_TOBUYS = 'completed';
+	var TobuyFooter = app.TobuyFooter;
+	var TobuyItem = app.TobuyItem;
 
 	var ENTER_KEY = 13;
 
-	var TodoApp = React.createClass({
+	var TobuyApp = React.createClass({
 		getInitialState: function () {
 			return {
-				nowShowing: app.ALL_TODOS,
+				nowShowing: app.ALL_TOBUYS,
 				editing: null,
-				newTodo: ''
+				newTobuy: ''
 			};
 		},
 
 		componentDidMount: function () {
 			var setState = this.setState;
 			var router = Router({
-				'/': setState.bind(this, {nowShowing: app.ALL_TODOS}),
-				'/active': setState.bind(this, {nowShowing: app.ACTIVE_TODOS}),
-				'/completed': setState.bind(this, {nowShowing: app.COMPLETED_TODOS})
+				'/': setState.bind(this, {nowShowing: app.ALL_TOBUYS}),
+				'/active': setState.bind(this, {nowShowing: app.ACTIVE_TOBUYS}),
+				'/completed': setState.bind(this, {nowShowing: app.COMPLETED_TOBUYS})
 			});
 			router.init('/');
 		},
 
 		handleChange: function (event) {
-			this.setState({newTodo: event.target.value});
+			this.setState({newTobuy: event.target.value});
 		},
 
-		handleNewTodoKeyDown: function (event) {
+		handleNewTobuyKeyDown: function (event) {
 			if (event.keyCode !== ENTER_KEY) {
 				return;
 			}
 
 			event.preventDefault();
 
-			var val = this.state.newTodo.trim();
+			var val = this.state.newTobuy.trim();
 
 			if (val) {
-				this.props.model.addTodo(val);
-				this.setState({newTodo: ''});
+				this.props.model.addTobuy(val);
+				this.setState({newTobuy: ''});
 			}
 		},
 
@@ -89,20 +89,20 @@ var app = app || {};
 			var main;
 			var tobuys = this.props.model.tobuys;
 
-			var shownTodos = tobuys.filter(function (tobuy) {
+			var shownTobuys = tobuys.filter(function (tobuy) {
 				switch (this.state.nowShowing) {
-				case app.ACTIVE_TODOS:
+				case app.ACTIVE_TOBUYS:
 					return !tobuy.completed;
-				case app.COMPLETED_TODOS:
+				case app.COMPLETED_TOBUYS:
 					return tobuy.completed;
 				default:
 					return true;
 				}
 			}, this);
 
-			var tobuyItems = shownTodos.map(function (tobuy) {
+			var tobuyItems = shownTobuys.map(function (tobuy) {
 				return (
-					<TodoItem
+					<TobuyItem
 						key={tobuy.id}
 						tobuy={tobuy}
 						onToggle={this.toggle.bind(this, tobuy)}
@@ -115,16 +115,16 @@ var app = app || {};
 				);
 			}, this);
 
-			var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+			var activeTobuyCount = tobuys.reduce(function (accum, tobuy) {
 				return tobuy.completed ? accum : accum + 1;
 			}, 0);
 
-			var completedCount = tobuys.length - activeTodoCount;
+			var completedCount = tobuys.length - activeTobuyCount;
 
-			if (activeTodoCount || completedCount) {
+			if (activeTobuyCount || completedCount) {
 				footer =
-					<TodoFooter
-						count={activeTodoCount}
+					<TobuyFooter
+						count={activeTobuyCount}
 						completedCount={completedCount}
 						nowShowing={this.state.nowShowing}
 						onClearCompleted={this.clearCompleted}
@@ -138,7 +138,7 @@ var app = app || {};
 							className="toggle-all"
 							type="checkbox"
 							onChange={this.toggleAll}
-							checked={activeTodoCount === 0}
+							checked={activeTobuyCount === 0}
 						/>
 						<ul className="tobuy-list">
 							{tobuyItems}
@@ -154,8 +154,8 @@ var app = app || {};
 						<input
 							className="new-tobuy"
 							placeholder="What needs to be done?"
-							value={this.state.newTodo}
-							onKeyDown={this.handleNewTodoKeyDown}
+							value={this.state.newTobuy}
+							onKeyDown={this.handleNewTobuyKeyDown}
 							onChange={this.handleChange}
 							autoFocus={true}
 						/>
@@ -167,11 +167,11 @@ var app = app || {};
 		}
 	});
 
-	var model = new app.TodoModel('react-tobuys');
+	var model = new app.TobuyModel('react-tobuys');
 
 	function render() {
 		React.render(
-			<TodoApp model={model}/>,
+			<TobuyApp model={model}/>,
 			document.getElementsByClassName('tobuyapp')[0]
 		);
 	}

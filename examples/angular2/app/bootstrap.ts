@@ -1,5 +1,5 @@
 import {bootstrap} from 'angular2/platform/browser';
-import TodoApp from './app'
-import {TodoStore} from './services/store';
+import TobuyApp from './app'
+import {TobuyStore} from './services/store';
 
-bootstrap(TodoApp, [TodoStore]);
+bootstrap(TobuyApp, [TobuyStore]);

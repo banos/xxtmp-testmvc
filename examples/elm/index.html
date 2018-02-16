@@ -2,7 +2,7 @@
 <html lang="en" data-framework="elm">
 <head>
 	<meta charset="utf-8">
-	<title>Elm • TodoMVC</title>
+	<title>Elm • TobuyMVC</title>
 	<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 	<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	<style>
@@ -22,7 +22,7 @@
 		var result = localStorage.getItem('elm-tobuy-model');
 		var savedModel = result ? JSON.parse(result) : null;
 
-		var tobuymvc = Elm.Todo.fullscreen(savedModel);
+		var tobuymvc = Elm.Tobuy.fullscreen(savedModel);
 
 		tobuymvc.ports.save.subscribe(function (model) {
 			localStorage.setItem('elm-tobuy-model', JSON.stringify(model));

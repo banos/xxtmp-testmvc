@@ -10,11 +10,11 @@
  */
 
 include
-	.js('Store/Todos.js')
+	.js('Store/Tobuys.js')
 	.done(function (resp) {
 
 		include.exports = {
-			model: resp.Todos.fetch(),
+			model: resp.Tobuys.fetch(),
 			scope: {
 				action: ''
 			},

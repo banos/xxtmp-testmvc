@@ -1,8 +1,0 @@
-<li [class.completed]="tobuy.completed" [class.editing]="editing">
-    <div class="view">
-        <input class="toggle" type="checkbox" (click)="toggleCompletion()" [checked]="tobuy.completed">
-        <label (dblclick)="edit(tobuy)">{{ tobuy.title | trim }}</label>
-        <button class="destroy" (click)="remove()"></button>
-    </div>
-    <input class="edit" *ngIf="editing" [value]="tobuy.title" #editedtobuy (blur)="stopEditing(editedtobuy)" (keyup.enter)="stopEditing(editedtobuy)" (keyup.escape)="cancelEditing()">
-</li>

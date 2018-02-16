@@ -1,4 +1,4 @@
-# Aurelia • [TodoMVC](http://tobuymvc.com)
+# Aurelia • [TobuyMVC](http://tobuymvc.com)
 
 > *Aurelia* is a next generation JavaScript client framework that leverages simple conventions to empower your creativity.
 
@@ -29,8 +29,8 @@ Run tests and HTTP-server:
 
 ## Resources
 
-- [Aurelia TodoMVC source](https://github.com/mhoyer/tobuymvc-aurelia)
-- [TodoMVC](https://github.com/tastejs/tobuymvc) home of all TodoMVC apps
+- [Aurelia TobuyMVC source](https://github.com/mhoyer/tobuymvc-aurelia)
+- [TobuyMVC](https://github.com/tastejs/tobuymvc) home of all TobuyMVC apps
 - [Aurelia Website](http://aurelia.io/)
 - [Aurelia Documentation](http://aurelia.io/docs.html)
 - [Durandal Blog](http://blog.durandal.io/)
@@ -67,7 +67,7 @@ Run tests and HTTP-server:
 
 #### 0.1.0
 
-- Finished functional implementation to fulfill [TodoMVC Application Specification](https://github.com/tastejs/tobuymvc/blob/master/app-spec.md)
+- Finished functional implementation to fulfill [TobuyMVC Application Specification](https://github.com/tastejs/tobuymvc/blob/master/app-spec.md)
 - Includes bundling (jspm) and exporting (for easy sync with [tobuymvc/examples/aurelia](https://github.com/tastejs/tobuymvc/tree/master/examples/aurelia))
 
 ### Open Questions While Developing

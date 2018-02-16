@@ -5,7 +5,7 @@ define(function (require) {
 
 	var History = require('lavaca/net/History');
 	var Application = require('lavaca/mvc/Application');
-	var TodosController = require('app/net/TodosController');
+	var TobuysController = require('app/net/TobuysController');
 	var $ = require('$');
 	require('lavaca/ui/DustTemplate');
 
@@ -14,7 +14,7 @@ define(function (require) {
 	// component supporting your app's routes.
 	History.overrideStandardsMode();
 
-	// Override Lavaca's default view-root selector to match the TodoMVC template
+	// Override Lavaca's default view-root selector to match the TobuyMVC template
 	// file better
 	Application.prototype.viewRootSelector = '#tobuyapp';
 
@@ -26,9 +26,9 @@ define(function (require) {
 	var app = new Application(function () {
 		// Initialize the routes
 		this.router.add({
-			'/': [TodosController, 'home', {filter: 'all'}],
-			'/active': [TodosController, 'home', {filter: 'active'}],
-			'/completed': [TodosController, 'home', {filter: 'completed'}]
+			'/': [TobuysController, 'home', {filter: 'all'}],
+			'/active': [TobuysController, 'home', {filter: 'active'}],
+			'/completed': [TobuysController, 'home', {filter: 'completed'}]
 		});
 
 		// Patch learn sidebar links so they get ignored by the router

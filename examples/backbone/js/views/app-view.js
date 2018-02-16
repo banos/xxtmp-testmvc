@@ -24,7 +24,7 @@ var app = app || {};
 			'click .toggle-all': 'toggleAllComplete'
 		},
 
-		// At initialization we bind to the relevant events on the `Todos`
+		// At initialization we bind to the relevant events on the `Tobuys`
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting tobuys that might be saved in *localStorage*.
 		initialize: function () {
@@ -63,7 +63,7 @@ var app = app || {};
 
 				this.$('.filters li a')
 					.removeClass('selected')
-					.filter('[href="#/' + (app.TodoFilter || '') + '"]')
+					.filter('[href="#/' + (app.TobuyFilter || '') + '"]')
 					.addClass('selected');
 			} else {
 				this.$main.hide();
@@ -76,11 +76,11 @@ var app = app || {};
 		// Add a single tobuy item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function (tobuy) {
-			var view = new app.TodoView({ model: tobuy });
+			var view = new app.TobuyView({ model: tobuy });
 			this.$list.append(view.render().el);
 		},
 
-		// Add all items in the **Todos** collection at once.
+		// Add all items in the **Tobuys** collection at once.
 		addAll: function () {
 			this.$list.html('');
 			app.tobuys.each(this.addOne, this);
@@ -94,7 +94,7 @@ var app = app || {};
 			app.tobuys.each(this.filterOne, this);
 		},
 
-		// Generate the attributes for a new Todo item.
+		// Generate the attributes for a new Tobuy item.
 		newAttributes: function () {
 			return {
 				title: this.$input.val().trim(),
@@ -103,7 +103,7 @@ var app = app || {};
 			};
 		},
 
-		// If you hit return in the main input field, create new **Todo** model,
+		// If you hit return in the main input field, create new **Tobuy** model,
 		// persisting it to *localStorage*.
 		createOnEnter: function (e) {
 			if (e.which === ENTER_KEY && this.$input.val().trim()) {

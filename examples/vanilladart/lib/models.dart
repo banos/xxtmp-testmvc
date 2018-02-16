@@ -1,13 +1,13 @@
 library models;
 
-class Todo {
+class Tobuy {
   String id;
   String title;
   bool completed;
 
-  Todo(this.id, this.title, {this.completed: false});
+  Tobuy(this.id, this.title, {this.completed: false});
 
-  Todo.fromJson(Map json) {
+  Tobuy.fromJson(Map json) {
     id = json['id'];
     title = json['title'];
     completed = json['completed'];

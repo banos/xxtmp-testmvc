@@ -3,7 +3,7 @@
 'use strict';
 
 /**
- * The main TodoMVC app module
+ * The main TobuyMVC app module
  *
  * @type {angular.Module}
  */

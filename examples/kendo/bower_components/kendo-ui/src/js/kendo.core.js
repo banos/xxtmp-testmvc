@@ -2034,7 +2034,7 @@ function pad(number, digits, end) {
             }
         }
 
-        // TODO: Switch to browser detection here
+        // TOBUY: Switch to browser detection here
         if ((kendo.support.pointers || kendo.support.msPointers) && !positioned) { // IE10 touch zoom is living in a separate viewport.
             result.top -= (window.pageYOffset - document.documentElement.scrollTop);
             result.left -= (window.pageXOffset - document.documentElement.scrollLeft);
@@ -3521,7 +3521,7 @@ function pad(number, digits, end) {
             firstDayOfMonth: firstDayOfMonth,
             lastDayOfMonth: lastDayOfMonth,
             getMilliseconds: getMilliseconds
-            //TODO methods: combine date portion and time portion from arguments - date1, date 2
+            //TOBUY methods: combine date portion and time portion from arguments - date1, date 2
         };
     })();
 

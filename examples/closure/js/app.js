@@ -10,13 +10,13 @@ goog.require('goog.storage.mechanism.mechanismfactory');
 goog.require('goog.string');
 goog.require('goog.ui.Component');
 goog.require('goog.ui.Control');
-goog.require('tobuymvc.model.ToDoItem');
-goog.require('tobuymvc.model.ToDoItemStore');
+goog.require('tobuymvc.model.ToBuyItem');
+goog.require('tobuymvc.model.ToBuyItemStore');
 goog.require('tobuymvc.view');
 goog.require('tobuymvc.view.ClearCompletedControlRenderer');
 goog.require('tobuymvc.view.ItemCountControlRenderer');
-goog.require('tobuymvc.view.ToDoItemControl');
-goog.require('tobuymvc.view.ToDoListContainer');
+goog.require('tobuymvc.view.ToBuyItemControl');
+goog.require('tobuymvc.view.ToBuyListContainer');
 
 /**
  * @fileoverview The controller/business logic for the application.
@@ -26,15 +26,15 @@ goog.require('tobuymvc.view.ToDoListContainer');
  */
 
 /**
- * @type {tobuymvc.model.ToDoItemStore}
+ * @type {tobuymvc.model.ToBuyItemStore}
  */
-var itemStore = new tobuymvc.model.ToDoItemStore();
-itemStore.listen(tobuymvc.model.ToDoItemStore.ChangeEventType, redraw);
+var itemStore = new tobuymvc.model.ToBuyItemStore();
+itemStore.listen(tobuymvc.model.ToBuyItemStore.ChangeEventType, redraw);
 
 /**
- * @type {tobuymvc.view.ToDoListContainer}
+ * @type {tobuymvc.view.ToBuyListContainer}
  */
-var container = new tobuymvc.view.ToDoListContainer();
+var container = new tobuymvc.view.ToBuyListContainer();
 container.decorate(document.getElementById('tobuy-list'));
 
 /**
@@ -82,9 +82,9 @@ goog.events.listen(toggleAll, goog.events.EventType.CLICK, function(e) {
     var state = toggleAll.checked;
     goog.array.forEach(itemStore.getAll(), function(model) {
         /**
-         * @type {!tobuymvc.model.ToDoItem}
+         * @type {!tobuymvc.model.ToBuyItem}
          */
-        var updatedModel = new tobuymvc.model.ToDoItem(
+        var updatedModel = new tobuymvc.model.ToBuyItem(
                 model.getNote(), state, model.getId());
 
         itemStore.addOrUpdate(updatedModel);
@@ -131,7 +131,7 @@ goog.events.listen(historyObj, goog.history.EventType.NAVIGATE,
 function redraw() {
     container.removeChildren(true);
     /**
-     * @type {Array.<tobuymvc.model.ToDoItem>}
+     * @type {Array.<tobuymvc.model.ToBuyItem>}
      */
     var items = itemStore.getAll();
     goog.array.forEach(items, function(item) {
@@ -142,9 +142,9 @@ function redraw() {
         }
 
         /**
-         * @type {tobuymvc.view.ToDoItemControl}
+         * @type {tobuymvc.view.ToBuyItemControl}
          */
-        var control = new tobuymvc.view.ToDoItemControl();
+        var control = new tobuymvc.view.ToBuyItemControl();
 
         control.setContent(item.getNote());
         control.setChecked(item.isDone());
@@ -180,22 +180,22 @@ function redraw() {
 }
 
 goog.events.listen(container,
-    tobuymvc.view.ToDoItemControl.EventType.EDIT, function(e) {
+    tobuymvc.view.ToBuyItemControl.EventType.EDIT, function(e) {
     /**
-     * @type {tobuymvc.view.ToDoItemControl}
+     * @type {tobuymvc.view.ToBuyItemControl}
      */
     var control = e.target;
 
     /**
-     * @type {tobuymvc.model.ToDoItem}
+     * @type {tobuymvc.model.ToBuyItem}
      */
-    var originalModel = /**@type {tobuymvc.model.ToDoItem} */
+    var originalModel = /**@type {tobuymvc.model.ToBuyItem} */
         (control.getModel());
 
     /**
-     * @type {!tobuymvc.model.ToDoItem}
+     * @type {!tobuymvc.model.ToBuyItem}
      */
-    var updatedModel = new tobuymvc.model.ToDoItem(
+    var updatedModel = new tobuymvc.model.ToBuyItem(
             /**@type {!string} */ (control.getContent()),
             /**@type {!boolean} */ (control.isChecked()),
             originalModel.getId());
@@ -204,16 +204,16 @@ goog.events.listen(container,
 });
 
 goog.events.listen(container,
-    tobuymvc.view.ToDoItemControl.EventType.DESTROY, function(e) {
+    tobuymvc.view.ToBuyItemControl.EventType.DESTROY, function(e) {
     /**
-     * @type {tobuymvc.view.ToDoItemControl}
+     * @type {tobuymvc.view.ToBuyItemControl}
      */
     var control = e.target;
 
     /**
-     * @type {tobuymvc.model.ToDoItem}
+     * @type {tobuymvc.model.ToBuyItem}
      */
-    var model = /**@type {tobuymvc.model.ToDoItem} */ (control.getModel());
+    var model = /**@type {tobuymvc.model.ToBuyItem} */ (control.getModel());
     if (model !== null) {
         itemStore.remove(model);
     }
@@ -222,20 +222,20 @@ goog.events.listen(container,
 /**
  * @type {Element}
  */
-var newToDo = document.getElementById('new-tobuy');
-goog.events.listen(newToDo, goog.events.EventType.KEYUP, function(e) {
+var newToBuy = document.getElementById('new-tobuy');
+goog.events.listen(newToBuy, goog.events.EventType.KEYUP, function(e) {
     if (e.keyCode !== goog.events.KeyCodes.ENTER) {
         return;
     }
     // get the text
-    var value = goog.string.trim(newToDo.value);
+    var value = goog.string.trim(newToBuy.value);
     if (value === '') {
         return;
     }
     // clear the input box
-    newToDo.value = '';
+    newToBuy.value = '';
     // create the item
-    itemStore.addOrUpdate(new tobuymvc.model.ToDoItem(value));
+    itemStore.addOrUpdate(new tobuymvc.model.ToBuyItem(value));
 });
 
 itemStore.load();

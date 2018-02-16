@@ -7,13 +7,13 @@
 /// <reference path="../typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
 
-import { ALL_TODOS, ACTIVE_TODOS, COMPLETED_TODOS } from "./constants";
+import { ALL_TOBUYS, ACTIVE_TOBUYS, COMPLETED_TOBUYS } from "./constants";
 import { Utils } from "./utils";
 
-class TodoFooter extends React.Component<ITodoFooterProps, {}> {
+class TobuyFooter extends React.Component<ITobuyFooterProps, {}> {
 
   public render() {
-    var activeTodoWord = Utils.pluralize(this.props.count, 'item');
+    var activeTobuyWord = Utils.pluralize(this.props.count, 'item');
     var clearButton = null;
 
     if (this.props.completedCount > 0) {
@@ -30,13 +30,13 @@ class TodoFooter extends React.Component<ITodoFooterProps, {}> {
     return (
       <footer className="footer">
         <span className="tobuy-count">
-          <strong>{this.props.count}</strong> {activeTodoWord} left
+          <strong>{this.props.count}</strong> {activeTobuyWord} left
         </span>
         <ul className="filters">
           <li>
             <a
               href="#/"
-              className={classNames({selected: nowShowing === ALL_TODOS})}>
+              className={classNames({selected: nowShowing === ALL_TOBUYS})}>
                 All
             </a>
           </li>
@@ -44,7 +44,7 @@ class TodoFooter extends React.Component<ITodoFooterProps, {}> {
           <li>
             <a
               href="#/active"
-              className={classNames({selected: nowShowing === ACTIVE_TODOS})}>
+              className={classNames({selected: nowShowing === ACTIVE_TOBUYS})}>
                 Active
             </a>
           </li>
@@ -52,7 +52,7 @@ class TodoFooter extends React.Component<ITodoFooterProps, {}> {
           <li>
             <a
               href="#/completed"
-              className={classNames({selected: nowShowing === COMPLETED_TODOS})}>
+              className={classNames({selected: nowShowing === COMPLETED_TOBUYS})}>
                 Completed
             </a>
           </li>
@@ -63,4 +63,4 @@ class TodoFooter extends React.Component<ITodoFooterProps, {}> {
   }
 }
 
-export { TodoFooter };
+export { TobuyFooter };

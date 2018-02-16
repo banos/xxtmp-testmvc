@@ -34,7 +34,7 @@ var app = app || {};
 			'click #toggle-all': 'toggleAllComplete'
 		},
 
-		// At initialization we bind to the relevant events on the `Todos`
+		// At initialization we bind to the relevant events on the `Tobuys`
 		// collection, when items are added or changed. Kick things off by
 		// loading any preexisting tobuys that might be saved in *localStorage*.
 		initialize: function () {
@@ -60,10 +60,10 @@ var app = app || {};
 		render: function () {
 			var completed = app.tobuys.completed().length;
 			var remaining = app.tobuys.remaining().length;
-			var selector = '[href="#/' + (app.TodoFilter || '') + '"]';
+			var selector = '[href="#/' + (app.TobuyFilter || '') + '"]';
 
 			if (app.tobuys.length) {
-				// TODO
+				// TOBUY
 				toggleEl(this.main, true);
 				toggleEl(this.footer, true);
 
@@ -90,11 +90,11 @@ var app = app || {};
 		// Add a single tobuy item to the list by creating a view for it, and
 		// appending its element to the `<ul>`.
 		addOne: function (tobuy) {
-			var view = new app.TodoView({ model: tobuy });
+			var view = new app.TobuyView({ model: tobuy });
 			document.querySelector('#tobuy-list').appendChild(view.render().el);
 		},
 
-		// Add all items in the **Todos** collection at once.
+		// Add all items in the **Tobuys** collection at once.
 		addAll: function () {
 			this.$('#tobuy-list').item(0).innerHTML = '';
 			app.tobuys.forEach(this.addOne, this);
@@ -108,7 +108,7 @@ var app = app || {};
 			app.tobuys.forEach(this.filterOne, this);
 		},
 
-		// Generate the attributes for a new Todo item.
+		// Generate the attributes for a new Tobuy item.
 		newAttributes: function () {
 			return {
 				title: this.input.value.trim(),
@@ -117,7 +117,7 @@ var app = app || {};
 			};
 		},
 
-		// If you hit return in the main input field, create new **Todo** model,
+		// If you hit return in the main input field, create new **Tobuy** model,
 		// persisting it to *localStorage*.
 		createOnEnter: function (e) {
 			if (e.which !== ENTER_KEY || !this.input.value.trim()) {

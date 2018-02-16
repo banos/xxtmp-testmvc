@@ -1,4 +1,4 @@
-# React TodoMVC Example With Backbone Integration
+# React TobuyMVC Example With Backbone Integration
 
 This React example integrates Backbone for its model and router. Note that this is simply a showcase of third-party library integration; Backbone isn't the best candidate because of its mutative nature, which makes it hard to take advantage of some of React's more advanced performance tuning, i.e. [`shouldComponentUpdate`](http://facebook.github.io/react/docs/component-specs.html#updating-shouldcomponentupdate). The main React example uses a simple, custom immutable model.
 

@@ -80,13 +80,13 @@ define({
 			module: 'cola/Collection',
 			args: {
 				strategyOptions: {
-					validator: { module: 'app/create/validateTodo' }
+					validator: { module: 'app/create/validateTobuy' }
 				}
 			}
 		},
 		before: {
-			add: 'cleanTodo | generateMetadata',
-			update: 'cleanTodo'
+			add: 'cleanTobuy | generateMetadata',
+			update: 'cleanTobuy'
 		}
 	},
 
@@ -100,9 +100,9 @@ define({
 		properties: {
 			tobuys: { $ref: 'tobuys' },
 
-			createTodo: { compose: 'form.getValues | tobuys.add' },
-			removeTodo: { compose: 'tobuys.remove' },
-			updateTodo: { compose: 'tobuys.update' },
+			createTobuy: { compose: 'form.getValues | tobuys.add' },
+			removeTobuy: { compose: 'tobuys.remove' },
+			updateTobuy: { compose: 'tobuys.update' },
 
 			querySelector: { $ref: 'dom.first!' },
 
@@ -112,11 +112,11 @@ define({
 		},
 		on: {
 			createView: {
-				'submit:form': 'createTodo'
+				'submit:form': 'createTobuy'
 			},
 			listView: {
-				'click:.destroy': 'removeTodo',
-				'change:.toggle': 'updateTodo',
+				'click:.destroy': 'removeTobuy',
+				'change:.toggle': 'updateTobuy',
 				'click:#toggle-all': 'toggleAll',
 				'dblclick:label': 'tobuys.edit',
 				'change,focusout:.edit': 'tobuys.submit',
@@ -127,17 +127,17 @@ define({
 			}
 		},
 		connect: {
-			updateTotalCount: 'setTodosTotalState',
-			updateRemainingCount: 'setTodosRemainingState',
-			updateCompletedCount: 'setTodosCompletedState',
+			updateTotalCount: 'setTobuysTotalState',
+			updateRemainingCount: 'setTobuysRemainingState',
+			updateCompletedCount: 'setTobuysCompletedState',
 			'tobuys.onChange': 'updateCount',
-			'tobuys.onEdit': 'tobuys.findNode | toggleEditingState.add | beginEditTodo',
-			'tobuys.onSubmit': 'tobuys.findNode | toggleEditingState.remove | tobuys.findItem | endEditTodo'
+			'tobuys.onEdit': 'tobuys.findNode | toggleEditingState.add | beginEditTobuy',
+			'tobuys.onSubmit': 'tobuys.findNode | toggleEditingState.remove | tobuys.findItem | endEditTobuy'
 		}
 	},
 
 	form: { module: 'cola/dom/form' },
-	cleanTodo: { module: 'app/create/cleanTodo' },
+	cleanTobuy: { module: 'app/create/cleanTobuy' },
 	generateMetadata: { module: 'app/create/generateMetadata' },
 
 	toggleEditingState: {
@@ -149,21 +149,21 @@ define({
 		}
 	},
 
-	setTodosTotalState: {
+	setTobuysTotalState: {
 		create: {
 			module: 'wire/dom/transform/cardinality',
 			args: { node: { $ref: 'root' }, prefix: 'tobuys' }
 		}
 	},
 
-	setTodosRemainingState: {
+	setTobuysRemainingState: {
 		create: {
 			module: 'wire/dom/transform/cardinality',
 			args: { node: { $ref: 'root' }, prefix: 'remaining' }
 		}
 	},
 
-	setTodosCompletedState: {
+	setTobuysCompletedState: {
 		create: {
 			module: 'wire/dom/transform/cardinality',
 			args: { node: { $ref: 'root' }, prefix: 'completed' }

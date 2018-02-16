@@ -1,4 +1,4 @@
-# Knockback.js TodoMVC Example
+# Knockback.js TobuyMVC Example
 
 > Both Knockout.js and Backbone.js have their strengths and weaknesses, but together they are amazing! With Knockback.js, you can use the strong ORM provided by Backbone and create dynamic views using Knockout bindings.
 

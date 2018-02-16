@@ -1,9 +1,9 @@
-/*global TodoApp */
+/*global TobuyApp */
 
 (function () {
 	'use strict';
 
-	TodoApp.route('get', '#/', function () {
-		TodoApp.trigger('fetchTodos');
+	TobuyApp.route('get', '#/', function () {
+		TobuyApp.trigger('fetchTobuys');
 	});
 })();

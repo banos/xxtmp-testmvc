@@ -1,4 +1,4 @@
-# SAPUI5/OpenUI5 • [TodoMVC](http://tobuymvc.com)
+# SAPUI5/OpenUI5 • [TobuyMVC](http://tobuymvc.com)
 
 > The UI development toolkit for HTML5 (SAPUI5) is a platform for developing rich user interfaces for modern Web business applications.
 > SAPUI5 has the following advantages:
@@ -35,7 +35,7 @@
 
 ## Implementation
 
-[A detailed article on the SAPUI5 TodoMVC implementation](http://scn.sap.com/community/developer-center/front-end/blog/2013/03/19/how-to-build-testable-sapui5-applications)
+[A detailed article on the SAPUI5 TobuyMVC implementation](http://scn.sap.com/community/developer-center/front-end/blog/2013/03/19/how-to-build-testable-sapui5-applications)
 
 
 ## Credit

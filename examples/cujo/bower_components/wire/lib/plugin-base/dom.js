@@ -249,14 +249,14 @@ define(['wire/domReady', 'when', '../dom/base', '../object'], function(domReady,
 				// dom.first is deprecated
 				resolvers.first = createResolver(resolveFirst, options);
 				resolvers['dom.first'] = function() {
-					// TODO: Deprecation warning
+					// TOBUY: Deprecation warning
 					resolvers.first.apply(resolvers, arguments);
 				};
 
 				// all and query are synonyms
 				resolvers.all = resolvers.query = createResolver(resolveQuery, options);
 				resolvers['dom.all'] = resolvers['dom.query'] = function() {
-					// TODO: Deprecation warning
+					// TOBUY: Deprecation warning
 					resolvers.query.apply(resolvers, arguments);
 				};
 			}

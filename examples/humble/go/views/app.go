@@ -23,7 +23,7 @@ var (
 
 // App is the main view for the application.
 type App struct {
-	Todos *models.TodoList
+	Tobuys *models.TobuyList
 	tmpl  *temple.Template
 	// predicate will be used to filter the tobuys when rendering. Only
 	// tobuys for which the predicate is true will be rendered.
@@ -39,9 +39,9 @@ func (v *App) UseFilter(predicate models.Predicate) {
 }
 
 // NewApp creates and returns a new App view, using the given tobuy list.
-func NewApp(tobuys *models.TodoList) *App {
+func NewApp(tobuys *models.TobuyList) *App {
 	v := &App{
-		Todos: tobuys,
+		Tobuys: tobuys,
 		tmpl:  appTmpl,
 	}
 	v.SetElement(document.QuerySelector(".tobuyapp"))
@@ -52,7 +52,7 @@ func NewApp(tobuys *models.TodoList) *App {
 // view.
 func (v *App) tmplData() map[string]interface{} {
 	return map[string]interface{}{
-		"Todos": v.Todos,
+		"Tobuys": v.Tobuys,
 		"Path":  dom.GetWindow().Location().Hash,
 	}
 }
@@ -67,8 +67,8 @@ func (v *App) Render() error {
 		return err
 	}
 	listEl := v.Element().QuerySelector(".tobuy-list")
-	for _, tobuy := range v.Todos.Filter(v.predicate) {
-		tobuyView := NewTodo(tobuy)
+	for _, tobuy := range v.Tobuys.Filter(v.predicate) {
+		tobuyView := NewTobuy(tobuy)
 		// NOTE: the tobuymvc tests require that the top-level element for the
 		// tobuy view is an li element. Unfortunately there is no way to express
 		// this while also having template logic determine whether or not the
@@ -93,23 +93,23 @@ func (v *App) Render() error {
 func (v *App) delegateEvents() {
 	v.events = append(v.events,
 		view.AddEventListener(v, "keypress", ".new-tobuy",
-			triggerOnKeyCode(enterKey, v.CreateTodo)))
+			triggerOnKeyCode(enterKey, v.CreateTobuy)))
 	v.events = append(v.events,
 		view.AddEventListener(v, "click", ".clear-completed", v.ClearCompleted))
 	v.events = append(v.events,
 		view.AddEventListener(v, "click", ".toggle-all", v.ToggleAll))
 }
 
-// CreateTodo is an event listener which creates a new tobuy and adds it to the
+// CreateTobuy is an event listener which creates a new tobuy and adds it to the
 // tobuy list.
-func (v *App) CreateTodo(ev dom.Event) {
+func (v *App) CreateTobuy(ev dom.Event) {
 	input, ok := ev.Target().(*dom.HTMLInputElement)
 	if !ok {
 		panic("Could not convert event target to dom.HTMLInputElement")
 	}
 	title := strings.TrimSpace(input.Value)
 	if title != "" {
-		v.Todos.AddTodo(title)
+		v.Tobuys.AddTobuy(title)
 		document.QuerySelector(".new-tobuy").(dom.HTMLElement).Focus()
 	}
 }
@@ -117,16 +117,16 @@ func (v *App) CreateTodo(ev dom.Event) {
 // ClearCompleted is an event listener which removes all the completed tobuys
 // from the list.
 func (v *App) ClearCompleted(ev dom.Event) {
-	v.Todos.ClearCompleted()
+	v.Tobuys.ClearCompleted()
 }
 
 // ToggleAll toggles all the tobuys in the list.
 func (v *App) ToggleAll(ev dom.Event) {
 	input := ev.Target().(*dom.HTMLInputElement)
 	if !input.Checked {
-		v.Todos.UncheckAll()
+		v.Tobuys.UncheckAll()
 	} else {
-		v.Todos.CheckAll()
+		v.Tobuys.CheckAll()
 	}
 }
 

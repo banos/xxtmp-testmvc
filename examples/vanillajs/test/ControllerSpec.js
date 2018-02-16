@@ -208,7 +208,7 @@ describe('controller', function () {
 
 			subject.setView('');
 
-			view.trigger('newTodo', 'a new tobuy');
+			view.trigger('newTobuy', 'a new tobuy');
 
 			expect(model.create).toHaveBeenCalledWith('a new tobuy', jasmine.any(Function));
 		});
@@ -227,7 +227,7 @@ describe('controller', function () {
 				}]);
 			});
 
-			view.trigger('newTodo', 'a new tobuy');
+			view.trigger('newTobuy', 'a new tobuy');
 
 			expect(model.read).toHaveBeenCalled();
 
@@ -242,9 +242,9 @@ describe('controller', function () {
 
 			subject.setView('');
 
-			view.trigger('newTodo', 'a new tobuy');
+			view.trigger('newTobuy', 'a new tobuy');
 
-			expect(view.render).toHaveBeenCalledWith('clearNewTodo');
+			expect(view.render).toHaveBeenCalledWith('clearNewTobuy');
 		});
 	});
 

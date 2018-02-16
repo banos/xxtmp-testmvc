@@ -103,16 +103,16 @@
 			router.mapNav({
 				url: '/',
 				moduleId: 'js/viewmodels/tobuyapp',
-				name: 'TodoMVC',
-				caption: 'Durandal • TodoMVC'
+				name: 'TobuyMVC',
+				caption: 'Durandal • TobuyMVC'
 			});
 
 			router.mapNav({
 				url: '#/:filter',
 				moduleId: 'js/viewmodels/tobuyapp',
-				name: 'TodoMVC',
+				name: 'TobuyMVC',
 				hash: '#/filter',
-				caption: 'Durandal • TodoMVC'
+				caption: 'Durandal • TobuyMVC'
 			});
 
 			app.adaptToDevice();

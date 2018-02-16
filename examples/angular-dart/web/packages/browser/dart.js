@@ -5,7 +5,7 @@
 (function() {
 // Bootstrap support for Dart scripts on the page as this script.
 if (navigator.userAgent.indexOf('(Dart)') === -1) {
-  // TODO:
+  // TOBUY:
   // - Support in-browser compilation.
   // - Handle inline Dart scripts.
 
@@ -21,7 +21,7 @@ if (navigator.userAgent.indexOf('(Dart)') === -1) {
         var script = document.createElement('script');
         script.src = scripts[i].src.replace(/\.dart(?=\?|$)/, '.dart.js');
         var parent = scripts[i].parentNode;
-        // TODO(vsm): Find a solution for issue 8455 that works with more
+        // TOBUY(vsm): Find a solution for issue 8455 that works with more
         // than one script.
         document.currentScript = script;
         parent.replaceChild(script, scripts[i]);

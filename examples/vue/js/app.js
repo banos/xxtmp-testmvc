@@ -28,8 +28,8 @@
 		// app initial state
 		data: {
 			tobuys: tobuyStorage.fetch(),
-			newTodo: '',
-			editedTodo: null,
+			newTobuy: '',
+			editedTobuy: null,
 			visibility: 'all'
 		},
 
@@ -44,7 +44,7 @@
 		// computed properties
 		// http://vuejs.org/guide/computed.html
 		computed: {
-			filteredTodos: function () {
+			filteredTobuys: function () {
 				return filters[this.visibility](this.tobuys);
 			},
 			remaining: function () {
@@ -70,38 +70,38 @@
 				return word + (count === 1 ? '' : 's');
 			},
 
-			addTodo: function () {
-				var value = this.newTodo && this.newTodo.trim();
+			addTobuy: function () {
+				var value = this.newTobuy && this.newTobuy.trim();
 				if (!value) {
 					return;
 				}
 				this.tobuys.push({ id: this.tobuys.length + 1, title: value, completed: false });
-				this.newTodo = '';
+				this.newTobuy = '';
 			},
 
-			removeTodo: function (tobuy) {
+			removeTobuy: function (tobuy) {
 				var index = this.tobuys.indexOf(tobuy);
 				this.tobuys.splice(index, 1);
 			},
 
-			editTodo: function (tobuy) {
+			editTobuy: function (tobuy) {
 				this.beforeEditCache = tobuy.title;
-				this.editedTodo = tobuy;
+				this.editedTobuy = tobuy;
 			},
 
 			doneEdit: function (tobuy) {
-				if (!this.editedTodo) {
+				if (!this.editedTobuy) {
 					return;
 				}
-				this.editedTodo = null;
+				this.editedTobuy = null;
 				tobuy.title = tobuy.title.trim();
 				if (!tobuy.title) {
-					this.removeTodo(tobuy);
+					this.removeTobuy(tobuy);
 				}
 			},
 
 			cancelEdit: function (tobuy) {
-				this.editedTodo = null;
+				this.editedTobuy = null;
 				tobuy.title = this.beforeEditCache;
 			},
 

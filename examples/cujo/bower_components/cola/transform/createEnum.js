@@ -45,7 +45,7 @@ define(function () {
 	return function createEnumTransform (enumSet, options) {
 		var map, unmap, emptySet, multiValued;
 
-		// TODO: don't waste cpu using maps if the dev gave an array
+		// TOBUY: don't waste cpu using maps if the dev gave an array
 		map = createMap(enumSet);
 		unmap = createReverseMap(map);
 		emptySet = createEmptySet(unmap);

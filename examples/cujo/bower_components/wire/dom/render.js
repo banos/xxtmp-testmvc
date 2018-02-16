@@ -89,7 +89,7 @@ define(['./../lib/dom/base', 'when'], function (base, when) {
 	function getParentTagName (template) {
 		var matches;
 
-		// TODO: throw if no element was ever found?
+		// TOBUY: throw if no element was ever found?
 		matches = template.match(getFirstTagNameRx);
 
 		return parentTypes[matches && matches[1]] || 'div';
@@ -112,7 +112,7 @@ define(['./../lib/dom/base', 'when'], function (base, when) {
 
 		// we just want to return first element (nodelists and fragments
 		// are tricky), so we ensure we only have one.
-		// TODO: try using DocumentFragments to allow multiple root elements
+		// TOBUY: try using DocumentFragments to allow multiple root elements
 
 		// try html5-ish API
 		if ('firstElementChild' in parent) {
@@ -170,7 +170,7 @@ define(['./../lib/dom/base', 'when'], function (base, when) {
 			attr = oldNode.attributes[i];
 			if ('class' == attr.name) {
 				// merge css classes
-				// TODO: if we want to be smart about not duplicating classes, implement spliceClassNames from cola/dom/render
+				// TOBUY: if we want to be smart about not duplicating classes, implement spliceClassNames from cola/dom/render
 				newNode.className = (oldNode.className ? oldNode.className + ' ' : '')
 					+ newNode.className;
 			}

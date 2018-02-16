@@ -1,8 +1,8 @@
 ﻿/*jshint strict:false */
-/*global enyo:false, ToDo:false */
+/*global enyo:false, ToBuy:false */
 enyo.kind({
 	kind: 'enyo.Router',
-	name: 'ToDo.Routes',
+	name: 'ToBuy.Routes',
 	// These are the routes to listen for, and the function to call when they occur.  A separate context can be provided but is unnecessary here.
 	routes: [{
 		path: '/active',
@@ -17,6 +17,6 @@ enyo.kind({
 	}],
 	// Set a property on our global controller
 	changeCollection: function () {
-		ToDo.notepadcontroller.setRoute(this.current);
+		ToBuy.notepadcontroller.setRoute(this.current);
 	}
 });

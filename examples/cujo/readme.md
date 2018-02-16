@@ -1,4 +1,4 @@
-# cujoJS TodoMVC Example
+# cujoJS TobuyMVC Example
 
 > cujo is an architectural toolkit for next generation JavaScript applications. It encourages highly modular development, declarative application assembly, and embraces the asynchronous nature of JavaScript and its fusion of object-oriented and functional programming styles.
 
@@ -28,7 +28,7 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Implementation
 
-Some things we feel are interesting about cujoJS's TodoMVC as compared to other implementations:
+Some things we feel are interesting about cujoJS's TobuyMVC as compared to other implementations:
 
 * Application composition is separate from application logic
 * Code is *highly* modular and organized into components, each consisting of

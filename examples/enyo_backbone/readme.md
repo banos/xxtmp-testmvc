@@ -1,4 +1,4 @@
-# Enyo TodoMVC Example
+# Enyo TobuyMVC Example
 
 > Use the same framework to develop apps for the web and for all major platforms, desktop and mobile.
 

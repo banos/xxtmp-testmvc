@@ -1,4 +1,4 @@
-# Vanilla ES6 (ES2015) • [TodoMVC](http://tobuymvc.com)
+# Vanilla ES6 (ES2015) • [TobuyMVC](http://tobuymvc.com)
 
 > A port of the [Vanilla JS Example](http://tobuymvc.com/examples/vanillajs/), but translated into ES6, also known as ES2015.
 

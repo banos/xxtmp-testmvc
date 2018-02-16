@@ -2,7 +2,7 @@
 <html lang="en" data-framework="canjs">
 	<head>
 		<meta charset="utf-8">
-		<title>CanJS + RequireJS • TodoMVC</title>
+		<title>CanJS + RequireJS • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
@@ -11,13 +11,13 @@
 		<footer id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="http://bitovi.com">Bitovi</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script type="text/mustache" id="app-template">
 			<tobuy-app>
 				<header id="header">
 					<h1>tobuys</h1>
-					<input id="new-tobuy" placeholder="What needs to be done?" autofocus="" can-enter="createTodo">
+					<input id="new-tobuy" placeholder="What needs to be done?" autofocus="" can-enter="createTobuy">
 				</header>
 				<section id="main" class="{{^if tobuys.length}}hidden{{/if}}">
 					<input id="toggle-all" type="checkbox" {{#if tobuys.allComplete}}checked="checked"{{/if}} can-click="toggleAll">
@@ -30,8 +30,8 @@
 								<label can-dblclick="edit">{{text}}</label>
 								<button class="destroy" can-click="destroy"></button>
 							</div>
-							<input class="edit" type="text" value="{{text}}" can-blur="updateTodo"
-								can-keyup="cancelEditing" can-enter="updateTodo">
+							<input class="edit" type="text" value="{{text}}" can-blur="updateTobuy"
+								can-keyup="cancelEditing" can-enter="updateTobuy">
 						</li>
 						{{/each}}
 					</ul>

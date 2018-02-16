@@ -1,4 +1,4 @@
-# TypeScript & AngularJS TodoMVC Example
+# TypeScript & AngularJS TobuyMVC Example
 
 > TypeScript is a language for application-scale JavaScript development. TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. Any browser. Any host. Any OS. Open Source.
 
@@ -65,7 +65,7 @@ It is useful to have type information for the libraries you use. [DefinitelyType
 
 If the number of files grows, you could put an `_all.ts` file into each folder, move all nested references to it and reference the nested `_all.ts` from the parent `_all.ts`.
 
-Start reading `TodoCtrl.ts` first, continue with `Application.ts` and `index.html`, then the rest of it is easy.
+Start reading `TobuyCtrl.ts` first, continue with `Application.ts` and `index.html`, then the rest of it is easy.
 
 
 ### AngularJS

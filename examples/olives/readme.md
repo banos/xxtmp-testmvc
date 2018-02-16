@@ -1,4 +1,4 @@
-# Olives.js TodoMVC Example
+# Olives.js TobuyMVC Example
 
 > A JS Framework for creating realtime and scalable applications. Based on Emily.js and socket.io.
 

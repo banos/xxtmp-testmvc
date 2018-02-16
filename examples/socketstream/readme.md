@@ -1,4 +1,4 @@
-# SocketStream TodoMVC Example
+# SocketStream TobuyMVC Example
 
 > SocketStream is a fast, modular Node.js web framework dedicated to building realtime single-page apps.
 

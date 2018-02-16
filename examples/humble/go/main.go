@@ -18,7 +18,7 @@ func main() {
 	log.Println("Starting")
 
 	// Create a new tobuy list.
-	tobuys := &models.TodoList{}
+	tobuys := &models.TobuyList{}
 	if err := tobuys.Load(); err != nil {
 		panic(err)
 	}

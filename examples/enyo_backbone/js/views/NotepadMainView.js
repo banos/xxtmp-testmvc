@@ -2,12 +2,12 @@
 /*global enyo:false, ENTER_KEY:false, ESC_KEY:false */
 // The main task list view
 enyo.kind({
-	name: 'ToDo.NotepadMainView',
+	name: 'ToBuy.NotepadMainView',
 	tag: 'section', // give it a specific html tagS
 	id: 'main', // force an id value, otherwise enyo makes its own
 	focus: false,
 	showing: false, // hide initially
-	controller: 'ToDo.notepadcontroller', // connect it to the global controller
+	controller: 'ToBuy.notepadcontroller', // connect it to the global controller
 	components: [{
 		// create the checkbox, and have it bubble markAllComplete events, not clicks.
 		// We don't have to listen for all clicks and sort through them, this click gives a specific event
@@ -36,7 +36,7 @@ enyo.kind({
 		// each row is given its own controller directly linked to its specific model
 		// name: tobuy-list gives us a top level enyo object shortcut to grab the table
 		kind: 'enyo.CollectionRepeater',
-		controller: 'ToDo.notepadcontroller',
+		controller: 'ToBuy.notepadcontroller',
 		tag: 'ul',
 		name: 'tobuy-list',
 		id: 'tobuy-list',

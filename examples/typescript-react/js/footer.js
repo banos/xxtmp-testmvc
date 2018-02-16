@@ -12,20 +12,20 @@ var __extends = (this && this.__extends) || function (d, b) {
 /// <reference path="./interfaces.d.ts"/>
 var constants_1 = require("./constants");
 var utils_1 = require("./utils");
-var TodoFooter = (function (_super) {
-    __extends(TodoFooter, _super);
-    function TodoFooter() {
+var TobuyFooter = (function (_super) {
+    __extends(TobuyFooter, _super);
+    function TobuyFooter() {
         _super.apply(this, arguments);
     }
-    TodoFooter.prototype.render = function () {
-        var activeTodoWord = utils_1.Utils.pluralize(this.props.count, 'item');
+    TobuyFooter.prototype.render = function () {
+        var activeTobuyWord = utils_1.Utils.pluralize(this.props.count, 'item');
         var clearButton = null;
         if (this.props.completedCount > 0) {
             clearButton = (React.createElement("button", {"className": "clear-completed", "onClick": this.props.onClearCompleted}, "Clear completed"));
         }
         var nowShowing = this.props.nowShowing;
-        return (React.createElement("footer", {"className": "footer"}, React.createElement("span", {"className": "tobuy-count"}, React.createElement("strong", null, this.props.count), " ", activeTodoWord, " left"), React.createElement("ul", {"className": "filters"}, React.createElement("li", null, React.createElement("a", {"href": "#/", "className": classNames({ selected: nowShowing === constants_1.ALL_TODOS })}, "All")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/active", "className": classNames({ selected: nowShowing === constants_1.ACTIVE_TODOS })}, "Active")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/completed", "className": classNames({ selected: nowShowing === constants_1.COMPLETED_TODOS })}, "Completed"))), clearButton));
+        return (React.createElement("footer", {"className": "footer"}, React.createElement("span", {"className": "tobuy-count"}, React.createElement("strong", null, this.props.count), " ", activeTobuyWord, " left"), React.createElement("ul", {"className": "filters"}, React.createElement("li", null, React.createElement("a", {"href": "#/", "className": classNames({ selected: nowShowing === constants_1.ALL_TOBUYS })}, "All")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/active", "className": classNames({ selected: nowShowing === constants_1.ACTIVE_TOBUYS })}, "Active")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/completed", "className": classNames({ selected: nowShowing === constants_1.COMPLETED_TOBUYS })}, "Completed"))), clearButton));
     };
-    return TodoFooter;
+    return TobuyFooter;
 })(React.Component);
-exports.TodoFooter = TodoFooter;
+exports.TobuyFooter = TobuyFooter;

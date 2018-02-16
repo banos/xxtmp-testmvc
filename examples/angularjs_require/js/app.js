@@ -12,7 +12,7 @@ require([
 	], function (tobuyCtrl, tobuyFocusDir, tobuyEscapeDir, tobuyStorageSrv) {
 		angular
 			.module('tobuymvc', [tobuyFocusDir, tobuyEscapeDir, tobuyStorageSrv])
-			.controller('TodoController', tobuyCtrl);
+			.controller('TobuyController', tobuyCtrl);
 		angular.bootstrap(document, ['tobuymvc']);			
 	});	
 });

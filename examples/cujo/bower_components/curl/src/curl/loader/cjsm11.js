@@ -44,7 +44,7 @@ define(/*=='curl/loader/cjsm11',==*/ function () {
 	}
 
 	wrapSource['load'] = function (resourceId, require, callback, config) {
-		// TODO: extract xhr from text! plugin and use that instead (after we upgrade to cram.js)
+		// TOBUY: extract xhr from text! plugin and use that instead (after we upgrade to cram.js)
 		require(['text!' + resourceId + '.js', 'curl/_privileged'], function (source, priv) {
 			var moduleMap;
 

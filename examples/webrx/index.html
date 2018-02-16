@@ -2,7 +2,7 @@
 <html data-framework="webrx" lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>WebRx • TodoMVC</title>
+		<title>WebRx • TobuyMVC</title>
 		<link href="node_modules/tobuymvc-common/base.css" rel="stylesheet">
 		<link href="node_modules/tobuymvc-app-css/index.css" rel="stylesheet">
 	</head>
@@ -19,7 +19,7 @@
 				<input data-bind="checked: remainingCount === 0, command: completeAllCmd" class="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 
-				<ul data-bind="foreach: filteredTodos" class="tobuy-list">
+				<ul data-bind="foreach: filteredTobuys" class="tobuy-list">
 					<li data-bind="css: { completed: completed, editing: editing }">
 						<div class="view">
 							<input class="toggle" data-bind="checked: @completed" type="checkbox">
@@ -66,7 +66,7 @@
 		<footer class="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="https://github.com/oliverw">Oliver Weichhold</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 
 		<script src="node_modules/tobuymvc-common/base.js"></script>

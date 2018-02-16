@@ -2,14 +2,14 @@
 <html lang="en" data-framework="kendo">
 	<head>
 		<meta charset="utf-8">
-		<title>Kendo UI • TodoMVC</title>
+		<title>Kendo UI • TobuyMVC</title>
 		<link rel="stylesheet" href="bower_components/tobuymvc-common/base.css">
 	</head>
 	<body>
 		<section id="tobuyapp">
 			<header id="header">
 				<h1>tobuys</h1>
-				<input id="new-tobuy" data-bind="enter: saveTodo, value: newTodo"
+				<input id="new-tobuy" data-bind="enter: saveTobuy, value: newTobuy"
 						 placeholder="What needs to be done?" autofocus>
 			</header>
 			<section id="main" data-bind="attr: { class : isVisible }">
@@ -43,7 +43,7 @@
 		<div id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Credits <a href="https://github.com/bsatrom">Brandon Satrom</a>, <a href="https://github.com/burkeholland">Burke Holland</a> &amp; <a href="https://github.com/akorchev">Atanas Korchev</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</div>
 		<script type="text/template" id="item-template">
 			<li data-bind="attr: { class: tobuyItemClass }">

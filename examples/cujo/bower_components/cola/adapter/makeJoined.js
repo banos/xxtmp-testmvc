@@ -1,7 +1,7 @@
 /** MIT License (c) copyright B Cavalier & J Hann */
 
 
-// TODO:
+// TOBUY:
 // 1. Incrementally recompute the join for items added to or removed from the
 //    primary adapter.  This requires precomputing and hanging onto the joinMap
 // 2. Recompute the join when items are added to or removed from the supplimental

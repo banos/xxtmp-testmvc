@@ -1,7 +1,7 @@
 {
 	"xamlClasses": [
-		"app/Todo",
-		"app/view/TodoView",
+		"app/Tobuy",
+		"app/view/TobuyView",
 		"js/ui/ButtonGroup",
 		"js/ui/Link",
 		"js/ui/List",

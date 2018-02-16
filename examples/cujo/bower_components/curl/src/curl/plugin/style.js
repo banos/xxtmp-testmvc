@@ -67,7 +67,7 @@ define([], function () {
 					createStyle.accum = undef;
 
 					// for safari which chokes on @charset "UTF-8";
-					// TODO: see if Safari 5.x and up still complain
+					// TOBUY: see if Safari 5.x and up still complain
 					allCssText = allCssText.replace(/.+charset[^;]+;/g, '');
 
 					// IE 6-8 won't accept the W3C method for inserting css text
@@ -136,7 +136,7 @@ define([], function () {
 	createStyle.load = function (absId, req, loaded, config) {
 		// get css text
 		req([absId], function (cssText) {
-			// TODO: translate urls?
+			// TOBUY: translate urls?
 			createStyle(cssText, loaded, loaded.error);
 		});
 	};

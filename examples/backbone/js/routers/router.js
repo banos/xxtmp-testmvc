@@ -4,23 +4,23 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	// Todo Router
+	// Tobuy Router
 	// ----------
-	var TodoRouter = Backbone.Router.extend({
+	var TobuyRouter = Backbone.Router.extend({
 		routes: {
 			'*filter': 'setFilter'
 		},
 
 		setFilter: function (param) {
 			// Set the current filter to be used
-			app.TodoFilter = param || '';
+			app.TobuyFilter = param || '';
 
 			// Trigger a collection filter event, causing hiding/unhiding
-			// of Todo view items
+			// of Tobuy view items
 			app.tobuys.trigger('filter');
 		}
 	});
 
-	app.TodoRouter = new TodoRouter();
+	app.TobuyRouter = new TobuyRouter();
 	Backbone.history.start();
 })();

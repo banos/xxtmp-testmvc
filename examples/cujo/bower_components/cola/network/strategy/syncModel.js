@@ -21,7 +21,7 @@
 
 			if (!options) options = {};
 
-			// TODO: consider putting these on the api object so they can be shared across strategies
+			// TOBUY: consider putting these on the api object so they can be shared across strategies
 			// a list of all known providers and consumers
 			// these lists tend to be very small
 			providers = [];

@@ -17,7 +17,7 @@ puremvc.define({
 		// setup the routes when mediator is registered
 		onRegister: function() {
 
-			var tobuyProxy    = this.facade.retrieveProxy( tobuymvc.model.proxy.TodoProxy.NAME ),
+			var tobuyProxy    = this.facade.retrieveProxy( tobuymvc.model.proxy.TobuyProxy.NAME ),
 				defaultRoute = this.getRouteForFilter( tobuyProxy.filter ),
 				options      = { resource:this, notfound:this.handleFilterAll },
 				routes       = {
@@ -50,15 +50,15 @@ puremvc.define({
 
 		// route handlers
 		handleFilterAll: function () {
-			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_ALL );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TOBUYS, tobuymvc.AppConstants.FILTER_ALL );
 		},
 
 		handleFilterActive: function () {
-			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_ACTIVE );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TOBUYS, tobuymvc.AppConstants.FILTER_ACTIVE );
 		},
 
 		handleFilterCompleted: function () {
-			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TODOS, tobuymvc.AppConstants.FILTER_COMPLETED );
+			this.resource.facade.sendNotification( tobuymvc.AppConstants.FILTER_TOBUYS, tobuymvc.AppConstants.FILTER_COMPLETED );
 		},
 
 	 },

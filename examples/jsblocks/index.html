@@ -3,15 +3,15 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>jsblocks • TodoMVC</title>
+		<title>jsblocks • TobuyMVC</title>
 		<link rel="stylesheet" href="node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="node_modules/tobuymvc-app-css/index.css">
 	</head>
 	<body>
-		<section data-query="view(Todos)" class="tobuyapp">
+		<section data-query="view(Tobuys)" class="tobuyapp">
 			<header class="header">
 				<h1>tobuys</h1>
-				<input data-query="val(newTodo.title).keydown(addTodo)" class="new-tobuy" placeholder="What needs to be done?" autofocus>
+				<input data-query="val(newTobuy.title).keydown(addTobuy)" class="new-tobuy" placeholder="What needs to be done?" autofocus>
 			</header>
 			<section data-query="visible(tobuys().length > 0)" style="display: none;" class="main">
 				<input data-query="checked(tobuys.remaining() == 0).click(tobuys.toggleAll)" class="toggle-all" type="checkbox">
@@ -50,7 +50,7 @@
 		<footer class="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Created by <a href="https://github.com/astoilkov">Antonio Stoilkov</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="node_modules/blocks/blocks.js"></script>

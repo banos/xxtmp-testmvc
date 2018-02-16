@@ -1,4 +1,4 @@
-# Closure Tools TodoMVC Example
+# Closure Tools TobuyMVC Example
 
 > The Closure Tools project is an effort by Google engineers to open source the tools used in many of Google's sites and web applications for use by the wider Web development community.
 
@@ -74,4 +74,4 @@ This will overwrite the js/compiled.js file with the new version, be sure to cha
 
 ## Credits
 
-This TodoMVC application was created by [Chris Price](http://www.scottlogic.co.uk/blog/chris/).
+This TobuyMVC application was created by [Chris Price](http://www.scottlogic.co.uk/blog/chris/).

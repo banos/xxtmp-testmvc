@@ -1,7 +1,7 @@
 System.register(['aurelia-router', './tobuys'], function (_export) {
 	'use strict';
 
-	var Router, Todos, App;
+	var Router, Tobuys, App;
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -11,7 +11,7 @@ System.register(['aurelia-router', './tobuys'], function (_export) {
 		setters: [function (_aureliaRouter) {
 			Router = _aureliaRouter.Router;
 		}, function (_tobuys) {
-			Todos = _tobuys.Todos;
+			Tobuys = _tobuys.Tobuys;
 		}],
 		execute: function () {
 			App = (function () {
@@ -32,7 +32,7 @@ System.register(['aurelia-router', './tobuys'], function (_export) {
 				_createClass(App, [{
 					key: 'configureRoutes',
 					value: function configureRoutes(cfg) {
-						cfg.title = 'TodoMVC';
+						cfg.title = 'TobuyMVC';
 						cfg.map([{ route: ['', ':filter'], moduleId: 'tobuys' }]);
 					}
 				}]);

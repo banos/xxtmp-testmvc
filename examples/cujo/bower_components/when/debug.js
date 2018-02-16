@@ -146,7 +146,7 @@ define(function(require) {
 		// Delegate to create a Deferred;
 		d = when.defer();
 
-		// TODO: Remove in >= 2.1
+		// TOBUY: Remove in >= 2.1
 		// Add a noisy, failing then() to deferred to help people track
 		// down leftover deferred.then() calls in 2.0
 		try {

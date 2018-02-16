@@ -26,12 +26,12 @@ define([
 		};
 
 		this.after('initialize', function () {
-			this.on(document, 'dataTodosLoaded', this.recount);
-			this.on(document, 'dataTodoAdded', this.recount);
-			this.on(document, 'dataTodoRemoved', this.recount);
-			this.on(document, 'dataTodoToggled', this.recount);
+			this.on(document, 'dataTobuysLoaded', this.recount);
+			this.on(document, 'dataTobuyAdded', this.recount);
+			this.on(document, 'dataTobuyRemoved', this.recount);
+			this.on(document, 'dataTobuyToggled', this.recount);
 			this.on(document, 'dataClearedCompleted', this.recount);
-			this.on(document, 'dataTodoToggledAll', this.recount);
+			this.on(document, 'dataTobuyToggledAll', this.recount);
 		});
 	}
 

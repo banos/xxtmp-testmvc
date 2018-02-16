@@ -8,7 +8,7 @@
 
 	var App = blocks.Application();
 
-	var Todo = App.Model({
+	var Tobuy = App.Model({
 		title: App.Property(),
 
 		completed: App.Property(),
@@ -18,7 +18,7 @@
 		init: function () {
 			var collection = this.collection();
 
-			// collection is undefined when a Todo is still not part of the Todos collection
+			// collection is undefined when a Tobuy is still not part of the Tobuys collection
 			if (collection) {
 				// save to Local Storage on each attribute change
 				this.title.on('change', collection.save);
@@ -57,7 +57,7 @@
 		}
 	});
 
-	var Todos = App.Collection(Todo, {
+	var Tobuys = App.Collection(Tobuy, {
 		remaining: blocks.observable(),
 
 		init: function () {
@@ -105,7 +105,7 @@
 		}
 	});
 
-	App.View('Todos', {
+	App.View('Tobuys', {
 		options: {
 			// creates a route for the View in order to handle
 			// /all, /active, /completed filters
@@ -114,11 +114,11 @@
 
 		filter: blocks.observable(),
 
-		newTodo: new Todo(),
+		newTobuy: new Tobuy(),
 
 		// holds all tobuys for the current view
 		// tobuys are filtered if "Active" or "Completed" is clicked
-		tobuys: new Todos().extend('filter', function (value) {
+		tobuys: new Tobuys().extend('filter', function (value) {
 			var mode = this.filter();
 			var completed = value.completed();
 			var include = true;
@@ -141,11 +141,11 @@
 			this.filter(params.filter);
 		},
 
-		addTodo: function (e) {
-			if (e.which === ENTER_KEY && this.newTodo.title()) {
-				this.tobuys.push(this.newTodo);
-				// return all Todo values to their defaults
-				this.newTodo.reset();
+		addTobuy: function (e) {
+			if (e.which === ENTER_KEY && this.newTobuy.title()) {
+				this.tobuys.push(this.newTobuy);
+				// return all Tobuy values to their defaults
+				this.newTobuy.reset();
 			}
 		}
 	});

@@ -49,7 +49,7 @@ export default class Controller {
 			title,
 			completed: false
 		}, () => {
-			this.view.clearNewTodo();
+			this.view.clearNewTobuy();
 			this._filter(true);
 		});
 	}

@@ -11,7 +11,7 @@ define(function (require) {
 	defaultNodeHandler.inverse = defaultInverseNodeHandler;
 
 	/*
-	TODO: inverse bind handler:
+	TOBUY: inverse bind handler:
 	V create "on!" wire reference resolver
 	2. look for inverse property in spec that acts as an each.inverse
 	3. look for inverse on "each" handler
@@ -199,14 +199,14 @@ define(function (require) {
 		}
 	}
 
-	function createInverseHandler (binding, propToDom) {
+	function createInverseHandler (binding, propToBuym) {
 		var domToProp = binding.inverse || binding.each.inverse;
 		return function (item, e) {
 			var node = e.target;
 			// update item
 			if (item) domToProp(node, item, binding);
 			// is there any other way to know which binding.each/binding.all to execute?
-			propToDom(item);
+			propToBuym(item);
 		}
 	}
 

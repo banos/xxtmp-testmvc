@@ -21,8 +21,8 @@ func init() {
 	g := temple.NewGroup()
 
 	if err = g.AddPartial("footer", `<span class="tobuy-count">
-	<strong>{{ len .Todos.Remaining }}</strong>
-	item{{ if ne (len .Todos.Remaining) 1}}s{{end}} left
+	<strong>{{ len .Tobuys.Remaining }}</strong>
+	item{{ if ne (len .Tobuys.Remaining) 1}}s{{end}} left
 </span>
 <ul class="filters">
 	<li>
@@ -36,7 +36,7 @@ func init() {
 	</li>
 </ul>
 
-<button class="clear-completed {{ if eq (len .Todos.Completed) 0}}hidden{{ end }}">
+<button class="clear-completed {{ if eq (len .Tobuys.Completed) 0}}hidden{{ end }}">
 	Clear completed
 </button>
 `); err != nil {
@@ -59,15 +59,15 @@ func init() {
 	<h1>tobuys</h1>
 	<input class="new-tobuy" placeholder="What needs to be done?" autofocus>
 </header>
-{{ if gt (len .Todos.All) 0 }}
+{{ if gt (len .Tobuys.All) 0 }}
 <section class="main">
-	<input class="toggle-all" type="checkbox" {{ if eq (len .Todos.All) (len .Todos.Completed) }}checked{{ end }}>
+	<input class="toggle-all" type="checkbox" {{ if eq (len .Tobuys.All) (len .Tobuys.Completed) }}checked{{ end }}>
 	<label for="toggle-all">Mark all as complete</label>
 	<ul class="tobuy-list">
 	</ul>
 </section>
 {{ end }}
-{{ if gt (len .Todos.All) 0 }}
+{{ if gt (len .Tobuys.All) 0 }}
 <footer class="footer">
 	{{ template "partials/footer" . }}
 </footer>

@@ -6,7 +6,7 @@ define([
 	'use strict';
 
 	// represent a single tobuy item
-	var Todo = function (title, completed) {
+	var Tobuy = function (title, completed) {
 		this.title = ko.observable(title);
 		this.completed = ko.observable(completed);
 	};
@@ -28,7 +28,7 @@ define([
 			var tobuysFromlocalStorage = ko.utils.parseJson(localStorage.getItem('tobuys-durandal'));
 
 			tobuysFromlocalStorage = ko.utils.arrayMap(tobuysFromlocalStorage, function (tobuy) {
-				return new Todo(tobuy.title, tobuy.completed);
+				return new Tobuy(tobuy.title, tobuy.completed);
 			});
 
 			self.tobuys(tobuysFromlocalStorage);
@@ -47,15 +47,15 @@ define([
 		};
 
 		app.on('tobuyitem', function (item) {
-			self.tobuys.push(new Todo(item));
+			self.tobuys.push(new Tobuy(item));
 		});
 
-		// map array of passed in tobuys to an observableArray of Todo objects
+		// map array of passed in tobuys to an observableArray of Tobuy objects
 		self.tobuys = ko.observableArray();
 
 		self.showMode = ko.observable('all');
 
-		self.filteredTodos = ko.computed(function () {
+		self.filteredTobuys = ko.computed(function () {
 			switch (self.showMode()) {
 				case 'active':
 					return self.tobuys().filter(function (tobuy) {

@@ -7,33 +7,33 @@ var app = app || {};
 (function () {
 	'use strict';
 
-	app.ALL_TODOS = 'all';
-	app.ACTIVE_TODOS = 'active';
-	app.COMPLETED_TODOS = 'completed';
-	var TodoFooter = app.TodoFooter;
-	var TodoItem = app.TodoItem;
-	var TodoActions = app.tobuyActions;
-	var TodoStore = app.tobuyStore;
+	app.ALL_TOBUYS = 'all';
+	app.ACTIVE_TOBUYS = 'active';
+	app.COMPLETED_TOBUYS = 'completed';
+	var TobuyFooter = app.TobuyFooter;
+	var TobuyItem = app.TobuyItem;
+	var TobuyActions = app.tobuyActions;
+	var TobuyStore = app.tobuyStore;
 
 	var ENTER_KEY = 13;
 
-	var TodoApp = React.createClass({
+	var TobuyApp = React.createClass({
 		getInitialState: function () {
-			return TodoStore.getState();
+			return TobuyStore.getState();
 		},
 
 		componentDidMount: function () {
-			TodoStore.listen(this.onStoreChange);
+			TobuyStore.listen(this.onStoreChange);
 
 			var router = Router({
 				'/': function () {
-					TodoActions.show(app.ALL_TODOS);
+					TobuyActions.show(app.ALL_TOBUYS);
 				},
 				'/active': function () {
-					TodoActions.show(app.ACTIVE_TODOS);
+					TobuyActions.show(app.ACTIVE_TOBUYS);
 				},
 				'/completed': function () {
-					TodoActions.show(app.COMPLETED_TODOS);
+					TobuyActions.show(app.COMPLETED_TOBUYS);
 				}
 			});
 
@@ -41,65 +41,65 @@ var app = app || {};
 		},
 
 		componentDidUnmount: function () {
-			TodoStore.unlisten(this.onStoreChange);
+			TobuyStore.unlisten(this.onStoreChange);
 		},
 
 		handleChange: function (event) {
-			this.setState({newTodo: event.target.value});
+			this.setState({newTobuy: event.target.value});
 		},
 
 		onStoreChange: function (state) {
 			this.setState(state);
 		},
 
-		handleNewTodoKeyDown: function (event) {
+		handleNewTobuyKeyDown: function (event) {
 			if (event.keyCode !== ENTER_KEY) {
 				return;
 			}
 
 			event.preventDefault();
 
-			var val = this.state.newTodo.trim();
+			var val = this.state.newTobuy.trim();
 
 			if (val) {
-				this.setState({newTodo: ''});
+				this.setState({newTobuy: ''});
 
-				TodoActions.addTodo(val);
+				TobuyActions.addTobuy(val);
 			}
 		},
 
 		toggleAll: function (event) {
 			var checked = event.target.checked;
-			TodoActions.toggleAll(checked);
+			TobuyActions.toggleAll(checked);
 		},
 
 		toggle: function (tobuyToToggle) {
-			TodoActions.toggle(tobuyToToggle);
+			TobuyActions.toggle(tobuyToToggle);
 		},
 
 		destroy: function (tobuy) {
-			TodoActions.destroy(tobuy);
+			TobuyActions.destroy(tobuy);
 		},
 
 		edit: function (tobuy) {
-			TodoActions.edit(tobuy.id);
+			TobuyActions.edit(tobuy.id);
 		},
 
 		save: function (tobuyToSave, text) {
-			TodoActions.save({
+			TobuyActions.save({
 				tobuyToSave: tobuyToSave,
 				text: text
 			});
 
-			TodoActions.edit(null);
+			TobuyActions.edit(null);
 		},
 
 		cancel: function () {
-			TodoActions.edit(null);
+			TobuyActions.edit(null);
 		},
 
 		clearCompleted: function () {
-			TodoActions.clearCompleted();
+			TobuyActions.clearCompleted();
 		},
 
 		render: function () {
@@ -107,20 +107,20 @@ var app = app || {};
 			var main = null;
 			var tobuys = this.state.tobuys;
 
-			var shownTodos = tobuys.filter(function (tobuy) {
+			var shownTobuys = tobuys.filter(function (tobuy) {
 				switch (this.state.nowShowing) {
-				case app.ACTIVE_TODOS:
+				case app.ACTIVE_TOBUYS:
 					return !tobuy.completed;
-				case app.COMPLETED_TODOS:
+				case app.COMPLETED_TOBUYS:
 					return tobuy.completed;
 				default:
 					return true;
 				}
 			}, this);
 
-			var tobuyItems = shownTodos.map(function (tobuy) {
+			var tobuyItems = shownTobuys.map(function (tobuy) {
 				return (
-					<TodoItem
+					<TobuyItem
 						key={tobuy.id}
 						tobuy={tobuy}
 						onToggle={this.toggle.bind(this, tobuy)}
@@ -133,16 +133,16 @@ var app = app || {};
 				);
 			}, this);
 
-			var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+			var activeTobuyCount = tobuys.reduce(function (accum, tobuy) {
 				return tobuy.completed ? accum : accum + 1;
 			}, 0);
 
-			var completedCount = tobuys.length - activeTodoCount;
+			var completedCount = tobuys.length - activeTobuyCount;
 
-			if (activeTodoCount || completedCount) {
+			if (activeTobuyCount || completedCount) {
 				footer =
-					<TodoFooter
-						count={activeTodoCount}
+					<TobuyFooter
+						count={activeTobuyCount}
 						completedCount={completedCount}
 						nowShowing={this.state.nowShowing}
 						onClearCompleted={this.clearCompleted}
@@ -156,7 +156,7 @@ var app = app || {};
 							className="toggle-all"
 							type="checkbox"
 							onChange={this.toggleAll}
-							checked={activeTodoCount === 0}
+							checked={activeTobuyCount === 0}
 						/>
 						<ul className="tobuy-list">
 							{tobuyItems}
@@ -173,8 +173,8 @@ var app = app || {};
 							ref="newField"
 							className="new-tobuy"
 							placeholder="What needs to be done?"
-							value={this.state.newTodo}
-							onKeyDown={this.handleNewTodoKeyDown}
+							value={this.state.newTobuy}
+							onKeyDown={this.handleNewTobuyKeyDown}
 							onChange={this.handleChange}
 							autoFocus={true}
 						/>
@@ -187,7 +187,7 @@ var app = app || {};
 	});
 
 	React.render(
-		<TodoApp/>,
+		<TobuyApp/>,
 		document.getElementsByClassName('tobuyapp')[0]
 	);
 })();

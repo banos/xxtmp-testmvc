@@ -14,7 +14,7 @@ require([
 	'config/global',
 	'viewmodels/tobuy',
 	'extends/handlers'
-], function (ko, g, TodoViewModel) {
+], function (ko, g, TobuyViewModel) {
 	'use strict';
 
 	// var app_view = new AppView();
@@ -22,5 +22,5 @@ require([
 	var tobuys = ko.utils.parseJson(window.localStorage.getItem(g.localStorageItem));
 
 	// bind a new instance of our view model to the page
-	ko.applyBindings(new TodoViewModel(tobuys || []));
+	ko.applyBindings(new TobuyViewModel(tobuys || []));
 });

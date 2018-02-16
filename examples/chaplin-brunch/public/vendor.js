@@ -466,7 +466,7 @@ var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
     }
   }
 
-  __exports__.checkRevision = checkRevision;// TODO: Remove this line and break up compilePartial
+  __exports__.checkRevision = checkRevision;// TOBUY: Remove this line and break up compilePartial
 
   function template(templateSpec, env) {
     if (!env) {

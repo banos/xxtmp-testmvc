@@ -263,7 +263,7 @@ declare module ng {
 
     ///////////////////////////////////////////////////////////////////////////
     // BrowserService
-    // TODO undocumented, so we need to get it from the source code
+    // TOBUY undocumented, so we need to get it from the source code
     ///////////////////////////////////////////////////////////////////////////
     interface IBrowserService {}
 
@@ -760,7 +760,7 @@ declare module ng {
     }
 
     interface IAugmentedJQuery extends JQuery {
-        // TODO: events, how to define?
+        // TOBUY: events, how to define?
         //$destroy
 
         find(selector: string): IAugmentedJQuery;

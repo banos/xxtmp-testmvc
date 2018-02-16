@@ -1,4 +1,4 @@
-# Dojo TodoMVC Example
+# Dojo TobuyMVC Example
 
 > Dojo saves you time and scales with your development process, using web standards as its platform. It’s the toolkit experienced developers turn to for building high quality desktop and mobile web applications.
 
@@ -27,7 +27,7 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Running
 
-To run the Dojo example, you need to build Dojo with TodoMVC profile.
+To run the Dojo example, you need to build Dojo with TobuyMVC profile.
 To do so, do the following. You need either java or node on your system to run these:
 
 ```

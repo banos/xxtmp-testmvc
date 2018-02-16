@@ -16,7 +16,7 @@ puremvc.define({
 		 * @override
 		 */
 		execute: function(note) {
-			this.facade.registerProxy( new tobuymvc.model.proxy.TodoProxy() );
+			this.facade.registerProxy( new tobuymvc.model.proxy.TobuyProxy() );
 		}
 	}
 );

@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 --></head><body><div hidden="" by-vulcanize=""><dom-module id="iron-localstorage" assetpath="../bower_components/iron-localstorage/"></dom-module>
 <dom-module id="td-model" assetpath="/">
 	<template strip-whitespace="">
-		<iron-localstorage name="tobuys-polymer" value="{{items}}" on-iron-localstorage-load-empty="_initializeDefaultTodos"></iron-localstorage>
+		<iron-localstorage name="tobuys-polymer" value="{{items}}" on-iron-localstorage-load-empty="_initializeDefaultTobuys"></iron-localstorage>
 	</template>
 	</dom-module>
 <dom-module id="td-item" assetpath="/">
@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 		<flatiron-director route="{{route}}" hidden=""></flatiron-director>
 		<section id="tobuyapp">
 			<header id="header">
-				<input is="td-input" id="new-tobuy" placeholder="What needs to be done?" autofocus="" on-td-input-commit="addTodoAction" on-td-input-cancel="cancelAddTodoAction">
+				<input is="td-input" id="new-tobuy" placeholder="What needs to be done?" autofocus="" on-td-input-commit="addTobuyAction" on-td-input-cancel="cancelAddTobuyAction">
 			</header>
 
 			<template is="dom-if" if="{{items.length}}">

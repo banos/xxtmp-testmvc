@@ -18,12 +18,12 @@ puremvc.define({
 		execute: function (note) {
 			// This registers multiple notes to a single command which performs different logic based on the note name.
 			// In a more complex app, we'd usually be registering a different command to each notification name.
-			this.facade.registerCommand( tobuymvc.AppConstants.ADD_TODO,                  tobuymvc.controller.command.TodoCommand );
-			this.facade.registerCommand( tobuymvc.AppConstants.REMOVE_TODOS_COMPLETED,    tobuymvc.controller.command.TodoCommand );
-			this.facade.registerCommand( tobuymvc.AppConstants.DELETE_TODO,               tobuymvc.controller.command.TodoCommand );
-			this.facade.registerCommand( tobuymvc.AppConstants.UPDATE_TODO,               tobuymvc.controller.command.TodoCommand );
-			this.facade.registerCommand( tobuymvc.AppConstants.TOGGLE_TODO_STATUS,        tobuymvc.controller.command.TodoCommand );
-			this.facade.registerCommand( tobuymvc.AppConstants.FILTER_TODOS,              tobuymvc.controller.command.TodoCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.ADD_TOBUY,                  tobuymvc.controller.command.TobuyCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.REMOVE_TOBUYS_COMPLETED,    tobuymvc.controller.command.TobuyCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.DELETE_TOBUY,               tobuymvc.controller.command.TobuyCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.UPDATE_TOBUY,               tobuymvc.controller.command.TobuyCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.TOGGLE_TOBUY_STATUS,        tobuymvc.controller.command.TobuyCommand );
+			this.facade.registerCommand( tobuymvc.AppConstants.FILTER_TOBUYS,              tobuymvc.controller.command.TobuyCommand );
 		}
 	}
 );

@@ -86,7 +86,7 @@ define(function(require) {
 
 		// Prefer deprecated legacy wire$plugin format over newer
 		// plain function format.
-		// TODO: Remove support for wire$plugin
+		// TOBUY: Remove support for wire$plugin
 		if(typeof module.wire$plugin === 'function') {
 			plugin = module.wire$plugin;
 		} else if(typeof module === 'function') {

@@ -1,7 +1,7 @@
 /**
 * Handles processing and rendering external XTemplates.
 */
-Ext.define('TodoDeftJS.util.TemplateLoader', {
+Ext.define('TobuyDeftJS.util.TemplateLoader', {
 
 	templateRenderer: function (loader, response, active) {
 		var targetComponent, template, templateConfig;

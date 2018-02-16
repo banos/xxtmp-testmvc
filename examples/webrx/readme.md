@@ -1,4 +1,4 @@
-# Webrx TodoMVC Example
+# Webrx TobuyMVC Example
 
 ## About WebRx
 
@@ -13,9 +13,9 @@ The routing implementation in the example uses the HTML5 history and thus does
 not create valid URLs when run without a proper server configuration. This issue
 is tracked as [#1293](https://github.com/tastejs/tobuymvc/issues/1293).
 
-## TodoMVC
+## TobuyMVC
 
-This TodoMVC implementation demonstrates many of the framework's built-in core features:
+This TobuyMVC implementation demonstrates many of the framework's built-in core features:
 
 - [View-Models](http://webrxjs.org/docs#topic-mvvm-intro)
 - [Observable Properties](http://webrxjs.org/docs/observable-properties.html) and [Output Properties](http://webrxjs.org/docs/output-properties.html)

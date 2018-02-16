@@ -1,4 +1,4 @@
-# rAppid.js TodoMVC Example
+# rAppid.js TobuyMVC Example
 
 > The declarative Rich Internet Application Javascript MVC Framework.
 

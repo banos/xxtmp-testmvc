@@ -90,7 +90,7 @@ define(['meld'], function(meld) {
 		? console
 		: global['console'] || { log:noop, error:noop };
 
-	// TODO: Consider using stacktrace.js
+	// TOBUY: Consider using stacktrace.js
 	// https://github.com/eriwen/javascript-stacktrace
 	// For now, quick and dirty, based on how stacktrace.js chooses the appropriate field
 	// and log using console.error

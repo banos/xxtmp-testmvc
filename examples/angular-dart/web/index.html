@@ -2,7 +2,7 @@
 <html lang="en" ng-app data-framework="angulardart">
 	<head>
 		<meta charset="utf-8">
-		<title>AngularDart • TodoMVC</title>
+		<title>AngularDart • TobuyMVC</title>
 		<link rel="stylesheet" href="../node_modules/tobuymvc-common/base.css">
 		<link rel="stylesheet" href="../node_modules/tobuymvc-app-css/index.css">
 		<style>
@@ -26,7 +26,7 @@
 					<li ng-repeat="item in tobuy.items | filter:statusFilter" ng-class="{completed: item.completed, editing: item == tobuy.editedItem}">
 						<div class="view">
 							<input type="checkbox" class="toggle" ng-model="item.completed">
-							<label ng-doubleclick="tobuy.editTodo(item)">{{item.title}}</label>
+							<label ng-doubleclick="tobuy.editTobuy(item)">{{item.title}}</label>
 							<button class="destroy" ng-click="tobuy.remove(item)"></button>
 						</div>
 						<form ng-submit="tobuy.doneEditing()">
@@ -45,7 +45,7 @@
 		<footer id="info">
 			<p>Double-click to edit a tobuy</p>
 			<p>Written by <a href="http://passy.me/">Pascal Hartig</a></p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script src="../node_modules/tobuymvc-common/base.js"></script>
 		<script src="main.dart" type="application/dart"></script>

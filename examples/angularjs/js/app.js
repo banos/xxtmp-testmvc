@@ -1,7 +1,7 @@
 /*global angular */
 
 /**
- * The main TodoMVC app module
+ * The main TobuyMVC app module
  *
  * @type {angular.Module}
  */
@@ -10,7 +10,7 @@ angular.module('tobuymvc', ['ngRoute', 'ngResource'])
 		'use strict';
 
 		var routeConfig = {
-			controller: 'TodoCtrl',
+			controller: 'TobuyCtrl',
 			templateUrl: 'tobuymvc-index.html',
 			resolve: {
 				store: function (tobuyStorage) {

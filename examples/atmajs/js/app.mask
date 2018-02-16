@@ -1,6 +1,6 @@
 import * as AppController from 'app.js';
-import TodoInput from 'Controls/TodoInput';
-import TodoList from 'Todos/TodoList';
+import TobuyInput from 'Controls/TobuyInput';
+import TobuyList from 'Tobuys/TobuyList';
 import Filter from 'Controls/Filter';
 
 define App extends AppController {
@@ -8,7 +8,7 @@ define App extends AppController {
 		header {
 			h1 > 'tobuys'
 	
-			TodoInput .new-tobuy
+			TobuyInput .new-tobuy
 				autofocus
 				placeholder = 'What needs to be done?'
 				;
@@ -16,7 +16,7 @@ define App extends AppController {
 	
 		+if (status.count) {
 			section .main >
-				TodoList;
+				TobuyList;
 	
 			footer .footer {
 	
@@ -37,6 +37,6 @@ define App extends AppController {
 	footer .info {
 		p { 'Double-click to edit a tobuy' }
 		p { 'Created by ' a href='http://github.com/tenbits' > 'Alex Kit' }
-		p { 'Part of ' a href='http://tobuymvc.com' > 'TodoMVC' }
+		p { 'Part of ' a href='http://tobuymvc.com' > 'TobuyMVC' }
 	}
 }

@@ -1,7 +1,7 @@
 
 // minifier: path aliases
 
-enyo.path.addPaths({layout: "C://VSProjects/WebSites/ToDoMvc/enyo/tools/../../lib/layout/", mvc: "C://VSProjects/WebSites/ToDoMvc/enyo/tools/../../lib/mvc/", css: "../source/css/"});
+enyo.path.addPaths({layout: "C://VSProjects/WebSites/ToBuyMvc/enyo/tools/../../lib/layout/", mvc: "C://VSProjects/WebSites/ToBuyMvc/enyo/tools/../../lib/mvc/", css: "../source/css/"});
 
 // FittableLayout.js
 

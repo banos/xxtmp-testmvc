@@ -6,20 +6,20 @@
 /// <reference path="../typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
 var utils_1 = require("./utils");
-var TodoModel = (function () {
-    function TodoModel(key) {
+var TobuyModel = (function () {
+    function TobuyModel(key) {
         this.key = key;
         this.tobuys = utils_1.Utils.store(key);
         this.onChanges = [];
     }
-    TodoModel.prototype.subscribe = function (onChange) {
+    TobuyModel.prototype.subscribe = function (onChange) {
         this.onChanges.push(onChange);
     };
-    TodoModel.prototype.inform = function () {
+    TobuyModel.prototype.inform = function () {
         utils_1.Utils.store(this.key, this.tobuys);
         this.onChanges.forEach(function (cb) { cb(); });
     };
-    TodoModel.prototype.addTodo = function (title) {
+    TobuyModel.prototype.addTobuy = function (title) {
         this.tobuys = this.tobuys.concat({
             id: utils_1.Utils.uuid(),
             title: title,
@@ -27,13 +27,13 @@ var TodoModel = (function () {
         });
         this.inform();
     };
-    TodoModel.prototype.toggleAll = function (checked) {
+    TobuyModel.prototype.toggleAll = function (checked) {
         this.tobuys = this.tobuys.map(function (tobuy) {
             return utils_1.Utils.extend({}, tobuy, { completed: checked });
         });
         this.inform();
     };
-    TodoModel.prototype.toggle = function (tobuyToToggle) {
+    TobuyModel.prototype.toggle = function (tobuyToToggle) {
         this.tobuys = this.tobuys.map(function (tobuy) {
             return tobuy !== tobuyToToggle ?
                 tobuy :
@@ -41,27 +41,27 @@ var TodoModel = (function () {
         });
         this.inform();
     };
-    TodoModel.prototype.destroy = function (tobuy) {
+    TobuyModel.prototype.destroy = function (tobuy) {
         this.tobuys = this.tobuys.filter(function (candidate) {
             return candidate !== tobuy;
         });
         this.inform();
     };
-    TodoModel.prototype.save = function (tobuyToSave, text) {
+    TobuyModel.prototype.save = function (tobuyToSave, text) {
         this.tobuys = this.tobuys.map(function (tobuy) {
             return tobuy !== tobuyToSave ? tobuy : utils_1.Utils.extend({}, tobuy, { title: text });
         });
         this.inform();
     };
-    TodoModel.prototype.clearCompleted = function () {
+    TobuyModel.prototype.clearCompleted = function () {
         this.tobuys = this.tobuys.filter(function (tobuy) {
             return !tobuy.completed;
         });
         this.inform();
     };
-    return TodoModel;
+    return TobuyModel;
 })();
-exports.TodoModel = TodoModel;
+exports.TobuyModel = TobuyModel;
 
 },{"./utils":6}],2:[function(require,module,exports){
 /*jshint quotmark:false */
@@ -76,110 +76,110 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 /// <reference path="../typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
-var TodoModel_1 = require("./TodoModel");
+var TobuyModel_1 = require("./TobuyModel");
 var footer_1 = require("./footer");
 var tobuyItem_1 = require("./tobuyItem");
 var constants_1 = require("./constants");
-var TodoApp = (function (_super) {
-    __extends(TodoApp, _super);
-    function TodoApp(props) {
+var TobuyApp = (function (_super) {
+    __extends(TobuyApp, _super);
+    function TobuyApp(props) {
         _super.call(this, props);
         this.state = {
-            nowShowing: constants_1.ALL_TODOS,
+            nowShowing: constants_1.ALL_TOBUYS,
             editing: null
         };
     }
-    TodoApp.prototype.componentDidMount = function () {
+    TobuyApp.prototype.componentDidMount = function () {
         var setState = this.setState;
         var router = Router({
-            '/': setState.bind(this, { nowShowing: constants_1.ALL_TODOS }),
-            '/active': setState.bind(this, { nowShowing: constants_1.ACTIVE_TODOS }),
-            '/completed': setState.bind(this, { nowShowing: constants_1.COMPLETED_TODOS })
+            '/': setState.bind(this, { nowShowing: constants_1.ALL_TOBUYS }),
+            '/active': setState.bind(this, { nowShowing: constants_1.ACTIVE_TOBUYS }),
+            '/completed': setState.bind(this, { nowShowing: constants_1.COMPLETED_TOBUYS })
         });
         router.init('/');
     };
-    TodoApp.prototype.handleNewTodoKeyDown = function (event) {
+    TobuyApp.prototype.handleNewTobuyKeyDown = function (event) {
         if (event.keyCode !== constants_1.ENTER_KEY) {
             return;
         }
         event.preventDefault();
         var val = React.findDOMNode(this.refs["newField"]).value.trim();
         if (val) {
-            this.props.model.addTodo(val);
+            this.props.model.addTobuy(val);
             React.findDOMNode(this.refs["newField"]).value = '';
         }
     };
-    TodoApp.prototype.toggleAll = function (event) {
+    TobuyApp.prototype.toggleAll = function (event) {
         var target = event.target;
         var checked = target.checked;
         this.props.model.toggleAll(checked);
     };
-    TodoApp.prototype.toggle = function (tobuyToToggle) {
+    TobuyApp.prototype.toggle = function (tobuyToToggle) {
         this.props.model.toggle(tobuyToToggle);
     };
-    TodoApp.prototype.destroy = function (tobuy) {
+    TobuyApp.prototype.destroy = function (tobuy) {
         this.props.model.destroy(tobuy);
     };
-    TodoApp.prototype.edit = function (tobuy) {
+    TobuyApp.prototype.edit = function (tobuy) {
         this.setState({ editing: tobuy.id });
     };
-    TodoApp.prototype.save = function (tobuyToSave, text) {
+    TobuyApp.prototype.save = function (tobuyToSave, text) {
         this.props.model.save(tobuyToSave, text);
         this.setState({ editing: null });
     };
-    TodoApp.prototype.cancel = function () {
+    TobuyApp.prototype.cancel = function () {
         this.setState({ editing: null });
     };
-    TodoApp.prototype.clearCompleted = function () {
+    TobuyApp.prototype.clearCompleted = function () {
         this.props.model.clearCompleted();
     };
-    TodoApp.prototype.render = function () {
+    TobuyApp.prototype.render = function () {
         var _this = this;
         var footer;
         var main;
         var tobuys = this.props.model.tobuys;
-        var shownTodos = tobuys.filter(function (tobuy) {
+        var shownTobuys = tobuys.filter(function (tobuy) {
             switch (_this.state.nowShowing) {
-                case constants_1.ACTIVE_TODOS:
+                case constants_1.ACTIVE_TOBUYS:
                     return !tobuy.completed;
-                case constants_1.COMPLETED_TODOS:
+                case constants_1.COMPLETED_TOBUYS:
                     return tobuy.completed;
                 default:
                     return true;
             }
         });
-        var tobuyItems = shownTodos.map(function (tobuy) {
-            return (React.createElement(tobuyItem_1.TodoItem, {"key": tobuy.id, "tobuy": tobuy, "onToggle": _this.toggle.bind(_this, tobuy), "onDestroy": _this.destroy.bind(_this, tobuy), "onEdit": _this.edit.bind(_this, tobuy), "editing": _this.state.editing === tobuy.id, "onSave": _this.save.bind(_this, tobuy), "onCancel": function (e) { return _this.cancel(); }}));
+        var tobuyItems = shownTobuys.map(function (tobuy) {
+            return (React.createElement(tobuyItem_1.TobuyItem, {"key": tobuy.id, "tobuy": tobuy, "onToggle": _this.toggle.bind(_this, tobuy), "onDestroy": _this.destroy.bind(_this, tobuy), "onEdit": _this.edit.bind(_this, tobuy), "editing": _this.state.editing === tobuy.id, "onSave": _this.save.bind(_this, tobuy), "onCancel": function (e) { return _this.cancel(); }}));
         });
-        var activeTodoCount = tobuys.reduce(function (accum, tobuy) {
+        var activeTobuyCount = tobuys.reduce(function (accum, tobuy) {
             return tobuy.completed ? accum : accum + 1;
         }, 0);
-        var completedCount = tobuys.length - activeTodoCount;
-        if (activeTodoCount || completedCount) {
+        var completedCount = tobuys.length - activeTobuyCount;
+        if (activeTobuyCount || completedCount) {
             footer =
-                React.createElement(footer_1.TodoFooter, {"count": activeTodoCount, "completedCount": completedCount, "nowShowing": this.state.nowShowing, "onClearCompleted": function (e) { return _this.clearCompleted(); }});
+                React.createElement(footer_1.TobuyFooter, {"count": activeTobuyCount, "completedCount": completedCount, "nowShowing": this.state.nowShowing, "onClearCompleted": function (e) { return _this.clearCompleted(); }});
         }
         if (tobuys.length) {
-            main = (React.createElement("section", {"className": "main"}, React.createElement("input", {"className": "toggle-all", "type": "checkbox", "onChange": function (e) { return _this.toggleAll(e); }, "checked": activeTodoCount === 0}), React.createElement("ul", {"className": "tobuy-list"}, tobuyItems)));
+            main = (React.createElement("section", {"className": "main"}, React.createElement("input", {"className": "toggle-all", "type": "checkbox", "onChange": function (e) { return _this.toggleAll(e); }, "checked": activeTobuyCount === 0}), React.createElement("ul", {"className": "tobuy-list"}, tobuyItems)));
         }
-        return (React.createElement("div", null, React.createElement("header", {"className": "header"}, React.createElement("h1", null, "tobuys"), React.createElement("input", {"ref": "newField", "className": "new-tobuy", "placeholder": "What needs to be done?", "onKeyDown": function (e) { return _this.handleNewTodoKeyDown(e); }, "autoFocus": true})), main, footer));
+        return (React.createElement("div", null, React.createElement("header", {"className": "header"}, React.createElement("h1", null, "tobuys"), React.createElement("input", {"ref": "newField", "className": "new-tobuy", "placeholder": "What needs to be done?", "onKeyDown": function (e) { return _this.handleNewTobuyKeyDown(e); }, "autoFocus": true})), main, footer));
     };
-    return TodoApp;
+    return TobuyApp;
 })(React.Component);
-var model = new TodoModel_1.TodoModel('react-tobuys');
+var model = new TobuyModel_1.TobuyModel('react-tobuys');
 function render() {
-    React.render(React.createElement(TodoApp, {"model": model}), document.getElementsByClassName('tobuyapp')[0]);
+    React.render(React.createElement(TobuyApp, {"model": model}), document.getElementsByClassName('tobuyapp')[0]);
 }
 model.subscribe(render);
 render();
 
-},{"./TodoModel":1,"./constants":3,"./footer":4,"./tobuyItem":5}],3:[function(require,module,exports){
-var ALL_TODOS = 'all';
-exports.ALL_TODOS = ALL_TODOS;
-var ACTIVE_TODOS = 'active';
-exports.ACTIVE_TODOS = ACTIVE_TODOS;
-var COMPLETED_TODOS = 'completed';
-exports.COMPLETED_TODOS = COMPLETED_TODOS;
+},{"./TobuyModel":1,"./constants":3,"./footer":4,"./tobuyItem":5}],3:[function(require,module,exports){
+var ALL_TOBUYS = 'all';
+exports.ALL_TOBUYS = ALL_TOBUYS;
+var ACTIVE_TOBUYS = 'active';
+exports.ACTIVE_TOBUYS = ACTIVE_TOBUYS;
+var COMPLETED_TOBUYS = 'completed';
+exports.COMPLETED_TOBUYS = COMPLETED_TOBUYS;
 var ENTER_KEY = 13;
 exports.ENTER_KEY = ENTER_KEY;
 var ESCAPE_KEY = 27;
@@ -200,23 +200,23 @@ var __extends = (this && this.__extends) || function (d, b) {
 /// <reference path="./interfaces.d.ts"/>
 var constants_1 = require("./constants");
 var utils_1 = require("./utils");
-var TodoFooter = (function (_super) {
-    __extends(TodoFooter, _super);
-    function TodoFooter() {
+var TobuyFooter = (function (_super) {
+    __extends(TobuyFooter, _super);
+    function TobuyFooter() {
         _super.apply(this, arguments);
     }
-    TodoFooter.prototype.render = function () {
-        var activeTodoWord = utils_1.Utils.pluralize(this.props.count, 'item');
+    TobuyFooter.prototype.render = function () {
+        var activeTobuyWord = utils_1.Utils.pluralize(this.props.count, 'item');
         var clearButton = null;
         if (this.props.completedCount > 0) {
             clearButton = (React.createElement("button", {"className": "clear-completed", "onClick": this.props.onClearCompleted}, "Clear completed"));
         }
         var nowShowing = this.props.nowShowing;
-        return (React.createElement("footer", {"className": "footer"}, React.createElement("span", {"className": "tobuy-count"}, React.createElement("strong", null, this.props.count), " ", activeTodoWord, " left"), React.createElement("ul", {"className": "filters"}, React.createElement("li", null, React.createElement("a", {"href": "#/", "className": classNames({ selected: nowShowing === constants_1.ALL_TODOS })}, "All")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/active", "className": classNames({ selected: nowShowing === constants_1.ACTIVE_TODOS })}, "Active")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/completed", "className": classNames({ selected: nowShowing === constants_1.COMPLETED_TODOS })}, "Completed"))), clearButton));
+        return (React.createElement("footer", {"className": "footer"}, React.createElement("span", {"className": "tobuy-count"}, React.createElement("strong", null, this.props.count), " ", activeTobuyWord, " left"), React.createElement("ul", {"className": "filters"}, React.createElement("li", null, React.createElement("a", {"href": "#/", "className": classNames({ selected: nowShowing === constants_1.ALL_TOBUYS })}, "All")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/active", "className": classNames({ selected: nowShowing === constants_1.ACTIVE_TOBUYS })}, "Active")), ' ', React.createElement("li", null, React.createElement("a", {"href": "#/completed", "className": classNames({ selected: nowShowing === constants_1.COMPLETED_TOBUYS })}, "Completed"))), clearButton));
     };
-    return TodoFooter;
+    return TobuyFooter;
 })(React.Component);
-exports.TodoFooter = TodoFooter;
+exports.TobuyFooter = TobuyFooter;
 
 },{"./constants":3,"./utils":6}],5:[function(require,module,exports){
 /*jshint quotmark: false */
@@ -232,13 +232,13 @@ var __extends = (this && this.__extends) || function (d, b) {
 /// <reference path="../typings/tsd.d.ts" />
 /// <reference path="./interfaces.d.ts"/>
 var constants_1 = require("./constants");
-var TodoItem = (function (_super) {
-    __extends(TodoItem, _super);
-    function TodoItem(props) {
+var TobuyItem = (function (_super) {
+    __extends(TobuyItem, _super);
+    function TobuyItem(props) {
         _super.call(this, props);
         this.state = { editText: this.props.tobuy.title };
     }
-    TodoItem.prototype.handleSubmit = function (event) {
+    TobuyItem.prototype.handleSubmit = function (event) {
         var val = this.state.editText.trim();
         if (val) {
             this.props.onSave(val);
@@ -248,11 +248,11 @@ var TodoItem = (function (_super) {
             this.props.onDestroy();
         }
     };
-    TodoItem.prototype.handleEdit = function () {
+    TobuyItem.prototype.handleEdit = function () {
         this.props.onEdit();
         this.setState({ editText: this.props.tobuy.title });
     };
-    TodoItem.prototype.handleKeyDown = function (event) {
+    TobuyItem.prototype.handleKeyDown = function (event) {
         if (event.keyCode === constants_1.ESCAPE_KEY) {
             this.setState({ editText: this.props.tobuy.title });
             this.props.onCancel(event);
@@ -261,32 +261,32 @@ var TodoItem = (function (_super) {
             this.handleSubmit(event);
         }
     };
-    TodoItem.prototype.handleChange = function (event) {
+    TobuyItem.prototype.handleChange = function (event) {
         var input = event.target;
         this.setState({ editText: input.value });
     };
-    TodoItem.prototype.shouldComponentUpdate = function (nextProps, nextState) {
+    TobuyItem.prototype.shouldComponentUpdate = function (nextProps, nextState) {
         return (nextProps.tobuy !== this.props.tobuy ||
             nextProps.editing !== this.props.editing ||
             nextState.editText !== this.state.editText);
     };
-    TodoItem.prototype.componentDidUpdate = function (prevProps) {
+    TobuyItem.prototype.componentDidUpdate = function (prevProps) {
         if (!prevProps.editing && this.props.editing) {
             var node = React.findDOMNode(this.refs["editField"]);
             node.focus();
             node.setSelectionRange(node.value.length, node.value.length);
         }
     };
-    TodoItem.prototype.render = function () {
+    TobuyItem.prototype.render = function () {
         var _this = this;
         return (React.createElement("li", {"className": classNames({
             completed: this.props.tobuy.completed,
             editing: this.props.editing
         })}, React.createElement("div", {"className": "view"}, React.createElement("input", {"className": "toggle", "type": "checkbox", "checked": this.props.tobuy.completed, "onChange": this.props.onToggle}), React.createElement("label", {"onDoubleClick": function (e) { return _this.handleEdit(); }}, this.props.tobuy.title), React.createElement("button", {"className": "destroy", "onClick": this.props.onDestroy})), React.createElement("input", {"ref": "editField", "className": "edit", "value": this.state.editText, "onBlur": function (e) { return _this.handleSubmit(e); }, "onChange": function (e) { return _this.handleChange(e); }, "onKeyDown": function (e) { return _this.handleKeyDown(e); }})));
     };
-    return TodoItem;
+    return TobuyItem;
 })(React.Component);
-exports.TodoItem = TodoItem;
+exports.TobuyItem = TobuyItem;
 
 },{"./constants":3}],6:[function(require,module,exports){
 var Utils = (function () {

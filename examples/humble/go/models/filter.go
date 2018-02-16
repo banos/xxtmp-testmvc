@@ -2,7 +2,7 @@ package models
 
 // Predicate is a function which takes a tobuy and returns a bool. It can be
 // used in filters.
-type Predicate func(*Todo) bool
+type Predicate func(*Tobuy) bool
 
 // Predicates is a data structure with commonly used Predicates.
 var Predicates = struct {
@@ -10,32 +10,32 @@ var Predicates = struct {
 	Completed Predicate
 	Remaining Predicate
 }{
-	All:       func(_ *Todo) bool { return true },
-	Completed: (*Todo).Completed,
-	Remaining: (*Todo).Remaining,
+	All:       func(_ *Tobuy) bool { return true },
+	Completed: (*Tobuy).Completed,
+	Remaining: (*Tobuy).Remaining,
 }
 
 // All returns all the tobuys. It applies a filter using the All predicate.
-func (list TodoList) All() []*Todo {
+func (list TobuyList) All() []*Tobuy {
 	return list.Filter(Predicates.All)
 }
 
 // Completed returns only those tobuys which are completed. It applies a filter
 // using the Completed predicate.
-func (list TodoList) Completed() []*Todo {
+func (list TobuyList) Completed() []*Tobuy {
 	return list.Filter(Predicates.Completed)
 }
 
 // Remaining returns only those tobuys which are remaining (or active). It
 // applies a filter using the Remaining predicate.
-func (list TodoList) Remaining() []*Todo {
+func (list TobuyList) Remaining() []*Tobuy {
 	return list.Filter(Predicates.Remaining)
 }
 
 // Filter returns a slice tobuys for which the predicate is true. The returned
 // slice is a subset of all tobuys.
-func (list TodoList) Filter(f Predicate) []*Todo {
-	results := []*Todo{}
+func (list TobuyList) Filter(f Predicate) []*Tobuy {
+	results := []*Tobuy{}
 	for _, tobuy := range list.tobuys {
 		if f(tobuy) {
 			results = append(results, tobuy)
@@ -48,7 +48,7 @@ func (list TodoList) Filter(f Predicate) []*Todo {
 // argument and returns a bool. It returns the inverted predicate. Where f would
 // return true, the inverted predicate would return false and vice versa.
 func invert(f Predicate) Predicate {
-	return func(tobuy *Todo) bool {
+	return func(tobuy *Tobuy) bool {
 		return !f(tobuy)
 	}
 }
@@ -56,7 +56,7 @@ func invert(f Predicate) Predicate {
 // tobuyById returns a predicate which is true iff tobuy.id equals the given
 // id.
 func tobuyById(id string) Predicate {
-	return func(t *Todo) bool {
+	return func(t *Tobuy) bool {
 		return t.id == id
 	}
 }

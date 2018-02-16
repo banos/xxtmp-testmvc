@@ -1,12 +1,12 @@
-interface ITodo {
+interface ITobuy {
   id: string,
   title: string,
   completed: boolean
 }
 
-interface ITodoItemProps {
+interface ITobuyItemProps {
   key : string,
-  tobuy : ITodo;
+  tobuy : ITobuy;
   editing? : boolean;
   onSave: (val: any) => void;
   onDestroy: () => void;
@@ -15,11 +15,11 @@ interface ITodoItemProps {
   onToggle: () => void;
 }
 
-interface ITodoItemState {
+interface ITobuyItemState {
   editText : string
 }
 
-interface ITodoFooterProps {
+interface ITobuyFooterProps {
   completedCount : number;
   onClearCompleted : any;
   nowShowing : string;
@@ -27,13 +27,13 @@ interface ITodoFooterProps {
 }
 
 
-interface ITodoModel {
+interface ITobuyModel {
   key : any;
-  tobuys : Array<ITodo>;
+  tobuys : Array<ITobuy>;
   onChanges : Array<any>;
   subscribe(onChange);
   inform();
-  addTodo(title : string);
+  addTobuy(title : string);
   toggleAll(checked);
   toggle(tobuyToToggle);
   destroy(tobuy);
@@ -42,7 +42,7 @@ interface ITodoModel {
 }
 
 interface IAppProps {
-  model : ITodoModel;
+  model : ITobuyModel;
 }
 
 interface IAppState {

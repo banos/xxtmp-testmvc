@@ -11,8 +11,8 @@
 	<version>0.2.0</version>
 	<packaging>war</packaging>
 
-	<name>TodoMVC</name>
-	<description>TodoMVC example written in DUEL</description>
+	<name>TobuyMVC</name>
+	<description>TobuyMVC example written in DUEL</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

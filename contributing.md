@@ -7,7 +7,7 @@ Please note that this project is released with a [Contributor Code of Conduct](c
 
 ## Considerations before submitting a new app
 
-TodoMVC is a curation, not a collection. We want to make it easier for people to
+TobuyMVC is a curation, not a collection. We want to make it easier for people to
 find a base for their web applications, not harder. This is why we can't accept
 every submission. However, we're always open to looking at novel ways to solve
 existing problems.
@@ -54,7 +54,7 @@ Modern browser (latest: Chrome, Firefox, Opera, Safari, IE9)
 
 ## Unit Tests
 
-At present, due to a large number of apps in the TodoMVC suite we haven't been mandating that unit tests be written in order for an application to be accepted.
+At present, due to a large number of apps in the TobuyMVC suite we haven't been mandating that unit tests be written in order for an application to be accepted.
 
 We do, however, plan on addressing this in a future release as we feel it would both help further ensure consistency and provide developers with a reference for writing tests for each framework.
 
@@ -63,6 +63,6 @@ If you are a library author or contributor wishing to start work on writing test
 
 ## A Final Note
 
-Note that due to the current number of MVC/MVVM/MV* frameworks in circulation, it's not always possible to include each one in TodoMVC, but we'll definitely discuss the merits of any framework prior to making a decision. :)
+Note that due to the current number of MVC/MVVM/MV* frameworks in circulation, it's not always possible to include each one in TobuyMVC, but we'll definitely discuss the merits of any framework prior to making a decision. :)
 
 For applications that we feel don't quite match the goals of the project, but which we feel still offer value, we're happy to include references to them in our official [wiki](https://github.com/tastejs/tobuymvc/wiki/Other-implementations).

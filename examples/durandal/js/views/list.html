@@ -3,7 +3,7 @@
 		<input id="toggle-all" data-bind="checked: allCompleted" type="checkbox">
 		<label for="toggle-all">Mark all as complete</label>
 	</div>
-	<ul id="tobuy-list" data-bind="foreach: filteredTodos">
+	<ul id="tobuy-list" data-bind="foreach: filteredTobuys">
 		<li data-bind="css: { completed: completed, editing: $root.isThisItemBeingEdited($data) }">
 			<div class="view">
 				<input class="toggle" data-bind="checked: completed" type="checkbox">

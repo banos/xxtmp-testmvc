@@ -1,4 +1,4 @@
-class Todo extends Serenade.Model
+class Tobuy extends Serenade.Model
 	@belongsTo 'app', inverseOf: 'all', as: -> App
 	@property 'title', serialize: true
 
@@ -12,7 +12,7 @@ class Todo extends Serenade.Model
 		@app.all.delete(this)
 
 class App extends Serenade.Model
-	@hasMany 'all', inverseOf: 'app', serialize: true, as: -> Todo
+	@hasMany 'all', inverseOf: 'app', serialize: true, as: -> Tobuy
 
 	@selection 'active', from: 'all', filter: 'incomplete'
 	@selection 'completed', from: 'all', filter: 'completed'
@@ -36,7 +36,7 @@ class App extends Serenade.Model
 class AppController
 	constructor: (@app) ->
 
-	newTodo: ->
+	newTobuy: ->
 		title = @app.newTitle.trim()
 		@app.all.push(title: title) if title
 		@app.newTitle = ''
@@ -44,10 +44,10 @@ class AppController
 	clearCompleted: ->
 		@app.all = @app.active
 
-class TodoController
+class TobuyController
 	constructor: (@tobuy) ->
 
-	removeTodo: ->
+	removeTobuy: ->
 		@tobuy.remove()
 
 	edit: ->
@@ -77,6 +77,6 @@ router.init()
 Serenade.view('app', document.getElementById('app').innerHTML)
 Serenade.view('tobuy', document.getElementById('tobuy').innerHTML)
 Serenade.controller('app', AppController)
-Serenade.controller('tobuy', TodoController)
+Serenade.controller('tobuy', TobuyController)
 
 document.body.insertBefore(Serenade.render('app', app), document.body.children[0])

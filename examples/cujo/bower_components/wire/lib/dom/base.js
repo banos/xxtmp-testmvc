@@ -185,11 +185,11 @@ define(function (require) {
 			_insertBefore(refNode, node, refNode.firstChild);
 		}
 		else if(location == 'before') {
-			// TODO: throw if parent missing?
+			// TOBUY: throw if parent missing?
 			_insertBefore(parent, node, refNode);
 		}
 		else if(location == 'after') {
-			// TODO: throw if parent missing?
+			// TOBUY: throw if parent missing?
 			if (refNode == parent.lastChild) {
 				_appendChild(parent, node);
 			}
@@ -253,7 +253,7 @@ define(function (require) {
 			var node = this.target;
 
 			// if we added a destroy method on the node, call it.
-			// TODO: find a better way to release events instead of using this mechanism
+			// TOBUY: find a better way to release events instead of using this mechanism
 			if (node.destroy) {
 				node.destroy();
 			}

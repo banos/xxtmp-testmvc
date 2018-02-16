@@ -373,7 +373,7 @@ define(function(require) {
 					return new Scope(self)
 						.init(component.spec)
 						.then(function (childScope) {
-							// TODO: find a lighter weight solution
+							// TOBUY: find a lighter weight solution
 							// We're paying the cost of creating a complete scope,
 							// then discarding everything except the instance map.
 							return object.mixin({}, childScope.instances);

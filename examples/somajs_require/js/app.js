@@ -33,12 +33,12 @@
 		'views/header',
 		'views/main',
 		'views/footer'
-	], function (soma, template, TodoModel, RouterModel, HeaderView, MainView, FooterView) {
+	], function (soma, template, TobuyModel, RouterModel, HeaderView, MainView, FooterView) {
 
-		var TodoApp = soma.Application.extend({
+		var TobuyApp = soma.Application.extend({
 			init: function () {
 				// mapping rules so the model and router can be injected
-				this.injector.mapClass('model', TodoModel, true);
+				this.injector.mapClass('model', TobuyModel, true);
 				this.injector.mapClass('router', RouterModel, true);
 				// create templates for DOM Elements (optional soma-template plugin)
 				this.createTemplate(HeaderView, document.getElementById('header'));
@@ -52,7 +52,7 @@
 		});
 
 		// create the application
-		new TodoApp();
+		new TobuyApp();
 
 	});
 

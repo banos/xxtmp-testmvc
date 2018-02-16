@@ -14,7 +14,7 @@ define(function(require) {
 	simpleStrategy = require('../network/strategy/default');
 	defaultIdentifier = require('../identifier/default');
 
-	// TODO: make these configurable/extensible
+	// TOBUY: make these configurable/extensible
 	baseEvents = {
 		// basic item events. most of these come with data. devs can
 		// decide to use these events for their own purposes or send
@@ -86,7 +86,7 @@ define(function(require) {
 				return this[name](data);
 			}
 			catch (ex) {
-				// TODO: do something with this exception
+				// TOBUY: do something with this exception
 				return false;
 			}
 		},

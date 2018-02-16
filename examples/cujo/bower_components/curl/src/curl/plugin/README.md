@@ -17,6 +17,6 @@ domReady!
 js!
 link!
 
-TODO:
+TOBUY:
 
 json! (auto-detects xdomain and uses JSON-P)

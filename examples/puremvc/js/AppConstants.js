@@ -11,17 +11,17 @@
  */
 puremvc.define({ name: 'tobuymvc.AppConstants' }, {}, {
 	// The multiton key for this app's single core
-	CORE_NAME:                'TodoMVC',
+	CORE_NAME:                'TobuyMVC',
 
 	// Notifications
 	STARTUP:                  'startup',
-	ADD_TODO:                 'add_tobuy',
-	DELETE_TODO:              'delete_tobuy',
-	UPDATE_TODO:              'update_tobuy',
-	TOGGLE_TODO_STATUS:       'toggle_tobuy_status',
-	REMOVE_TODOS_COMPLETED:   'remove_tobuys_completed',
-	FILTER_TODOS:             'filter_tobuys',
-	TODOS_FILTERED:           'tobuys_filtered',
+	ADD_TOBUY:                 'add_tobuy',
+	DELETE_TOBUY:              'delete_tobuy',
+	UPDATE_TOBUY:              'update_tobuy',
+	TOGGLE_TOBUY_STATUS:       'toggle_tobuy_status',
+	REMOVE_TOBUYS_COMPLETED:   'remove_tobuys_completed',
+	FILTER_TOBUYS:             'filter_tobuys',
+	TOBUYS_FILTERED:           'tobuys_filtered',
 
 	// Filter routes
 	FILTER_ALL:                'all',

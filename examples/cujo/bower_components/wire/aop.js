@@ -159,7 +159,7 @@ define(function(require) {
     }
 
     function weave(resolver, proxy, wire, options, add) {
-		// TODO: Refactor weaving to use proxy.invoke
+		// TOBUY: Refactor weaving to use proxy.invoke
 
         var target, path, aspects, applyAdvice;
 

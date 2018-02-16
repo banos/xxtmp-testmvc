@@ -8,7 +8,7 @@
  * Licensed under the MIT License at:
  * 		http://www.opensource.org/licenses/mit-license.php
  *
- * TODO: support environments that implement XMLHttpRequest such as Wakanda
+ * TOBUY: support environments that implement XMLHttpRequest such as Wakanda
  *
  * @experimental
  */

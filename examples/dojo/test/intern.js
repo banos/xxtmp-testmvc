@@ -43,10 +43,10 @@ define((function (global) {
 				}
 			],
 			map: {
-				'tobuy/widgets/Todos': {
+				'tobuy/widgets/Tobuys': {
 					'dojo/router': 'test/RouterMock'
 				},
-				'test/tobuy/widgets/Todos': {
+				'test/tobuy/widgets/Tobuys': {
 					'dojo/router': 'test/RouterMock'
 				}
 			}

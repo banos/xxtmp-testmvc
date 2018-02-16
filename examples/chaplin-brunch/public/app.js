@@ -91,13 +91,13 @@
   globals.require.brunch = true;
 })();
 require.register("application", function(exports, require, module) {
-var Application, Todos, mediator, _ref,
+var Application, Tobuys, mediator, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 mediator = require('mediator');
 
-Todos = require('models/tobuys');
+Tobuys = require('models/tobuys');
 
 module.exports = Application = (function(_super) {
   __extends(Application, _super);
@@ -107,10 +107,10 @@ module.exports = Application = (function(_super) {
     return _ref;
   }
 
-  Application.prototype.title = 'Chaplin • TodoMVC';
+  Application.prototype.title = 'Chaplin • TobuyMVC';
 
   Application.prototype.initMediator = function() {
-    mediator.tobuys = new Todos();
+    mediator.tobuys = new Tobuys();
     return Application.__super__.initMediator.apply(this, arguments);
   };
 
@@ -125,7 +125,7 @@ module.exports = Application = (function(_super) {
 });
 
 ;require.register("controllers/index-controller", function(exports, require, module) {
-var FooterView, HeaderView, IndexController, TodosView, mediator, _ref,
+var FooterView, HeaderView, IndexController, TobuysView, mediator, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
@@ -133,7 +133,7 @@ HeaderView = require('../views/header-view');
 
 FooterView = require('../views/footer-view');
 
-TodosView = require('../views/tobuys-view');
+TobuysView = require('../views/tobuys-view');
 
 mediator = require('mediator');
 
@@ -160,7 +160,7 @@ module.exports = IndexController = (function(_super) {
     var filterer, _ref1, _ref2;
     filterer = (_ref1 = (_ref2 = params.filterer) != null ? _ref2.trim() : void 0) != null ? _ref1 : 'all';
     this.publishEvent('tobuys:filter', filterer);
-    return this.view = new TodosView({
+    return this.view = new TobuysView({
       collection: mediator.tobuys,
       filterer: function(model) {
         switch (filterer) {
@@ -219,86 +219,86 @@ module.exports = Chaplin.mediator;
 });
 
 ;require.register("models/tobuy", function(exports, require, module) {
-var Todo, _ref,
+var Tobuy, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-module.exports = Todo = (function(_super) {
-  __extends(Todo, _super);
+module.exports = Tobuy = (function(_super) {
+  __extends(Tobuy, _super);
 
-  function Todo() {
-    _ref = Todo.__super__.constructor.apply(this, arguments);
+  function Tobuy() {
+    _ref = Tobuy.__super__.constructor.apply(this, arguments);
     return _ref;
   }
 
-  Todo.prototype.defaults = {
+  Tobuy.prototype.defaults = {
     title: '',
     completed: false
   };
 
-  Todo.prototype.initialize = function() {
-    Todo.__super__.initialize.apply(this, arguments);
+  Tobuy.prototype.initialize = function() {
+    Tobuy.__super__.initialize.apply(this, arguments);
     if (this.isNew()) {
       return this.set('created', Date.now());
     }
   };
 
-  Todo.prototype.toggle = function() {
+  Tobuy.prototype.toggle = function() {
     return this.set({
       completed: !this.get('completed')
     });
   };
 
-  Todo.prototype.isVisible = function() {
+  Tobuy.prototype.isVisible = function() {
     var isCompleted;
     return isCompleted = this.get('completed');
   };
 
-  return Todo;
+  return Tobuy;
 
 })(Chaplin.Model);
 });
 
 ;require.register("models/tobuys", function(exports, require, module) {
-var Todo, Todos, _ref,
+var Tobuy, Tobuys, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-Todo = require('models/tobuy');
+Tobuy = require('models/tobuy');
 
-module.exports = Todos = (function(_super) {
-  __extends(Todos, _super);
+module.exports = Tobuys = (function(_super) {
+  __extends(Tobuys, _super);
 
-  function Todos() {
-    _ref = Todos.__super__.constructor.apply(this, arguments);
+  function Tobuys() {
+    _ref = Tobuys.__super__.constructor.apply(this, arguments);
     return _ref;
   }
 
-  Todos.prototype.model = Todo;
+  Tobuys.prototype.model = Tobuy;
 
-  Todos.prototype.localStorage = new Store('tobuys-chaplin');
+  Tobuys.prototype.localStorage = new Store('tobuys-chaplin');
 
-  Todos.prototype.allAreCompleted = function() {
+  Tobuys.prototype.allAreCompleted = function() {
     return this.getCompleted().length === this.length;
   };
 
-  Todos.prototype.getCompleted = function() {
+  Tobuys.prototype.getCompleted = function() {
     return this.where({
       completed: true
     });
   };
 
-  Todos.prototype.getActive = function() {
+  Tobuys.prototype.getActive = function() {
     return this.where({
       completed: false
     });
   };
 
-  Todos.prototype.comparator = function(tobuy) {
+  Tobuys.prototype.comparator = function(tobuy) {
     return tobuy.get('created');
   };
 
-  return Todos;
+  return Tobuys;
 
 })(Chaplin.Collection);
 });
@@ -571,21 +571,21 @@ if (typeof define === 'function' && define.amd) {
 });
 
 ;require.register("views/tobuy-view", function(exports, require, module) {
-var TodoView, View, _ref,
+var TobuyView, View, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 View = require('./base/view');
 
-module.exports = TodoView = (function(_super) {
-  __extends(TodoView, _super);
+module.exports = TobuyView = (function(_super) {
+  __extends(TobuyView, _super);
 
-  function TodoView() {
-    _ref = TodoView.__super__.constructor.apply(this, arguments);
+  function TobuyView() {
+    _ref = TobuyView.__super__.constructor.apply(this, arguments);
     return _ref;
   }
 
-  TodoView.prototype.events = {
+  TobuyView.prototype.events = {
     'click .toggle': 'toggle',
     'dblclick label': 'edit',
     'keyup .edit': 'save',
@@ -593,34 +593,34 @@ module.exports = TodoView = (function(_super) {
     'click .destroy': 'clear'
   };
 
-  TodoView.prototype.listen = {
+  TobuyView.prototype.listen = {
     'change model': 'render'
   };
 
-  TodoView.prototype.template = require('./templates/tobuy');
+  TobuyView.prototype.template = require('./templates/tobuy');
 
-  TodoView.prototype.tagName = 'li';
+  TobuyView.prototype.tagName = 'li';
 
-  TodoView.prototype.render = function() {
-    TodoView.__super__.render.apply(this, arguments);
+  TobuyView.prototype.render = function() {
+    TobuyView.__super__.render.apply(this, arguments);
     return this.toggleClass();
   };
 
-  TodoView.prototype.toggleClass = function() {
+  TobuyView.prototype.toggleClass = function() {
     var isCompleted;
     isCompleted = this.model.get('completed');
     return this.el.classList.toggle('completed', isCompleted);
   };
 
-  TodoView.prototype.clear = function() {
+  TobuyView.prototype.clear = function() {
     return this.model.destroy();
   };
 
-  TodoView.prototype.toggle = function() {
+  TobuyView.prototype.toggle = function() {
     return this.model.toggle().save();
   };
 
-  TodoView.prototype.edit = function() {
+  TobuyView.prototype.edit = function() {
     var input;
     this.el.classList.add('editing');
     input = this.find('.edit');
@@ -628,7 +628,7 @@ module.exports = TodoView = (function(_super) {
     return input.value = input.value;
   };
 
-  TodoView.prototype.save = function(event) {
+  TobuyView.prototype.save = function(event) {
     var ENTER_KEY, title;
     ENTER_KEY = 13;
     title = event.delegateTarget.value.trim();
@@ -644,58 +644,58 @@ module.exports = TodoView = (function(_super) {
     return this.el.classList.remove('editing');
   };
 
-  return TodoView;
+  return TobuyView;
 
 })(View);
 });
 
 ;require.register("views/tobuys-view", function(exports, require, module) {
-var CollectionView, TodoView, TodosView, utils, _ref,
+var CollectionView, TobuyView, TobuysView, utils, _ref,
   __hasProp = {}.hasOwnProperty,
   __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
 CollectionView = require('./base/collection-view');
 
-TodoView = require('./tobuy-view');
+TobuyView = require('./tobuy-view');
 
 utils = require('lib/utils');
 
-module.exports = TodosView = (function(_super) {
-  __extends(TodosView, _super);
+module.exports = TobuysView = (function(_super) {
+  __extends(TobuysView, _super);
 
-  function TodosView() {
-    _ref = TodosView.__super__.constructor.apply(this, arguments);
+  function TobuysView() {
+    _ref = TobuysView.__super__.constructor.apply(this, arguments);
     return _ref;
   }
 
-  TodosView.prototype.container = '#main';
+  TobuysView.prototype.container = '#main';
 
-  TodosView.prototype.events = {
+  TobuysView.prototype.events = {
     'click #toggle-all': 'toggleCompleted'
   };
 
-  TodosView.prototype.itemView = TodoView;
+  TobuysView.prototype.itemView = TobuyView;
 
-  TodosView.prototype.listSelector = '#tobuy-list';
+  TobuysView.prototype.listSelector = '#tobuy-list';
 
-  TodosView.prototype.listen = {
+  TobuysView.prototype.listen = {
     'all collection': 'renderCheckbox',
     'tobuys:clear mediator': 'clear'
   };
 
-  TodosView.prototype.template = require('./templates/tobuys');
+  TobuysView.prototype.template = require('./templates/tobuys');
 
-  TodosView.prototype.render = function() {
-    TodosView.__super__.render.apply(this, arguments);
+  TobuysView.prototype.render = function() {
+    TobuysView.__super__.render.apply(this, arguments);
     return this.renderCheckbox();
   };
 
-  TodosView.prototype.renderCheckbox = function() {
+  TobuysView.prototype.renderCheckbox = function() {
     this.find('#toggle-all').checked = this.collection.allAreCompleted();
     return utils.toggle(this.el, this.collection.length !== 0);
   };
 
-  TodosView.prototype.toggleCompleted = function(event) {
+  TobuysView.prototype.toggleCompleted = function(event) {
     var isChecked;
     isChecked = event.delegateTarget.checked;
     return this.collection.forEach(function(tobuy) {
@@ -705,13 +705,13 @@ module.exports = TodosView = (function(_super) {
     });
   };
 
-  TodosView.prototype.clear = function() {
+  TobuysView.prototype.clear = function() {
     return this.collection.getCompleted().forEach(function(model) {
       return model.destroy();
     });
   };
 
-  return TodosView;
+  return TobuysView;
 
 })(CollectionView);
 });

@@ -1,4 +1,4 @@
-# Firebase & AngularJS TodoMVC Example
+# Firebase & AngularJS TobuyMVC Example
 
 > Firebase is a scalable realtime backend that lets you build apps fast without managing servers.
 
@@ -31,10 +31,10 @@ _If you have other helpful links to share, or find any of the links above no lon
 ## Implementation
 
 Firebase provides a realtime persistence layer for JSON data. In this example,
-we combine Firebase with AngularJS to create a collaborative TODO app where
-the TODO items are persisted and updated in realtime.
+we combine Firebase with AngularJS to create a collaborative TOBUY app where
+the TOBUY items are persisted and updated in realtime.
 
 There is very little difference between this app and the vanilla AngularJS
-TODO app in how AngularJS is used. The only significant difference is the
+TOBUY app in how AngularJS is used. The only significant difference is the
 use of [AngularFire](http://github.com/firebase/angularFire), which provides
-an AngularJS service for persisting and updating TODO items in realtime.
+an AngularJS service for persisting and updating TOBUY items in realtime.

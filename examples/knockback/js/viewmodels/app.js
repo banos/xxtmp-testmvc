@@ -31,7 +31,7 @@ var app = app || {};
 			});
 
 			// A collectionObservable can be used to hold the instance of the collection.
-			this.tobuys = kb.collectionObservable(new app.Todos(), app.TodoViewModel, {filters: filterFn});
+			this.tobuys = kb.collectionObservable(new app.Tobuys(), app.TobuyViewModel, {filters: filterFn});
 
 			// Note: collectionObservables do not track nested model attribute changes by design to avoid
 			// list redrawing when models change so changes need to be manually tracked and triggered.
@@ -60,7 +60,7 @@ var app = app || {};
 		},
 
 		// Create a new model in the underlying collection and the observable will automatically synchronize
-		onAddTodo: function (self, e) {
+		onAddTobuy: function (self, e) {
 			if (e.keyCode === ENTER_KEY && $.trim(self.title())) {
 				self.tobuys.collection().create({title: $.trim(self.title())});
 				self.title('');

@@ -19,22 +19,22 @@
 			setup: function() {
 				var self = this;
 				$clearBtn.on( 'click', function() {
-					self.system.notify( 'TodoListView:removeAllDoneTodos' );
+					self.system.notify( 'TobuyListView:removeAllDoneTobuys' );
 				});
 
 			},
 			render: function() {
 				this.renderCounts( this.tobuysModel.getNumTotal(), this.tobuysModel.getNumActive() );
 			},
-			renderCounts: function( numTodosTotal, numTodosActive ) {
-				var numTodosCompleted = numTodosTotal - numTodosActive,
-					countTitle = '<strong>' + numTodosActive + '</strong> ' + this.pluralizeUtil.pluralize( numTodosActive, 'item' ) + ' left';
+			renderCounts: function( numTobuysTotal, numTobuysActive ) {
+				var numTobuysCompleted = numTobuysTotal - numTobuysActive,
+					countTitle = '<strong>' + numTobuysActive + '</strong> ' + this.pluralizeUtil.pluralize( numTobuysActive, 'item' ) + ' left';
 
 				// Only show the footer when there are at least one tobuy.
-				$footer.toggle( !!numTodosTotal );
+				$footer.toggle( !!numTobuysTotal );
 
 				// Toggle clear button
-				$clearBtn.toggle( !!numTodosCompleted );
+				$clearBtn.toggle( !!numTobuysCompleted );
 			}
 		};
 	};

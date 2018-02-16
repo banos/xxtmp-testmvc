@@ -1,17 +1,17 @@
 mediator = require 'mediator'
-Todos = require 'models/tobuys'
+Tobuys = require 'models/tobuys'
 
 # The application object
 module.exports = class Application extends Chaplin.Application
   # Set your application name here so the document title is set to
   # “Controller title – Site title” (see Layout#adjustTitle)
-  title: 'Chaplin • TodoMVC'
+  title: 'Chaplin • TobuyMVC'
 
   # Create additional mediator properties
   # -------------------------------------
   initMediator: ->
     # Add additional application-specific properties and methods
-    mediator.tobuys = new Todos()
+    mediator.tobuys = new Tobuys()
     # Seal the mediator
     super
 

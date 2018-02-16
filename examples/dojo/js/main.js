@@ -27,7 +27,7 @@
 			}
 		],
 		map: {
-			// TodoMVC application does not use template from file system
+			// TobuyMVC application does not use template from file system
 			'dijit/_TemplatedMixin': {
 				'dojo/cache': 'tobuy/empty'
 			}

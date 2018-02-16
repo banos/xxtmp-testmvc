@@ -56,7 +56,7 @@ define(function(require) {
 		this._templateNode = findTemplateNode(rootNode, options);
 
 		// 2. get containerNode
-		// TODO: should we get the container node just-in-time?
+		// TOBUY: should we get the container node just-in-time?
 		container = options.containerNode || this._templateNode.parentNode;
 
 		if (!container) {
@@ -176,7 +176,7 @@ define(function(require) {
 			var node, idAttr, id;
 
 			// using feature sniffing to detect if this is an event object
-			// TODO: use instanceof HTMLElement where supported
+			// TOBUY: use instanceof HTMLElement where supported
 			if (!(eventOrElement && eventOrElement.target && eventOrElement.stopPropagation && eventOrElement.preventDefault
 				|| eventOrElement && eventOrElement.nodeName && eventOrElement.nodeType == 1))
 				return; // not comments or text nodes

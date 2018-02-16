@@ -81,7 +81,7 @@
  * If both are found, "en-us" is used to override "en" and the merged result
  * is used.
  *
- * TODO: how to specify multiple locales be baked into AMD bundle (build time)?
+ * TOBUY: how to specify multiple locales be baked into AMD bundle (build time)?
  *
  */
 

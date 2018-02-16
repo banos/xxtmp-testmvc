@@ -9,15 +9,15 @@ define([
 	'ui/stats',
 	'ui/main_selector',
 	'ui/toggle_all'
-], function (TodosData, StatsData, NewItemUI, TodoListUI, StatsUI, MainSelectorUI, ToggleAllUI) {
+], function (TobuysData, StatsData, NewItemUI, TobuyListUI, StatsUI, MainSelectorUI, ToggleAllUI) {
 	var initialize = function () {
 		StatsData.attachTo(document);
-		TodosData.attachTo(document);
+		TobuysData.attachTo(document);
 		NewItemUI.attachTo('#new-tobuy');
 		MainSelectorUI.attachTo('#main');
 		StatsUI.attachTo('#footer');
 		ToggleAllUI.attachTo('#toggle-all');
-		TodoListUI.attachTo('#tobuy-list');
+		TobuyListUI.attachTo('#tobuy-list');
 	};
 
 	return {

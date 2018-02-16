@@ -29,8 +29,8 @@ var app = app || {};
 		app.tobuyViewModel.set('filter', 'completed');
 	});
 
-	// Todo Model Object
-	app.Todo = kendo.data.Model.define({
+	// Tobuy Model Object
+	app.Tobuy = kendo.data.Model.define({
 		id: 'id',
 		fields: {
 			id: { editable: false, nullable: true },
@@ -40,14 +40,14 @@ var app = app || {};
 		}
 	});
 
-	// The Todo DataSource. This is a custom DataSource that extends the
+	// The Tobuy DataSource. This is a custom DataSource that extends the
 	// Kendo UI DataSource and adds custom transports for saving data to
 	// localStorage.
 	// Implementation in js/lib/kendo.data.localstoragedatasource.ds
 	app.tobuyData = new kendo.data.extensions.LocalStorageDataSource({
 		itemBase: 'tobuys-kendo',
 		schema: {
-			model: app.Todo
+			model: app.Tobuy
 		},
 		change: function () {
 			var completed = $.grep(this.data(), function (el) {
@@ -69,27 +69,27 @@ var app = app || {};
 		},
 
 		// new tobuy value
-		newTodo: null,
+		newTobuy: null,
 
 		// Core CRUD Methods
-		saveTodo: function () {
+		saveTobuy: function () {
 			var tobuys = this.get('tobuys');
-			var newTodo = this.get('newTodo');
+			var newTobuy = this.get('newTobuy');
 
-			var tobuy = new app.Todo({
-				title: newTodo.trim(),
+			var tobuy = new app.Tobuy({
+				title: newTobuy.trim(),
 				completed: false,
 				edit: false
 			});
 
 			tobuys.add(tobuy);
 			tobuys.sync();
-			this.set('newTodo', null);
+			this.set('newTobuy', null);
 		},
 
 		toggleAll: function () {
 
-			var completed = this.completedTodos().length === this.get('tobuys').data().length;
+			var completed = this.completedTobuys().length === this.get('tobuys').data().length;
 
 			$.grep(this.get('tobuys').data(), function (el) {
 				el.set('completed', !completed);
@@ -134,28 +134,28 @@ var app = app || {};
 			this.tobuys.sync();
 		},
 		destroyCompleted: function () {
-			$.each(this.completedTodos(), function (index, value) {
+			$.each(this.completedTobuys(), function (index, value) {
 				this.tobuys.remove(value);
 			}.bind(this));
 			this.tobuys.sync();
 		},
 
 		// Methods for retrieving filtered tobuys and count values
-		activeTodos: function () {
+		activeTobuys: function () {
 			return $.grep(this.get('tobuys').data(), function (el) {
 				return !el.get('completed');
 			});
 		},
 		activeCount: function () {
-			return this.activeTodos().length;
+			return this.activeTobuys().length;
 		},
-		completedTodos: function () {
+		completedTobuys: function () {
 			return $.grep(this.get('tobuys').data(), function (el) {
 				return el.get('completed');
 			});
 		},
 		completedCount: function () {
-			return this.completedTodos().length;
+			return this.completedTobuys().length;
 		},
 
 		allCompleted: false,

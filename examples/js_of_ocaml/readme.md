@@ -1,4 +1,4 @@
-# Js_of_ocaml TodoMVC Example
+# Js_of_ocaml TobuyMVC Example
 
 > Js_of_ocaml is a compiler of OCaml bytecode to Javascript.
 

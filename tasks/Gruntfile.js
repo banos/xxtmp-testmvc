@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 		// I also added Bower up top for in the future, as that might come in handy
 		// to correctly fetch and install the latest tobuymvc-common, without relying
 		// on this weird Batman system.
-		var sourceTodoMvcCommon = 'examples/angularjs/bower_components/tobuymvc-common';
+		var sourceTobuyMvcCommon = 'examples/angularjs/bower_components/tobuymvc-common';
 		var sourceIdentifierRegex = /angularjs/;
 
 		grunt.file.setBase('../');
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 
 		directories.forEach(function (destPath) {
 			wrench.copyDirSyncRecursive(
-				sourceTodoMvcCommon,
+				sourceTobuyMvcCommon,
 				destPath,
 				{
 					forceDelete: true,

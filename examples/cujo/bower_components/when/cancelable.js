@@ -51,7 +51,7 @@ define(function(require) {
 
         // Also replace deferred.then to allow it to be called safely and
         // observe the cancellation
-		// TODO: Remove once deferred.then is removed
+		// TOBUY: Remove once deferred.then is removed
         deferred.then = delegate.promise.then;
 
         return deferred;

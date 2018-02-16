@@ -1,4 +1,4 @@
-# Atma.js TodoMVC Example
+# Atma.js TobuyMVC Example
 
 > Fast, elegant and component oriented framework for desktops, mobiles or servers _(Node.js)_
 > _[Atma - atmajs.com](http://atmajs.com)_

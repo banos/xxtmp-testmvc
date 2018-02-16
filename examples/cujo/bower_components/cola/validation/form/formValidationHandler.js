@@ -46,7 +46,7 @@ define(function (require) {
 			i = 0;
 			invalidFieldToNode = {};
 
-			// TODO: change this to support more than one error per node
+			// TOBUY: change this to support more than one error per node
 			while((error = validationResults.errors[i++])) {
 				// Since this only applies a single invalid class
 				// we can skip multiple errors on the same field
@@ -85,7 +85,7 @@ define(function (require) {
 			node = form.elements[fieldName];
 		}
 
-		// TODO: just return node as the default behavior
+		// TOBUY: just return node as the default behavior
 		return (node && node.parentNode) || node;
 	}
 

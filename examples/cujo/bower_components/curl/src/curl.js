@@ -647,7 +647,7 @@
 
 			if (!isAbsUrl(absId)) {
 				path = absId.replace(cfg.pathRx, function (match) {
-					// TODO: remove fallbacks here since they should never need to happen
+					// TOBUY: remove fallbacks here since they should never need to happen
 					pathInfo = pathMap[match] || {};
 					pkgCfg = pathInfo.config;
 					return pathInfo.path || '';
@@ -710,7 +710,7 @@
 			el.onerror = fail;
 			// js! plugin uses alternate mimetypes
 			el.type = def.mimetype || 'text/javascript';
-			// TODO: support other charsets?
+			// TOBUY: support other charsets?
 			el.charset = 'utf-8';
 			el.async = !def.order;
 			el.src = def.url;
@@ -989,10 +989,10 @@
 					loaderId = mainId;
 				}
 				else {
-					// TODO: move config.moduleLoader to config.transform
+					// TOBUY: move config.moduleLoader to config.transform
 					loaderId = pathInfo.config['moduleLoader'] || pathInfo.config.moduleLoader;
 					if (loaderId) {
-						// TODO: allow transforms to have relative module ids?
+						// TOBUY: allow transforms to have relative module ids?
 						// (we could do this by returning package location from
 						// resolvePathInfo. why not return all package info?)
 						resId = mainId;
@@ -1010,8 +1010,8 @@
 			}
 			else {
 				def = core.createResourceDef(pathInfo.config, mainId, isPreload);
-				// TODO: can this go inside createResourceDef?
-				// TODO: can we pass pathInfo.url to createResourceDef instead?
+				// TOBUY: can this go inside createResourceDef?
+				// TOBUY: can we pass pathInfo.url to createResourceDef instead?
 				def.url = core.checkToAddJsExt(pathInfo.url, pathInfo.config);
 				cache[mainId] = urlCache[pathInfo.url] = def;
 				core.fetchResDef(def);
@@ -1123,7 +1123,7 @@
 			script = core.findScript(function (script) {
 				var main;
 				// find main module(s) in data-curl-run attr on script element
-				// TODO: extract baseUrl, too?
+				// TOBUY: extract baseUrl, too?
 				main = script.getAttribute(runModuleAttr);
 				if (main) cfg.main = main;
 				return main;

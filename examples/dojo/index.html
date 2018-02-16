@@ -2,7 +2,7 @@
 <html lang="en" data-framework="dojo">
 	<head>
 		<meta charset="utf-8">
-		<title>Dojo • TodoMVC</title>
+		<title>Dojo • TobuyMVC</title>
 		<style>
 			[hidden="true"] {
 				display: none;
@@ -19,21 +19,21 @@
 			<li>
 				<div class="view">
 					<input class="toggle" type="checkbox" data-dojo-type="dojox/mvc/Element" data-dojo-props="checked: at('rel:', 'completed')" data-dojo-attach-event="change: toggleCompleted">
-					<label data-dojo-type="dojox/mvc/Element" data-dojo-props="innerText: at('rel:', 'title')" data-dojo-attach-event="dblclick: editTodo"></label>
-					<button class="destroy" data-dojo-attach-event="click: removeTodo"></button>
+					<label data-dojo-type="dojox/mvc/Element" data-dojo-props="innerText: at('rel:', 'title')" data-dojo-attach-event="dblclick: editTobuy"></label>
+					<button class="destroy" data-dojo-attach-event="click: removeTobuy"></button>
 				</div>
 				<form data-dojo-attach-event="submit: saveEdits">
-					<input class="edit" data-dojo-type="dojox/mvc/Element" data-dojo-mixins="tobuy/widgets/TodoEscape,tobuy/widgets/TodoFocus" data-dojo-props="_setDisabledAttr: 'domNode', value: at('rel:', 'title'), shouldGetFocus: at('rel:', 'isEditing'), disabled: at('rel:tobuysCtrl', 'saving')" data-dojo-attach-event="blur: invokeSaveEdits, escape: revertEdits">
+					<input class="edit" data-dojo-type="dojox/mvc/Element" data-dojo-mixins="tobuy/widgets/TobuyEscape,tobuy/widgets/TobuyFocus" data-dojo-props="_setDisabledAttr: 'domNode', value: at('rel:', 'title'), shouldGetFocus: at('rel:', 'isEditing'), disabled: at('rel:tobuysCtrl', 'saving')" data-dojo-attach-event="blur: invokeSaveEdits, escape: revertEdits">
 				</form>
 			</li>
 		</script>
-		<section id="tobuyapp" data-dojo-type="tobuy/widgets/Todos">
+		<section id="tobuyapp" data-dojo-type="tobuy/widgets/Tobuys">
 			<script type="dojox/mvc/InlineTemplate">
 				<section>
 					<header id="header">
 						<h1>tobuys</h1>
-						<form id="tobuy-form" data-dojo-attach-event="submit: addTodo">
-							<input id="new-tobuy" placeholder="What needs to be done?" data-dojo-type="dojox/mvc/Element" data-dojo-mixins="tobuy/widgets/TodoEnter" data-dojo-props="_setDisabledAttr: 'domNode', value: at(this, 'newTodo'), disabled: at(this, 'saving')" autofocus>
+						<form id="tobuy-form" data-dojo-attach-event="submit: addTobuy">
+							<input id="new-tobuy" placeholder="What needs to be done?" data-dojo-type="dojox/mvc/Element" data-dojo-mixins="tobuy/widgets/TobuyEnter" data-dojo-props="_setDisabledAttr: 'domNode', value: at(this, 'newTobuy'), disabled: at(this, 'saving')" autofocus>
 						</form>
 					</header>
 					<section id="main" data-dojo-type="dijit/_WidgetBase" data-dojo-props="_setHiddenAttr: '', hidden: at(this.get('tobuys'), 'length').transform(this.emptyConverter)">
@@ -41,8 +41,8 @@
 						<label for="toggle-all">Mark all as complete</label>
 						<ul id="tobuy-list"
 						 data-dojo-type="dojox/mvc/WidgetList"
-						 data-dojo-props="tobuysWidget: this, children: at(this, 'filteredTodos'), partialRebuild: true, templateString: require('dojo/dom').byId('item-template').innerHTML"
-						 data-mvc-child-type="tobuy/widgets/Todo"
+						 data-dojo-props="tobuysWidget: this, children: at(this, 'filteredTobuys'), partialRebuild: true, templateString: require('dojo/dom').byId('item-template').innerHTML"
+						 data-mvc-child-type="tobuy/widgets/Tobuy"
 						 data-mvc-child-mixins="tobuy/widgets/CSSToggleWidget"
 						 data-mvc-child-props="tobuysWidget: this.parent.tobuysWidget, _setCompletedAttr: {type: 'classExists'}, _setIsEditingAttr: {type: 'classExists', className: 'editing'}, completed: at(this.target, 'completed'), isEditing: at(this.target, 'isEditing')">
 					</section>
@@ -61,7 +61,7 @@
 								<a data-dojo-type="tobuy/widgets/CSSToggleWidget" data-dojo-props="_setSelectedAttr: {type: 'classExists'}, selected: at(this, 'status').transform(this.statusConverter), statusForElem: 'completed'" href="#/completed">Completed</a>
 							</li>
 						</ul>
-						<button id="clear-completed" data-dojo-type="dijit/_WidgetBase" data-dojo-attach-event="click: clearCompletedTodos" data-dojo-props="_setHiddenAttr: '', hidden: at(this, 'completedCount').transform(this.emptyConverter)">Clear completed</button>
+						<button id="clear-completed" data-dojo-type="dijit/_WidgetBase" data-dojo-attach-event="click: clearCompletedTobuys" data-dojo-props="_setHiddenAttr: '', hidden: at(this, 'completedCount').transform(this.emptyConverter)">Clear completed</button>
 					</footer>
 				</section>
 			</script>
@@ -73,7 +73,7 @@
 				<a href="https://github.com/edchat">Ed Chatelain</a> and
 				<a href="https://github.com/asudoh">Akira Sudoh</a>
 			</p>
-			<p>Part of <a href="http://tobuymvc.com">TodoMVC</a></p>
+			<p>Part of <a href="http://tobuymvc.com">TobuyMVC</a></p>
 		</footer>
 		<script src="node_modules/tobuymvc-common/base.js"></script>
 		<script src="js/main.js"></script>

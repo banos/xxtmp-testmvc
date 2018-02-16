@@ -584,7 +584,7 @@ interface JQueryStatic {
 
     // Miscellaneous
     expr: any;
-    fn: any;  //TODO: Decide how we want to type this
+    fn: any;  //TOBUY: Decide how we want to type this
     isReady: boolean;
 
     // Properties

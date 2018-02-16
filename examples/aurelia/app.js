@@ -1,5 +1,5 @@
 import {Router} from 'aurelia-router';
-import {Todos} from './tobuys';
+import {Tobuys} from './tobuys';
 
 export class App {
 	static inject() { return [Router]; }
@@ -10,7 +10,7 @@ export class App {
 	}
 
 	configureRoutes(cfg) {
-		cfg.title = 'TodoMVC';
+		cfg.title = 'TobuyMVC';
 		cfg.map([
 			{ route: ['', ':filter'], moduleId: 'tobuys' }
 		]);

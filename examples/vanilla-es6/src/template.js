@@ -28,11 +28,11 @@ export default class Template {
 	/**
 	 * Format the contents of an "items left" indicator.
 	 *
-	 * @param {number} activeTodos Number of active tobuys
+	 * @param {number} activeTobuys Number of active tobuys
 	 *
 	 * @returns {!string} Contents for an "items left" indicator
 	 */
-	itemCounter(activeTodos) {
-		return `${activeTodos} item${activeTodos !== 1 ? 's' : ''} left`;
+	itemCounter(activeTobuys) {
+		return `${activeTobuys} item${activeTobuys !== 1 ? 's' : ''} left`;
 	}
 }

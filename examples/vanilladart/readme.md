@@ -1,4 +1,4 @@
-# Dart TodoMVC Example
+# Dart TobuyMVC Example
 
 > Dart is a class-based, object-oriented language with lexical scoping,
 > closures, and optional static typing. Dart helps you build structured modern
@@ -6,7 +6,7 @@
 
 > _[Dart - dartlang.org][dart]_
 
-This version of TodoMVC is a "vanilla" Dart implementation. The
+This version of TobuyMVC is a "vanilla" Dart implementation. The
 core [Dart SDK][sdk] is required. No web frameworks are used. However,
 this implementation uses two packages from the [pub package repository][pub].
 
@@ -101,7 +101,7 @@ Build history can be seen [here][builds].
 
 ## Credit
 
-This TodoMVC application was created by [Mathieu Lorber](http://mlorber.net).
+This TobuyMVC application was created by [Mathieu Lorber](http://mlorber.net).
 
 [langtour]: http://www.dartlang.org/docs/dart-up-and-running/contents/ch02.html
 [dart]: https://www.dartlang.org

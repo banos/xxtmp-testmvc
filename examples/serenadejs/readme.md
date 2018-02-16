@@ -1,4 +1,4 @@
-# Serenade.js TodoMVC Example
+# Serenade.js TobuyMVC Example
 
 > Serenade.js is a client side framework built on the MVC pattern. It makes it simple to create rich client side applications by freeing you from having to keep the DOM up to date with your data through powerful data bindings.
 

@@ -27,7 +27,7 @@ define(function (require) {
 		this._options = options;
 		this._handlers = {};
 
-		this._createItemToDomHandlers(options.bindings);
+		this._createItemToBuymHandlers(options.bindings);
 	}
 
 	NodeAdapter.prototype = {
@@ -38,12 +38,12 @@ define(function (require) {
 
 		set: function (item) {
 			this._item = item;
-			this._itemToDom(item, this._handlers);
+			this._itemToBuym(item, this._handlers);
 		},
 
 		update: function (item) {
 			this._item = item;
-			this._itemToDom(item, item);
+			this._itemToBuym(item, item);
 		},
 
 		destroy: function () {
@@ -56,7 +56,7 @@ define(function (require) {
 			lambda(this._item);
 		},
 
-		_itemToDom: function (item, hash) {
+		_itemToBuym: function (item, hash) {
 			var p, handler;
 			for (p in hash) {
 				handler = this._handlers[p];
@@ -64,7 +64,7 @@ define(function (require) {
 			}
 		},
 
-		_createItemToDomHandlers: function (bindings) {
+		_createItemToBuymHandlers: function (bindings) {
 			var creator;
 
 			creator = bindingHandler(this._rootNode, this._options);

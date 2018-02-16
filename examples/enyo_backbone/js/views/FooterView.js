@@ -2,7 +2,7 @@
 /*global enyo:false */
 // The footer section
 enyo.kind({
-	name: 'ToDo.FooterView',
+	name: 'ToBuy.FooterView',
 	id: 'info',
 	tag: 'footer',
 	components: [{
@@ -23,6 +23,6 @@ enyo.kind({
 	}, {
 		tag: 'p',
 		allowHtml: true,
-		content: 'Part of <a href="http://tobuymvc.com">TodoMVC</a>'
+		content: 'Part of <a href="http://tobuymvc.com">TobuyMVC</a>'
 	}]
 });

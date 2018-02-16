@@ -1,4 +1,4 @@
-# Riot.js TodoMVC Example
+# Riot.js TobuyMVC Example
 
 > Riot.js is a React-like user interface micro-library.
 
@@ -31,7 +31,7 @@ Riot is tiny and super flexible, there are many different ways to use riot. For 
 
 This example is using compiler on the page to compile the tag file (`js/tobuy.html`).
 
-This example is following TodoMVC's [coding style](https://github.com/tastejs/tobuymvc/blob/master/codestyle.md), however officially Riot recommends a [different coding style](https://github.com/riot/riot/blob/master/CONTRIBUTING.md), FYI.
+This example is following TobuyMVC's [coding style](https://github.com/tastejs/tobuymvc/blob/master/codestyle.md), however officially Riot recommends a [different coding style](https://github.com/riot/riot/blob/master/CONTRIBUTING.md), FYI.
 
 
 ## Credit

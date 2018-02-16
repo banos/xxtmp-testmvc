@@ -1,6 +1,6 @@
 {
   "name": "tobuymvc-browser-tests",
-  "description": "An automated test suite for TodoMVC",
+  "description": "An automated test suite for TobuyMVC",
   "private": true,
   "devDependencies": {
     "chromedriver": "^2.18.0",

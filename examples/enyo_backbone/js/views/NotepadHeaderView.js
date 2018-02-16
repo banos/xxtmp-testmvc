@@ -2,10 +2,10 @@
 /*global enyo:false, ENTER_KEY:false */
 // Header section for adding a new task.
 enyo.kind({
-	name: 'ToDo.NotepadHeaderView',
+	name: 'ToBuy.NotepadHeaderView',
 	tag: 'header',
 	id: 'header',
-	controller: 'ToDo.notepadcontroller',
+	controller: 'ToBuy.notepadcontroller',
 	components: [{
 		tag: 'h1',
 		content: 'tobuys'

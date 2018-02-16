@@ -1,4 +1,4 @@
-# ![TodoMVC](media/logo.png)
+# ![TobuyMVC](media/logo.png)
 
 > Helping you select an MV\* framework
 
@@ -11,27 +11,27 @@ Developers these days are spoiled with choice when it comes to selecting an MV\*
 
 Backbone, Ember, AngularJS... the list of new and stable solutions goes on and on, but just how do you decide on which to use in a sea of so many options?
 
-To help solve this problem, we created TodoMVC - a project which offers the same Todo application implemented using MV* concepts in most of the popular JavaScript MV\* frameworks of today.
+To help solve this problem, we created TobuyMVC - a project which offers the same Tobuy application implemented using MV* concepts in most of the popular JavaScript MV\* frameworks of today.
 
 
 ## Team
 
-TodoMVC would not be possible without a strong team of [contributors](https://github.com/tastejs/tobuymvc/contributors) helping push the project forward each day. Additionally, we have a core project team composed of:
+TobuyMVC would not be possible without a strong team of [contributors](https://github.com/tastejs/tobuymvc/contributors) helping push the project forward each day. Additionally, we have a core project team composed of:
 
 #### [Addy Osmani](https://github.com/addyosmani) - Founder/Lead
 
 <img align="left" width="40" height="40" src="https://www.gravatar.com/avatar/96270e4c3e5e9806cf7245475c00b275.png?s=40">
-  Addy is a Software Engineer at Google who originally created TodoMVC. He oversees the project direction, maintenance and organizes the planning and development efforts of the team.
+  Addy is a Software Engineer at Google who originally created TobuyMVC. He oversees the project direction, maintenance and organizes the planning and development efforts of the team.
 
 #### [Sindre Sorhus](https://github.com/sindresorhus) - Lead Developer
 
 <img align="left" width="40" height="40" src="https://www.gravatar.com/avatar/d36a92237c75c5337c17b60d90686bf9.png?s=40">
-Sindre is a Web Developer who leads core development, quality control and application design for the project. His engineering contributions have helped us ensure consistency and best practices are enforced wherever possible. Sindre also leads up development of the TodoMVC application spec.
+Sindre is a Web Developer who leads core development, quality control and application design for the project. His engineering contributions have helped us ensure consistency and best practices are enforced wherever possible. Sindre also leads up development of the TobuyMVC application spec.
 
 #### [Pascal Hartig](https://github.com/passy) - Developer
 
 <img align="left" width="40" height="40" src="https://www.gravatar.com/avatar/be451fcdbf0e5ff07f23ed16cb5c90a3.png?s=40">
-Pascal is a Software Engineer at Twitter with a deep passion for consistency. He watches pull requests and helps developers getting their contributions integrated with TodoMVC.
+Pascal is a Software Engineer at Twitter with a deep passion for consistency. He watches pull requests and helps developers getting their contributions integrated with TobuyMVC.
 
 #### [Stephen Sawchuk](https://github.com/stephenplusplus) - Developer
 
@@ -62,16 +62,16 @@ Gianni is a programmer and designer currently working as the Chief Rigger at Met
 
 <img align="right" width="230" height="230" src="media/icon-small.png">
 
-TodoMVC has been called many things including the 'Speed-dating' and 'Rosetta Stone' of MV\* frameworks. Whilst we hope that this project can offer assistance in deciding what frameworks are worth spending more time looking at, remember that the Todo application offers a limited view of a framework's potential capability.
+TobuyMVC has been called many things including the 'Speed-dating' and 'Rosetta Stone' of MV\* frameworks. Whilst we hope that this project can offer assistance in deciding what frameworks are worth spending more time looking at, remember that the Tobuy application offers a limited view of a framework's potential capability.
 
 It is meant to be used as a gateway to reviewing how a basic application using a framework may be structured, and we heavily recommend investing time researching a solution in more depth before opting to use it.
 
-Also, please keep in mind that TodoMVC is not the perfect way to compare the size of different frameworks. We intentionally use the unminified versions to make reading the source code easier.
+Also, please keep in mind that TobuyMVC is not the perfect way to compare the size of different frameworks. We intentionally use the unminified versions to make reading the source code easier.
 
 
 ## Getting Involved
 
-Whilst we enjoy implementing and improving existing Todo apps, we're always interested in speaking to framework authors (and users) wishing to share Todo app implementations in their framework/solution of choice.
+Whilst we enjoy implementing and improving existing Tobuy apps, we're always interested in speaking to framework authors (and users) wishing to share Tobuy app implementations in their framework/solution of choice.
 
 Check out our [contribution docs](contributing.md) for more info.
 

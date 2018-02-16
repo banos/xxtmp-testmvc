@@ -1,4 +1,4 @@
-# Flight TodoMVC Example
+# Flight TobuyMVC Example
 
 > Flight is a lightweight, component-based JavaScript framework that maps behavior to DOM nodes.
 

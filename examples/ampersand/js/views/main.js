@@ -2,7 +2,7 @@
 /*global app */
 
 var View = require('ampersand-view');
-var TodoView = require('./tobuy');
+var TobuyView = require('./tobuy');
 var ENTER_KEY = 13;
 
 
@@ -67,7 +67,7 @@ module.exports = View.extend({
 	// cache
 	initialize: function () {
 		this.mainInput = this.queryByHook('tobuy-input');
-		this.renderCollection(app.me.tobuys.subset, TodoView, this.queryByHook('tobuy-container'));
+		this.renderCollection(app.me.tobuys.subset, TobuyView, this.queryByHook('tobuy-container'));
 	},
 	// handles DOM event from main input
 	handleMainInput: function (e) {

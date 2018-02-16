@@ -1,8 +1,8 @@
 define([
-	'./tobuy/store/TodoLocalStorage',
+	'./tobuy/store/TobuyLocalStorage',
 	'./tobuy/widgets/CSSToggleWidget',
-	'./tobuy/widgets/Todo',
-	'./tobuy/widgets/TodoEscape',
-	'./tobuy/widgets/TodoFocus',
-	'./tobuy/widgets/Todos'
+	'./tobuy/widgets/Tobuy',
+	'./tobuy/widgets/TobuyEscape',
+	'./tobuy/widgets/TobuyFocus',
+	'./tobuy/widgets/Tobuys'
 ], 1);

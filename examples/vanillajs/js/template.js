@@ -85,23 +85,23 @@
 	/**
 	 * Displays a counter of how many to dos are left to complete
 	 *
-	 * @param {number} activeTodos The number of active tobuys.
+	 * @param {number} activeTobuys The number of active tobuys.
 	 * @returns {string} String containing the count
 	 */
-	Template.prototype.itemCounter = function (activeTodos) {
-		var plural = activeTodos === 1 ? '' : 's';
+	Template.prototype.itemCounter = function (activeTobuys) {
+		var plural = activeTobuys === 1 ? '' : 's';
 
-		return '<strong>' + activeTodos + '</strong> item' + plural + ' left';
+		return '<strong>' + activeTobuys + '</strong> item' + plural + ' left';
 	};
 
 	/**
 	 * Updates the text within the "Clear completed" button
 	 *
-	 * @param  {[type]} completedTodos The number of completed tobuys.
+	 * @param  {[type]} completedTobuys The number of completed tobuys.
 	 * @returns {string} String containing the count
 	 */
-	Template.prototype.clearCompletedButton = function (completedTodos) {
-		if (completedTodos > 0) {
+	Template.prototype.clearCompletedButton = function (completedTobuys) {
+		if (completedTobuys > 0) {
 			return 'Clear completed';
 		} else {
 			return '';

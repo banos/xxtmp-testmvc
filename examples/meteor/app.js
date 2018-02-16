@@ -1,5 +1,5 @@
 // Collection to keep the tobuys
-Todos = new Meteor.Collection('tobuys');
+Tobuys = new Meteor.Collection('tobuys');
 
 // JS code for the client (browser)
 if (Meteor.isClient) {
@@ -34,7 +34,7 @@ if (Meteor.isClient) {
 
 	/////////////////////////////////////////////////////////////////////////
 	// The following two functions are taken from the official Meteor
-	// "Todos" example
+	// "Tobuys" example
 	// The original code can be viewed at: https://github.com/meteor/meteor
 	/////////////////////////////////////////////////////////////////////////
 
@@ -72,12 +72,12 @@ if (Meteor.isClient) {
 
 	// Get the number of tobuys completed
 	var tobuys_completed_helper = function() {
-		return Todos.find({completed: true}).count();
+		return Tobuys.find({completed: true}).count();
 	};
 
 	// Get the number of tobuys not completed
 	var tobuys_not_completed_helper = function() {
-		return Todos.find({completed: false}).count();
+		return Tobuys.find({completed: false}).count();
 	};
 
 	////
@@ -86,7 +86,7 @@ if (Meteor.isClient) {
 
 	// Helper to get the number of tobuys
 	Template.tobuyapp.tobuys = function() {
-		return Todos.find().count();
+		return Tobuys.find().count();
 	};
 
 	Template.tobuyapp.events = {};
@@ -95,7 +95,7 @@ if (Meteor.isClient) {
 	Template.tobuyapp.events[okcancel_events('#new-tobuy')] =
 		make_okcancel_handler({
 			ok: function (title, evt) {
-				Todos.insert({title: $.trim(title), completed: false,
+				Tobuys.insert({title: $.trim(title), completed: false,
 					created_at: new Date().getTime()});
 				evt.target.value = '';
 			}
@@ -107,7 +107,7 @@ if (Meteor.isClient) {
 
 	// Get the tobuys considering the current filter type
 	Template.main.tobuys = function() {
-		return Todos.find(filter_selections[Session.get('filter')], {sort: {created_at: 1}});
+		return Tobuys.find(filter_selections[Session.get('filter')], {sort: {created_at: 1}});
 	};
 
 	Template.main.tobuys_not_completed = tobuys_not_completed_helper;
@@ -116,11 +116,11 @@ if (Meteor.isClient) {
 	Template.main.events = {
 		'click input#toggle-all': function(evt) {
 			var completed = true;
-			if (!Todos.find({completed: false}).count()) {
+			if (!Tobuys.find({completed: false}).count()) {
 				completed = false;
 			}
-			Todos.find({}).forEach(function(tobuy) {
-				Todos.update({'_id': tobuy._id}, {$set: {completed: completed}});
+			Tobuys.find({}).forEach(function(tobuy) {
+				Tobuys.update({'_id': tobuy._id}, {$set: {completed: completed}});
 			});
 		}
 	};
@@ -142,13 +142,13 @@ if (Meteor.isClient) {
 	// Register events for toggling tobuy's state, editing mode and destroying a tobuy
 	Template.tobuy.events = {
 		'click input.toggle': function() {
-			Todos.update(this._id, {$set: {completed: !this.completed}});
+			Tobuys.update(this._id, {$set: {completed: !this.completed}});
 		},
 		'dblclick label': function() {
 			Session.set('editing_tobuy', this._id);
 		},
 		'click button.destroy': function() {
-			Todos.remove(this._id);
+			Tobuys.remove(this._id);
 		}
 	};
 
@@ -157,11 +157,11 @@ if (Meteor.isClient) {
 		make_okcancel_handler({
 			ok: function (value) {
 				Session.set('editing_tobuy', null);
-				Todos.update(this._id, {$set: {title: $.trim(value)}});
+				Tobuys.update(this._id, {$set: {title: $.trim(value)}});
 			},
 			cancel: function () {
 				Session.set('editing_tobuy', null);
-				Todos.remove(this._id);
+				Tobuys.remove(this._id);
 			}
 		});
 
@@ -176,7 +176,7 @@ if (Meteor.isClient) {
 	// True if exactly one tobuy is not completed, false otherwise
 	// Used for handling pluralization of "item"/"items" word
 	Template.footer.tobuys_one_not_completed = function() {
-		return Todos.find({completed: false}).count() == 1;
+		return Tobuys.find({completed: false}).count() == 1;
 	};
 
 	// Prepare array with keys of filter_selections only
@@ -199,7 +199,7 @@ if (Meteor.isClient) {
 //Publish and subscribe setting
 if (Meteor.isServer) {
 	Meteor.publish('tobuys', function () {
-		return Todos.find();
+		return Tobuys.find();
 	});
 }
 
@@ -209,7 +209,7 @@ if (Meteor.isClient) {
 
 //Allow users to write directly to this collection from client code, subject to limitations you define.
 if (Meteor.isServer) {
-	Todos.allow({
+	Tobuys.allow({
 		insert: function () {
 			return true;
 		},
@@ -225,6 +225,6 @@ if (Meteor.isServer) {
 //Defines functions that can be invoked over the network by clients.
 Meteor.methods({
 	clearCompleted: function () {
-		Todos.remove({completed: true});
+		Tobuys.remove({completed: true});
 	}
 });

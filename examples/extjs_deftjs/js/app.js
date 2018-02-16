@@ -1,2 +1,2 @@
-Ext.syncRequire(['TodoDeftJS.Application']);
-Ext.create('TodoDeftJS.Application');
+Ext.syncRequire(['TobuyDeftJS.Application']);
+Ext.create('TobuyDeftJS.Application');

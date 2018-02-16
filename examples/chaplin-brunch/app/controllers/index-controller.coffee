@@ -1,6 +1,6 @@
 HeaderView = require '../views/header-view'
 FooterView = require '../views/footer-view'
-TodosView = require '../views/tobuys-view'
+TobuysView = require '../views/tobuys-view'
 mediator = require 'mediator'
 
 module.exports = class IndexController extends Chaplin.Controller
@@ -18,7 +18,7 @@ module.exports = class IndexController extends Chaplin.Controller
   list: (params) ->
     filterer = params.filterer?.trim() ? 'all'
     @publishEvent 'tobuys:filter', filterer
-    @view = new TodosView collection: mediator.tobuys, filterer: (model) ->
+    @view = new TobuysView collection: mediator.tobuys, filterer: (model) ->
       switch filterer
         when 'completed' then model.get('completed')
         when 'active' then not model.get('completed')

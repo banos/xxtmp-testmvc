@@ -21,7 +21,7 @@ function idApp() {
 	.thenCatch(function () { return false; });
 }
 
-function newTodoSelector() {
+function newTobuySelector() {
 	return idApp().then(function (isId) {
 		if (isId) {
 			return '#new-tobuy';
@@ -50,7 +50,7 @@ list.forEach(function (framework) {
 		action: function (name) {
 			driver.wait(function () {
 				driver.sleep(500);
-				return driver.findElement(drool.webdriver.By.css(newTodoSelector(name)))
+				return driver.findElement(drool.webdriver.By.css(newTobuySelector(name)))
 					.sendKeys('find magical goats', drool.webdriver.Key.ENTER)
 					.thenCatch(function () {
 						return false;

@@ -56,7 +56,7 @@
 	};
 
 	// represent a single tobuy item
-	var Todo = function (title, completed) {
+	var Tobuy = function (title, completed) {
 		this.title = ko.observable(title);
 		this.completed = ko.observable(completed);
 		this.editing = ko.observable(false);
@@ -64,9 +64,9 @@
 
 	// our main view model
 	var ViewModel = function (tobuys) {
-		// map array of passed in tobuys to an observableArray of Todo objects
+		// map array of passed in tobuys to an observableArray of Tobuy objects
 		this.tobuys = ko.observableArray(tobuys.map(function (tobuy) {
-			return new Todo(tobuy.title, tobuy.completed);
+			return new Tobuy(tobuy.title, tobuy.completed);
 		}));
 
 		// store the new tobuy value being entered
@@ -74,7 +74,7 @@
 
 		this.showMode = ko.observable('all');
 
-		this.filteredTodos = ko.computed(function () {
+		this.filteredTobuys = ko.computed(function () {
 			switch (this.showMode()) {
 			case 'active':
 				return this.tobuys().filter(function (tobuy) {
@@ -93,7 +93,7 @@
 		this.add = function () {
 			var current = this.current().trim();
 			if (current) {
-				this.tobuys.push(new Todo(current));
+				this.tobuys.push(new Tobuy(current));
 				this.current('');
 			}
 		}.bind(this);

@@ -1,4 +1,4 @@
-# Exoskeleton TodoMVC Example
+# Exoskeleton TobuyMVC Example
 
 > Exoskeleton is a faster and leaner Backbone for your HTML5 apps.
 > It is a [Backbone](http://backbonejs.org) drop-in replacement
@@ -30,4 +30,4 @@ Simply open `public/index.html` in your browser to see it in action!
 
 ## Credit
 
-This TodoMVC application was created by [@paulmillr](http://paulmillr.com).
+This TobuyMVC application was created by [@paulmillr](http://paulmillr.com).

@@ -2,18 +2,18 @@
 /*global enyo:false */
 // This is the notepad area
 enyo.kind({
-	name: 'ToDo.NotepadView',
+	name: 'ToBuy.NotepadView',
 	id: 'tobuyapp',
 	tag: 'section',
 	// Break the notepad into three easily handled components by purpose.
 	components: [{
-		name: 'ToDo.notepadviewheader',
-		kind: 'ToDo.NotepadHeaderView'
+		name: 'ToBuy.notepadviewheader',
+		kind: 'ToBuy.NotepadHeaderView'
 	}, {
-		name: 'ToDo.notepadviewmain',
-		kind: 'ToDo.NotepadMainView'
+		name: 'ToBuy.notepadviewmain',
+		kind: 'ToBuy.NotepadMainView'
 	}, {
-		name: 'ToDo.notepadviewfooter',
-		kind: 'ToDo.NotepadFooterView'
+		name: 'ToBuy.notepadviewfooter',
+		kind: 'ToBuy.NotepadFooterView'
 	}]
 });

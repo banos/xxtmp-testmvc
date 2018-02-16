@@ -1,9 +1,9 @@
-var ALL_TODOS = 'all';
-exports.ALL_TODOS = ALL_TODOS;
-var ACTIVE_TODOS = 'active';
-exports.ACTIVE_TODOS = ACTIVE_TODOS;
-var COMPLETED_TODOS = 'completed';
-exports.COMPLETED_TODOS = COMPLETED_TODOS;
+var ALL_TOBUYS = 'all';
+exports.ALL_TOBUYS = ALL_TOBUYS;
+var ACTIVE_TOBUYS = 'active';
+exports.ACTIVE_TOBUYS = ACTIVE_TOBUYS;
+var COMPLETED_TOBUYS = 'completed';
+exports.COMPLETED_TOBUYS = COMPLETED_TOBUYS;
 var ENTER_KEY = 13;
 exports.ENTER_KEY = ENTER_KEY;
 var ESCAPE_KEY = 27;

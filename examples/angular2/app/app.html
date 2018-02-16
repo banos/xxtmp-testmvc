@@ -1,7 +1,7 @@
 <section class="tobuyapp">
 	<header class="header">
 		<h1>tobuys</h1>
-		<input class="new-tobuy" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodoText" (keyup.enter)="addTodo()">
+		<input class="new-tobuy" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTobuyText" (keyup.enter)="addTobuy()">
 	</header>
 	<section class="main" *ngIf="tobuyStore.tobuys.length > 0">
 		<input class="toggle-all" type="checkbox" *ngIf="tobuyStore.tobuys.length" #toggleall [checked]="tobuyStore.allCompleted()" (click)="tobuyStore.setAllTo(toggleall.checked)">
@@ -9,10 +9,10 @@
 			<li *ngFor="#tobuy of tobuyStore.tobuys" [class.completed]="tobuy.completed" [class.editing]="tobuy.editing">
 				<div class="view">
 					<input class="toggle" type="checkbox" (click)="toggleCompletion(tobuy)" [checked]="tobuy.completed">
-					<label (dblclick)="editTodo(tobuy)">{{tobuy.title}}</label>
+					<label (dblclick)="editTobuy(tobuy)">{{tobuy.title}}</label>
 					<button class="destroy" (click)="remove(tobuy)"></button>
 				</div>
-				<input class="edit" *ngIf="tobuy.editing" [value]="tobuy.title" #editedtobuy (blur)="stopEditing(tobuy, editedtobuy.value)" (keyup.enter)="updateEditingTodo(tobuy, editedtobuy.value)" (keyup.escape)="cancelEditingTodo(tobuy)">
+				<input class="edit" *ngIf="tobuy.editing" [value]="tobuy.title" #editedtobuy (blur)="stopEditing(tobuy, editedtobuy.value)" (keyup.enter)="updateEditingTobuy(tobuy, editedtobuy.value)" (keyup.escape)="cancelEditingTobuy(tobuy)">
 			</li>
 		</ul>
 	</section>

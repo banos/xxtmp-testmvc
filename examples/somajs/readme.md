@@ -1,4 +1,4 @@
-# soma.js TodoMVC Example
+# soma.js TobuyMVC Example
 
 > soma.js is a framework created to build scalable and maintainable javascript applications.
 
@@ -26,4 +26,4 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Credit
 
-This TodoMVC application was created by [Romuald Quantin](http://soundstep.com).
+This TobuyMVC application was created by [Romuald Quantin](http://soundstep.com).

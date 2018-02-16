@@ -1,4 +1,4 @@
-# [Binding.scala • TodoMVC](https://github.com/ThoughtWorksInc/tobuy)
+# [Binding.scala • TobuyMVC](https://github.com/ThoughtWorksInc/tobuy)
 
 [Binding.scala](https://github.com/ThoughtWorksInc/Binding.scala) is a data-binding framework for [Scala](http://www.scala-lang.org/), running on both JVM and [Scala.js](http://www.scala-js.org/).
 
@@ -6,7 +6,7 @@ Binding.scala can be used as a **[reactive](https://en.wikipedia.org/wiki/Reacti
 It enables you use native XML literal syntax to create reactive DOM nodes,
 which are able to automatically change whenever the data source changes.
 
-Binding.scala's TodoMVC application has the tiniest code size among all the TodoMVC implementations,
+Binding.scala's TobuyMVC application has the tiniest code size among all the TobuyMVC implementations,
 only one source file, 154 lines of code!
 
 ## Getting Started
@@ -45,8 +45,8 @@ only one source file, 154 lines of code!
 ## Links
 
 * [The Binding.scala Project Page](https://github.com/ThoughtWorksInc/Binding.scala)
-* [This “Binding.scala • TodoMVC” Project Page](https://github.com/ThoughtWorksInc/tobuy)
-* [This “Binding.scala • TodoMVC” DEMO](https://thoughtworksinc.github.io/tobuy)
+* [This “Binding.scala • TobuyMVC” Project Page](https://github.com/ThoughtWorksInc/tobuy)
+* [This “Binding.scala • TobuyMVC” DEMO](https://thoughtworksinc.github.io/tobuy)
 * [API documentation](https://oss.sonatype.org/service/local/repositories/releases/archive/com/thoughtworks/binding/unidoc_2.11/8.0.0/unidoc_2.11-8.0.0-javadoc.jar/!/com/thoughtworks/binding/package.html)
 * [Other live DEMOs](https://thoughtworksinc.github.io/Binding.scala/)
 * [Chat on Gitter](https://gitter.im/ThoughtWorksInc/Binding.scala)

@@ -1,4 +1,4 @@
-# Reagent TodoMVC Example
+# Reagent TobuyMVC Example
 
 > Reagent provides a minimalistic interface between ClojureScript and React. It allows you to define efficient React components using nothing but plain ClojureScript functions and data, that describe your UI using a Hiccup-like syntax.
 

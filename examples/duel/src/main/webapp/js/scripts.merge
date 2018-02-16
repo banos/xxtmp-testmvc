@@ -8,7 +8,7 @@
 /js/tobuys/views/Stats.js
 /js/tobuys/views/Task.js
 /js/tobuys/views/Tasks.js
-/js/tobuys/views/TodoApp.js
+/js/tobuys/views/TobuyApp.js
 
 # model
 /js/tobuys/model.js

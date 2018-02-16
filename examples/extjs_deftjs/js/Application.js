@@ -1,11 +1,11 @@
 'use strict';
 
 /**
-* DeftJS Application class for the TodoDeftJS application.
+* DeftJS Application class for the TobuyDeftJS application.
 */
-Ext.define('TodoDeftJS.Application', {
+Ext.define('TobuyDeftJS.Application', {
 	extend: 'Deft.mvc.Application',
-	requires: ['TodoDeftJS.util.TemplateLoader', 'TodoDeftJS.store.TodoStore', 'TodoDeftJS.view.Viewport'],
+	requires: ['TobuyDeftJS.util.TemplateLoader', 'TobuyDeftJS.store.TobuyStore', 'TobuyDeftJS.view.Viewport'],
 
 	/**
 	* init() runs when Ext.onReady() is called.
@@ -24,8 +24,8 @@ Ext.define('TodoDeftJS.Application', {
 	buildInjectorConfiguration: function () {
 		var config;
 		config = {
-			templateLoader: 'TodoDeftJS.util.TemplateLoader',
-			tobuyStore: 'TodoDeftJS.store.TodoStore'
+			templateLoader: 'TobuyDeftJS.util.TemplateLoader',
+			tobuyStore: 'TobuyDeftJS.store.TobuyStore'
 		};
 		return config;
 	},
@@ -42,7 +42,7 @@ Ext.define('TodoDeftJS.Application', {
 	*/
 	afterInit: function () {
 		Ext.tip.QuickTipManager.init();
-		return Ext.create('TodoDeftJS.view.Viewport');
+		return Ext.create('TobuyDeftJS.view.Viewport');
 	}
 
 });

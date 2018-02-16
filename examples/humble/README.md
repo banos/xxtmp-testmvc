@@ -1,4 +1,4 @@
-# Humble + GopherJS • [TodoMVC](http://tobuymvc.com)
+# Humble + GopherJS • [TobuyMVC](http://tobuymvc.com)
 
 > Humble is a collection of loosely-coupled tools designed to build client-side
 > and hybrid web applications using GopherJS, which compiles Go code to
@@ -43,7 +43,7 @@ The following Humble packages are used:
 - [view](https://github.com/go-humble/view) for organizing views, doing basic
 	DOM manipulation, and delegating events.
 
-The full TodoMVC spec is implemented, including routes.
+The full TobuyMVC spec is implemented, including routes.
 
 ### Getting up and Running
 

@@ -1,4 +1,4 @@
-# Knockout.js & RequireJS TodoMVC Example
+# Knockout.js & RequireJS TobuyMVC Example
 
 > Knockout.js helps you simplify dynamic JavaScript UIs using the Model-View-ViewModel (MVVM) pattern.
 
@@ -33,4 +33,4 @@ _If you have other helpful links to share, or find any of the links above no lon
 
 ## Credit
 
-This TodoMVC application was created by [@loicknuchel](https://twitter.com/loicknuchel).
+This TobuyMVC application was created by [@loicknuchel](https://twitter.com/loicknuchel).

@@ -103,7 +103,7 @@
 
 		// The `event` object contains useful properties for (e.g.) retrieving
 		// data from the DOM
-		newTodo: function (event) {
+		newTobuy: function (event) {
 			var description = event.node.value.trim();
 
 			if (!description) {

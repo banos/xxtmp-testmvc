@@ -3,7 +3,7 @@
 
 	'use strict';
 
-	tobuy.TodoApp = soma.Application.extend({
+	tobuy.TobuyApp = soma.Application.extend({
 		init: function () {
 			// mapping rules so the model and router can be injected
 			this.injector.mapClass('model', tobuy.Model, true);
@@ -20,6 +20,6 @@
 	});
 
 	// create the application
-	new tobuy.TodoApp();
+	new tobuy.TobuyApp();
 
 })(window.tobuy = window.tobuy || {}, soma);

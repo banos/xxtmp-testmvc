@@ -1,8 +1,8 @@
-class TodoApp extends Spine.Controller
+class TobuyApp extends Spine.Controller
 	ENTER_KEY = 13
 
 	elements:
-		'#new-tobuy':        'newTodoInput'
+		'#new-tobuy':        'newTobuyInput'
 		'#toggle-all':      'toggleAllElem'
 		'#main':			'main'
 		'#tobuy-list':       'tobuys'
@@ -18,38 +18,38 @@ class TodoApp extends Spine.Controller
 
 	constructor: ->
 		super
-		Todo.bind 'create', @addNew
-		Todo.bind 'refresh change', @addAll
-		Todo.bind 'refresh change', @toggleElems
-		Todo.bind 'refresh change', @renderFooter
-		Todo.fetch()
+		Tobuy.bind 'create', @addNew
+		Tobuy.bind 'refresh change', @addAll
+		Tobuy.bind 'refresh change', @toggleElems
+		Tobuy.bind 'refresh change', @renderFooter
+		Tobuy.fetch()
 		@routes
 			'/:filter': (param) ->
 				@filter = param.filter
 				###
-				TODO: Need to figure out why the route doesn't trigger `change` event
+				TOBUY: Need to figure out why the route doesn't trigger `change` event
 				###
-				Todo.trigger('refresh')
+				Tobuy.trigger('refresh')
 				@filters.removeClass('selected')
 					.filter("[href='#/#{ @filter }']").addClass('selected');
 
 	new: (e) ->
-		val = $.trim @newTodoInput.val()
+		val = $.trim @newTobuyInput.val()
 		if e.which is ENTER_KEY and val
-			Todo.create title: val
-			@newTodoInput.val ''
+			Tobuy.create title: val
+			@newTobuyInput.val ''
 
 	getByFilter: ->
 		switch @filter
 			when 'active'
-				Todo.active()
+				Tobuy.active()
 			when 'completed'
-				Todo.completed()
+				Tobuy.completed()
 			else
-				Todo.all()
+				Tobuy.all()
 
 	addNew: (tobuy) =>
-		view = new Todos tobuy: tobuy
+		view = new Tobuys tobuy: tobuy
 		@tobuys.append view.render().el
 
 	addAll: =>
@@ -58,20 +58,20 @@ class TodoApp extends Spine.Controller
 
 	toggleAll: (e) ->
 		checked = e.target.checked
-		Todo.each (tobuy) ->
+		Tobuy.each (tobuy) ->
 			###
-			TODO: Model updateAttribute sometimes won't stick:
+			TOBUY: Model updateAttribute sometimes won't stick:
 				https://github.com/maccman/spine/issues/219
 			###
 			tobuy.updateAttribute 'completed', checked
 			tobuy.trigger 'update', tobuy
 
 	clearCompletedItem: ->
-		Todo.destroyCompleted()
+		Tobuy.destroyCompleted()
 
 	toggleElems: =>
-		completed = Todo.completed().length
-		total = Todo.count()
+		completed = Tobuy.completed().length
+		total = Tobuy.count()
 		@main.toggle total != 0
 		@footer.toggle total != 0
 		@toggleAllElem.prop 'checked', completed == total
@@ -79,10 +79,10 @@ class TodoApp extends Spine.Controller
 
 	renderFooter: =>
 		text = (count) -> if count is 1 then 'item' else 'items'
-		active = Todo.active().length
-		completed = Todo.completed().length
+		active = Tobuy.active().length
+		completed = Tobuy.completed().length
 		@count.html "<strong>#{ active }</strong> #{ text active } left"
 
 $ ->
-	new TodoApp el: $('#tobuyapp')
+	new TobuyApp el: $('#tobuyapp')
 	Spine.Route.setup()

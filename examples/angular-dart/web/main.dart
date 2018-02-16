@@ -7,7 +7,7 @@ import 'directives.dart';
 main() {
 	var module = new Module()
 		..type(StorageService)
-		..type(TodoController)
-		..type(TodoDOMEventDirective);
+		..type(TobuyController)
+		..type(TobuyDOMEventDirective);
 	ngBootstrap(module: module);
 }

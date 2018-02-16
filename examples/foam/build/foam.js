@@ -361,7 +361,7 @@ MODEL({
        * and execute one of the functions with propability equal to it's relative
        * weight.
        */
-      // TODO: move this method somewhere better
+      // TOBUY: move this method somewhere better
       var totalWeight = 0.0;
       for ( var i = 0 ; i < arguments.length ; i += 2 ) totalWeight += arguments[i];
 
@@ -473,7 +473,7 @@ MODEL({
 
     // Computes the XY coordinates of the given node
     // relative to the containing elements.
-    // TODO: findViewportXY works better... but do we need to find parent?
+    // TOBUY: findViewportXY works better... but do we need to find parent?
     function findPageXY(node) {
       var x = 0;
       var y = 0;
@@ -535,7 +535,7 @@ var labelize = memoize1(function(str) {
 
 var constantize = memoize1(function(str) {
   // switchFromCamelCaseToConstantFormat to SWITCH_FROM_CAMEL_CASE_TO_CONSTANT_FORMAT
-  // TODO: add property to specify constantization. For now catch special case to avoid conflict with context this.X and this.Y.
+  // TOBUY: add property to specify constantization. For now catch special case to avoid conflict with context this.X and this.Y.
   if ( str === 'x' ) return 'X_';
   if ( str === 'y' ) return 'Y_';
   return str.replace(/[a-z_][^0-9a-z_]/g, function(a) {
@@ -706,7 +706,7 @@ MODEL({
        * @param arr array of values
        * @return new length of this array
        */
-      // TODO: not needed, port and replace with pipe()
+      // TOBUY: not needed, port and replace with pipe()
       this.push.apply(this, arr);
       return this.length;
     },
@@ -992,7 +992,7 @@ document.put = function(obj) {
 
 
 // Promote webkit apis; fallback on Node.js alternatives
-// TODO(kgr): this should be somewhere web specific
+// TOBUY(kgr): this should be somewhere web specific
 
 window.requestFileSystem     = window.requestFileSystem ||
   window.webkitRequestFileSystem;
@@ -1068,7 +1068,7 @@ Object.defineProperty(MementoProto, 'equals', {
 
 // WeakMap Polyfill, doesn't implement the full interface, just the parts
 // that FOAM uses.
-// TODO: Use defineProperty to make hidden property
+// TOBUY: Use defineProperty to make hidden property
 if ( ! window.WeakMap ) {
   function WeakMap() {
     var id = '__WEAK_MAP__' + this.$UID;
@@ -1104,7 +1104,7 @@ if ( ! window.WeakMap ) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// TODO: time-travelling debugger, ala:
+// TOBUY: time-travelling debugger, ala:
 //    "Debugging Standard ML Without Reverse Engineering"
 
 MODEL({
@@ -1132,7 +1132,7 @@ MODEL({
 
 
 MODEL({
-  // TODO(kgr): put in a package rather than global, maybe foam.async
+  // TOBUY(kgr): put in a package rather than global, maybe foam.async
 
   extendsObject: 'GLOBAL',
 
@@ -1184,7 +1184,7 @@ MODEL({
 
     /** Execute the supplied afunc on each element of an array. */
     function aforEach(arr, afunc) {
-      // TODO: implement
+      // TOBUY: implement
     },
 
     /** Execute the supplied afunc until cond() returns false. */
@@ -1318,7 +1318,7 @@ MODEL({
     /**
      * A request queue that reduces each request against the pending requests.
      * Also limits the queue to a maximum size and operates in a LIFO manner.
-     * TODO: This could probably be split into decorators and integrated with asynchronized.
+     * TOBUY: This could probably be split into decorators and integrated with asynchronized.
      */
     function arequestqueue(f, opt_lock, opt_max) {
       var lock = opt_lock || {};
@@ -1720,7 +1720,7 @@ MODEL({
 });
 
 
-// TODO(kgr): Move somewhere better.
+// TOBUY(kgr): Move somewhere better.
 var __JSONP_CALLBACKS__ = {};
 var wrapJsonpCallback = (function() {
   var nextID = 0;
@@ -1816,7 +1816,7 @@ var StringPS = {
   },
   set str(str) { this.str_[0] = str; },
   get head() { return this.pos >= this.str_[0].length ? null : this.str_[0].charAt(this.pos); },
-  // TODO(kgr): next line is slow because it can't bet JITed, fix.
+  // TOBUY(kgr): next line is slow because it can't bet JITed, fix.
   get value() { return this.hasOwnProperty('value_') ? this.value_ : this.str_[0].charAt(this.pos-1); },
   get tail() {
     if ( ! this.tail_[0] ) {
@@ -2276,7 +2276,7 @@ var grammar = {
 };
 
 
-// TODO(kgr): move this somewhere better
+// TOBUY(kgr): move this somewhere better
 function defineTTLProperty(obj, name, ttl, f) {
   obj.__defineGetter__(name, function() {
     var accessed;
@@ -2327,7 +2327,7 @@ var SkipGrammar = {
   }
 };
 
-// TODO: move this out of Core
+// TOBUY: move this out of Core
 
 /**
  * @license
@@ -2353,7 +2353,7 @@ var SkipGrammar = {
 
 /** Publish and Subscribe Event Notification Service. **/
 // ??? Whould 'Observable' be a better name?
-// TODO(kgr): Model or just make part of FObject?
+// TOBUY(kgr): Model or just make part of FObject?
 
 var __ROOT__ = {};
 
@@ -2426,7 +2426,7 @@ MODEL({
                   }
                 }, delay);
             } catch(e) {
-              // TODO: Clean this up when we move EventService into the context.
+              // TOBUY: Clean this up when we move EventService into the context.
               throw EventService.UNSUBSCRIBE_EXCEPTION;
             }
           }
@@ -2444,7 +2444,7 @@ MODEL({
      * Merge all notifications occuring until the next animation frame.
      * Only the last notification is delivered.
      **/
-    // TODO: execute immediately from within a requestAnimationFrame
+    // TOBUY: execute immediately from within a requestAnimationFrame
     framed: function(listener, opt_X) {
       opt_X = opt_X || this.X;
       var requestAnimationFrameX = ( opt_X && opt_X.requestAnimationFrame ) || requestAnimationFrame;
@@ -2501,8 +2501,8 @@ MODEL({
     hasListeners: function (opt_topic) {
       if ( ! opt_topic ) return !! this.subs_;
 
-      console.log('TODO: haslisteners');
-      // TODO:
+      console.log('TOBUY: haslisteners');
+      // TOBUY:
       return true;
     },
 
@@ -2946,7 +2946,7 @@ var Events = {
     Events.onGet.pop();
     opt_fn && opt_fn(ret);
     return {
-      destroy: function() { // TODO(jacksonic): just return the function?
+      destroy: function() { // TOBUY(jacksonic): just return the function?
         propertyValues.forEach(function(p) {
           p.removeListener(listener);
         });
@@ -2961,7 +2961,7 @@ var Events = {
   // or maybe add an 'owner' property, combine with Janitor
 }
 
-// TODO: Janitor
+// TOBUY: Janitor
 /*
   subscribe(subject, topic, listener);
   addCleanupTask(fn)
@@ -3183,7 +3183,7 @@ MODEL({
       },
     */
 
-    // TODO: if this were an object then you could sub-class to modify playback
+    // TOBUY: if this were an object then you could sub-class to modify playback
     compile: function (a, opt_rest) {
       function noop() {}
 
@@ -3341,7 +3341,7 @@ MODEL({
     },
 
     gravity: function(c, opt_a, opt_theta) {
-      // TODO(kgr): implement opt_theta, the ability to control the direction
+      // TOBUY(kgr): implement opt_theta, the ability to control the direction
       var a = opt_a || 1;
       var theta = opt_theta || Math.PI * 1.5;
       Events.dynamic(function() { c.vx; c.vy; }, function() {
@@ -3486,7 +3486,7 @@ MODEL({
  *  5. Support for property filtering, ie. only output non-transient properties.
  *  6. Support for 'pretty' and 'compact' modes.
  *
- *  TODO:
+ *  TOBUY:
  *    Replace with JSONParser.js, when finished.
  *    Maybe rename to FON (FOAM Object Notation, pronounced 'phone') to avoid
  *    confusion with regular JSON syntax.
@@ -3874,7 +3874,7 @@ var JSONUtil = {
 
   moreCompact: {
     __proto__: AbstractFormatter,
-    // TODO: use short-names
+    // TOBUY: use short-names
   },
 
   compressed: {
@@ -3974,7 +3974,7 @@ XMLParser.addActions({
     // 0 1     2  3          4  5 6        7  8     9
 
     // Mismatched XML tags
-    // TODO: We should be able to set the error message on the ps here.
+    // TOBUY: We should be able to set the error message on the ps here.
     if ( xs[1] != xs[8] ) return undefined;
 
     var obj = { tag: xs[1], attrs: {}, children: xs[6] };
@@ -4371,7 +4371,7 @@ var X = sub({});
 var foam = X.foam = {};
 
 var registerFactory = function(model, factory) {
-  // TODO
+  // TOBUY
 };
 
 var registerModelForModel = function(modelType, targetModel, model) {
@@ -4421,7 +4421,7 @@ var JSONParser = SkipGrammar.create({
           // Slightly faster to inline sym('char') until AltParser does it automatically
           alpha: alt(range('a','z'), range('A','Z'), '_', '$', /* sym('char') */ range('0', '9')),
 
-  // TODO(kgr): This should just be 'alt' but that isn't working for some
+  // TOBUY(kgr): This should just be 'alt' but that isn't working for some
   // unknown reason. Probably related to SkipGrammar.  Fix and change to 
   // just 'alt'.
   value: simpleAlt(
@@ -4477,8 +4477,8 @@ var JSONParser = SkipGrammar.create({
     repeat(sym('symbol'), ','),
     ')',
     '{',
-    repeat(notChar('}')), // TODO(kgr): this is a very cheap/limited hack, replace with real JS grammar.
-//    repeat(sym('value'), ';'), // TODO(kgr): replace with 'statement'.
+    repeat(notChar('}')), // TOBUY(kgr): this is a very cheap/limited hack, replace with real JS grammar.
+//    repeat(sym('value'), ';'), // TOBUY(kgr): replace with 'statement'.
     '}')
 
 }.addActions({
@@ -4490,7 +4490,7 @@ var JSONParser = SkipGrammar.create({
 }), repeat0(alt(' ', '\t', '\n', '\r')));
 
 /*
-TODO: move to FUNTest
+TOBUY: move to FUNTest
 var res = JSONParser.parseString('{a:1,b:"2",c:false,d:f(),e:g(1,2),f:h.j.k(1),g:[1,"a",false,[]]}');
 console.log(res);
 */
@@ -4580,7 +4580,7 @@ var TemplateOutput = {
    * obj - Parent object.  If objects are output and have an initHTML() method, then they
    * are added to the parent by calling obj.addChild().
    **/
-  // TODO(kgr): redesign, I think this is actually broken.  If we call appendHTML() of
+  // TOBUY(kgr): redesign, I think this is actually broken.  If we call appendHTML() of
   // a sub-view then it will be added to the wrong parent.
   create: function(obj) {
     var buf = [];
@@ -4868,7 +4868,7 @@ var $documents = [];
 
 if ( window ) $documents.push(window.document);
 
-// TODO: clean this up, hide $WID__ in closure
+// TOBUY: clean this up, hide $WID__ in closure
 var $WID__ = 0;
 function $addWindow(w) {
    w.window.$WID = $WID__++;
@@ -4882,7 +4882,7 @@ function $removeWindow(w) {
 }
 
 /** Replacement for getElementById **/
-// TODO(kgr): remove this is deprecated, use X.$ instead()
+// TOBUY(kgr): remove this is deprecated, use X.$ instead()
 var $ = function (id) {
   console.log('Deprecated use of GLOBAL.$.');
   for ( var i = 0 ; i < $documents.length ; i++ ) {
@@ -4896,7 +4896,7 @@ var $ = function (id) {
   return undefined;
 };
 /** Replacement for getElementByClassName **/
-// TODO(kgr): remove this is deprecated, use X.$$ instead()
+// TOBUY(kgr): remove this is deprecated, use X.$$ instead()
 var $$ = function (cls) {
   console.log('Deprecated use of GLOBAL.$$.');
   for ( var i = 0 ; i < $documents.length ; i++ ) {
@@ -5046,7 +5046,7 @@ function registerModel(model, opt_name, fastMode) {
   else
     Object.defineProperty(path, name, { value: model, configurable: true });
 
-  // TODO: this is broken
+  // TOBUY: this is broken
   // update the cache if this model was already FOAM.lookup'd
   if ( root.lookupCache_ ) {
     var cache = root.lookupCache_;
@@ -5283,7 +5283,7 @@ var FObject = {
 
   init: nop,
 
-  // TODO: document
+  // TOBUY: document
   xbind: function(map) {
     var newModel = {
       __proto__: this,
@@ -5292,7 +5292,7 @@ var FObject = {
         var key;
 
         // If args is a modelled object, just keep data from instance_.
-        // TODO(kgr): Remove instance_ part when FObject.hasOwnProperty removed.
+        // TOBUY(kgr): Remove instance_ part when FObject.hasOwnProperty removed.
         args = args ? (args.instance_ || args) : {};
 
         for ( key in args ) {
@@ -5437,7 +5437,7 @@ var FObject = {
       // Works if sort is 'stable', which it isn't in Chrome
       // agents.sort(function(o1, o2) { return o1[0] - o2[0]; });
 
-      // TODO(kgr): make a stableSort() function in stdlib
+      // TOBUY(kgr): make a stableSort() function in stdlib
       for ( var i = 0 ; i < agents.length ; i++ ) agents[i][2] = i;
       agents.sort(CompoundComparator(
         function(o1, o2) { return o1[0] - o2[0]; },
@@ -5460,7 +5460,7 @@ var FObject = {
     var elements = this.elementMap_;
 
     // Build a map of properties keyed off of 'name'
-    // TODO: do we have a method to lookupIC?
+    // TOBUY: do we have a method to lookupIC?
     if ( ! elements ) {
       elements = {};
       var properties = this.model_.getRuntimeProperties();
@@ -5533,7 +5533,7 @@ var FObject = {
   },
 
   toString: function() {
-    // TODO: do something to detect loops which cause infinite recurrsions.
+    // TOBUY: do something to detect loops which cause infinite recurrsions.
     // console.log(this.model_.name + "Prototype");
     return this.model_.name + "Prototype";
     // return this.toJSON();
@@ -5561,7 +5561,7 @@ var FObject = {
   compareTo: function(other) {
     if ( other === this ) return 0;
     if ( this.model_ !== other.model_ ) {
-      // TODO: This provides unstable ordering if two objects have a different model_
+      // TOBUY: This provides unstable ordering if two objects have a different model_
       // but they have the same id.
       return this.model_.id.compareTo(other.model_ && other.model_.id) || 1;
     }
@@ -5752,14 +5752,14 @@ var FObject = {
     return hash;
   },
 
-  // TODO: this should be monkey-patched from a 'ProtoBuf' library
+  // TOBUY: this should be monkey-patched from a 'ProtoBuf' library
   toProtobuf: function() {
     var out = ProtoWriter.create();
     this.outProtobuf(out);
     return out.value;
   },
 
-  // TODO: this should be monkey-patched from a 'ProtoBuf' library
+  // TOBUY: this should be monkey-patched from a 'ProtoBuf' library
   outProtobuf: function(out) {
     var proprties = this.model_getRuntimeProperties();
     for ( var i = 0 ; i < properties.length ; i++ ) {
@@ -5804,7 +5804,7 @@ var FObject = {
   /** @return this **/
   copyFrom: function(src) {
 /*
-    // TODO: remove the 'this.model_' check when all classes modelled
+    // TOBUY: remove the 'this.model_' check when all classes modelled
     if ( src && this.model_ ) {
       for ( var i = 0 ; i < this.model_.properties.length ; i++ ) {
         var prop = this.model_.properties[i];
@@ -5901,12 +5901,12 @@ var FObject = {
  * Used during bootstrapping to create the real Model
  * and PropertyModel.
  *
- * TODO: The handling of the various property types (properties,
+ * TOBUY: The handling of the various property types (properties,
  *   templates, listeners, etc.) shouldn't be handled here because
  *   it isn't extensible.  The handling should be defined in the
  *   properties property (so meta).
  *
- * TODO: Is still used by a few views in view.js.  Those views
+ * TOBUY: Is still used by a few views in view.js.  Those views
  * should be fixed and then BootstrapModel should be deleted at
  * the end of metamodel.js once the real Model is created.
  **/
@@ -6108,7 +6108,7 @@ var BootstrapModel = {
       if ( this[m.name] ) cls[m.name] = this[m.name];
     }.bind(this));
 
-// TODO(adamvy): This shouldn't be required, commenting out for now.
+// TOBUY(adamvy): This shouldn't be required, commenting out for now.
 //    if ( extendsModel ) this.requires = this.requires.concat(extendsModel.requires);
     // build requires
     Object_forEach(this.requires, function(i) {
@@ -6237,7 +6237,7 @@ var BootstrapModel = {
       });
     });
 
-    // TODO: move this somewhere better
+    // TOBUY: move this somewhere better
     var createListenerTrampoline = function(cls, name, fn, isMerged, isFramed, whenIdle) {
       // bind a trampoline to the function which
       // re-binds a bound version of the function
@@ -6289,7 +6289,7 @@ var BootstrapModel = {
     //        this.topics && this.topics.forEach(function(t) {
     // Workaround for crbug.com/258522
     this.topics && Object_forEach(this.topics, function(t) {
-      // TODO: something
+      // TOBUY: something
     });
 
     // copy parent model's properties and actions into this model
@@ -6368,7 +6368,7 @@ var BootstrapModel = {
 
   saveDefinition: function(self) {
     self.definition_ = {};
-    // TODO: introspect Model, copy the other non-array properties of Model
+    // TOBUY: introspect Model, copy the other non-array properties of Model
     // DocumentationBootstrap's getter gets called here, which causes a .create() and an infinite loop
 //       Model.properties.forEach(function(prop) {
 //         var propVal = self[prop.name];
@@ -6382,7 +6382,7 @@ var BootstrapModel = {
 //         }
 //       }.bind(self));
 
-    // TODO: remove these once the above loop works
+    // TOBUY: remove these once the above loop works
     // clone feature lists to avoid sharing the reference in the copy and original
     if (Array.isArray(self.methods))       self.definition_.methods       = [].concat(self.methods);
     if (Array.isArray(self.templates))     self.definition_.templates     = [].concat(self.templates);
@@ -8427,7 +8427,7 @@ CLASS({
     },
     {
       name: 'view',
-      // TODO: create custom DateView
+      // TOBUY: create custom DateView
       defaultValue: 'foam.ui.DateFieldView'
     },
     {
@@ -8813,14 +8813,14 @@ CLASS({
       name: 'javaType',
       type: 'String',
       displayWidth: 10,
-      // TODO: should obtain primary-key type from subType
+      // TOBUY: should obtain primary-key type from subType
       defaultValueFn: function(p) { return 'Object'; },
       help: 'The Java type of this property.'
     },
     {
       name: 'view',
       defaultValue: 'foam.ui.TextFieldView'
-// TODO: Uncomment when all usages of ReferenceProperty/ReferenceArrayProperty fixed.
+// TOBUY: Uncomment when all usages of ReferenceProperty/ReferenceArrayProperty fixed.
 //      defaultValue: 'KeyView'
     },
     {
@@ -9084,14 +9084,14 @@ CLASS({
                   extendsModel: 'foam.ui.DetailView',
                   templates:[{name: 'toHTML', template: f}]
                 });
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
-// TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO TODO
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
+// TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY TOBUY
 
-              // TODO(kgr): this isn't right because compiling the View
+              // TOBUY(kgr): this isn't right because compiling the View
               // template is async.  Should create a FutureView to handle this.
               viewModel.arequire();
             }
@@ -9153,7 +9153,7 @@ CLASS({
     {
       name: 'view',
       defaultValue: 'foam.ui.StringArrayView',
-// TODO: Uncomment when all usages of ReferenceProperty/ReferenceArrayProperty fixed.
+// TOBUY: Uncomment when all usages of ReferenceProperty/ReferenceArrayProperty fixed.
 //      defaultValue: 'DAOKeyView'
     }
   ]
@@ -9254,7 +9254,7 @@ if ( DEBUG ) CLASS({
  * limitations under the License.
  */
 // Now remove BootstrapModel so nobody tries to use it
-// TODO: do this once no views use it directly
+// TOBUY: do this once no views use it directly
 // delete BootstrapModel;
 
 CLASS({
@@ -9876,7 +9876,7 @@ CLASS({
         if ( ! DEBUG ) return;
         // check for documentation in a multiline comment at the beginning of the code
         // accepts "/* comment */ function() {...." or "function() { /* comment */ ..."
-        // TODO: technically unicode letters are valid in javascript identifiers, which we are not catching here for function arguments.
+        // TOBUY: technically unicode letters are valid in javascript identifiers, which we are not catching here for function arguments.
         var multilineComment = /^\s*function\s*\([\$\s\w\,]*?\)\s*{\s*\/\*([\s\S]*?)\*\/[\s\S]*$|^\s*\/\*([\s\S]*?)\*\/([\s\S]*)/.exec(this.code.toString());
         if ( multilineComment ) {
           var bodyFn = multilineComment[1];
@@ -9970,7 +9970,7 @@ CLASS({
 
       name: 'closureSource',
       description: 'Closure JavaScript Source',
-      // TODO:  Change returnType to returnType.javascriptType
+      // TOBUY:  Change returnType to returnType.javascriptType
       template:
       '/**\n' +
         '<% for ( var i = 0; i < this.args.length ; i++ ) { var arg = this.args[i]; %>' +
@@ -11181,7 +11181,7 @@ CLASS({
     {
       name: 'window',
       postSet: function(_, w) {
-        // TODO: This would be better if ChromeApp.js added this behaviour
+        // TOBUY: This would be better if ChromeApp.js added this behaviour
         // in a SubModel of Window, ie. ChromeAppWindow
         if ( this.X.subDocument ) this.X.subDocument(w.document);
 
@@ -11302,7 +11302,7 @@ CLASS({
  * limitations under the License.
  */
 
-// TODO: standardize on either get()/set() or .value
+// TOBUY: standardize on either get()/set() or .value
 CLASS({
   name: 'SimpleValue',
 
@@ -11434,12 +11434,12 @@ window &&
   window.addEventListener('load', function() { DOM.init(X); }, false);
 
 
-// TODO: document and make non-global
+// TOBUY: document and make non-global
 /** Convert a style size to an Int.  Ex. '10px' to 10. **/
 function toNum(p) { return p.replace ? parseInt(p.replace('px','')) : p; };
 
 
-// TODO(kgr): replace all instances of DomValue with new modelled DOMValue.
+// TOBUY(kgr): replace all instances of DomValue with new modelled DOMValue.
 var DomValue = {
   DEFAULT_EVENT:    'change',
   DEFAULT_PROPERTY: 'value',
@@ -11529,7 +11529,7 @@ CLASS({
         if ( this.event ) {
           this.element.addEventListener(
             this.event,
-            function() { debugger; /* TODO */ },
+            function() { debugger; /* TOBUY */ },
             false);
         }
 
@@ -11567,7 +11567,7 @@ CLASS({
   requires: [
     'foam.html.Element',
     'foam.ui.View',
-    'foam.ui.DetailView' // TODO(kgr): arequire() manually, only if required
+    'foam.ui.DetailView' // TOBUY(kgr): arequire() manually, only if required
   ],
 
   imports: [ 'document' ],
@@ -11655,7 +11655,7 @@ CLASS({
       }.bind(this))();
     },
     holder: function() {
-      // TODO(kgr): Add an outerHTML setter to foam.html.Element instead
+      // TOBUY(kgr): Add an outerHTML setter to foam.html.Element instead
       return this.Element.isInstance(this.element) ? this.$ : this.element;
     },
     error: function(msg) {
@@ -11686,7 +11686,7 @@ CLASS({
  */
 
 /** A Canvas View for embedding CView's in. **/
-// TODO: add a 'mouse' property which creates and connects a Mouse model.
+// TOBUY: add a 'mouse' property which creates and connects a Mouse model.
 CLASS({
   name: 'Canvas',
   extendsModel: 'foam.ui.View',
@@ -12321,7 +12321,7 @@ CLASS({
       name:  'style',
       type:  'String',
       defaultValue: 'Line',
-      // TODO: fix the view, it's not storabe
+      // TOBUY: fix the view, it's not storabe
       view: {
         factory_: 'foam.ui.ChoiceView',
         choices: [
@@ -12765,7 +12765,7 @@ CLASS({
       this.mouse.addListener(this.onMouseMove);
     },
 
-    // TODO: move to CView
+    // TOBUY: move to CView
     line: function(x1, y1, x2, y2) {
       var c = this.canvas;
 
@@ -13107,7 +13107,7 @@ var HTMLParser = {
   whitespace: repeat0(alt(' ', '\t', '\r', '\n'))
 }.addActions({
   START: function(xs) {
-    // TODO(kgr): I think that this might be a bug if we get a failed compile then
+    // TOBUY(kgr): I think that this might be a bug if we get a failed compile then
     // we might not reset state properly.
     var ret = this.stack[0];
     this.stack = [ X.foam.html.Element.create({nodeName: 'html'}) ];
@@ -13146,7 +13146,7 @@ var HTMLParser = {
 });
 
 /*
-// TODO: move tests to UnitTests
+// TOBUY: move tests to UnitTests
 function test(html) {
   console.log('\n\nparsing: ', html);
   var p = HTMLParser.create();
@@ -13222,7 +13222,7 @@ X.registerElement('foam', null);
  * limitations under the License.
  */
 
-// TODO: add type-checking in partialEval
+// TOBUY: add type-checking in partialEval
 //  (type-checking is a subset of partial-eval)
 
 function compile_(a) {
@@ -13285,7 +13285,7 @@ CLASS({
         minterms[i] = this.minterm([inputs.length - 1], i);
       }
 
-      // TODO: Calculate prime implicants and reduce to minimal set.
+      // TOBUY: Calculate prime implicants and reduce to minimal set.
       var terms = [];
       for ( i = 0; i < minterms.length; i++ ) {
         if ( minterms[i] ) {
@@ -14360,11 +14360,11 @@ CLASS({
       return 'not ( ' + this.arg1.toSQL() + ' )';
     },
     toMQL: function() {
-      // TODO: only include params if necessary
+      // TOBUY: only include params if necessary
       return '-' + this.arg1.toMQL();
     },
     toBQL: function() {
-      // TODO: only include params if necessary
+      // TOBUY: only include params if necessary
       return '-' + this.arg1.toBQL();
     },
     collectInputs: function(terms) {
@@ -14537,7 +14537,7 @@ CLASS({
 
 
 
-// TODO: A TrieIndex would be ideal for making this very fast.
+// TOBUY: A TrieIndex would be ideal for making this very fast.
 CLASS({
   name: 'StartsWithExpr',
 
@@ -14545,9 +14545,9 @@ CLASS({
 
   methods: {
     toSQL: function() { return this.arg1.toSQL() + " like '%' + " + this.arg2.toSQL() + "+ '%'"; },
-    // TODO: Does MQL support this operation?
+    // TOBUY: Does MQL support this operation?
     toMQL: function() { return this.arg1.toMQL() + '-after:' + this.arg2.toMQL(); },
-    // TODO: Likewise BQL.
+    // TOBUY: Likewise BQL.
     toBQL: function() { return this.arg1.toBQL() + '>=' + this.arg2.toBQL(); },
 
     partialEval: function() {
@@ -14586,9 +14586,9 @@ CLASS({
 
   methods: {
     toSQL: function() { return this.arg1.toSQL() + " like '%' + " + this.arg2.toSQL() + "+ '%'"; },
-    // TODO: Does MQL support this operation?
+    // TOBUY: Does MQL support this operation?
     toMQL: function() { return this.arg1.toMQL() + '-after:' + this.arg2.toMQL(); },
-    // TODO: Does BQL support this operation?
+    // TOBUY: Does BQL support this operation?
     toBQL: function() { return this.arg1.toBQL() + '>=' + this.arg2.toBQL(); },
 
     partialEval: function() {
@@ -14618,7 +14618,7 @@ CLASS({
   methods: {
 
     partialEval: function() {
-      // TODO: implement
+      // TOBUY: implement
       return this;
     },
 
@@ -14742,10 +14742,10 @@ CLASS({
 
   methods: {
     reduce: function(other) {
-      // TODO:
+      // TOBUY:
     },
     reduceI: function(other) {
-      // TODO:
+      // TOBUY:
     },
     put: function(obj) {
       var key = this.arg1.f(obj);
@@ -14753,7 +14753,7 @@ CLASS({
       this.values[key] = true;
       this.arg2.put(obj);
     },
-    remove: function(obj) { /* TODO: */ },
+    remove: function(obj) { /* TOBUY: */ },
     toString: function() { return this.arg2.toString(); },
     toHTML: function() { return this.arg2.toHTML(); }
   }
@@ -14793,7 +14793,7 @@ CLASS({
       return ret;
     },
     reduce: function(other) {
-      // TODO:
+      // TOBUY:
     },
     reduceI: function(other) {
       for ( var i in other.groups ) {
@@ -14834,7 +14834,7 @@ CLASS({
       // Don't use default clone because we don't want to copy 'groups'
       return GroupByExpr.create({arg1: this.arg1, arg2: this.arg2});
     },
-    remove: function(obj) { /* TODO: */ },
+    remove: function(obj) { /* TOBUY: */ },
     toString: function() { return this.groups; },
     deepClone: function() {
       var cl = this.clone();
@@ -14952,7 +14952,7 @@ CLASS({
       // Don't use default clone because we don't want to copy 'groups'
       return this.model_.create({xFunc: this.xFunc, yFunc: this.yFunc, acc: this.acc});
     },
-    remove: function(obj) { /* TODO: */ },
+    remove: function(obj) { /* TOBUY: */ },
     toString: function() { return this.groups; },
     deepClone: function() {
     },
@@ -15032,7 +15032,7 @@ CLASS({
 
   methods: {
     reduce: function(other) {
-      // TODO:
+      // TOBUY:
     },
     reduceI: function(other) {
     },
@@ -15047,7 +15047,7 @@ CLASS({
       // Don't use default clone because we don't want to copy 'groups'
       return MapExpr.create({arg1: this.arg1, arg2: this.arg2.clone()});
     },
-    remove: function(obj) { /* TODO: */ },
+    remove: function(obj) { /* TOBUY: */ },
     toString: function() { return this.arg2.toString(); },
     deepClone: function() {
     },
@@ -15127,7 +15127,7 @@ CLASS({
   ],
 
   methods: {
-    // TODO: put this back to process one at a time and then
+    // TOBUY: put this back to process one at a time and then
     // have MDAO wait until it's done before pushing all data.
     put: function(obj) {
       (this.objs_ || (this.objs_ = [])).push(obj);
@@ -15182,7 +15182,7 @@ CLASS({
   methods: {
     toSQL: function() { return this.arg1.toSQL() + ' = ' + this.arg2.toSQL(); },
     f: function(obj) {
-      // TODO: This should be an assertion when arg1 is set rather than be checked
+      // TOBUY: This should be an assertion when arg1 is set rather than be checked
       // for every invocation.
       if ( Property.isInstance(this.arg1) ) {
         obj[this.arg1.name] = this.arg2.f(obj);
@@ -15243,7 +15243,7 @@ function NOT(arg) {
   return NotExpr.create({arg1: compile_(arg)});
 }
 
-// TODO: add EQ_ic
+// TOBUY: add EQ_ic
 
 function STARTS_WITH(arg1, arg2) {
   return StartsWithExpr.create({arg1: compile_(arg1), arg2: compile_(arg2)});
@@ -15399,7 +15399,7 @@ CLASS({
       return this.specializations_[model.name] ||
         ( this.specializations_[model.name] = this.specialize(model) );
     },
-    // TODO: implement;
+    // TOBUY: implement;
     toSQL: function() { return this.arg1; },
     toMQL: function() { return this.arg1; },
 
@@ -15448,7 +15448,7 @@ CLASS({
 function KEYWORD(word) { return KeywordExpr.create({arg1: word}); }
 
 
-// TODO: add other Date functions
+// TOBUY: add other Date functions
 var MONTH = function(p) { return {f: function (o) { return p.f(o).getMonth(); } }; };
 
 /**
@@ -15468,7 +15468,7 @@ var MONTH = function(p) { return {f: function (o) { return p.f(o).getMonth(); } 
  * limitations under the License.
  */
 
-// TODO: move to package
+// TOBUY: move to package
 
 /**
  * Generic Google-like query-language parser generator.
@@ -15547,10 +15547,10 @@ var QueryParserFactory = function(model, opt_enableKeyword) {
 
     equals: seq(sym('fieldname'), alt(':', '='), sym('valueList')),
 
-    // TODO: merge with 'equals'
+    // TOBUY: merge with 'equals'
     before: seq(sym('fieldname'), alt('<', '<=', '-before:'), sym('value')),
 
-    // TODO: merge with 'equals'
+    // TOBUY: merge with 'equals'
     after: seq(sym('fieldname'), alt('>', '>=', '-after:'), sym('value')),
 
     value: alt(
@@ -16125,7 +16125,7 @@ CLASS({
  * limitations under the License.
  */
 
-// TODO: model and move out of core
+// TOBUY: model and move out of core
 var LoggingDAO = {
 
   create: function(/*[logger], delegate*/) {
@@ -16162,7 +16162,7 @@ var LoggingDAO = {
 };
 
 
-// TODO: model and move out of core
+// TOBUY: model and move out of core
 var TimingDAO = {
 
   create: function(name, delegate) {
@@ -16753,7 +16753,7 @@ MODEL0({
     notify_:  AbstractDAO.getPrototype().notify_,
 
     // Clone this Array and remove 'v' (only 1 instance)
-    // TODO: make faster by copying in one pass, without splicing
+    // TOBUY: make faster by copying in one pass, without splicing
     deleteF: function(v) {
       var a = this.clone();
       for ( var i = 0 ; i < a.length ; i++ ) {
@@ -16770,7 +16770,7 @@ MODEL0({
       return false;
     },
     // Clone this Array and remove first object where predicate 'p' returns true
-    // TODO: make faster by copying in one pass, without splicing
+    // TOBUY: make faster by copying in one pass, without splicing
     removeF: function(p) {
       var a = this.clone();
       for ( var i = 0 ; i < a.length ; i++ ) {
@@ -16826,7 +16826,7 @@ MODEL0({
       }
       sink && sink.error && sink.error('find', query);
     },
-    // TODO: make this faster, should stop after finding first item.
+    // TOBUY: make this faster, should stop after finding first item.
     remove: function(obj, sink) {
       if ( ! obj ) {
         sink && sink.error && sink.error('missing key');
@@ -16914,14 +16914,14 @@ MODEL0({
  * Index Interface:
  *   put(state, value) -> new state
  *   remove(state, value) -> new state
- *   removeAll(state) -> new state // TODO
+ *   removeAll(state) -> new state // TOBUY
  *   plan(state, sink, options) -> {cost: int, toString: fn, execute: fn}
  *   size(state) -> int
  * Add:
  *   get(key) -> obj
  *   update(oldValue, newValue)
  *
- * TODO:
+ * TOBUY:
  *  reuse plans
  *  add ability for indices to pre-populate data
  */
@@ -16982,7 +16982,7 @@ var LEVEL = 3;
 var LEFT  = 4;
 var RIGHT = 5;
 
-// TODO: investigate how well V8 optimizes static classes
+// TOBUY: investigate how well V8 optimizes static classes
 
 // [0 key, 1 value, 2 size, 3 level, 4 left, 5 right]
 
@@ -17142,7 +17142,7 @@ var TreeIndex = {
 
       var side = s[LEFT] ? LEFT : RIGHT;
 
-      // TODO: it would be faster if successor and predecessor also deleted
+      // TOBUY: it would be faster if successor and predecessor also deleted
       // the entry at the same time in order to prevent two traversals.
       // But, this would also duplicate the delete logic.
       var l = side === LEFT ?
@@ -17334,7 +17334,7 @@ var TreeIndex = {
 
     // if ( sink.model_ === GroupByExpr && sink.arg1 === prop ) {
     // console.log('**************** GROUP-BY SHORT-CIRCUIT ****************');
-    // TODO:
+    // TOBUY:
     // }
 
     var index = this;
@@ -17502,7 +17502,7 @@ var TreeIndex = {
         } else {
 // What did this do?  It appears to break sorting in saturn mail
 /*          if ( reverseSort && options && options.skip )
-            // TODO: temporary fix, should include range in select and selectReverse calls instead.
+            // TOBUY: temporary fix, should include range in select and selectReverse calls instead.
             options = {
               __proto__: options,
               skip: index.size(s) - options.skip - (options.limit || index.size(s)-options.skip)
@@ -17566,7 +17566,7 @@ var SetIndex = {
     };
   },
 
-  // TODO: see if this can be done some other way
+  // TOBUY: see if this can be done some other way
   dedup: function(obj, value) {
     // NOP, not safe to do here
   },
@@ -17734,7 +17734,7 @@ var PositionIndex = {
     for ( var i = 0; i < s.length; i++ ) {
       var entry = s[i]
       if ( ! entry ) continue;
-      // TODO: This abuses the fact that find is synchronous.
+      // TOBUY: This abuses the fact that find is synchronous.
       this.dao.find(entry.obj, { put: function(o) { entry = o; } });
 
       // Only happens when things are put into the dao from a select on this index.
@@ -17825,7 +17825,7 @@ var PositionIndex = {
             max = i + skip;
           }
           if ( o ) {
-            // TODO: Works because find is actually synchronous.
+            // TOBUY: Works because find is actually synchronous.
             // this will need to fixed if find starts using an async function.
             self.dao.find(o.obj, { put: function(obj) { objs[i] = obj; } });
           } else {
@@ -17960,7 +17960,7 @@ var mLangIndex = {
   },
 
   put: function(s, newValue) {
-    // TODO: Should we clone s here?  That would be more
+    // TOBUY: Should we clone s here?  That would be more
     // correct in terms of the purely functional interface
     // but maybe we can get away with it.
     s = s || this.mlang.clone();
@@ -17969,7 +17969,7 @@ var mLangIndex = {
   },
 
   remove: function(s, obj) {
-    // TODO: Should we clone s here?  That would be more
+    // TOBUY: Should we clone s here?  That would be more
     // correct in terms of the purely functional interface
     // but maybe we can get away with it.
     s = s || this.mlang.clone();
@@ -18029,7 +18029,7 @@ var AutoIndex = {
       if ( options.order && Property.isInstance(options.order) && ! this.properties[options.order.name] ) {
         this.addIndex(options.order);
       } else if ( options.query ) {
-        // TODO: check for property in query
+        // TOBUY: check for property in query
       }
     }
 
@@ -18065,7 +18065,7 @@ var MDAO = Model.create({
       this.SUPER();
 
       this.map = {};
-      // TODO(kgr): this doesn't support multi-part keys, but should
+      // TOBUY(kgr): this doesn't support multi-part keys, but should
       this.index = TreeIndex.create(this.model.getProperty(this.model.ids[0]));
 
       if ( this.autoIndex ) this.addRawIndex(AutoIndex.create(this));
@@ -18096,7 +18096,7 @@ var MDAO = Model.create({
 
       for ( var i = arguments.length-1 ; i >= 0 ; i-- ) {
         var prop = arguments[i];
-        // TODO: the index prototype should be in the property
+        // TOBUY: the index prototype should be in the property
         var proto = prop.type == 'Array[]' ? SetIndex : TreeIndex;
         index = proto.create(prop, index);
       }
@@ -18104,7 +18104,7 @@ var MDAO = Model.create({
       return this.addRawIndex(index);
     },
 
-    // TODO: name 'addIndex' and renamed addIndex
+    // TOBUY: name 'addIndex' and renamed addIndex
     addRawIndex: function(index) {
       // Upgrade single Index to an AltIndex if required.
       if ( ! /*AltIndex.isInstance(this.index)*/ this.index.delegates ) {
@@ -18158,7 +18158,7 @@ var MDAO = Model.create({
         sink && sink.error && sink.error('missing key');
         return;
       }
-      if ( ! key.f ) { // TODO: make better test, use model
+      if ( ! key.f ) { // TOBUY: make better test, use model
         this.findObj_(key, sink);
         return;
       }
@@ -18270,7 +18270,7 @@ var MDAO = Model.create({
  * ...
  * persistentContext.bindObject('userInfo', UserInfo, {});
  *
- * TODO: Make simpler to setup.
+ * TOBUY: Make simpler to setup.
  **/
 CLASS({
   name: 'Binding',
@@ -18290,7 +18290,7 @@ CLASS({
     */},
 
   properties: [
-    // TODO: add support for named sub-contexts
+    // TOBUY: add support for named sub-contexts
     {
       name:  'id',
       hidden: true
@@ -18355,7 +18355,7 @@ CLASS({
       write();
     },
     bindObjects: function(a) {
-      // TODO: implement
+      // TOBUY: implement
     },
     clearBinding: function(ret, name) {
       var self = this;
@@ -18455,7 +18455,7 @@ function deferJsonP(X) {
   return future;
 }
 
-// TODO: Register model for model, or fix the facade.
+// TOBUY: Register model for model, or fix the facade.
 
 /**
  * @license
@@ -18523,28 +18523,28 @@ var __DATA;
     }
   };
 })();
-CLASS({"package": "com.tobuymvc","name": "Controller","traits": ["foam.ui.CSSLoaderTrait"],"requires": ["foam.ui.TextFieldView","foam.ui.DAOListView","foam.dao.EasyDAO","foam.memento.WindowHashValue","com.tobuymvc.Todo","com.tobuymvc.TodoDAO","com.tobuymvc.TodoFilterView"],"properties": [{"name": "input","view": {"factory_": "foam.ui.TextFieldView","placeholder": "What needs to be done?"},"setter": function (text) {
+CLASS({"package": "com.tobuymvc","name": "Controller","traits": ["foam.ui.CSSLoaderTrait"],"requires": ["foam.ui.TextFieldView","foam.ui.DAOListView","foam.dao.EasyDAO","foam.memento.WindowHashValue","com.tobuymvc.Tobuy","com.tobuymvc.TobuyDAO","com.tobuymvc.TobuyFilterView"],"properties": [{"name": "input","view": {"factory_": "foam.ui.TextFieldView","placeholder": "What needs to be done?"},"setter": function (text) {
 					// This is a fake property that adds the tobuy when its value gets saved.
 					if (text) {
-						this.dao.put(this.Todo.create({text: text}));
+						this.dao.put(this.Tobuy.create({text: text}));
 						this.propertyChange('input', text, '');
 					}
 				}},{"name": "dao"},{model_:"foam.core.types.DAOProperty","name": "filteredDAO","view": "foam.ui.DAOListView"},{model_:"IntProperty","name": "completedCount"},{model_:"IntProperty","name": "activeCount","postSet": function (_, c) { this.toggle = !c; }},{model_:"BooleanProperty","name": "toggle","postSet": function (_, n) {
 				if (n === this.activeCount > 0) {
-					this.dao.update(SET(this.Todo.COMPLETED, n));
+					this.dao.update(SET(this.Tobuy.COMPLETED, n));
 				}
-			}},{"name": "query","view": "com.tobuymvc.TodoFilterView","defaultValue": {model_:"TrueExpr"},"postSet": function (_, q) { this.filteredDAO = this.dao.where(q); }},{"name": "memento","factory": function () { return this.WindowHashValue.create(); }}],"actions": [{"name": "clear","label": "Clear completed","isEnabled": function () { return this.completedCount; },"action": function () { this.dao.where(this.Todo.COMPLETED).removeAll(); }}],"methods": [{"name": "init","code": function () {
+			}},{"name": "query","view": "com.tobuymvc.TobuyFilterView","defaultValue": {model_:"TrueExpr"},"postSet": function (_, q) { this.filteredDAO = this.dao.where(q); }},{"name": "memento","factory": function () { return this.WindowHashValue.create(); }}],"actions": [{"name": "clear","label": "Clear completed","isEnabled": function () { return this.completedCount; },"action": function () { this.dao.where(this.Tobuy.COMPLETED).removeAll(); }}],"methods": [{"name": "init","code": function () {
 				this.SUPER();
-				this.filteredDAO = this.dao = this.TodoDAO.create({
-					delegate: this.EasyDAO.create({model: this.Todo, seqNo: true, daoType: 'LOCAL', name: 'tobuys-foam'}) });
+				this.filteredDAO = this.dao = this.TobuyDAO.create({
+					delegate: this.EasyDAO.create({model: this.Tobuy, seqNo: true, daoType: 'LOCAL', name: 'tobuys-foam'}) });
 				this.dao.listen(this.onDAOUpdate);
 				this.onDAOUpdate();
 			}}],"listeners": [{"name": "onDAOUpdate","code": function () {
-					this.dao.select(GROUP_BY(this.Todo.COMPLETED, COUNT()))(function (q) {
+					this.dao.select(GROUP_BY(this.Tobuy.COMPLETED, COUNT()))(function (q) {
 						this.completedCount = q.groups[true];
 						this.activeCount = q.groups[false];
 					}.bind(this));
-				},"isFramed": true}],"templates": [{"name": "CSS","template": "\u000a\u0009\u0009\u0009\u0009#filters .selected { font-weight: bold; }\u000a\u0009\u0009\u0009\u0009#filters li { margin: 4px; }\u000a\u0009\u0009\u0009\u0009.actionButton-clear:disabled { display: none; }\u000a\u0009\u0009\u0009"},{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009<section id=\"tobuyapp\">\u000a\u0009\u0009\u0009\u0009<header id=\"header\"><h1>tobuys</h1>$$input{id: 'new-tobuy'}</header>\u000a\u0009\u0009\u0009\u0009<section id=\"main\">\u000a\u0009\u0009\u0009\u0009\u0009$$toggle{id: 'toggle-all', showLabel: false}\u000a\u0009\u0009\u0009\u0009\u0009$$filteredDAO{tagName: 'ul', id: 'tobuy-list'}\u000a\u0009\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009\u0009<footer id=\"footer\">\u000a\u0009\u0009\u0009\u0009\u0009<span id=\"tobuy-count\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009<strong>$$activeCount{mode: 'read-only'}</strong> item<%# this.data.activeCount == 1 ? '' : 's' %> left\u000a\u0009\u0009\u0009\u0009\u0009</span>\u000a\u0009\u0009\u0009\u0009\u0009$$query{id: 'filters'}\u000a\u0009\u0009\u0009\u0009\u0009$$clear{id: 'clear-completed'}\u000a\u0009\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009<footer id=\"info\">\u000a\u0009\u0009\u0009\u0009<p>Double-click to edit a tobuy</p>\u000a\u0009\u0009\u0009\u0009<p>Created by <a href=\"mailto:kgr@chromium.org\">Kevin Greer</a></p>\u000a\u0009\u0009\u0009\u0009<p>Part of <a href=\"http://tobuymvc.com\">TodoMVC</a></p>\u000a\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009var f = function () { return this.completedCount + this.activeCount == 0; }.bind(this.data);\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'main');\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'footer');\u000a\u0009\u0009\u0009\u0009Events.relate(this.data.memento, this.queryView.text$,\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (memento) {\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var s = memento && memento.substring(1);\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var t = s ? s.capitalize() : 'All';\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009return t;\u000a\u0009\u0009\u0009\u0009\u0009\u0009},\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (label) { return '/' + label.toLowerCase(); });\u000a\u0009\u0009\u0009\u0009this.addInitializer(function () {\u000a\u0009\u0009\u0009\u0009\u0009X.$('new-tobuy').focus();\u000a\u0009\u0009\u0009\u0009});\u000a\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
+				},"isFramed": true}],"templates": [{"name": "CSS","template": "\u000a\u0009\u0009\u0009\u0009#filters .selected { font-weight: bold; }\u000a\u0009\u0009\u0009\u0009#filters li { margin: 4px; }\u000a\u0009\u0009\u0009\u0009.actionButton-clear:disabled { display: none; }\u000a\u0009\u0009\u0009"},{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009<section id=\"tobuyapp\">\u000a\u0009\u0009\u0009\u0009<header id=\"header\"><h1>tobuys</h1>$$input{id: 'new-tobuy'}</header>\u000a\u0009\u0009\u0009\u0009<section id=\"main\">\u000a\u0009\u0009\u0009\u0009\u0009$$toggle{id: 'toggle-all', showLabel: false}\u000a\u0009\u0009\u0009\u0009\u0009$$filteredDAO{tagName: 'ul', id: 'tobuy-list'}\u000a\u0009\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009\u0009<footer id=\"footer\">\u000a\u0009\u0009\u0009\u0009\u0009<span id=\"tobuy-count\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009<strong>$$activeCount{mode: 'read-only'}</strong> item<%# this.data.activeCount == 1 ? '' : 's' %> left\u000a\u0009\u0009\u0009\u0009\u0009</span>\u000a\u0009\u0009\u0009\u0009\u0009$$query{id: 'filters'}\u000a\u0009\u0009\u0009\u0009\u0009$$clear{id: 'clear-completed'}\u000a\u0009\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009</section>\u000a\u0009\u0009\u0009<footer id=\"info\">\u000a\u0009\u0009\u0009\u0009<p>Double-click to edit a tobuy</p>\u000a\u0009\u0009\u0009\u0009<p>Created by <a href=\"mailto:kgr@chromium.org\">Kevin Greer</a></p>\u000a\u0009\u0009\u0009\u0009<p>Part of <a href=\"http://tobuymvc.com\">TobuyMVC</a></p>\u000a\u0009\u0009\u0009</footer>\u000a\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009var f = function () { return this.completedCount + this.activeCount == 0; }.bind(this.data);\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'main');\u000a\u0009\u0009\u0009\u0009this.setClass('hidden', f, 'footer');\u000a\u0009\u0009\u0009\u0009Events.relate(this.data.memento, this.queryView.text$,\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (memento) {\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var s = memento && memento.substring(1);\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009var t = s ? s.capitalize() : 'All';\u000a\u0009\u0009\u0009\u0009\u0009\u0009\u0009return t;\u000a\u0009\u0009\u0009\u0009\u0009\u0009},\u000a\u0009\u0009\u0009\u0009\u0009\u0009function (label) { return '/' + label.toLowerCase(); });\u000a\u0009\u0009\u0009\u0009this.addInitializer(function () {\u000a\u0009\u0009\u0009\u0009\u0009X.$('new-tobuy').focus();\u000a\u0009\u0009\u0009\u0009});\u000a\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
 CLASS({"package": "foam.ui","name": "TextFieldView","label": "Text Field","extendsModel": "foam.ui.SimpleView","requires": ["foam.ui.AutocompleteView"],"properties": [{model_:"StringProperty","name": "name","defaultValue": "field"},{model_:"IntProperty","name": "displayWidth","defaultValue": 30},{model_:"IntProperty","name": "displayHeight","defaultValue": 1},{model_:"StringProperty","name": "type","defaultValue": "text"},{model_:"StringProperty","name": "placeholder","defaultValue": ""},{model_:"BooleanProperty","name": "onKeyMode","getter": function () {
         return this.updateMode === this.EACH_KEYSTROKE;
       },"setter": function (nu) {
@@ -18853,7 +18853,7 @@ CLASS({"package": "foam.ui","name": "HTMLViewTrait","label": "HTMLView","require
           }
         }
       }},{"name": "shortcuts","type": "Array[Shortcut]","factory": function () { return []; }},{"name": "$","mode": "read-only","hidden": true,"getter": function () { return this.X.document.getElementById(this.id); },"setter": function () { debugger; },"help": "DOM Element."},{"name": "tagName","defaultValue": "span"},{"name": "className","defaultValue": "","help": "CSS class name(s), space separated."},{"name": "tooltip"},{"name": "tabIndex"},{"name": "extraClassName","defaultValue": ""},{"name": "propertyViewProperty","type": "Property","defaultValueFn": function () { return this.X.Property.VIEW; }},{"name": "initializers_","factory": function () { return []; }},{"name": "destructors_","factory": function () { return []; }},{model_:"BooleanProperty","name": "showActions","postSet": function (oldValue, showActions) {
-        // TODO: No way to remove the decorator.
+        // TOBUY: No way to remove the decorator.
         if ( ! oldValue && showActions ) {
           this.addDecorator(this.ActionBorder.create());
         }
@@ -19131,7 +19131,7 @@ CLASS({"package": "foam.ui","name": "HTMLViewTrait","label": "HTMLView","require
     }},{"name": "destroy","code": function ( isParentDestroyed ) {
       /* Cleans up the DOM when regenerating content. You should call this before
          creating new HTML in your $$DOC{ref:'.toInnerHTML'} or $$DOC{ref:'.toHTML'}. */
-      // TODO: remove listeners
+      // TOBUY: remove listeners
       this.invokeDestructors();
 
       this.SUPER(isParentDestroyed);
@@ -19145,7 +19145,7 @@ CLASS({"package": "foam.ui","name": "HTMLViewTrait","label": "HTMLView","require
     }},{"name": "rectOnPage","code": function () {
       /* Computes the XY coordinates of the given node
          relative to the containing elements.</p>
-         <p>TODO: Check browser compatibility. */
+         <p>TOBUY: Check browser compatibility. */
       var node = this.$;
       var x = 0;
       var y = 0;
@@ -19349,7 +19349,7 @@ CLASS({"package": "foam.ui","name": "PropertyView","extendsModel": "foam.ui.Asyn
       }},{"name": "childData"},{"name": "innerView","postSet": function (old,nu) {
         this.model = nu;
       },"help": "Override for prop.view"},{"name": "view","type": "foam.ui.View","adapt": function (_, v) { return v && v.toView_ ? v.toView_() : v; }},{model_:"BooleanProperty","name": "bound_","defaultValue": false},{"name": "parent","type": "foam.ui.View","postSet": function (_, p) {
-        if ( ! p ) return; // TODO(jacksonic): We shouldn't pretend we aren't part of the tree
+        if ( ! p ) return; // TOBUY(jacksonic): We shouldn't pretend we aren't part of the tree
         p[this.prop.name + 'View'] = this.view;
         if ( this.view ) this.view.parent = p;
       }}],"methods": [{"name": "unbindData","code": function (oldData) {
@@ -19438,7 +19438,7 @@ CLASS({"package": "foam.ui","name": "AsyncLoadingView","extendsModel": "foam.ui.
         }
       }
       if ( this.model.factory_ ) { // JSON with string factory_ name
-        // TODO: previously 'view' was removed from copyFrom to support CViews not getting their view stomped. Put back...
+        // TOBUY: previously 'view' was removed from copyFrom to support CViews not getting their view stomped. Put back...
         this.mergeWithCopyFrom(this.model);
         return this.requireModelName(this.model.factory_, skipKeysArgDecorator);
       }
@@ -19703,12 +19703,12 @@ CLASS({"package": "foam.ui","name": "DAOListView","extendsModel": "foam.ui.View"
       d.select({put: function(o) {
         if ( this.mode === 'read-write' ) o = o.model_.create(o, this.Y); //.clone();
         var view = this.rowView({data: o, model: o.model_}, this.Y);
-        // TODO: Something isn't working with the Context, fix
+        // TOBUY: Something isn't working with the Context, fix
         view.DAO = this.dao;
         if ( this.mode === 'read-write' ) {
           o.addPropertyListener(null, function(o, topic) {
             var prop = o.model_.getProperty(topic[1]);
-            // TODO(kgr): remove the deepClone when the DAO does this itself.
+            // TOBUY(kgr): remove the deepClone when the DAO does this itself.
             if ( ! prop.transient ) view.DAO.put(o.deepClone());
           });
         }
@@ -20249,8 +20249,8 @@ CLASS({"package": "foam.memento","name": "WindowHashValue","imports": ["window"]
     }},{"name": "removeListener","code": function (listener) {
       this.window.removeEventListener('hashchange', listener, false);
     }},{"name": "toString","code": function () { return "WindowHashValue(" + this.get() + ")"; }}]})
-CLASS({"package": "com.tobuymvc","name": "Todo","properties": [{"name": "id"},{model_:"BooleanProperty","name": "completed"},{"name": "text","preSet": function (_, text) { return text.trim(); }}],"templates": [{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009\u0009<li id=\"%%id\">\u000a\u0009\u0009\u0009\u0009\u0009<div class=\"view\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$completed{className: 'toggle'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$text{mode: 'read-only', tagName: 'label'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009<button class=\"destroy\" id=\"<%= this.on('click', function () { this.parent.dao.remove(this.data); }) %>\"></button>\u000a\u0009\u0009\u0009\u0009\u0009</div>\u000a\u0009\u0009\u0009\u0009\u0009$$text{className: 'edit'}\u000a\u0009\u0009\u0009\u0009</li>\u000a\u0009\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009\u0009var toEdit    = function () { DOM.setClass(this.$, 'editing'); this.textView.focus(); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009var toDisplay = function () { DOM.setClass(this.$, 'editing', false); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009this.on('dblclick', toEdit, this.id);\u000a\u0009\u0009\u0009\u0009\u0009this.on('blur', toDisplay, this.textView.id);\u000a\u0009\u0009\u0009\u0009\u0009this.textView.subscribe(this.textView.ESCAPE, toDisplay);\u000a\u0009\u0009\u0009\u0009\u0009this.setClass('completed', function () { return this.data.completed; }.bind(this), this.id);\u000a\u0009\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
-CLASS({"package": "com.tobuymvc","name": "TodoDAO","extendsModel": "foam.dao.ProxyDAO","methods": [{"name": "put","code": function put(issue, s) {
+CLASS({"package": "com.tobuymvc","name": "Tobuy","properties": [{"name": "id"},{model_:"BooleanProperty","name": "completed"},{"name": "text","preSet": function (_, text) { return text.trim(); }}],"templates": [{"name": "toDetailHTML","template": "\u000a\u0009\u0009\u0009\u0009<li id=\"%%id\">\u000a\u0009\u0009\u0009\u0009\u0009<div class=\"view\">\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$completed{className: 'toggle'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009$$text{mode: 'read-only', tagName: 'label'}\u000a\u0009\u0009\u0009\u0009\u0009\u0009<button class=\"destroy\" id=\"<%= this.on('click', function () { this.parent.dao.remove(this.data); }) %>\"></button>\u000a\u0009\u0009\u0009\u0009\u0009</div>\u000a\u0009\u0009\u0009\u0009\u0009$$text{className: 'edit'}\u000a\u0009\u0009\u0009\u0009</li>\u000a\u0009\u0009\u0009\u0009<%\u000a\u0009\u0009\u0009\u0009\u0009var toEdit    = function () { DOM.setClass(this.$, 'editing'); this.textView.focus(); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009var toDisplay = function () { DOM.setClass(this.$, 'editing', false); }.bind(this);\u000a\u0009\u0009\u0009\u0009\u0009this.on('dblclick', toEdit, this.id);\u000a\u0009\u0009\u0009\u0009\u0009this.on('blur', toDisplay, this.textView.id);\u000a\u0009\u0009\u0009\u0009\u0009this.textView.subscribe(this.textView.ESCAPE, toDisplay);\u000a\u0009\u0009\u0009\u0009\u0009this.setClass('completed', function () { return this.data.completed; }.bind(this), this.id);\u000a\u0009\u0009\u0009\u0009%>\u000a\u0009\u0009\u0009"}]})
+CLASS({"package": "com.tobuymvc","name": "TobuyDAO","extendsModel": "foam.dao.ProxyDAO","methods": [{"name": "put","code": function put(issue, s) {
 				// If the user tried to put an empty text, remove the entry instead.
 				if (!issue.text) {
 					this.remove(issue.id, { remove: s && s.put });
@@ -20258,8 +20258,8 @@ CLASS({"package": "com.tobuymvc","name": "TodoDAO","extendsModel": "foam.dao.Pro
 					this.SUPER(issue, s);
 				}
 			}}]})
-CLASS({"package": "com.tobuymvc","name": "TodoFilterView","extendsModel": "foam.ui.ChoiceListView","requires": ["com.tobuymvc.Todo"],"properties": [{"name": "choices","factory": function () {
-					return [[TRUE, 'All'], [NOT(this.Todo.COMPLETED), 'Active'], [this.Todo.COMPLETED, 'Completed']];
+CLASS({"package": "com.tobuymvc","name": "TobuyFilterView","extendsModel": "foam.ui.ChoiceListView","requires": ["com.tobuymvc.Tobuy"],"properties": [{"name": "choices","factory": function () {
+					return [[TRUE, 'All'], [NOT(this.Tobuy.COMPLETED), 'Active'], [this.Tobuy.COMPLETED, 'Completed']];
 				}}],"methods": [{"name": "choiceToHTML","code": function choiceToHTML(id, choice) {
 				var self = this;
 				this.setClass('selected', function () { return self.text === choice[1]; }, id);
@@ -20588,7 +20588,7 @@ CLASS({"package": "foam.ui","name": "DAOController","label": "DAO Controller","e
 
         this.X.stack.pushView(createView, 'New');
       }},{"name": "edit","help": "Edit the current record.","default": "true","action": function () {
-        // Todo: fix, should already be connected
+        // Tobuy: fix, should already be connected
         this.selection = this.daoView.selection;
 
         var obj = this.selection;
@@ -20617,7 +20617,7 @@ CLASS({"package": "foam.ui","name": "DAOController","label": "DAO Controller","e
 
         this.X.stack.pushView(updateView, 'Edit');
       }},{"name": "delete","help": "Delete the current record.","action": function ()      {
-        // Todo: fix, should already be connected
+        // Tobuy: fix, should already be connected
         this.selection = this.daoView.selection;
         var self = this;
         this.dao.remove(this.selection);

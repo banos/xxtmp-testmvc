@@ -118,7 +118,7 @@
                     if ( config.clazz ) {
                         output = this._createAndSetupInstance( key, config.clazz );
                     } else {
-                        //TODO shouldn't this be null
+                        //TOBUY shouldn't this be null
                         output = config.object;
                     }
                 }
@@ -313,7 +313,7 @@
         /**
          * Force instantiation of the class mapped to <code>key</code>, whether it was mapped as a singleton or not.
          * When a value was mapped, the value will be returned.
-         * TODO: should this last rule be changed?
+         * TOBUY: should this last rule be changed?
          * @example
          var SomeClass = function(){
          }

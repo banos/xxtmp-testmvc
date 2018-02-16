@@ -1,4 +1,4 @@
-# Meteor TodoMVC Example
+# Meteor TobuyMVC Example
 
 > Meteor is an open-source platform for building top-quality web apps in a fraction of the time, whether you're an expert developer or just getting started.
 
@@ -58,4 +58,4 @@ To deploy to meteor.com:
 
 ## Credit
 
-This TodoMVC application was created by [MStumpp](https://github.com/MStumpp).
+This TobuyMVC application was created by [MStumpp](https://github.com/MStumpp).

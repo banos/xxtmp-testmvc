@@ -1,4 +1,4 @@
-# Chaplin & Brunch TodoMVC Example
+# Chaplin & Brunch TobuyMVC Example
 
 > Chaplin is an architecture for JavaScript applications using the Backbone.js library. Chaplin addresses Backbone’s limitations by providing a lightweight and flexible structure that features well-proven design patterns and best practices.
 
@@ -60,4 +60,4 @@ Open `public/index.html` in your browser to see it in action!
 
 ## Credit
 
-This TodoMVC application was created by [@paulmillr](http://paulmillr.com).
+This TobuyMVC application was created by [@paulmillr](http://paulmillr.com).

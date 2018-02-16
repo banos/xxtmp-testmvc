@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var store_1 = require('./services/store');
-var TodoApp = (function () {
-    function TodoApp(tobuyStore) {
-        this.newTodoText = '';
+var TobuyApp = (function () {
+    function TobuyApp(tobuyStore) {
+        this.newTobuyText = '';
         this.tobuyStore = tobuyStore;
     }
-    TodoApp.prototype.stopEditing = function (tobuy, editedTitle) {
+    TobuyApp.prototype.stopEditing = function (tobuy, editedTitle) {
         tobuy.title = editedTitle;
         tobuy.editing = false;
     };
-    TodoApp.prototype.cancelEditingTodo = function (tobuy) {
+    TobuyApp.prototype.cancelEditingTobuy = function (tobuy) {
         tobuy.editing = false;
     };
-    TodoApp.prototype.updateEditingTodo = function (tobuy, editedTitle) {
+    TobuyApp.prototype.updateEditingTobuy = function (tobuy, editedTitle) {
         editedTitle = editedTitle.trim();
         tobuy.editing = false;
         if (editedTitle.length === 0) {
@@ -29,33 +29,33 @@ var TodoApp = (function () {
         }
         tobuy.title = editedTitle;
     };
-    TodoApp.prototype.editTodo = function (tobuy) {
+    TobuyApp.prototype.editTobuy = function (tobuy) {
         tobuy.editing = true;
     };
-    TodoApp.prototype.removeCompleted = function () {
+    TobuyApp.prototype.removeCompleted = function () {
         this.tobuyStore.removeCompleted();
     };
-    TodoApp.prototype.toggleCompletion = function (tobuy) {
+    TobuyApp.prototype.toggleCompletion = function (tobuy) {
         this.tobuyStore.toggleCompletion(tobuy);
     };
-    TodoApp.prototype.remove = function (tobuy) {
+    TobuyApp.prototype.remove = function (tobuy) {
         this.tobuyStore.remove(tobuy);
     };
-    TodoApp.prototype.addTodo = function () {
-        if (this.newTodoText.trim().length) {
-            this.tobuyStore.add(this.newTodoText);
-            this.newTodoText = '';
+    TobuyApp.prototype.addTobuy = function () {
+        if (this.newTobuyText.trim().length) {
+            this.tobuyStore.add(this.newTobuyText);
+            this.newTobuyText = '';
         }
     };
-    TodoApp = __decorate([
+    TobuyApp = __decorate([
         core_1.Component({
             selector: 'tobuy-app',
             templateUrl: 'app/app.html'
         }), 
-        __metadata('design:paramtypes', [store_1.TodoStore])
-    ], TodoApp);
-    return TodoApp;
+        __metadata('design:paramtypes', [store_1.TobuyStore])
+    ], TobuyApp);
+    return TobuyApp;
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = TodoApp;
+exports.default = TobuyApp;
 //# sourceMappingURL=app.js.map
